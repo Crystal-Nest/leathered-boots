@@ -37,9 +37,6 @@ dependencies {
 
   // Revamped End dependency
   // modImplementation "curse.maven:revampedend-xxxxxx:yyyyyyy"
-
-  // Leathered Boots dependency
-  // modImplementation "curse.maven:leatheredboots-xxxxxx:yyyyyyy"
 }
 
 def resourceTarget = 'fabric.mod.json'

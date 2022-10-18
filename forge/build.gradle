@@ -92,9 +92,6 @@ dependencies {
 
   // Revamped End dependency
   // implementation fg.deobf("curse.maven:revampedend-xxxxxx:yyyyyyy")
-
-  // Leathered Boots dependency
-  // implementation fg.deobf("curse.maven:leatheredboots-xxxxxx:yyyyyyy")
 }
 
 def resourceTarget = 'META-INF/mods.toml'

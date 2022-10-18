@@ -23,6 +23,7 @@ TODO: Add leathered gilded boots
 ## **Features**
 - Each Vanilla pair of boots has its own leathered version!  
 - Leathered boots prevent you from falling into powdered snow!  
+- Leathered boots can be tinted!  
 - Craft leathered boots by putting normal boots in a smithing table with leather!  
 TODO: Add crafting recipe image  
 - If Revamped End is installed, Enderite boots can be leathered!  
