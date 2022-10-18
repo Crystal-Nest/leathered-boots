@@ -1,10 +1,7 @@
 package crystalspider.leatheredboots;
 
-import crystalspider.leatheredboots.config.LeatheredBootsConfig;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 
@@ -27,7 +24,5 @@ public class LeatheredBootsLoader {
    */
   public static final SimpleChannel INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(MODID, "main"), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, (version) -> true);
 
-  public LeatheredBootsLoader() {
-    ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, LeatheredBootsConfig.SPEC);
-  }
+  public LeatheredBootsLoader() {}
 }
