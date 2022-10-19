@@ -30,7 +30,7 @@ Compatible with [Gilded Armors](https://www.curseforge.com/minecraft/mc-mods/gil
 - Right-clicking a cauldron with dyed lethered boots removes the color!  
 ![Undying](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/leathered-boots/undying.gif)  
 - The Leatherworker villager can trade leathered boots.  
-- Leathered boots can be found in Igloos chests and snowy villages!  (WIP)
+- Leathered boots can be found in Igloos chests and snowy villages!  
 - Walking on powdered snow with leathered boots gives the *Light as a rabbit* advancement.  
 - If Revamped End is installed, Enderite boots can be leathered!  
 - If Gilded Armors is installed, gilded boots can be leathered!  
