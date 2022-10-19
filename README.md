@@ -13,19 +13,26 @@
 ## **Description**
 Only leather boots allow you to walk on powdered snow? No more!  
 Leather your boots and walk on powdered snow without losing armor protection!  
+Also prevent freezing!
 
 ## **Compatibility**
 Compatible with [Revamped End](https://www.curseforge.com/minecraft/mc-mods/revamped-end)!  
 TODO: Add gilded enderite picture  
 Compatible with [Gilded Armors](https://www.curseforge.com/minecraft/mc-mods/gilded-armors)!  
-TODO: Add leathered gilded boots
+TODO: Add leathered gilded boots  
 
 ## **Features**
 - Each Vanilla pair of boots has its own leathered version!  
 - Leathered boots prevent you from falling into powdered snow!  
-- Leathered boots can be tinted!  
-- Craft leathered boots by putting normal boots in a smithing table with leather!  
+- Leathered boots prevent freezing!  (WIP)
+- Leathered boots can be dyed!  
+- Craft leathered boots by putting normal boots and leather boots together in a crafting table.  
 TODO: Add crafting recipe image  
+- Right-clicking a cauldron with dyed lethered boots removes the color!  (WIP)
+- The Leatherworker villager can trade leathered boots.  (WIP)
+- Mobs can occasionally spawn with leathered boots.  (WIP)
+- Leathered boots can be found in Igloos chests!  (WIP)
+- Walking on powdered snow with leathered boots gives the *Light as a rabbit* advancement.  (WIP)
 - If Revamped End is installed, Enderite boots can be leathered!  
 - If Gilded Armors is installed, any gilded boot can be leathered!  
 
