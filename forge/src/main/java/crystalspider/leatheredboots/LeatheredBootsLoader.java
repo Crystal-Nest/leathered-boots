@@ -1,5 +1,7 @@
 package crystalspider.leatheredboots;
 
+import crystalspider.leatheredboots.handlers.FMLCommonSetupEventHandler;
+import crystalspider.leatheredboots.handlers.VillagerTradesEventHandler;
 import crystalspider.leatheredboots.items.LeatheredBootsItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ArmorMaterial;
@@ -8,6 +10,8 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.network.NetworkRegistry;
@@ -91,6 +95,9 @@ public class LeatheredBootsLoader {
   }
 
   public LeatheredBootsLoader() {
-    ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+    IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+    ITEMS.register(modEventBus);
+    modEventBus.register(new FMLCommonSetupEventHandler());
+    MinecraftForge.EVENT_BUS.register(new VillagerTradesEventHandler());
   }
 }
