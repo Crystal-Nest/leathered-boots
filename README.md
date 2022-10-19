@@ -17,24 +17,25 @@ Also prevent freezing!
 
 ## **Compatibility**
 Compatible with [Revamped End](https://www.curseforge.com/minecraft/mc-mods/revamped-end)!  
-TODO: Add gilded enderite picture  
+***Disclaimer: Revamped End is TBR***  
 Compatible with [Gilded Armors](https://www.curseforge.com/minecraft/mc-mods/gilded-armors)!  
-TODO: Add leathered gilded boots  
+***Disclaimer: Gilded Armors is TBR***  
 
 ## **Features**
 - Each Vanilla pair of boots has its own leathered version!  
 - Leathered boots prevent you from falling into powdered snow!  
 - Leathered boots prevent freezing!  
-- Leathered boots can be dyed!  
-- Craft leathered boots by putting normal boots and leather boots together in a crafting table.  
-TODO: Add crafting recipe gif  
+- Leathered boots can be dyed!   
 - Right-clicking a cauldron with dyed lethered boots removes the color!  
 - The Leatherworker villager can trade leathered boots.  
-- Mobs can occasionally spawn with leathered boots.  (WIP)
-- Leathered boots can be found in Igloos chests!  (WIP)
-- Walking on powdered snow with leathered boots gives the *Light as a rabbit* advancement.  (WIP)
+- Leathered boots can be found in Igloos chests and snowy villages!  (WIP)
+- Walking on powdered snow with leathered boots gives the *Light as a rabbit* advancement.  
 - If Revamped End is installed, Enderite boots can be leathered!  
-- If Gilded Armors is installed, any gilded boot can be leathered!  
+- If Gilded Armors is installed, gilded boots can be leathered!  
+
+## **Craftings**
+- Craft leathered boots by putting normal boots and leather boots together in a crafting table.  
+TODO: Add crafting recipe gif 
 
 ## **License and right of use**
 Feel free to use this mod for any modpack or video, just be sure to give credit and possibly link [here](https://github.com/Nyphet/leathered-boots#readme).  
