@@ -26,7 +26,9 @@ Compatible with [Gilded Armors](https://www.curseforge.com/minecraft/mc-mods/gil
 - Leathered boots prevent you from falling into powdered snow!  
 - Leathered boots prevent freezing!  
 - Leathered boots can be dyed!   
+![Dying](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/leathered-boots/dying.png)  
 - Right-clicking a cauldron with dyed lethered boots removes the color!  
+![Undying](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/leathered-boots/undying.gif)  
 - The Leatherworker villager can trade leathered boots.  
 - Leathered boots can be found in Igloos chests and snowy villages!  (WIP)
 - Walking on powdered snow with leathered boots gives the *Light as a rabbit* advancement.  
@@ -35,7 +37,7 @@ Compatible with [Gilded Armors](https://www.curseforge.com/minecraft/mc-mods/gil
 
 ## **Craftings**
 - Craft leathered boots by putting normal boots and leather boots together in a crafting table.  
-TODO: Add crafting recipe gif 
+![Craftings](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/leathered-boots/craftings.gif)
 
 ## **License and right of use**
 Feel free to use this mod for any modpack or video, just be sure to give credit and possibly link [here](https://github.com/Nyphet/leathered-boots#readme).  
