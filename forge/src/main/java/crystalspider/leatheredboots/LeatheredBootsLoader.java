@@ -1,11 +1,11 @@
 package crystalspider.leatheredboots;
 
+import crystalspider.leatheredboots.armor.LeatheredArmorMaterials;
 import crystalspider.leatheredboots.handlers.FMLCommonSetupEventHandler;
 import crystalspider.leatheredboots.handlers.VillagerTradesEventHandler;
 import crystalspider.leatheredboots.items.LeatheredBootsItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Item.Properties;
@@ -59,29 +59,29 @@ public class LeatheredBootsLoader {
   public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
   
   /**
-   * {@link RegistryObject} for {@link LeatheredBootsItem} made of {@link ArmorMaterials#CHAIN Chain}.
+   * {@link RegistryObject} for {@link LeatheredBootsItem} made of {@link LeatheredArmorMaterials#LEATHERED_CHAIN Chain}.
    */
-  public static final RegistryObject<LeatheredBootsItem> CHAINMAIL_LEATHERED_BOOTS = registerLeatheredBootsItem("chainmail", ArmorMaterials.CHAIN, (new Properties()).tab(LeatheredBootsLoader.LEATHERED_BOOTS_TAB));
+  public static final RegistryObject<LeatheredBootsItem> CHAINMAIL_LEATHERED_BOOTS = registerLeatheredBootsItem("chainmail", LeatheredArmorMaterials.LEATHERED_CHAIN, (new Properties()).tab(LeatheredBootsLoader.LEATHERED_BOOTS_TAB));
   /**
-   * {@link RegistryObject} for {@link LeatheredBootsItem} made of {@link ArmorMaterials#IRON Iron}.
+   * {@link RegistryObject} for {@link LeatheredBootsItem} made of {@link LeatheredArmorMaterials#LEATHERED_IRON Iron}.
    */
-  public static final RegistryObject<LeatheredBootsItem> IRON_LEATHERED_BOOTS = registerLeatheredBootsItem("iron", ArmorMaterials.IRON, (new Properties()).tab(LeatheredBootsLoader.LEATHERED_BOOTS_TAB));
+  public static final RegistryObject<LeatheredBootsItem> IRON_LEATHERED_BOOTS = registerLeatheredBootsItem("iron", LeatheredArmorMaterials.LEATHERED_IRON, (new Properties()).tab(LeatheredBootsLoader.LEATHERED_BOOTS_TAB));
   /**
-   * {@link RegistryObject} for {@link LeatheredBootsItem} made of {@link ArmorMaterials#DIAMOND Diamond}.
+   * {@link RegistryObject} for {@link LeatheredBootsItem} made of {@link LeatheredArmorMaterials#LEATHERED_DIAMOND Diamond}.
    */
-  public static final RegistryObject<LeatheredBootsItem> DIAMOND_LEATHERED_BOOTS = registerLeatheredBootsItem("diamond", ArmorMaterials.DIAMOND, (new Properties()).tab(LeatheredBootsLoader.LEATHERED_BOOTS_TAB));
+  public static final RegistryObject<LeatheredBootsItem> DIAMOND_LEATHERED_BOOTS = registerLeatheredBootsItem("diamond", LeatheredArmorMaterials.LEATHERED_DIAMOND, (new Properties()).tab(LeatheredBootsLoader.LEATHERED_BOOTS_TAB));
   /**
-   * {@link RegistryObject} for {@link LeatheredBootsItem} made of {@link ArmorMaterials#GOLD Gold}.
+   * {@link RegistryObject} for {@link LeatheredBootsItem} made of {@link LeatheredArmorMaterials#LEATHERED_GOLD Gold}.
    */
-  public static final RegistryObject<LeatheredBootsItem> GOLDEN_LEATHERED_BOOTS = registerLeatheredBootsItem("golden", ArmorMaterials.GOLD, (new Properties()).tab(LeatheredBootsLoader.LEATHERED_BOOTS_TAB));
+  public static final RegistryObject<LeatheredBootsItem> GOLDEN_LEATHERED_BOOTS = registerLeatheredBootsItem("golden", LeatheredArmorMaterials.LEATHERED_GOLD, (new Properties()).tab(LeatheredBootsLoader.LEATHERED_BOOTS_TAB));
   /**
-   * {@link RegistryObject} for {@link LeatheredBootsItem} made of {@link ArmorMaterials#NETHERITE Netherite}.
+   * {@link RegistryObject} for {@link LeatheredBootsItem} made of {@link LeatheredArmorMaterials#LEATHERED_NETHERITE Netherite}.
    */
-  public static final RegistryObject<LeatheredBootsItem> NETHERITE_LEATHERED_BOOTS = registerLeatheredBootsItem("netherite", ArmorMaterials.NETHERITE, (new Properties()).tab(LeatheredBootsLoader.LEATHERED_BOOTS_TAB).fireResistant());
+  public static final RegistryObject<LeatheredBootsItem> NETHERITE_LEATHERED_BOOTS = registerLeatheredBootsItem("netherite", LeatheredArmorMaterials.LEATHERED_NETHERITE, (new Properties()).tab(LeatheredBootsLoader.LEATHERED_BOOTS_TAB).fireResistant());
   /**
-   * {@link RegistryObject} for {@link LeatheredBootsItem} made of {@link ArmorMaterials#ENDERITE Enderite}.
+   * {@link RegistryObject} for {@link LeatheredBootsItem} made of {@link LeatheredArmorMaterials#ENDERITE Enderite}.
    */
-  // public static final RegistryObject<LeatheredBootsItem> ENDERITE_LEATHERED_BOOTS = registerLeatheredBootsItem("enderite", ArmorMaterials.ENDERITE, (new Properties()).tab(LeatheredBootsLoader.LEATHERED_BOOTS_TAB).fireResistant());
+  // public static final RegistryObject<LeatheredBootsItem> ENDERITE_LEATHERED_BOOTS = registerLeatheredBootsItem("enderite", LeatheredArmorMaterials.ENDERITE, (new Properties()).tab(LeatheredBootsLoader.LEATHERED_BOOTS_TAB).fireResistant());
 
   /**
    * Returns the registered {@link LeatheredBootsItem}.
