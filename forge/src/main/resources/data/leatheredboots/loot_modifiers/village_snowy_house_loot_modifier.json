@@ -1,5 +1,5 @@
 {
-  "type": "leatheredboots:village_snowy_house_loot_modifier",
+  "type": "leatheredboots:chest_loot_modifier",
   "conditions": [
     {
       "condition": "forge:loot_table_id",

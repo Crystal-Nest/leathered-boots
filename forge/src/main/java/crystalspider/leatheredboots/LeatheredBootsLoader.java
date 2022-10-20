@@ -1,16 +1,17 @@
 package crystalspider.leatheredboots;
 
+import com.mojang.serialization.Codec;
+
 import crystalspider.leatheredboots.armor.LeatheredArmorMaterials;
 import crystalspider.leatheredboots.items.LeatheredBootsItem;
-import crystalspider.leatheredboots.loot.IglooLootModifier;
-import crystalspider.leatheredboots.loot.VillageSnowyHouseLootModifier;
+import crystalspider.leatheredboots.loot.ChestLootModifier;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
+import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -38,7 +39,7 @@ public class LeatheredBootsLoader {
   /**
    * Network channel protocol version.
    */
-  public static final String PROTOCOL_VERSION = "1.18-1.0";
+  public static final String PROTOCOL_VERSION = "1.19-1.0";
   /**
    * {@link SimpleChannel} instance for compatibility client-server.
    */
@@ -59,9 +60,9 @@ public class LeatheredBootsLoader {
    */
   public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
   /**
-   * {@link GlobalLootModifierSerializer} {@link DeferredRegister deferred register}.
+   * {@link Codec<? extends IGlobalLootModifier>} {@link DeferredRegister deferred register}.
    */
-  public static final DeferredRegister<GlobalLootModifierSerializer<?>> LOOT_MODIFIERS = DeferredRegister.create(ForgeRegistries.Keys.LOOT_MODIFIER_SERIALIZERS, MODID);
+  public static final DeferredRegister<Codec<? extends IGlobalLootModifier>> LOOT_MODIFIERS = DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, MODID);
 
   /**
    * {@link RegistryObject} for {@link LeatheredBootsItem} made of {@link LeatheredArmorMaterials#LEATHERED_CHAIN Chain}.
@@ -89,13 +90,9 @@ public class LeatheredBootsLoader {
   // public static final RegistryObject<LeatheredBootsItem> ENDERITE_LEATHERED_BOOTS = registerLeatheredBootsItem("enderite", LeatheredArmorMaterials.ENDERITE, (new Properties()).tab(LEATHERED_BOOTS_TAB).fireResistant());
 
   /**
-   * {@link RegistryObject} for {@link IglooLootModifier} {@link IglooLootModifier.Serializer Serializer}.
+   * {@link RegistryObject} for {@link Codec} of {@link ChestLootModifier}.
    */
-  public static final RegistryObject<IglooLootModifier.Serializer> IGLOO_CHEST_LOOT_MODIFIER = LOOT_MODIFIERS.register("igloo_chest_loot_modifier", IglooLootModifier.Serializer::new);
-  /**
-   * {@link RegistryObject} for {@link VillageSnowyHouseLootModifier} {@link VillageSnowyHouseLootModifier.Serializer Serializer}.
-   */
-  public static final RegistryObject<VillageSnowyHouseLootModifier.Serializer> VILLAGE_SNOWY_HOUSE_LOOT_MODIFIER = LOOT_MODIFIERS.register("village_snowy_house_loot_modifier", VillageSnowyHouseLootModifier.Serializer::new);
+  public static final RegistryObject<Codec<ChestLootModifier>> CHEST_LOOT_MODIFIER = LOOT_MODIFIERS.register("chest_loot_modifier", ChestLootModifier.CODEC);
   
   /**
    * Returns the registered {@link LeatheredBootsItem}.
