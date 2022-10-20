@@ -2,8 +2,7 @@ package crystalspider.leatheredboots;
 
 import crystalspider.leatheredboots.armor.LeatheredArmorMaterials;
 import crystalspider.leatheredboots.items.LeatheredBootsItem;
-import crystalspider.leatheredboots.loot.IglooLootModifier;
-import crystalspider.leatheredboots.loot.VillageSnowyHouseLootModifier;
+import crystalspider.leatheredboots.loot.ChestLootModifier;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.CreativeModeTab;
@@ -89,13 +88,9 @@ public class LeatheredBootsLoader {
   // public static final RegistryObject<LeatheredBootsItem> ENDERITE_LEATHERED_BOOTS = registerLeatheredBootsItem("enderite", LeatheredArmorMaterials.ENDERITE, (new Properties()).tab(LEATHERED_BOOTS_TAB).fireResistant());
 
   /**
-   * {@link RegistryObject} for {@link IglooLootModifier} {@link IglooLootModifier.Serializer Serializer}.
+   * {@link RegistryObject} for {@link ChestLootModifier} {@link ChestLootModifier.Serializer Serializer}.
    */
-  public static final RegistryObject<IglooLootModifier.Serializer> IGLOO_CHEST_LOOT_MODIFIER = LOOT_MODIFIERS.register("igloo_chest_loot_modifier", IglooLootModifier.Serializer::new);
-  /**
-   * {@link RegistryObject} for {@link VillageSnowyHouseLootModifier} {@link VillageSnowyHouseLootModifier.Serializer Serializer}.
-   */
-  public static final RegistryObject<VillageSnowyHouseLootModifier.Serializer> VILLAGE_SNOWY_HOUSE_LOOT_MODIFIER = LOOT_MODIFIERS.register("village_snowy_house_loot_modifier", VillageSnowyHouseLootModifier.Serializer::new);
+  public static final RegistryObject<ChestLootModifier.Serializer> CHEST_LOOT_MODIFIER = LOOT_MODIFIERS.register("chest_loot_modifier", ChestLootModifier.Serializer::new);
   
   /**
    * Returns the registered {@link LeatheredBootsItem}.

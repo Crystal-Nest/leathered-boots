@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
-import java.util.function.BiFunction;
 
 import javax.annotation.Nonnull;
 
@@ -21,15 +20,15 @@ import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
 
 /**
- * Abstract loot modifier.
+ * Chests loot modifier.
  */
-public abstract class AbstractLootModifier extends LootModifier {
+public class ChestLootModifier extends LootModifier {
   /**
    * Additional items to add to the chest loot.
    */
   private final HashMap<ItemStack, Float> additions;
 
-  protected AbstractLootModifier(LootItemCondition[] conditionsIn, HashMap<ItemStack, Float> additions) {
+  protected ChestLootModifier(LootItemCondition[] conditionsIn, HashMap<ItemStack, Float> additions) {
     super(conditionsIn);
     this.additions = additions;
   }
@@ -49,20 +48,11 @@ public abstract class AbstractLootModifier extends LootModifier {
   }
 
   /**
-   * {@link AbstractLootModifier} Serializer.
+   * {@link ChestLootModifier} Serializer.
    */
-  protected static abstract class Serializer extends GlobalLootModifierSerializer<AbstractLootModifier> {
-    /**
-     * Constructor for a {@link AbstractLootModifier}.
-     */
-    private final BiFunction<LootItemCondition[], HashMap<ItemStack, Float>, AbstractLootModifier> constructor;
-
-    protected Serializer(BiFunction<LootItemCondition[], HashMap<ItemStack, Float>, AbstractLootModifier> constructor) {
-      this.constructor = constructor;
-    }
-
+  public static class Serializer extends GlobalLootModifierSerializer<ChestLootModifier> {
     @Override
-    public AbstractLootModifier read(ResourceLocation name, JsonObject json, LootItemCondition[] conditionsIn) {
+    public ChestLootModifier read(ResourceLocation name, JsonObject json, LootItemCondition[] conditionsIn) {
       HashMap<ItemStack, Float> additions = new HashMap<>();
       for (JsonElement jsonElement : GsonHelper.getAsJsonArray(json, "additions")) {
         JsonObject entry = jsonElement.getAsJsonObject();
@@ -71,11 +61,11 @@ public abstract class AbstractLootModifier extends LootModifier {
           GsonHelper.getAsFloat(entry, "chance")
         );
       }
-      return constructor.apply(conditionsIn, additions);
+      return new ChestLootModifier(conditionsIn, additions);
     }
 
     @Override
-    public JsonObject write(AbstractLootModifier instance) {
+    public JsonObject write(ChestLootModifier instance) {
       return makeConditions(instance.conditions);
     }
   }
