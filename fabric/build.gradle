@@ -13,10 +13,6 @@ group = project.group
 
 repositories {
   maven {
-    name = "Fuzs Mod Resources"
-    url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/"
-  }
-  maven {
     url "https://cursemaven.com"
     content {
       includeGroup "curse.maven"
@@ -31,9 +27,6 @@ dependencies {
 
   // Fabric API. This is technically optional, but you probably want it anyway.
   modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
-
-  // Forge Config API Port to handle configuration.
-  modImplementation "net.minecraftforge:forgeconfigapiport-fabric:${forgeconfigapiport_version}"
 
   // Revamped End dependency
   // modImplementation "curse.maven:revampedend-xxxxxx:yyyyyyy"
@@ -50,8 +43,7 @@ def replaceProperties = [
   loader_version: loader_version,
   group: group,
   author: author,
-  github_user: github_user,
-  forgeconfigapiport_version: forgeconfigapiport_version
+  github_user: github_user
 ]
 
 processResources {
@@ -116,7 +108,6 @@ curseforge {
     mainArtifact(remapJar) {
       displayName = "[${loader} - ${minecraft_version}] ${mod_title} v${mod_version}"
       relations {
-        requiredDependency 'forge-config-api-port-fabric'
         requiredDependency 'fabric-api'
         // optionalDependency 'revamped-end'
         // optionalDependency 'gilded-armors'

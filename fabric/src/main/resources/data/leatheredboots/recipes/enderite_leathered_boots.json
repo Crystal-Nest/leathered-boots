@@ -1,28 +1,23 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "minecraft:crafting_shapeless",
+  "group": "leathered_boots",
+  "ingredients": [
     {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "revampendend"
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:crafting_shapeless",
-        "group": "leathered_boots",
-        "ingredients": [
-          {
-            "item": "revampedend:enderite_boots"
-          },
-          {
-            "item": "minecraft:leather_boots"
-          }
-        ],
-        "result": {
-          "item": "leatheredboots:enderite_leathered_boots"
-        }
-      }
+      "item": "revampedend:enderite_boots"
+    },
+    {
+      "item": "minecraft:leather_boots"
+    }
+  ],
+  "result": {
+    "item": "leatheredboots:enderite_leathered_boots"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "revampedend"
+      ]
     }
   ]
 }

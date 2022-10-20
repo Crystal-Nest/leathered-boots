@@ -1,291 +1,58 @@
 {
-  "advancements": [
-    {
-      "conditions": [
-        {
-          "type": "forge:and",
-          "values": [
-            {
-              "type": "forge:mod_loaded",
-              "modid": "revampendend"
-            },
-            {
-              "type": "forge:mod_loaded",
-              "modid": "gildedarmors"
+  "parent": "minecraft:adventure/sleep_in_bed",
+  "criteria": {
+    "walk_on_powder_snow_with_leather_boots": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "equipment": {
+                "feet": {
+                  "items": [
+                    "minecraft:leather_boots",
+                    "leatheredboots:chainmail_leathered_boots",
+                    "leatheredboots:iron_leathered_boots",
+                    "leatheredboots:golden_leathered_boots",
+                    "leatheredboots:diamond_leathered_boots",
+                    "leatheredboots:netherite_leathered_boots"
+                  ]
+                }
+              },
+              "stepping_on": {
+                "block": {
+                  "blocks": [
+                    "minecraft:powder_snow"
+                  ]
+                }
+              }
             }
-          ]
-        }
-      ],
-      "advancement": {
-        "parent": "minecraft:adventure/sleep_in_bed",
-        "criteria": {
-          "walk_on_powder_snow_with_leather_boots": {
-            "conditions": {
-              "player": [
-                {
-                  "condition": "minecraft:entity_properties",
-                  "entity": "this",
-                  "predicate": {
-                    "equipment": {
-                      "feet": {
-                        "items": [
-                          "minecraft:leather_boots",
-                          "leatheredboots:chainmail_leathered_boots",
-                          "leatheredboots:iron_leathered_boots",
-                          "leatheredboots:golden_leathered_boots",
-                          "leatheredboots:diamond_leathered_boots",
-                          "leatheredboots:netherite_leathered_boots",
-                          "leatheredboots:enderite_leathered_boots",
-                          "gildedarmors:gilded_leather_boots",
-                          "gildedarmors:gilded_chainmail_leathered_boots",
-                          "gildedarmors:gilded_iron_leathered_boots",
-                          "gildedarmors:gilded_golden_leathered_boots",
-                          "gildedarmors:gilded_diamond_leathered_boots",
-                          "gildedarmors:gilded_netherite_leathered_boots",
-                          "gildedarmors:gilded_enderite_leathered_boots"
-                        ]
-                      }
-                    },
-                    "stepping_on": {
-                      "block": {
-                        "blocks": [
-                          "minecraft:powder_snow"
-                        ]
-                      }
-                    }
-                  }
-                }
-              ]
-            },
-            "trigger": "minecraft:location"
           }
-        },
-        "display": {
-          "announce_to_chat": true,
-          "description": {
-            "translate": "advancements.adventure.walk_on_powder_snow_with_leather_boots.description"
-          },
-          "frame": "task",
-          "hidden": false,
-          "icon": {
-            "item": "minecraft:leather_boots",
-            "nbt": "{Damage:0}"
-          },
-          "show_toast": true,
-          "title": {
-            "translate": "advancements.adventure.walk_on_powder_snow_with_leather_boots.title"
-          }
-        },
-        "requirements": [
-          [
-            "walk_on_powder_snow_with_leather_boots"
-          ]
         ]
-      }
-    },
-    {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "revampendend"
-        }
-      ],
-      "advancement": {
-        "parent": "minecraft:adventure/sleep_in_bed",
-        "criteria": {
-          "walk_on_powder_snow_with_leather_boots": {
-            "conditions": {
-              "player": [
-                {
-                  "condition": "minecraft:entity_properties",
-                  "entity": "this",
-                  "predicate": {
-                    "equipment": {
-                      "feet": {
-                        "items": [
-                          "minecraft:leather_boots",
-                          "leatheredboots:chainmail_leathered_boots",
-                          "leatheredboots:iron_leathered_boots",
-                          "leatheredboots:golden_leathered_boots",
-                          "leatheredboots:diamond_leathered_boots",
-                          "leatheredboots:netherite_leathered_boots",
-                          "leatheredboots:enderite_leathered_boots"
-                        ]
-                      }
-                    },
-                    "stepping_on": {
-                      "block": {
-                        "blocks": [
-                          "minecraft:powder_snow"
-                        ]
-                      }
-                    }
-                  }
-                }
-              ]
-            },
-            "trigger": "minecraft:location"
-          }
-        },
-        "display": {
-          "announce_to_chat": true,
-          "description": {
-            "translate": "advancements.adventure.walk_on_powder_snow_with_leather_boots.description"
-          },
-          "frame": "task",
-          "hidden": false,
-          "icon": {
-            "item": "minecraft:leather_boots",
-            "nbt": "{Damage:0}"
-          },
-          "show_toast": true,
-          "title": {
-            "translate": "advancements.adventure.walk_on_powder_snow_with_leather_boots.title"
-          }
-        },
-        "requirements": [
-          [
-            "walk_on_powder_snow_with_leather_boots"
-          ]
-        ]
-      }
-    },
-    {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "gildedarmors"
-        }
-      ],
-      "advancement": {
-        "parent": "minecraft:adventure/sleep_in_bed",
-        "criteria": {
-          "walk_on_powder_snow_with_leather_boots": {
-            "conditions": {
-              "player": [
-                {
-                  "condition": "minecraft:entity_properties",
-                  "entity": "this",
-                  "predicate": {
-                    "equipment": {
-                      "feet": {
-                        "items": [
-                          "minecraft:leather_boots",
-                          "leatheredboots:chainmail_leathered_boots",
-                          "leatheredboots:iron_leathered_boots",
-                          "leatheredboots:golden_leathered_boots",
-                          "leatheredboots:diamond_leathered_boots",
-                          "leatheredboots:netherite_leathered_boots",
-                          "gildedarmors:gilded_leather_boots",
-                          "gildedarmors:gilded_chainmail_leathered_boots",
-                          "gildedarmors:gilded_iron_leathered_boots",
-                          "gildedarmors:gilded_golden_leathered_boots",
-                          "gildedarmors:gilded_diamond_leathered_boots",
-                          "gildedarmors:gilded_netherite_leathered_boots"
-                        ]
-                      }
-                    },
-                    "stepping_on": {
-                      "block": {
-                        "blocks": [
-                          "minecraft:powder_snow"
-                        ]
-                      }
-                    }
-                  }
-                }
-              ]
-            },
-            "trigger": "minecraft:location"
-          }
-        },
-        "display": {
-          "announce_to_chat": true,
-          "description": {
-            "translate": "advancements.adventure.walk_on_powder_snow_with_leather_boots.description"
-          },
-          "frame": "task",
-          "hidden": false,
-          "icon": {
-            "item": "minecraft:leather_boots",
-            "nbt": "{Damage:0}"
-          },
-          "show_toast": true,
-          "title": {
-            "translate": "advancements.adventure.walk_on_powder_snow_with_leather_boots.title"
-          }
-        },
-        "requirements": [
-          [
-            "walk_on_powder_snow_with_leather_boots"
-          ]
-        ]
-      }
-    },
-    {
-      "conditions": [
-        {
-          "type": "forge:true"
-        }
-      ],
-      "advancement": {
-        "parent": "minecraft:adventure/sleep_in_bed",
-        "criteria": {
-          "walk_on_powder_snow_with_leather_boots": {
-            "conditions": {
-              "player": [
-                {
-                  "condition": "minecraft:entity_properties",
-                  "entity": "this",
-                  "predicate": {
-                    "equipment": {
-                      "feet": {
-                        "items": [
-                          "minecraft:leather_boots",
-                          "leatheredboots:chainmail_leathered_boots",
-                          "leatheredboots:iron_leathered_boots",
-                          "leatheredboots:golden_leathered_boots",
-                          "leatheredboots:diamond_leathered_boots",
-                          "leatheredboots:netherite_leathered_boots"
-                        ]
-                      }
-                    },
-                    "stepping_on": {
-                      "block": {
-                        "blocks": [
-                          "minecraft:powder_snow"
-                        ]
-                      }
-                    }
-                  }
-                }
-              ]
-            },
-            "trigger": "minecraft:location"
-          }
-        },
-        "display": {
-          "announce_to_chat": true,
-          "description": {
-            "translate": "advancements.adventure.walk_on_powder_snow_with_leather_boots.description"
-          },
-          "frame": "task",
-          "hidden": false,
-          "icon": {
-            "item": "minecraft:leather_boots",
-            "nbt": "{Damage:0}"
-          },
-          "show_toast": true,
-          "title": {
-            "translate": "advancements.adventure.walk_on_powder_snow_with_leather_boots.title"
-          }
-        },
-        "requirements": [
-          [
-            "walk_on_powder_snow_with_leather_boots"
-          ]
-        ]
-      }
+      },
+      "trigger": "minecraft:location"
     }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.adventure.walk_on_powder_snow_with_leather_boots.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:leather_boots",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.adventure.walk_on_powder_snow_with_leather_boots.title"
+    }
+  },
+  "requirements": [
+    [
+      "walk_on_powder_snow_with_leather_boots"
+    ]
   ]
 }
