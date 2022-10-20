@@ -42,12 +42,13 @@ public class LeatheredBootsLoader {
   /**
    * {@link SimpleChannel} instance for compatibility client-server.
    */
-  public static final SimpleChannel INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(MODID, "main"), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, (version) -> true);
+  public static final SimpleChannel INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(MODID, "main"), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
 
   /**
    * {@link CreativeModTab} for {@link LeatheredBootsItem Leathered Boots Items}.
    */
   public static final CreativeModeTab LEATHERED_BOOTS_TAB = new CreativeModeTab(MODID) {
+    @Override
     public ItemStack makeIcon() {
       return NETHERITE_LEATHERED_BOOTS.get().getDefaultInstance();
     }
@@ -57,7 +58,7 @@ public class LeatheredBootsLoader {
    * {@link Item Items} {@link DeferredRegister deferred register}.
    */
   public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
-    /**
+  /**
    * {@link GlobalLootModifierSerializer} {@link DeferredRegister deferred register}.
    */
   public static final DeferredRegister<GlobalLootModifierSerializer<?>> LOOT_MODIFIERS = DeferredRegister.create(ForgeRegistries.Keys.LOOT_MODIFIER_SERIALIZERS, MODID);
@@ -65,27 +66,27 @@ public class LeatheredBootsLoader {
   /**
    * {@link RegistryObject} for {@link LeatheredBootsItem} made of {@link LeatheredArmorMaterials#LEATHERED_CHAIN Chain}.
    */
-  public static final RegistryObject<LeatheredBootsItem> CHAINMAIL_LEATHERED_BOOTS = registerLeatheredBootsItem("chainmail", LeatheredArmorMaterials.LEATHERED_CHAIN, (new Properties()).tab(LeatheredBootsLoader.LEATHERED_BOOTS_TAB));
+  public static final RegistryObject<LeatheredBootsItem> CHAINMAIL_LEATHERED_BOOTS = registerLeatheredBootsItem("chainmail", LeatheredArmorMaterials.LEATHERED_CHAIN, (new Properties()).tab(LEATHERED_BOOTS_TAB));
   /**
    * {@link RegistryObject} for {@link LeatheredBootsItem} made of {@link LeatheredArmorMaterials#LEATHERED_IRON Iron}.
    */
-  public static final RegistryObject<LeatheredBootsItem> IRON_LEATHERED_BOOTS = registerLeatheredBootsItem("iron", LeatheredArmorMaterials.LEATHERED_IRON, (new Properties()).tab(LeatheredBootsLoader.LEATHERED_BOOTS_TAB));
+  public static final RegistryObject<LeatheredBootsItem> IRON_LEATHERED_BOOTS = registerLeatheredBootsItem("iron", LeatheredArmorMaterials.LEATHERED_IRON, (new Properties()).tab(LEATHERED_BOOTS_TAB));
   /**
    * {@link RegistryObject} for {@link LeatheredBootsItem} made of {@link LeatheredArmorMaterials#LEATHERED_DIAMOND Diamond}.
    */
-  public static final RegistryObject<LeatheredBootsItem> DIAMOND_LEATHERED_BOOTS = registerLeatheredBootsItem("diamond", LeatheredArmorMaterials.LEATHERED_DIAMOND, (new Properties()).tab(LeatheredBootsLoader.LEATHERED_BOOTS_TAB));
+  public static final RegistryObject<LeatheredBootsItem> DIAMOND_LEATHERED_BOOTS = registerLeatheredBootsItem("diamond", LeatheredArmorMaterials.LEATHERED_DIAMOND, (new Properties()).tab(LEATHERED_BOOTS_TAB));
   /**
    * {@link RegistryObject} for {@link LeatheredBootsItem} made of {@link LeatheredArmorMaterials#LEATHERED_GOLD Gold}.
    */
-  public static final RegistryObject<LeatheredBootsItem> GOLDEN_LEATHERED_BOOTS = registerLeatheredBootsItem("golden", LeatheredArmorMaterials.LEATHERED_GOLD, (new Properties()).tab(LeatheredBootsLoader.LEATHERED_BOOTS_TAB));
+  public static final RegistryObject<LeatheredBootsItem> GOLDEN_LEATHERED_BOOTS = registerLeatheredBootsItem("golden", LeatheredArmorMaterials.LEATHERED_GOLD, (new Properties()).tab(LEATHERED_BOOTS_TAB));
   /**
    * {@link RegistryObject} for {@link LeatheredBootsItem} made of {@link LeatheredArmorMaterials#LEATHERED_NETHERITE Netherite}.
    */
-  public static final RegistryObject<LeatheredBootsItem> NETHERITE_LEATHERED_BOOTS = registerLeatheredBootsItem("netherite", LeatheredArmorMaterials.LEATHERED_NETHERITE, (new Properties()).tab(LeatheredBootsLoader.LEATHERED_BOOTS_TAB).fireResistant());
+  public static final RegistryObject<LeatheredBootsItem> NETHERITE_LEATHERED_BOOTS = registerLeatheredBootsItem("netherite", LeatheredArmorMaterials.LEATHERED_NETHERITE, (new Properties()).tab(LEATHERED_BOOTS_TAB).fireResistant());
   /**
    * {@link RegistryObject} for {@link LeatheredBootsItem} made of {@link LeatheredArmorMaterials#ENDERITE Enderite}.
    */
-  // public static final RegistryObject<LeatheredBootsItem> ENDERITE_LEATHERED_BOOTS = registerLeatheredBootsItem("enderite", LeatheredArmorMaterials.ENDERITE, (new Properties()).tab(LeatheredBootsLoader.LEATHERED_BOOTS_TAB).fireResistant());
+  // public static final RegistryObject<LeatheredBootsItem> ENDERITE_LEATHERED_BOOTS = registerLeatheredBootsItem("enderite", LeatheredArmorMaterials.ENDERITE, (new Properties()).tab(LEATHERED_BOOTS_TAB).fireResistant());
 
   /**
    * {@link RegistryObject} for {@link IglooLootModifier} {@link IglooLootModifier.Serializer Serializer}.
@@ -103,7 +104,7 @@ public class LeatheredBootsLoader {
    * @param armorMaterial {@link ArmorMaterial} the boots are made of.
    * @return the registered {@link LeatheredBootsItem}.
    */
-  public static final RegistryObject<LeatheredBootsItem> registerLeatheredBootsItem(String idPrefix, ArmorMaterial armorMaterial, Properties properties) {
+  private static final RegistryObject<LeatheredBootsItem> registerLeatheredBootsItem(String idPrefix, ArmorMaterial armorMaterial, Properties properties) {
     return ITEMS.register(idPrefix + "_" + LEATHERED_BOOTS_ID, () -> new LeatheredBootsItem(armorMaterial, properties));
   }
 
