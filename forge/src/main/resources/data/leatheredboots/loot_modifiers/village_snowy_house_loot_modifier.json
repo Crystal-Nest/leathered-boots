@@ -1,0 +1,26 @@
+{
+  "type": "leatheredboots:village_snowy_house_loot_modifier",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/village/village_snowy_house"
+    }
+  ],
+  "additions": [
+    {
+      "item": "leatheredboots:chainmail_leathered_boots",
+      "chance": 0.2,
+      "quantity": 1
+    },
+    {
+      "item": "leatheredboots:iron_leathered_boots",
+      "chance": 0.1,
+      "quantity": 1
+    },
+    {
+      "item": "leatheredboots:diamond_leathered_boots",
+      "chance": 0.05,
+      "quantity": 1
+    }
+  ]
+}

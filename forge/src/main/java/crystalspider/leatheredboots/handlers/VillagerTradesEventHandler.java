@@ -7,10 +7,12 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
 /**
  * {@link VillagerTradesEvent} handler.
  */
+@EventBusSubscriber(modid = LeatheredBootsLoader.MODID)
 public class VillagerTradesEventHandler {
   /**
    * Adds trades for some leathered boots.
@@ -18,7 +20,7 @@ public class VillagerTradesEventHandler {
    * @param event
    */
   @SubscribeEvent
-  public void handle(VillagerTradesEvent event) {
+  public static void handle(VillagerTradesEvent event) {
     if (event.getType() == VillagerProfession.LEATHERWORKER) {
       event.getTrades().get(3).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 4), LeatheredBootsLoader.CHAINMAIL_LEATHERED_BOOTS.get().getDefaultInstance(), 5, 6, 0.02F));
       event.getTrades().get(4).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 9), LeatheredBootsLoader.IRON_LEATHERED_BOOTS.get().getDefaultInstance(), 3, 10, 0.02F));
