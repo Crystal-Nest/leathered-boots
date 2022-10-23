@@ -37,7 +37,9 @@ Compatible with [Gilded Armors](https://www.curseforge.com/minecraft/mc-mods/gil
 
 ## **Craftings**
 - Craft leathered boots by putting normal boots and leather boots together in a crafting table.  
-![Craftings](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/leathered-boots/craftings.gif)
+![Craftings](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/leathered-boots/craftings.gif)  
+- Smite diamond leathered boots into netherite leathered boots.  
+![Smithing](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/leathered-boots/smithing.gif)  
 
 ## **License and right of use**
 Feel free to use this mod for any modpack or video, just be sure to give credit and possibly link [here](https://github.com/Nyphet/leathered-boots#readme).  
