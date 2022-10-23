@@ -8,6 +8,12 @@ and this project adheres to [Forge Semantic Versioning](https://mcforge.readthed
 ## [Unreleased]
 - Nothing new.
 
+## [1.19.2-1.0.0.1] - 2022/10/23
+- Added smithing recipe to craft diamond leathered boots into netherite leathered boots.
+
+## [1.18.2-1.0.0.1] - 2022/10/23
+- Added smithing recipe to craft diamond leathered boots into netherite leathered boots.
+
 ## [1.19.2-1.0.0.0] - 2022/10/21
 - Added leathered boots for each Vanilla boots apart from leather boots.
 - Leathered boots prevent freezing and allow walking on powdered snow.
@@ -28,6 +34,8 @@ and this project adheres to [Forge Semantic Versioning](https://mcforge.readthed
 
 [Unreleased]: https://github.com/Nyphet/leathered-boots
 
+[1.19.2-1.0.0.1]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.19.2-1.0.0.1
 [1.19.2-1.0.0.0]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.19.2-1.0.0.0
 
+[1.18.2-1.0.0.1]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.18.2-1.0.0.1
 [1.18.2-1.0.0.0]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.18.2-1.0.0.0
