@@ -25,7 +25,7 @@ public abstract class PiglinBrainMixin {
    * @param cir {@link CallbackInfoReturnable}.
    * @return whether the entity is wearing golden leathered boots.
    */
-  @Inject(method = "wearsGoldArmor", at = @At(value = "INVOKE"), cancellable = true)
+  @Inject(method = "wearsGoldArmor", at = @At(value = "HEAD"), cancellable = true)
   private static void onWearsGoldArmor(LivingEntity entity, CallbackInfoReturnable<Boolean> cir) {
     if (entity.hasStackEquipped(EquipmentSlot.FEET) && entity.getEquippedStack(EquipmentSlot.FEET).isOf(LeatheredBootsLoader.GOLDEN_LEATHERED_BOOTS)) {
       cir.setReturnValue(true);
