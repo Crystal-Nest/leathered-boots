@@ -33,7 +33,7 @@
     "java": ">=17"
   },
   "suggests": {
-    "revampedend": "1.0.0.0",
-    "gildedarmors": "1.0.0.0"
+    "revampedend": ">=1.0.0.0",
+    "gildedarmors": ">=1.0.0.0"
   }
 }
