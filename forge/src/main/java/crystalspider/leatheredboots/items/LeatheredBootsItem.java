@@ -11,8 +11,8 @@ import net.minecraft.world.item.ItemStack;
  * Leathered Boots Item.
  */
 public class LeatheredBootsItem extends DyeableArmorItem {
-  public LeatheredBootsItem(ArmorMaterial armorMaterial, Properties properties) {
-    super(armorMaterial, EquipmentSlot.FEET, properties);
+  public LeatheredBootsItem(ArmorMaterial armorMaterial, boolean isFireResistant) {
+    super(armorMaterial, EquipmentSlot.FEET, isFireResistant ? (new Properties()).fireResistant() : new Properties());
   }
 
   @Override

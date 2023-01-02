@@ -1,18 +1,21 @@
 package crystalspider.leatheredboots;
 
 import crystalspider.leatheredboots.armor.LeatheredArmorMaterials;
+import crystalspider.leatheredboots.handlers.ItemGroupEventHandler;
 import crystalspider.leatheredboots.handlers.LootTableEventsHandler;
-import crystalspider.leatheredboots.items.ItemGroups;
 import crystalspider.leatheredboots.items.LeatheredBootsItem;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.minecraft.block.cauldron.CauldronBehavior;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.item.Item.Settings;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.VillagerProfession;
 
@@ -33,27 +36,35 @@ public class LeatheredBootsLoader implements ModInitializer {
   /**
    * {@link LeatheredBootsItem} made of {@link LeatheredArmorMaterials#LEATHERED_CHAIN Chain}.
    */
-  public static final LeatheredBootsItem CHAINMAIL_LEATHERED_BOOTS = new LeatheredBootsItem(LeatheredArmorMaterials.LEATHERED_CHAIN, (new Settings()).group(ItemGroups.LEATHERED_BOOTS_GROUP));
+  public static final LeatheredBootsItem CHAINMAIL_LEATHERED_BOOTS = new LeatheredBootsItem(LeatheredArmorMaterials.LEATHERED_CHAIN, false);
   /**
    * {@link LeatheredBootsItem} made of {@link LeatheredArmorMaterials#LEATHERED_IRON Iron}.
    */
-  public static final LeatheredBootsItem IRON_LEATHERED_BOOTS = new LeatheredBootsItem(LeatheredArmorMaterials.LEATHERED_IRON, (new Settings()).group(ItemGroups.LEATHERED_BOOTS_GROUP));
-  /**
-   * {@link LeatheredBootsItem} made of {@link LeatheredArmorMaterials#LEATHERED_DIAMOND Diamond}.
-   */
-  public static final LeatheredBootsItem DIAMOND_LEATHERED_BOOTS = new LeatheredBootsItem(LeatheredArmorMaterials.LEATHERED_DIAMOND, (new Settings()).group(ItemGroups.LEATHERED_BOOTS_GROUP));
+  public static final LeatheredBootsItem IRON_LEATHERED_BOOTS = new LeatheredBootsItem(LeatheredArmorMaterials.LEATHERED_IRON, false);
   /**
    * {@link LeatheredBootsItem} made of {@link LeatheredArmorMaterials#LEATHERED_GOLD Gold}.
    */
-  public static final LeatheredBootsItem GOLDEN_LEATHERED_BOOTS = new LeatheredBootsItem(LeatheredArmorMaterials.LEATHERED_GOLD, (new Settings()).group(ItemGroups.LEATHERED_BOOTS_GROUP));
+  public static final LeatheredBootsItem GOLDEN_LEATHERED_BOOTS = new LeatheredBootsItem(LeatheredArmorMaterials.LEATHERED_GOLD, false);
+  /**
+   * {@link LeatheredBootsItem} made of {@link LeatheredArmorMaterials#LEATHERED_DIAMOND Diamond}.
+   */
+  public static final LeatheredBootsItem DIAMOND_LEATHERED_BOOTS = new LeatheredBootsItem(LeatheredArmorMaterials.LEATHERED_DIAMOND, false);
   /**
    * {@link LeatheredBootsItem} made of {@link LeatheredArmorMaterials#LEATHERED_NETHERITE Netherite}.
    */
-  public static final LeatheredBootsItem NETHERITE_LEATHERED_BOOTS = new LeatheredBootsItem(LeatheredArmorMaterials.LEATHERED_NETHERITE, (new Settings()).group(ItemGroups.LEATHERED_BOOTS_GROUP).fireproof());
+  public static final LeatheredBootsItem NETHERITE_LEATHERED_BOOTS = new LeatheredBootsItem(LeatheredArmorMaterials.LEATHERED_NETHERITE, true);
   /**
    * {@link LeatheredBootsItem} made of {@link LeatheredArmorMaterials#ENDERITE Enderite}.
    */
-  // public static final LeatheredBootsItem ENDERITE_LEATHERED_BOOTS = new LeatheredBootsItem(LeatheredArmorMaterials.ENDERITE, (new Settings()).group(ItemGroups.LEATHERED_BOOTS_GROUP).fireproof());
+  // public static final LeatheredBootsItem ENDERITE_LEATHERED_BOOTS = new LeatheredBootsItem(LeatheredArmorMaterials.ENDERITE, true);
+
+  /**
+   * {@link ItemGroup} for {@link LeatheredBootsItem Leathered Boots Items}.
+   */
+  public static final ItemGroup LEATHERED_BOOTS_GROUP = FabricItemGroup
+    .builder(new Identifier(LeatheredBootsLoader.MODID, LeatheredBootsLoader.LEATHERED_BOOTS_ID))
+    .icon(() -> NETHERITE_LEATHERED_BOOTS.getDefaultStack())
+    .build();
 
   @Override
 	public void onInitialize() {
@@ -67,12 +78,12 @@ public class LeatheredBootsLoader implements ModInitializer {
    * Registers items.
    */
   private void registerItems() {
-    Registry.register(Registry.ITEM, new Identifier(MODID, "chainmail_" + LEATHERED_BOOTS_ID), CHAINMAIL_LEATHERED_BOOTS);
-    Registry.register(Registry.ITEM, new Identifier(MODID, "iron_" + LEATHERED_BOOTS_ID), IRON_LEATHERED_BOOTS);
-    Registry.register(Registry.ITEM, new Identifier(MODID, "diamond_" + LEATHERED_BOOTS_ID), DIAMOND_LEATHERED_BOOTS);
-    Registry.register(Registry.ITEM, new Identifier(MODID, "golden_" + LEATHERED_BOOTS_ID), GOLDEN_LEATHERED_BOOTS);
-    Registry.register(Registry.ITEM, new Identifier(MODID, "netherite_" + LEATHERED_BOOTS_ID), NETHERITE_LEATHERED_BOOTS);
-    // Registry.register(Registry.ITEM, new Identifier(MODID, "enderite_" + LEATHERED_BOOTS_ID), ENDERITE_LEATHERED_BOOTS);
+    Registry.register(Registries.ITEM, new Identifier(MODID, "chainmail_" + LEATHERED_BOOTS_ID), CHAINMAIL_LEATHERED_BOOTS);
+    Registry.register(Registries.ITEM, new Identifier(MODID, "iron_" + LEATHERED_BOOTS_ID), IRON_LEATHERED_BOOTS);
+    Registry.register(Registries.ITEM, new Identifier(MODID, "diamond_" + LEATHERED_BOOTS_ID), DIAMOND_LEATHERED_BOOTS);
+    Registry.register(Registries.ITEM, new Identifier(MODID, "golden_" + LEATHERED_BOOTS_ID), GOLDEN_LEATHERED_BOOTS);
+    Registry.register(Registries.ITEM, new Identifier(MODID, "netherite_" + LEATHERED_BOOTS_ID), NETHERITE_LEATHERED_BOOTS);
+    // Registry.register(Registries.ITEM, new Identifier(MODID, "enderite_" + LEATHERED_BOOTS_ID), ENDERITE_LEATHERED_BOOTS);
   }
 
   /**
@@ -101,5 +112,6 @@ public class LeatheredBootsLoader implements ModInitializer {
    */
   private void registerHandlers() {
     LootTableEvents.MODIFY.register(LootTableEventsHandler::handle);
+    ItemGroupEvents.modifyEntriesEvent(LEATHERED_BOOTS_GROUP).register(ItemGroupEventHandler::handle);
   }
 }
