@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "tamasfe.even-better-toml",
+    "mhutchie.git-graph",
+    "github.vscode-pull-request-github",
+    "vscjava.vscode-java-pack",
+    "redhat.java",
+    "vscjava.vscode-java-debug",
+    "vscjava.vscode-java-test",
+    "vscjava.vscode-java-dependency",
+    "enbrain.vscode-show-java-bytecode",
+    "vscjava.vscode-gradle"
+  ]
+}

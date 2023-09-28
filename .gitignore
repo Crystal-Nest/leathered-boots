@@ -17,7 +17,8 @@ out
 bin/
 .classpath
 .project
-.vscode
+/**/.vscode/**/*
+!.vscode/extensions.json
 
 # gradle
 build
