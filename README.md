@@ -3,7 +3,7 @@
 ---
 ![Minecraft](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/minecraft/minecraft.svg)[![1.19.3](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/minecraft/1-19-3.svg)](https://www.curseforge.com/minecraft/mc-mods/leathered-boots/files/all?filter-status=1&filter-game-version=2020709689%3A9550)![Separator](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/separator.svg)[![1.19.2](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/minecraft/1-19-2.svg)](https://www.curseforge.com/minecraft/mc-mods/leathered-boots/files/all?filter-status=1&filter-game-version=2020709689%3A9366)![Separator](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/separator.svg)[![1.18.2](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/minecraft/1-18-2.svg)](https://www.curseforge.com/minecraft/mc-mods/leathered-boots/files/all?filter-status=1&filter-game-version=2020709689%3A9008)
 
-![Loader](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/loader/loader.svg)[![Forge](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/loader/forge.svg)](https://www.curseforge.com/minecraft/mc-mods/leathered-boots/files/all?filter-status=1&filter-game-version=2020709689%3A7498)![Separator](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/separator.svg)[![Fabric](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/loader/fabric.svg)](https://www.curseforge.com/minecraft/mc-mods/leathered-boots/files/all?filter-status=1&filter-game-version=2020709689%3A7499)
+![Loader](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/loader/loader.svg)[![NeoForge](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/loader/neoforge.svg)](https://modrinth.com/mod/harvest-with-ease/versions?l=neoforge)![Separator](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/separator.svg)[![Forge](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/loader/forge.svg)](https://www.curseforge.com/minecraft/mc-mods/leathered-boots/files/all?filter-status=1&filter-game-version=2020709689%3A7498)![Separator](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/separator.svg)[![Fabric](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/loader/fabric.svg)](https://www.curseforge.com/minecraft/mc-mods/leathered-boots/files/all?filter-status=1&filter-game-version=2020709689%3A7499)
 
 ![Overlay](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/side/client-server.svg)
 
@@ -14,12 +14,6 @@
 Only leather boots allow you to walk on powdered snow? No more!  
 Leather your boots and walk on powdered snow without losing armor protection!  
 Also prevent freezing!
-
-## **Compatibility**
-Compatible with [Revamped End](https://www.curseforge.com/minecraft/mc-mods/revamped-end)!  
-***Disclaimer: Revamped End is TBR***  
-Compatible with [Gilded Armors](https://www.curseforge.com/minecraft/mc-mods/gilded-armors)!  
-***Disclaimer: Gilded Armors is TBR***  
 
 ## **Features**
 - Each Vanilla pair of boots has its own leathered version!  
@@ -50,4 +44,7 @@ This project is published under the [GNU General Public License v3.0](https://gi
 [![Patreon](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/patreon/patreon64.png "Patreon")](https://www.patreon.com/crystalspider)
 [![Ko-fi](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/kofi/kofi64.png "Ko-fi")](https://ko-fi.com/crystalspider)
 [![GitHub](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/github/github64.png "My other projects")](https://github.com/Nyphet)
-[![My other projects](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/curseforge/curseforge64.png "My other projects")](https://www.curseforge.com/members/crystal_spider_/projects)
+[![Modrinth](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/modrinth/modrinth64.png "Modrinth")](https://modrinth.com/user/Nyphet)
+[![Curseforge](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/curseforge/curseforge64.png "Curseforge")](https://www.curseforge.com/members/crystal_spider_/projects)
+
+[![Kinetic Hosting](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/hosting/banner-small.png "Kinetic Hosting")](https://billing.kinetichosting.net/aff.php?aff=122)
