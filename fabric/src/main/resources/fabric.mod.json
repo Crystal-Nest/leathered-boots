@@ -8,7 +8,7 @@
     "${author}"
   ],
   "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/${modid_kebab}",
+    "homepage": "https://modrinth.com/mod/${modid_kebab}",
     "issues": "https://github.com/${github_user}/${modid_kebab}/issues",
     "sources": "https://github.com/${github_user}/${modid_kebab}/tree/${minecraft_version}"
   },
@@ -31,9 +31,5 @@
     "fabric": "*",
     "minecraft": "${minecraft_version}",
     "java": ">=17"
-  },
-  "suggests": {
-    "revampedend": ">=1.0.0.0",
-    "gildedarmors": ">=1.0.0.0"
   }
 }

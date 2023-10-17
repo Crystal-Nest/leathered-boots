@@ -53,10 +53,6 @@ public class LeatheredBootsLoader implements ModInitializer {
    * {@link LeatheredBootsItem} made of {@link LeatheredArmorMaterials#LEATHERED_NETHERITE Netherite}.
    */
   public static final LeatheredBootsItem NETHERITE_LEATHERED_BOOTS = new LeatheredBootsItem(LeatheredArmorMaterials.LEATHERED_NETHERITE, true);
-  /**
-   * {@link LeatheredBootsItem} made of {@link LeatheredArmorMaterials#ENDERITE Enderite}.
-   */
-  // public static final LeatheredBootsItem ENDERITE_LEATHERED_BOOTS = new LeatheredBootsItem(LeatheredArmorMaterials.ENDERITE, true);
 
   /**
    * {@link ItemGroup} for {@link LeatheredBootsItem Leathered Boots Items}.
@@ -83,7 +79,6 @@ public class LeatheredBootsLoader implements ModInitializer {
     Registry.register(Registries.ITEM, new Identifier(MODID, "diamond_" + LEATHERED_BOOTS_ID), DIAMOND_LEATHERED_BOOTS);
     Registry.register(Registries.ITEM, new Identifier(MODID, "golden_" + LEATHERED_BOOTS_ID), GOLDEN_LEATHERED_BOOTS);
     Registry.register(Registries.ITEM, new Identifier(MODID, "netherite_" + LEATHERED_BOOTS_ID), NETHERITE_LEATHERED_BOOTS);
-    // Registry.register(Registries.ITEM, new Identifier(MODID, "enderite_" + LEATHERED_BOOTS_ID), ENDERITE_LEATHERED_BOOTS);
   }
 
   /**
@@ -95,7 +90,6 @@ public class LeatheredBootsLoader implements ModInitializer {
     CauldronBehavior.WATER_CAULDRON_BEHAVIOR.put(DIAMOND_LEATHERED_BOOTS, CauldronBehavior.CLEAN_DYEABLE_ITEM);
     CauldronBehavior.WATER_CAULDRON_BEHAVIOR.put(GOLDEN_LEATHERED_BOOTS, CauldronBehavior.CLEAN_DYEABLE_ITEM);
     CauldronBehavior.WATER_CAULDRON_BEHAVIOR.put(NETHERITE_LEATHERED_BOOTS, CauldronBehavior.CLEAN_DYEABLE_ITEM);
-    // CauldronBehavior.WATER_CAULDRON_BEHAVIOR.put(ENDERITE_LEATHERED_BOOTS, CauldronBehavior.CLEAN_DYEABLE_ITEM);
   }
 
   /**
