@@ -1,6 +1,5 @@
-package crystalspider.leatheredboots.items;
+package crystalspider.leatheredboots.item;
 
-import crystalspider.leatheredboots.armor.LeatheredArmorMaterials;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorMaterial;
@@ -22,6 +21,6 @@ public class LeatheredBootsItem extends DyeableArmorItem {
 
   @Override
   public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) {
-    return this.material == LeatheredArmorMaterials.LEATHERED_GOLD;
+    return this.material == LeatheredArmorMaterial.LEATHERED_GOLD;
   }
 }

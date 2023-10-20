@@ -1,4 +1,4 @@
-package crystalspider.leatheredboots.armor;
+package crystalspider.leatheredboots.item;
 
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -9,7 +9,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 /**
  * All leathered boots {@link ArmorMaterial}s.
  */
-public enum LeatheredArmorMaterials implements ArmorMaterial {
+public enum LeatheredArmorMaterial implements ArmorMaterial {
   LEATHERED_CHAIN(ArmorMaterials.CHAIN),
   LEATHERED_IRON(ArmorMaterials.IRON),
   LEATHERED_GOLD(ArmorMaterials.GOLD),
@@ -26,7 +26,7 @@ public enum LeatheredArmorMaterials implements ArmorMaterial {
   private final float knockbackResistance;
   private final Ingredient repairIngredient;
 
-  private LeatheredArmorMaterials(ArmorMaterial armorMaterial) {
+  private LeatheredArmorMaterial(ArmorMaterial armorMaterial) {
     this.name = "leathered_" + armorMaterial.getName();
     this.durabilityMultiplier = armorMaterial.getDurabilityForSlot(EquipmentSlot.FEET) / 13;
     this.slotProtections = new int[]{
