@@ -1,6 +1,6 @@
 package crystalspider.leatheredboots.handlers;
 
-import crystalspider.leatheredboots.LeatheredBootsLoader;
+import crystalspider.leatheredboots.item.ItemRegistry;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 
@@ -14,10 +14,10 @@ public class ItemGroupEventHandler {
    * @param entries
    */
   public static void handle(FabricItemGroupEntries entries) {
-    entries.add(LeatheredBootsLoader.CHAINMAIL_LEATHERED_BOOTS);
-    entries.add(LeatheredBootsLoader.IRON_LEATHERED_BOOTS);
-    entries.add(LeatheredBootsLoader.GOLDEN_LEATHERED_BOOTS);
-    entries.add(LeatheredBootsLoader.DIAMOND_LEATHERED_BOOTS);
-    entries.add(LeatheredBootsLoader.NETHERITE_LEATHERED_BOOTS);
+    entries.add(ItemRegistry.CHAINMAIL_LEATHERED_BOOTS);
+    entries.add(ItemRegistry.IRON_LEATHERED_BOOTS);
+    entries.add(ItemRegistry.GOLDEN_LEATHERED_BOOTS);
+    entries.add(ItemRegistry.DIAMOND_LEATHERED_BOOTS);
+    entries.add(ItemRegistry.NETHERITE_LEATHERED_BOOTS);
   }
 }

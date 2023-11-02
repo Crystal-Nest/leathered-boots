@@ -1,5 +1,6 @@
 package crystalspider.leatheredboots;
 
+import crystalspider.leatheredboots.item.ItemRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.item.DyeableItem;
@@ -12,11 +13,11 @@ public class LeatheredBootsClientLoader implements ClientModInitializer {
   public void onInitializeClient() {
     ColorProviderRegistry.ITEM.register(
       (stack, tintIndex) -> tintIndex > 0 ? -1 : ((DyeableItem) stack.getItem()).getColor(stack),
-      LeatheredBootsLoader.CHAINMAIL_LEATHERED_BOOTS,
-      LeatheredBootsLoader.IRON_LEATHERED_BOOTS,
-      LeatheredBootsLoader.DIAMOND_LEATHERED_BOOTS,
-      LeatheredBootsLoader.GOLDEN_LEATHERED_BOOTS,
-      LeatheredBootsLoader.NETHERITE_LEATHERED_BOOTS
+      ItemRegistry.CHAINMAIL_LEATHERED_BOOTS,
+      ItemRegistry.IRON_LEATHERED_BOOTS,
+      ItemRegistry.DIAMOND_LEATHERED_BOOTS,
+      ItemRegistry.GOLDEN_LEATHERED_BOOTS,
+      ItemRegistry.NETHERITE_LEATHERED_BOOTS
     );
   }
 }
