@@ -1,4 +1,4 @@
-package crystalspider.leatheredboots.items;
+package crystalspider.leatheredboots.item;
 
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorMaterial;

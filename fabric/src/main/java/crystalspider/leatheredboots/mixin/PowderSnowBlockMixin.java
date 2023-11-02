@@ -4,7 +4,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-import crystalspider.leatheredboots.items.LeatheredBootsItem;
+import crystalspider.leatheredboots.item.LeatheredBootsItem;
 import net.minecraft.block.PowderSnowBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;

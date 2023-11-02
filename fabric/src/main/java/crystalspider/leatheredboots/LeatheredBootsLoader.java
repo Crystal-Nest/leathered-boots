@@ -3,7 +3,9 @@ package crystalspider.leatheredboots;
 import crystalspider.leatheredboots.armor.LeatheredArmorMaterials;
 import crystalspider.leatheredboots.handlers.ItemGroupEventHandler;
 import crystalspider.leatheredboots.handlers.LootTableEventsHandler;
-import crystalspider.leatheredboots.items.LeatheredBootsItem;
+import crystalspider.leatheredboots.item.LeatheredBootsItem;
+import crystalspider.leatheredboots.item.ModLoader;
+import crystalspider.leatheredboots.item.Register;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -53,6 +55,10 @@ public class LeatheredBootsLoader implements ModInitializer {
    * {@link LeatheredBootsItem} made of {@link LeatheredArmorMaterials#LEATHERED_NETHERITE Netherite}.
    */
   public static final LeatheredBootsItem NETHERITE_LEATHERED_BOOTS = new LeatheredBootsItem(LeatheredArmorMaterials.LEATHERED_NETHERITE, true);
+
+
+  public static final ModLoader register = new ModLoader(MODID);
+
 
   /**
    * {@link ItemGroup} for {@link LeatheredBootsItem Leathered Boots Items}.

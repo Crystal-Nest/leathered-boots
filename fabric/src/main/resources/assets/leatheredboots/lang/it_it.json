@@ -5,5 +5,7 @@
   "item.leatheredboots.golden_leathered_boots": "Stivali d'oro rivestiti",
   "item.leatheredboots.diamond_leathered_boots": "Stivali di diamante rivestiti",
   "item.leatheredboots.netherite_leathered_boots": "Stivali di netherite rivestiti",
-  "item.leatheredboots.enderite_leathered_boots": "Stivali di enderite rivestiti"
+  "item.leatheredboots.enderite_leathered_boots": "Stivali di enderite rivestiti",
+  "enchantment.leatheredboots.soft_step": "Passo Delicato",
+  "enchantment.leatheredboots.soft_step.desc": "Permette di camminare sulla neve polverosa."
 }

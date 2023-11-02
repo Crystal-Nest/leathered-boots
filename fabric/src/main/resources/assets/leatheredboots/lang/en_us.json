@@ -5,5 +5,7 @@
   "item.leatheredboots.golden_leathered_boots": "Golden Leathered Boots",
   "item.leatheredboots.diamond_leathered_boots": "Diamond Leathered Boots",
   "item.leatheredboots.netherite_leathered_boots": "Netherite Leathered Boots",
-  "item.leatheredboots.enderite_leathered_boots": "Enderite Leathered Boots"
+  "item.leatheredboots.enderite_leathered_boots": "Enderite Leathered Boots",
+  "enchantment.leatheredboots.soft_step": "Soft Step",
+  "enchantment.leatheredboots.soft_step.desc": "Allows to walk on powder snow."
 }
