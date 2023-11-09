@@ -1,15 +1,16 @@
 package crystalspider.leatheredboots.enchantment;
 
 import crystalspider.leatheredboots.LeatheredBootsLoader;
+import crystalspider.leatheredboots.api.Register;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
 
 public class EnchantmentRegistry {
-  public static Enchantment SOFT_STEP = register("soft_step", new SoftStepEnchantment());
+  private static final Register<Enchantment> REGISTER = LeatheredBootsLoader.REGISTER_PROVIDER.of(Registries.ENCHANTMENT);
 
-  private static Enchantment register(String name, Enchantment enchantment) {
-    return Registry.register(Registries.ENCHANTMENT, new Identifier(LeatheredBootsLoader.MODID, name), enchantment);
+  public static Enchantment SOFT_STEP = new SoftStepEnchantment();
+
+  public static final void register() {
+    REGISTER.apply("soft_step", SOFT_STEP);
   }
 }

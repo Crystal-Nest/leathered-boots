@@ -11,4 +11,8 @@ public class LeatheredBootsItem extends DyeableArmorItem {
   public LeatheredBootsItem(ArmorMaterial armorMaterial, boolean isFireproof) {
     super(armorMaterial, EquipmentSlot.FEET, isFireproof ? (new Settings()).fireproof() : new Settings());
   }
+
+  public LeatheredBootsItem(ArmorMaterial armorMaterial) {
+    this(armorMaterial, false);
+  }
 }

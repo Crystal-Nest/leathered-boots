@@ -1,4 +1,4 @@
-package crystalspider.leatheredboots.handlers;
+package crystalspider.leatheredboots.handler;
 
 import crystalspider.leatheredboots.item.ItemRegistry;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
