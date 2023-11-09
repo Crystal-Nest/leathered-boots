@@ -5,6 +5,7 @@ import com.mojang.serialization.Codec;
 import crystalspider.leatheredboots.LeatheredBootsLoader;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -20,6 +21,11 @@ public class LootModifierRegistry {
    */
   public static final RegistryObject<Codec<ChestLootModifier>> CHEST_LOOT_MODIFIER = LOOT_MODIFIERS.register("chest_loot_modifier", ChestLootModifier.CODEC);
 
+  /**
+   * Hooks into {@link FMLJavaModLoadingContext} mod event bus.
+   * 
+   * @param bus {@link IEventBus} 
+   */
   public static void register(IEventBus bus) {
     LOOT_MODIFIERS.register(bus);
   }

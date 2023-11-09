@@ -4,6 +4,7 @@ import crystalspider.leatheredboots.LeatheredBootsLoader;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -35,6 +36,11 @@ public class ItemRegistry {
    */
   public static final RegistryObject<LeatheredBootsItem> NETHERITE_LEATHERED_BOOTS = registerLeatheredBootsItem("netherite", LeatheredArmorMaterial.LEATHERED_NETHERITE, true);
 
+  /**
+   * Hooks into {@link FMLJavaModLoadingContext} mod event bus.
+   * 
+   * @param bus {@link IEventBus} 
+   */
   public static void register(IEventBus bus) {
     ITEMS.register(bus);
   }
