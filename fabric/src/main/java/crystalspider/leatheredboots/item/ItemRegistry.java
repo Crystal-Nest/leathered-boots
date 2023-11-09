@@ -9,7 +9,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 
 public class ItemRegistry {
-  private static final Register<Item> REGISTER = LeatheredBootsLoader.REGISTER_PROVIDER.of(Registries.ITEM);
+  private static final Register<Item> ITEM_REGISTER = LeatheredBootsLoader.REGISTER_PROVIDER.of(Registries.ITEM);
 
   /**
    * Base ID for leathered boots.
@@ -46,10 +46,10 @@ public class ItemRegistry {
   public static final LeatheredBootsItem NETHERITE_LEATHERED_BOOTS = new LeatheredBootsItem(LeatheredArmorMaterials.LEATHERED_NETHERITE, true);
 
   public static final void register() {
-    REGISTER.apply("chainmail_" + LEATHERED_BOOTS_ID, CHAINMAIL_LEATHERED_BOOTS);
-    REGISTER.apply("iron_" + LEATHERED_BOOTS_ID, IRON_LEATHERED_BOOTS);
-    REGISTER.apply("golden_" + LEATHERED_BOOTS_ID, GOLDEN_LEATHERED_BOOTS);
-    REGISTER.apply("diamond_" + LEATHERED_BOOTS_ID, DIAMOND_LEATHERED_BOOTS);
-    REGISTER.apply("netherite_" + LEATHERED_BOOTS_ID, NETHERITE_LEATHERED_BOOTS);
+    ITEM_REGISTER.apply("chainmail_" + LEATHERED_BOOTS_ID, CHAINMAIL_LEATHERED_BOOTS);
+    ITEM_REGISTER.apply("iron_" + LEATHERED_BOOTS_ID, IRON_LEATHERED_BOOTS);
+    ITEM_REGISTER.apply("golden_" + LEATHERED_BOOTS_ID, GOLDEN_LEATHERED_BOOTS);
+    ITEM_REGISTER.apply("diamond_" + LEATHERED_BOOTS_ID, DIAMOND_LEATHERED_BOOTS);
+    ITEM_REGISTER.apply("netherite_" + LEATHERED_BOOTS_ID, NETHERITE_LEATHERED_BOOTS);
   }
 }
