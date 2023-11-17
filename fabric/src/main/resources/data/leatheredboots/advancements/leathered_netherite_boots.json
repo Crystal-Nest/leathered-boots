@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "leatheredboots:enderite_leathered_boots"
+        "recipe": "leatheredboots:leathered_netherite_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,15 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "leatheredboots:enderite_leathered_boots"
+      "leatheredboots:leathered_netherite_boots"
     ]
-  },
-  "fabric:load_conditions": [
-    {
-      "condition": "fabric:all_mods_loaded",
-      "values": [
-        "revampedend"
-      ]
-    }
-  ]
+  }
 }

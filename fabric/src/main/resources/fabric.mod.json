@@ -17,14 +17,14 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "${group}.${modid}.LeatheredBootsLoader"
+      "${group}.${modid}.ModLoader"
     ],
     "client": [
-      "${group}.${modid}.LeatheredBootsClientLoader"
+      "${group}.${modid}.ClientModLoader"
     ]
   },
   "mixins": [
-    "leatheredboots.mixins.json"
+    "${modid}.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",

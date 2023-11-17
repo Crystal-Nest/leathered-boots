@@ -1,4 +1,4 @@
-package crystalspider.leatheredboots.item;
+package crystalspider.leatheredboots.api;
 
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorMaterial;
@@ -9,16 +9,15 @@ import net.minecraft.sound.SoundEvent;
 /**
  * All leathered boots {@link ArmorMaterial}s.
  */
-public enum LeatheredArmorMaterials implements ArmorMaterial {
-  LEATHERED_CHAIN(ArmorMaterials.CHAIN),
-  LEATHERED_IRON(ArmorMaterials.IRON),
-  LEATHERED_GOLD(ArmorMaterials.GOLD),
-  LEATHERED_DIAMOND(ArmorMaterials.DIAMOND),
-  LEATHERED_NETHERITE(ArmorMaterials.NETHERITE);
+public class LeatheredArmorMaterial implements ArmorMaterial {
+  public static final LeatheredArmorMaterial LEATHERED_CHAIN = new LeatheredArmorMaterial(ArmorMaterials.CHAIN);
+  public static final LeatheredArmorMaterial LEATHERED_IRON = new LeatheredArmorMaterial(ArmorMaterials.IRON);
+  public static final LeatheredArmorMaterial LEATHERED_GOLD = new LeatheredArmorMaterial(ArmorMaterials.GOLD);
+  public static final LeatheredArmorMaterial LEATHERED_DIAMOND = new LeatheredArmorMaterial(ArmorMaterials.DIAMOND);
+  public static final LeatheredArmorMaterial LEATHERED_NETHERITE = new LeatheredArmorMaterial(ArmorMaterials.NETHERITE);
 
-  private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
   private final String name;
-  private final int durabilityMultiplier;
+  private final int[] durabilities;
   private final int[] protectionAmounts;
   private final int enchantability;
   private final SoundEvent equipSound;
@@ -26,9 +25,14 @@ public enum LeatheredArmorMaterials implements ArmorMaterial {
   private final float knockbackResistance;
   private final Ingredient repairIngredient;
 
-  private LeatheredArmorMaterials(ArmorMaterial armorMaterial) {
+  public LeatheredArmorMaterial(ArmorMaterial armorMaterial) {
     this.name = "leathered_" + armorMaterial.getName();
-    this.durabilityMultiplier = armorMaterial.getDurability(EquipmentSlot.FEET) / 13;
+    this.durabilities = new int[]{
+      armorMaterial.getDurability(EquipmentSlot.FEET),
+      armorMaterial.getDurability(EquipmentSlot.LEGS),
+      armorMaterial.getDurability(EquipmentSlot.CHEST),
+      armorMaterial.getDurability(EquipmentSlot.HEAD),
+    };
     this.protectionAmounts = new int[]{
       armorMaterial.getProtectionAmount(EquipmentSlot.FEET),
       armorMaterial.getProtectionAmount(EquipmentSlot.LEGS),
@@ -43,7 +47,7 @@ public enum LeatheredArmorMaterials implements ArmorMaterial {
   }
 
   public int getDurability(EquipmentSlot equipmentSlot) {
-    return HEALTH_PER_SLOT[equipmentSlot.getEntitySlotId()] * this.durabilityMultiplier;
+    return this.durabilities[equipmentSlot.getEntitySlotId()];
   }
 
   public int getProtectionAmount(EquipmentSlot equipmentSlot) {

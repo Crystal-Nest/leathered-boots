@@ -1,6 +1,7 @@
 package crystalspider.leatheredboots.handler;
 
-import crystalspider.leatheredboots.item.ItemRegistry;
+import crystalspider.leatheredboots.api.LeatheredArmorMaterial;
+import crystalspider.leatheredboots.api.LeatheredBoots;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.fabricmc.fabric.api.loot.v2.LootTableSource;
 import net.minecraft.loot.LootManager;
@@ -41,21 +42,21 @@ public class LootTableEventsHandler {
         LootPool.builder()
         .rolls(ConstantLootNumberProvider.create(1))
         .conditionally(RandomChanceLootCondition.builder(0.2F))
-        .with(ItemEntry.builder(ItemRegistry.GOLDEN_LEATHERED_BOOTS))
+        .with(ItemEntry.builder(LeatheredBoots.getLeatheredBoots(LeatheredArmorMaterial.LEATHERED_GOLD)))
         .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1)))
       );
       builder.pool(
         LootPool.builder()
         .rolls(ConstantLootNumberProvider.create(1))
         .conditionally(RandomChanceLootCondition.builder(0.1F))
-        .with(ItemEntry.builder(ItemRegistry.IRON_LEATHERED_BOOTS))
+        .with(ItemEntry.builder(LeatheredBoots.getLeatheredBoots(LeatheredArmorMaterial.LEATHERED_IRON)))
         .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1)))
       );
       builder.pool(
         LootPool.builder()
         .rolls(ConstantLootNumberProvider.create(1))
         .conditionally(RandomChanceLootCondition.builder(0.05F))
-        .with(ItemEntry.builder(ItemRegistry.DIAMOND_LEATHERED_BOOTS))
+        .with(ItemEntry.builder(LeatheredBoots.getLeatheredBoots(LeatheredArmorMaterial.LEATHERED_DIAMOND)))
         .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1)))
       );
     } else if (identifier.equals(VILLAGE_SNOWY_HOUSE_IDENTIFIER)) {
@@ -63,21 +64,21 @@ public class LootTableEventsHandler {
         LootPool.builder()
         .rolls(ConstantLootNumberProvider.create(1))
         .conditionally(RandomChanceLootCondition.builder(0.2F))
-        .with(ItemEntry.builder(ItemRegistry.CHAINMAIL_LEATHERED_BOOTS))
+        .with(ItemEntry.builder(LeatheredBoots.getLeatheredBoots(LeatheredArmorMaterial.LEATHERED_CHAIN)))
         .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1)))
       );
       builder.pool(
         LootPool.builder()
         .rolls(ConstantLootNumberProvider.create(1))
         .conditionally(RandomChanceLootCondition.builder(0.1F))
-        .with(ItemEntry.builder(ItemRegistry.IRON_LEATHERED_BOOTS))
+        .with(ItemEntry.builder(LeatheredBoots.getLeatheredBoots(LeatheredArmorMaterial.LEATHERED_IRON)))
         .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1)))
       );
       builder.pool(
         LootPool.builder()
         .rolls(ConstantLootNumberProvider.create(1))
         .conditionally(RandomChanceLootCondition.builder(0.05F))
-        .with(ItemEntry.builder(ItemRegistry.DIAMOND_LEATHERED_BOOTS))
+        .with(ItemEntry.builder(LeatheredBoots.getLeatheredBoots(LeatheredArmorMaterial.LEATHERED_DIAMOND)))
         .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1)))
       );
     }

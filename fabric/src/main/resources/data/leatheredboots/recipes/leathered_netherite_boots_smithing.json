@@ -4,9 +4,9 @@
     "item": "minecraft:netherite_ingot"
   },
   "base": {
-    "item": "leatheredboots:diamond_leathered_boots"
+    "item": "leatheredboots:leathered_diamond_boots"
   },
   "result": {
-    "item": "leatheredboots:netherite_leathered_boots"
+    "item": "leatheredboots:leathered_netherite_boots"
   }
 }

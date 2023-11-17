@@ -5,7 +5,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import crystalspider.leatheredboots.item.ItemRegistry;
+import crystalspider.leatheredboots.api.LeatheredArmorMaterial;
+import crystalspider.leatheredboots.api.LeatheredBoots;
 import net.minecraft.block.PowderSnowBlock;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -27,7 +28,7 @@ public abstract class PiglinBrainMixin {
    */
   @Inject(method = "wearsGoldArmor", at = @At(value = "HEAD"), cancellable = true)
   private static void onWearsGoldArmor(LivingEntity entity, CallbackInfoReturnable<Boolean> cir) {
-    if (entity.hasStackEquipped(EquipmentSlot.FEET) && entity.getEquippedStack(EquipmentSlot.FEET).isOf(ItemRegistry.GOLDEN_LEATHERED_BOOTS)) {
+    if (entity.hasStackEquipped(EquipmentSlot.FEET) && entity.getEquippedStack(EquipmentSlot.FEET).isOf(LeatheredBoots.getLeatheredBoots(LeatheredArmorMaterial.LEATHERED_GOLD))) {
       cir.setReturnValue(true);
     }
   }

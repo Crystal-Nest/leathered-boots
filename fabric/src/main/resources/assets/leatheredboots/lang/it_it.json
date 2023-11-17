@@ -1,11 +1,10 @@
 {
   "itemGroup.leatheredboots.leathered_boots": "Stivali rivestiti",
-  "item.leatheredboots.chainmail_leathered_boots": "Stivali di maglia rivestiti",
-  "item.leatheredboots.iron_leathered_boots": "Stivali di ferro rivestiti",
-  "item.leatheredboots.golden_leathered_boots": "Stivali d'oro rivestiti",
-  "item.leatheredboots.diamond_leathered_boots": "Stivali di diamante rivestiti",
-  "item.leatheredboots.netherite_leathered_boots": "Stivali di netherite rivestiti",
-  "item.leatheredboots.enderite_leathered_boots": "Stivali di enderite rivestiti",
+  "item.leatheredboots.leathered_chainmail_boots": "Stivali di maglia rivestiti",
+  "item.leatheredboots.leathered_iron_boots": "Stivali di ferro rivestiti",
+  "item.leatheredboots.leathered_gold_boots": "Stivali d'oro rivestiti",
+  "item.leatheredboots.leathered_diamond_boots": "Stivali di diamante rivestiti",
+  "item.leatheredboots.leathered_netherite_boots": "Stivali di netherite rivestiti",
   "enchantment.leatheredboots.soft_step": "Passo Delicato",
   "enchantment.leatheredboots.soft_step.desc": "Permette di camminare sulla neve polverosa."
 }
