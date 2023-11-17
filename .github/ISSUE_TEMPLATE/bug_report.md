@@ -2,8 +2,8 @@
 name: Bug report
 about: Report a bug you've encountered
 title: Bug
-labels: bug
-assignees: Nyphet
+labels: bug, enhancement
+assignees: Nyphet, FriedFridge
 
 ---
 
