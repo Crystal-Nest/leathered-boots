@@ -26,6 +26,7 @@ Also prevent freezing!
 - The Leatherworker villager can trade leathered boots.  
 - Leathered boots can be found in Igloos chests and snowy villages!  
 - Walking on powdered snow with leathered boots gives the *Light as a rabbit* advancement.  
+- Highly compatible: see the [Compatibility section](https://github.com/Nyphet/leathered-boots#compatibility).
 
 ## **Craftings**
 - Craft leathered boots by putting normal boots and leather boots together in a crafting table.  
@@ -33,9 +34,18 @@ Also prevent freezing!
 - Smite diamond leathered boots into netherite leathered boots.  
 ![Smithing](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/leathered-boots/smithing.png)  
 
+## **Compatibility**
+There is an enchantment, called Soft Step, to allow boots from other mods to walk on powdered snow.  
+If, however, you really wish for another mod to have the leathered boots versions, for example to dye them, please *open an issue with the **other** mod*!  
+As stated below, this mod provides and API for other mods to use and easily add their leathered boots versions. This means, that it's up to other mods to actually use the API and add their leathered boots!  
+If you are a developer and would like to know how to add leathered versions of your own mod's boots, just follow the link in the [For developers](https://github.com/Nyphet/leathered-boots#for-developers)!
+
 ## **License and right of use**
 Feel free to use this mod for any modpack or video, just be sure to give credit and possibly link [here](https://github.com/Nyphet/leathered-boots#readme).  
 This project is published under the [GNU General Public License v3.0](https://github.com/Nyphet/leathered-boots/blob/master/LICENSE).
+
+## **For developers**
+To learn how to use the provided API follow the [Wiki](https://github.com/Nyphet/leathered-boots/wiki) on [GitHub](https://github.com/Nyphet/leathered-boots).  
 
 ## **Support me**
 [![Twitch](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/twitch/twitch64.png "Twitch")](https://www.twitch.tv/crystal_spider_)
