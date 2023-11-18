@@ -8,17 +8,17 @@
   ],
   "additions": [
     {
-      "item": "leatheredboots:golden_leathered_boots",
+      "item": "leatheredboots:leathered_gold_boots",
       "chance": 0.2,
       "quantity": 1
     },
     {
-      "item": "leatheredboots:iron_leathered_boots",
+      "item": "leatheredboots:leathered_iron_boots",
       "chance": 0.1,
       "quantity": 1
     },
     {
-      "item": "leatheredboots:diamond_leathered_boots",
+      "item": "leatheredboots:leathered_diamond_boots",
       "chance": 0.05,
       "quantity": 1
     }

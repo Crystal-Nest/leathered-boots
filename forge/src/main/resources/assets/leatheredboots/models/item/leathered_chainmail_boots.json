@@ -2,6 +2,6 @@
   "parent": "item/generated",
   "textures": {
     "layer0": "leatheredboots:item/leathered_boots_overlay",
-    "layer1": "leatheredboots:item/golden_leathered_boots"
+    "layer1": "leatheredboots:item/leathered_chainmail_boots"
   }
 }

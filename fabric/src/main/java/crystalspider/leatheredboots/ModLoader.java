@@ -22,6 +22,9 @@ public class ModLoader implements ModInitializer {
    */
   public static final String MOD_ID = "leatheredboots";
 
+  /**
+   * {@link RegisterProvider}.
+   */
   public static final RegisterProvider REGISTER_PROVIDER = new RegisterProvider(MOD_ID);
 
   @Override

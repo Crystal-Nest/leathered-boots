@@ -40,9 +40,9 @@ public class ModLoader {
   public static final SimpleChannel INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(MOD_ID, "main"), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
 
   public ModLoader() {
-    IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-    ItemRegistry.register(modEventBus);
-    EnchantmentRegistry.register(modEventBus);
-    LootModifierRegistry.register(modEventBus);
+    IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+    ItemRegistry.register();
+    EnchantmentRegistry.register(bus);
+    LootModifierRegistry.register(bus);
   }
 }

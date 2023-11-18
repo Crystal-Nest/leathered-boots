@@ -1,7 +1,8 @@
 package crystalspider.leatheredboots.handler;
 
 import crystalspider.leatheredboots.ModLoader;
-import crystalspider.leatheredboots.item.ItemRegistry;
+import crystalspider.leatheredboots.api.LeatheredArmorMaterial;
+import crystalspider.leatheredboots.api.LeatheredBoots;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -23,9 +24,9 @@ public class VillagerTradesEventHandler {
   @SubscribeEvent
   public static void handle(VillagerTradesEvent event) {
     if (event.getType() == VillagerProfession.LEATHERWORKER) {
-      event.getTrades().get(3).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 4), ItemRegistry.CHAINMAIL_LEATHERED_BOOTS.get().getDefaultInstance(), 5, 6, 0.02F));
-      event.getTrades().get(4).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 9), ItemRegistry.IRON_LEATHERED_BOOTS.get().getDefaultInstance(), 3, 10, 0.02F));
-      event.getTrades().get(5).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 13), ItemRegistry.DIAMOND_LEATHERED_BOOTS.get().getDefaultInstance(), 1, 30, 0.02F));
+      event.getTrades().get(3).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 4), LeatheredBoots.getLeatheredBootsStack(LeatheredArmorMaterial.LEATHERED_CHAIN), 5, 6, 0.02F));
+      event.getTrades().get(4).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 9), LeatheredBoots.getLeatheredBootsStack(LeatheredArmorMaterial.LEATHERED_IRON), 3, 10, 0.02F));
+      event.getTrades().get(5).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 13), LeatheredBoots.getLeatheredBootsStack(LeatheredArmorMaterial.LEATHERED_DIAMOND), 1, 30, 0.02F));
     }
   }
 }

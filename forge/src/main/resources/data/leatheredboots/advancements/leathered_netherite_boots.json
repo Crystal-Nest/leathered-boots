@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "leatheredboots:netherite_leathered_boots"
+        "recipe": "leatheredboots:leathered_netherite_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "leatheredboots:netherite_leathered_boots"
+      "leatheredboots:leathered_netherite_boots"
     ]
   }
 }

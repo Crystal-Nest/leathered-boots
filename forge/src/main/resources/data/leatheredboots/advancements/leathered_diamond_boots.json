@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "leatheredboots:chainmail_leathered_boots"
+        "recipe": "leatheredboots:leathered_diamond_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "leatheredboots:chainmail_leathered_boots"
+      "leatheredboots:leathered_diamond_boots"
     ]
   }
 }

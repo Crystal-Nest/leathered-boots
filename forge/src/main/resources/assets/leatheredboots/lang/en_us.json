@@ -1,11 +1,10 @@
 {
   "itemGroup.leatheredboots.leathered_boots_tab": "Leathered Boots",
-  "item.leatheredboots.chainmail_leathered_boots": "Chainmail Leathered Boots",
-  "item.leatheredboots.iron_leathered_boots": "Iron Leathered Boots",
-  "item.leatheredboots.golden_leathered_boots": "Golden Leathered Boots",
-  "item.leatheredboots.diamond_leathered_boots": "Diamond Leathered Boots",
-  "item.leatheredboots.netherite_leathered_boots": "Netherite Leathered Boots",
-  "item.leatheredboots.enderite_leathered_boots": "Enderite Leathered Boots",
+  "item.leatheredboots.leathered_chainmail_boots": "Chainmail Leathered Boots",
+  "item.leatheredboots.leathered_iron_boots": "Iron Leathered Boots",
+  "item.leatheredboots.leathered_gold_boots": "Golden Leathered Boots",
+  "item.leatheredboots.leathered_diamond_boots": "Diamond Leathered Boots",
+  "item.leatheredboots.leathered_netherite_boots": "Netherite Leathered Boots",
   "enchantment.leatheredboots.soft_step": "Soft Step",
   "enchantment.leatheredboots.soft_step.desc": "Allows to walk on powder snow."
 }

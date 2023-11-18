@@ -5,9 +5,7 @@ import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
 
 /**
- * Mod {@link Enchantment}.
- * <p>
- * Allows to walk on powder snow.
+ * {@link Enchantment} to walk on powder snow.
  */
 public class SoftStepEnchantment extends Enchantment {
   public SoftStepEnchantment() {

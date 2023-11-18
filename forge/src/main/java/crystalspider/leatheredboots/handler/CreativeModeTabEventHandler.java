@@ -1,7 +1,8 @@
 package crystalspider.leatheredboots.handler;
 
 import crystalspider.leatheredboots.ModLoader;
-import crystalspider.leatheredboots.item.ItemRegistry;
+import crystalspider.leatheredboots.api.LeatheredArmorMaterial;
+import crystalspider.leatheredboots.api.LeatheredBoots;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.event.CreativeModeTabEvent;
@@ -24,14 +25,14 @@ public class CreativeModeTabEventHandler {
     event.registerCreativeModeTab(
       new ResourceLocation(ModLoader.MOD_ID, ModLoader.LEATHERED_BOOTS_TAB_ID),
       builder -> builder
-        .icon(() -> ItemRegistry.NETHERITE_LEATHERED_BOOTS.get().getDefaultInstance())
+        .icon(() -> LeatheredBoots.getLeatheredBootsStack(LeatheredArmorMaterial.LEATHERED_NETHERITE))
         .title(Component.translatable("itemGroup." + ModLoader.MOD_ID + "." + ModLoader.LEATHERED_BOOTS_TAB_ID))
         .displayItems((features, output, hasPermissions) -> {
-          output.accept(ItemRegistry.CHAINMAIL_LEATHERED_BOOTS.get().getDefaultInstance());
-          output.accept(ItemRegistry.IRON_LEATHERED_BOOTS.get().getDefaultInstance());
-          output.accept(ItemRegistry.GOLDEN_LEATHERED_BOOTS.get().getDefaultInstance());
-          output.accept(ItemRegistry.DIAMOND_LEATHERED_BOOTS.get().getDefaultInstance());
-          output.accept(ItemRegistry.NETHERITE_LEATHERED_BOOTS.get().getDefaultInstance());
+          output.accept(LeatheredBoots.getLeatheredBootsStack(LeatheredArmorMaterial.LEATHERED_CHAIN));
+          output.accept(LeatheredBoots.getLeatheredBootsStack(LeatheredArmorMaterial.LEATHERED_IRON));
+          output.accept(LeatheredBoots.getLeatheredBootsStack(LeatheredArmorMaterial.LEATHERED_GOLD));
+          output.accept(LeatheredBoots.getLeatheredBootsStack(LeatheredArmorMaterial.LEATHERED_DIAMOND));
+          output.accept(LeatheredBoots.getLeatheredBootsStack(LeatheredArmorMaterial.LEATHERED_NETHERITE));
         })
     );
   }

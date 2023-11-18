@@ -46,34 +46,42 @@ public class LeatheredArmorMaterial implements ArmorMaterial {
     this.repairIngredient = armorMaterial.getRepairIngredient();
   }
 
+  @Override
   public int getDurabilityForSlot(EquipmentSlot equipmentSlot) {
     return this.slotDurabilities[equipmentSlot.getIndex()];
   }
 
+  @Override
   public int getDefenseForSlot(EquipmentSlot equipmentSlot) {
     return this.slotProtections[equipmentSlot.getIndex()];
   }
 
+  @Override
   public int getEnchantmentValue() {
     return this.enchantmentValue;
   }
 
+  @Override
   public SoundEvent getEquipSound() {
     return this.sound;
   }
 
+  @Override
   public Ingredient getRepairIngredient() {
     return this.repairIngredient;
   }
 
+  @Override
   public String getName() {
     return this.name;
   }
 
+  @Override
   public float getToughness() {
     return this.toughness;
   }
 
+  @Override
   public float getKnockbackResistance() {
     return this.knockbackResistance;
   }
