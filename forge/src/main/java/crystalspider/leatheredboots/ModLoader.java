@@ -13,12 +13,12 @@ import net.minecraftforge.network.simple.SimpleChannel;
 /**
  * Leathered Boots mod loader.
  */
-@Mod(LeatheredBootsLoader.MODID)
-public class LeatheredBootsLoader {
+@Mod(ModLoader.MOD_ID)
+public class ModLoader {
   /**
    * ID of this mod.
    */
-  public static final String MODID = "leatheredboots";
+  public static final String MOD_ID = "leatheredboots";
 
   /**
    * Base ID for leathered boots.
@@ -33,13 +33,13 @@ public class LeatheredBootsLoader {
   /**
    * Network channel protocol version.
    */
-  public static final String PROTOCOL_VERSION = "1.19-2.0";
+  public static final String PROTOCOL_VERSION = "1.19.3-3.0";
   /**
    * {@link SimpleChannel} instance for compatibility client-server.
    */
-  public static final SimpleChannel INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(MODID, "main"), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
+  public static final SimpleChannel INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(MOD_ID, "main"), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
 
-  public LeatheredBootsLoader() {
+  public ModLoader() {
     IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
     ItemRegistry.register(modEventBus);
     EnchantmentRegistry.register(modEventBus);

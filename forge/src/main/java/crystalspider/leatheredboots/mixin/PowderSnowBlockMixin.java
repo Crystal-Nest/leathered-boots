@@ -27,6 +27,6 @@ public abstract class PowderSnowBlockMixin {
    */
   @Inject(method = "canEntityWalkOnPowderSnow", at = @At(value = "RETURN", ordinal = 1))
   private static boolean onCanEntityWalkOnPowderSnow(Entity entity, CallbackInfoReturnable<Boolean> cir) {
-    return entity instanceof LivingEntity && ((LivingEntity) entity).getItemBySlot(EquipmentSlot.FEET).getEnchantmentLevel(EnchantmentRegistry.SOFT_STEP.get()) > 0;
+    return entity instanceof LivingEntity livingEntity && (livingEntity.getItemBySlot(EquipmentSlot.FEET).getEnchantmentLevel(EnchantmentRegistry.SOFT_STEP.get()) > 0 || livingEntity.getItemBySlot(EquipmentSlot.FEET).canWalkOnPowderedSnow(livingEntity));
   }
 }

@@ -1,6 +1,6 @@
 package crystalspider.leatheredboots.handler;
 
-import crystalspider.leatheredboots.LeatheredBootsLoader;
+import crystalspider.leatheredboots.ModLoader;
 import crystalspider.leatheredboots.item.ItemRegistry;
 import crystalspider.leatheredboots.item.LeatheredBootsItem;
 import net.minecraft.client.color.item.ItemColor;
@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 /**
  * {@link RegisterColorHandlersEvent} handler.
  */
-@EventBusSubscriber(modid = LeatheredBootsLoader.MODID, bus = Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = ModLoader.MOD_ID, bus = Bus.MOD, value = Dist.CLIENT)
 public class RegisterColorHandlersEventHandler {
   /**
    * Registers the {@link ItemColor} for {@link LeatheredBootsItem}.

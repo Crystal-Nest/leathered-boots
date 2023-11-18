@@ -1,6 +1,6 @@
 package crystalspider.leatheredboots.handler;
 
-import crystalspider.leatheredboots.LeatheredBootsLoader;
+import crystalspider.leatheredboots.ModLoader;
 import crystalspider.leatheredboots.item.ItemRegistry;
 import crystalspider.leatheredboots.item.LeatheredBootsItem;
 import net.minecraft.core.cauldron.CauldronInteraction;
@@ -12,7 +12,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 /**
  * {@link FMLCommonSetupEvent} handler.
  */
-@EventBusSubscriber(modid = LeatheredBootsLoader.MODID, bus = Bus.MOD)
+@EventBusSubscriber(modid = ModLoader.MOD_ID, bus = Bus.MOD)
 public class FMLCommonSetupEventHandler {
   /**
    * Registers the {@link CauldronInteraction}s for each {@link LeatheredBootsItem}.

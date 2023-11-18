@@ -1,6 +1,6 @@
 package crystalspider.leatheredboots.handler;
 
-import crystalspider.leatheredboots.LeatheredBootsLoader;
+import crystalspider.leatheredboots.ModLoader;
 import crystalspider.leatheredboots.item.ItemRegistry;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.item.ItemStack;
@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 /**
  * {@link VillagerTradesEvent} handler.
  */
-@EventBusSubscriber(modid = LeatheredBootsLoader.MODID)
+@EventBusSubscriber(modid = ModLoader.MOD_ID)
 public class VillagerTradesEventHandler {
   /**
    * Adds trades for some leathered boots.

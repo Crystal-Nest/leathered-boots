@@ -2,7 +2,7 @@ package crystalspider.leatheredboots.loot;
 
 import com.mojang.serialization.Codec;
 
-import crystalspider.leatheredboots.LeatheredBootsLoader;
+import crystalspider.leatheredboots.ModLoader;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -14,7 +14,7 @@ public class LootModifierRegistry {
   /**
    * {@link Codec<? extends IGlobalLootModifier>} {@link DeferredRegister deferred register}.
    */
-  public static final DeferredRegister<Codec<? extends IGlobalLootModifier>> LOOT_MODIFIERS = DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, LeatheredBootsLoader.MODID);
+  public static final DeferredRegister<Codec<? extends IGlobalLootModifier>> LOOT_MODIFIERS = DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, ModLoader.MOD_ID);
 
   /**
    * {@link RegistryObject} for {@link Codec} of {@link ChestLootModifier}.

@@ -46,7 +46,7 @@ public final class LeatheredBoots {
    */
   public static synchronized Identifier registerLeatheredBoots(String modId, ArmorMaterial armorMaterial) {
     LeatheredBootsItem value = new LeatheredBootsItem(armorMaterial instanceof LeatheredArmorMaterial leatheredArmorMaterial ? leatheredArmorMaterial : new LeatheredArmorMaterial(armorMaterial));
-    Identifier key = composeIdFor(armorMaterial);
+    Identifier key = getKeyFor(armorMaterial);
     if (!leatheredBoots.containsKey(key)) {
       leatheredBoots.put(key, value);
       REGISTER.apply(key.getPath(), value);
@@ -123,7 +123,7 @@ public final class LeatheredBoots {
    */
   @Nullable
   public static LeatheredBootsItem getLeatheredBoots(ArmorMaterial armorMaterial) {
-    return getLeatheredBoots(composeIdFor(armorMaterial));
+    return getLeatheredBoots(getKeyFor(armorMaterial));
   }
   
   /**
@@ -170,7 +170,7 @@ public final class LeatheredBoots {
    */
   @Nullable
   public static ItemStack getLeatheredBootsStack(ArmorMaterial armorMaterial) {
-    return getLeatheredBootsStack(composeIdFor(armorMaterial));
+    return getLeatheredBootsStack(getKeyFor(armorMaterial));
   }
 
   /**
@@ -183,14 +183,14 @@ public final class LeatheredBoots {
   }
   
   /**
-   * Composes the {@link Identifier} that would be given to a {@link LeatheredBootsItem} of the given {@link ArmorMaterial} when registered.
+   * Get the {@link Identifier} that would be given to a {@link LeatheredBootsItem} of the given {@link ArmorMaterial} when registered.
    * <p>
    * Note: this does not grant that such a {@link LeatheredBootsItem} has been registered.
    * 
    * @param armorMaterial
    * @return {@link Identifier} for a {@link LeatheredBootsItem}.
    */
-  public static Identifier composeIdFor(ArmorMaterial armorMaterial) {
+  public static Identifier getKeyFor(ArmorMaterial armorMaterial) {
     return new Identifier(ModLoader.MOD_ID, (armorMaterial instanceof LeatheredArmorMaterial leatheredArmorMaterial ? leatheredArmorMaterial : new LeatheredArmorMaterial(armorMaterial)).getName() + "_boots");
   }
 }
