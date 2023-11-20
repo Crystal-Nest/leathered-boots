@@ -19,13 +19,13 @@ Also prevent freezing!
 - Each Vanilla pair of boots has its own leathered version!  
 - Leathered boots prevent you from falling into powdered snow!  
 - Leathered boots prevent freezing!  
-- Leathered boots can be dyed!   
+- Leathered boots can be dyed!  
 ![Dying](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/leathered-boots/dying.png)  
 - Right-clicking a cauldron with dyed lethered boots removes the color!  
 ![Undying](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/leathered-boots/undying.gif)  
 - The Leatherworker villager can trade leathered boots.  
 - Leathered boots can be found in Igloos chests and snowy villages!  
-- Walking on powdered snow with leathered boots gives the *Light as a rabbit* advancement.  
+- Vanilla advancements have been adapted to include leathered boots: *Light as a rabbit*, *Suit up*, *Cover Me with Diamonds*, *Oh Shiny*, and *Cover Me in Debris*.  
 - Highly compatible: see the [Compatibility](https://github.com/Nyphet/leathered-boots#compatibility) section.
 
 ## **Craftings**
@@ -33,11 +33,13 @@ Also prevent freezing!
 ![Craftings](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/leathered-boots/craftings.gif)  
 - Smite diamond leathered boots into netherite leathered boots.  
 ![Smithing](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/leathered-boots/smithing.png)  
+- Don't worry about updating your enchanted boots to their leathered version, just make the upgrade in a smithing table!  
+![Updating](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/leathered-boots/updating.gif)  
 
 ## **Compatibility**
 There is an enchantment, called Soft Step, to allow boots from other mods to walk on powdered snow.  
 If, however, you really wish for another mod to have the leathered boots versions, for example to dye them, please *open an issue with the **other** mod*!  
-As stated below, this mod provides and API for other mods to use and easily add their leathered boots versions. This means, that it's up to other mods to actually use the API and add their leathered boots!  
+As stated below, this mod provides and API for other mods to use and easily add their leathered boots versions. This means that it's up to other mods to actually use the API and add their own leathered boots!  
 If you are a developer and would like to know how to add leathered versions of your own mod's boots, just follow the link in the [For developers](https://github.com/Nyphet/leathered-boots#for-developers) section!
 
 ## **License and right of use**
