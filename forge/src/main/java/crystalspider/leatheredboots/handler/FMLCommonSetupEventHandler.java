@@ -1,7 +1,6 @@
 package crystalspider.leatheredboots.handler;
 
 import crystalspider.leatheredboots.ModLoader;
-import crystalspider.leatheredboots.api.LeatheredArmorMaterial;
 import crystalspider.leatheredboots.api.LeatheredBoots;
 import crystalspider.leatheredboots.item.LeatheredBootsItem;
 import net.minecraft.core.cauldron.CauldronInteraction;
@@ -22,10 +21,8 @@ public class FMLCommonSetupEventHandler {
    */
   @SubscribeEvent
   public static void handle(FMLCommonSetupEvent event) {
-    CauldronInteraction.WATER.put(LeatheredBoots.getLeatheredBoots(LeatheredArmorMaterial.LEATHERED_CHAIN), CauldronInteraction.DYED_ITEM);
-    CauldronInteraction.WATER.put(LeatheredBoots.getLeatheredBoots(LeatheredArmorMaterial.LEATHERED_IRON), CauldronInteraction.DYED_ITEM);
-    CauldronInteraction.WATER.put(LeatheredBoots.getLeatheredBoots(LeatheredArmorMaterial.LEATHERED_GOLD), CauldronInteraction.DYED_ITEM);
-    CauldronInteraction.WATER.put(LeatheredBoots.getLeatheredBoots(LeatheredArmorMaterial.LEATHERED_DIAMOND), CauldronInteraction.DYED_ITEM);
-    CauldronInteraction.WATER.put(LeatheredBoots.getLeatheredBoots(LeatheredArmorMaterial.LEATHERED_NETHERITE), CauldronInteraction.DYED_ITEM);
+    for (LeatheredBootsItem boots : LeatheredBoots.getLeatheredBoots()) {
+      CauldronInteraction.WATER.put(boots, CauldronInteraction.DYED_ITEM);
+    }
   }
 }

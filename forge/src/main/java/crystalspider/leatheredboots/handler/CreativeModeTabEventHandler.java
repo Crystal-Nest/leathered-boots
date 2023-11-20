@@ -27,13 +27,7 @@ public class CreativeModeTabEventHandler {
       builder -> builder
         .icon(() -> LeatheredBoots.getLeatheredBootsStack(LeatheredArmorMaterial.LEATHERED_NETHERITE))
         .title(Component.translatable("itemGroup." + ModLoader.MOD_ID + "." + ModLoader.LEATHERED_BOOTS_TAB_ID))
-        .displayItems((features, output, hasPermissions) -> {
-          output.accept(LeatheredBoots.getLeatheredBootsStack(LeatheredArmorMaterial.LEATHERED_CHAIN));
-          output.accept(LeatheredBoots.getLeatheredBootsStack(LeatheredArmorMaterial.LEATHERED_IRON));
-          output.accept(LeatheredBoots.getLeatheredBootsStack(LeatheredArmorMaterial.LEATHERED_GOLD));
-          output.accept(LeatheredBoots.getLeatheredBootsStack(LeatheredArmorMaterial.LEATHERED_DIAMOND));
-          output.accept(LeatheredBoots.getLeatheredBootsStack(LeatheredArmorMaterial.LEATHERED_NETHERITE));
-        })
+        .displayItems((features, output, hasPermissions) -> LeatheredBoots.getLeatheredBootsStack().forEach(stack -> output.accept(stack)))
     );
   }
 }

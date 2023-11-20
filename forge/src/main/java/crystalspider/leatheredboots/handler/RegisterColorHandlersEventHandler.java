@@ -1,7 +1,6 @@
 package crystalspider.leatheredboots.handler;
 
 import crystalspider.leatheredboots.ModLoader;
-import crystalspider.leatheredboots.api.LeatheredArmorMaterial;
 import crystalspider.leatheredboots.api.LeatheredBoots;
 import crystalspider.leatheredboots.item.LeatheredBootsItem;
 import net.minecraft.client.color.item.ItemColor;
@@ -30,11 +29,7 @@ public class RegisterColorHandlersEventHandler {
           return tintIndex > 0 ? -1 : ((LeatheredBootsItem) itemStack.getItem()).getColor(itemStack);
         }
       },
-      LeatheredBoots.getLeatheredBoots(LeatheredArmorMaterial.LEATHERED_CHAIN),
-      LeatheredBoots.getLeatheredBoots(LeatheredArmorMaterial.LEATHERED_IRON),
-      LeatheredBoots.getLeatheredBoots(LeatheredArmorMaterial.LEATHERED_GOLD),
-      LeatheredBoots.getLeatheredBoots(LeatheredArmorMaterial.LEATHERED_DIAMOND),
-      LeatheredBoots.getLeatheredBoots(LeatheredArmorMaterial.LEATHERED_NETHERITE)
+      LeatheredBoots.getLeatheredBoots().toArray(LeatheredBootsItem[]::new)
     );
   }
 }
