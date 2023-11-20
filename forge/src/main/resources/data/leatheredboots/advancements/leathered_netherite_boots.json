@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "leatheredboots:leathered_netherite_boots"
+      "leatheredboots:crafting/leathered_netherite_boots"
     ]
   }
 }

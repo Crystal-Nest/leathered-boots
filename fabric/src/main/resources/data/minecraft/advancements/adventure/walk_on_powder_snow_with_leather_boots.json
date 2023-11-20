@@ -32,6 +32,35 @@
         ]
       },
       "trigger": "minecraft:location"
+    },
+    "walk_on_powder_snow_with_soft_step": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "equipment": {
+                "feet": {
+                  "enchantments": [
+                    {
+                      "enchantment": "leatheredboots:soft_step"
+                    }
+                  ]
+                }
+              },
+              "stepping_on": {
+                "block": {
+                  "blocks": [
+                    "minecraft:powder_snow"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
     }
   },
   "display": {
@@ -52,7 +81,8 @@
   },
   "requirements": [
     [
-      "walk_on_powder_snow_with_leather_boots"
+      "walk_on_powder_snow_with_leather_boots",
+      "walk_on_powder_snow_with_soft_step"
     ]
   ]
 }

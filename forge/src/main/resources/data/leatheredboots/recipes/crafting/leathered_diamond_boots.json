@@ -1,15 +1,16 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
   "group": "leathered_boots",
   "ingredients": [
     {
-      "item": "minecraft:netherite_boots"
+      "item": "minecraft:diamond_boots"
     },
     {
       "item": "minecraft:leather_boots"
     }
   ],
   "result": {
-    "item": "leatheredboots:leathered_netherite_boots"
+    "item": "leatheredboots:leathered_diamond_boots"
   }
 }

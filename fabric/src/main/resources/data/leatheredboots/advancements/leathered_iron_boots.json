@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "leatheredboots:leathered_iron_boots"
+      "leatheredboots:crafting/leathered_iron_boots"
     ]
   }
 }
