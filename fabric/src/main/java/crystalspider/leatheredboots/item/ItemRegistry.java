@@ -12,7 +12,7 @@ public class ItemRegistry {
    * {@link ItemGroup} for {@link LeatheredBootsItem Leathered Boots Items}.
    */
   public static final ItemGroup LEATHERED_BOOTS_GROUP = FabricItemGroup
-    .builder(new Identifier(ModLoader.MOD_ID, "leathered_boots"))
+    .builder(new Identifier(ModLoader.MOD_ID, "leathered_boots_tab"))
     .icon(() -> LeatheredBoots.getLeatheredBootsStack(LeatheredArmorMaterial.LEATHERED_NETHERITE))
     .build();
 

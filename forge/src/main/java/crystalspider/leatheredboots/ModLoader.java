@@ -21,16 +21,6 @@ public class ModLoader {
   public static final String MOD_ID = "leatheredboots";
 
   /**
-   * Base ID for leathered boots.
-   */
-  public static final String LEATHERED_BOOTS_ID = "leathered_boots";
-
-  /**
-   * ID for leathered boots creative mod tab.
-   */
-  public static final String LEATHERED_BOOTS_TAB_ID = LEATHERED_BOOTS_ID + "_tab";
-
-  /**
    * Network channel protocol version.
    */
   public static final String PROTOCOL_VERSION = "1.19.3-3.0";
