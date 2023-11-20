@@ -10,14 +10,7 @@
             "predicate": {
               "equipment": {
                 "feet": {
-                  "items": [
-                    "minecraft:leather_boots",
-                    "leatheredboots:leathered_chainmail_boots",
-                    "leatheredboots:leathered_iron_boots",
-                    "leatheredboots:leathered_gold_boots",
-                    "leatheredboots:leathered_diamond_boots",
-                    "leatheredboots:leathered_netherite_boots"
-                  ]
+                  "tag": "minecraft:freeze_immune_wearables"
                 }
               },
               "stepping_on": {
