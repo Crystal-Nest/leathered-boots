@@ -4,9 +4,9 @@
     "item": "minecraft:leather_boots"
   },
   "base": {
-    "item": "minecraft:netherite_boots"
+    "item": "minecraft:golden_boots"
   },
   "result": {
-    "item": "leatheredboots:leathered_netherite_boots"
+    "item": "leatheredboots:leathered_gold_boots"
   }
 }
