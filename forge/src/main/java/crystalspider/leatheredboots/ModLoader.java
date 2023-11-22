@@ -1,6 +1,7 @@
 package crystalspider.leatheredboots;
 
 import crystalspider.leatheredboots.enchantment.EnchantmentRegistry;
+import crystalspider.leatheredboots.handler.DatapacksEventHandler;
 import crystalspider.leatheredboots.item.ItemRegistry;
 import crystalspider.leatheredboots.loot.LootModifierRegistry;
 import net.minecraft.resources.ResourceLocation;
@@ -34,5 +35,6 @@ public class ModLoader {
     ItemRegistry.register();
     EnchantmentRegistry.register(bus);
     LootModifierRegistry.register(bus);
+    DatapacksEventHandler.init();
   }
 }

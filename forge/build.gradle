@@ -81,7 +81,7 @@ mixin {
   config "${modid}.mixins.json"
 }
 
-def resourceTarget = "META-INF/mods.toml"
+def resourceTargets = ["META-INF/mods.toml", "pack.mcmeta"]
 def intoTargets = ["$rootDir/bin/main/"]
 def replaceProperties = [
   modid: modid,
@@ -99,7 +99,7 @@ processResources {
   inputs.properties replaceProperties
   replaceProperties.put "project", project
 
-  filesMatching(resourceTarget) {
+  filesMatching(resourceTargets) {
     expand replaceProperties
   }
 
@@ -107,7 +107,7 @@ processResources {
     if (file(target).exists()) {
       copy {
         from(sourceSets.main.resources) {
-          include resourceTarget
+          include resourceTargets
           expand replaceProperties
         }
         into target
