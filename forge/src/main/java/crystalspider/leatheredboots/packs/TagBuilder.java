@@ -56,7 +56,7 @@ public class TagBuilder extends net.minecraft.tags.TagBuilder {
 
   public TagBuilder addElements(Collection<? extends Item> elements) {
     for (Item element : elements) {
-      addElement(ForgeRegistries.ITEMS.getKey(element));
+      addElement(element);
     }
     return this;
   }

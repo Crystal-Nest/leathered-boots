@@ -38,16 +38,40 @@ import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries.Keys;
 
-public class DynamicDataPack implements PackResources {
-  protected static final Logger LOGGER = LogManager.getLogger();
+/**
+ * Dynamic Datapack.
+ */
+public class DynamicDatapack implements PackResources {
+  /**
+   * Logger.
+   */
+  private static final Logger LOGGER = LogManager.getLogger();
 
+  /**
+   * Datapack name.
+   */
   public final ResourceLocation name;
+  /**
+   * Datapack main namespace.
+   */
   public final String namespace;
+  /**
+   * All datapack registered namespaces.
+   */
   public final Set<String> namespaces = new HashSet<>();
+  /**
+   * {@link Supplier} for the datapack metadata.
+   */
   public final Supplier<PackMetadataSection> metadata;
+  /**
+   * Datapack resources.
+   */
   public final Map<ResourceLocation, byte[]> resources = new ConcurrentHashMap<>();
 
-  public DynamicDataPack(ResourceLocation name) {
+  /**
+   * @param name {@link #name}.
+   */
+  public DynamicDatapack(ResourceLocation name) {
     this.name = name;
     this.namespace = name.getNamespace();
     this.namespaces.add(name.getNamespace());
@@ -83,7 +107,7 @@ public class DynamicDataPack implements PackResources {
 
   @Override
   public boolean isHidden() {
-    return false; // true;
+    return true;
   }
 
   @Override
