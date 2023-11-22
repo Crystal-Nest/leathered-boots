@@ -9,8 +9,11 @@ import org.apache.logging.log4j.Logger;
 import crystalspider.leatheredboots.ModLoader;
 import crystalspider.leatheredboots.api.LeatheredBoots;
 import crystalspider.leatheredboots.packs.DynamicDataPack;
+import crystalspider.leatheredboots.packs.EarlyPackReloadEvent;
+import crystalspider.leatheredboots.packs.MoonlightEventsHelper;
 import crystalspider.leatheredboots.packs.TagBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.PreparableReloadListener;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.tags.ItemTags;
@@ -35,7 +38,7 @@ public final class DatapacksEventHandler {
   private static final ReloadListener RELOAD_LISTENER = new ReloadListener(DATAPACK);
 
   public static final void init() {
-    // TODO
+    MoonlightEventsHelper.addListener(EarlyPackReloadEvent.class, RELOAD_LISTENER::reload);
   }
 
   /**
@@ -50,7 +53,7 @@ public final class DatapacksEventHandler {
 
   private static class ReloadListener implements PreparableReloadListener {
     private final DynamicDataPack datapack;
-    private boolean built;
+    private boolean built = false;
 
     private ReloadListener(DynamicDataPack datapack) {
       this.datapack = datapack;
@@ -58,6 +61,17 @@ public final class DatapacksEventHandler {
   
     private void build() {
       this.datapack.buildItemTag(TagBuilder.of(ItemTags.FREEZE_IMMUNE_WEARABLES).addElements(LeatheredBoots.getLeatheredBoots()));
+    }
+
+    public void reload(EarlyPackReloadEvent event) {
+      if (!this.built && event.type() == PackType.SERVER_DATA) {
+        try {
+          this.build();
+          this.built = true;
+        } catch (Exception e) {
+          LOGGER.error("The following error was thrown while attempting to build the " + this.datapack + " dynamic datapack from leatheredboots:", e);
+        }
+      }
     }
 
     @Override

@@ -5,6 +5,7 @@
   "refmap": "leatheredboots.refmap.json",
   "package": "crystalspider.leatheredboots.mixin",
   "mixins": [
-    "PowderSnowBlockMixin"
+    "PowderSnowBlockMixin",
+    "MultiPackResourceManagerMixin"
   ]
 }
