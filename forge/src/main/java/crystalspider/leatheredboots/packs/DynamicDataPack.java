@@ -3,9 +3,7 @@ package crystalspider.leatheredboots.packs;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.StringWriter;
-import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -32,10 +30,7 @@ import net.minecraft.server.packs.metadata.pack.PackMetadataSectionSerializer;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.server.packs.resources.IoSupplier;
-import net.minecraft.util.GsonHelper;
 import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraftforge.event.AddPackFindersEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries.Keys;
 
 /**
@@ -50,49 +45,53 @@ public class DynamicDatapack implements PackResources {
   /**
    * Datapack name.
    */
-  public final ResourceLocation name;
+  private final ResourceLocation name;
   /**
    * Datapack main namespace.
    */
-  public final String namespace;
+  private final String namespace;
   /**
    * All datapack registered namespaces.
    */
-  public final Set<String> namespaces = new HashSet<>();
+  private final Set<String> namespaces = new HashSet<>();
   /**
    * {@link Supplier} for the datapack metadata.
    */
-  public final Supplier<PackMetadataSection> metadata;
+  private final Supplier<PackMetadataSection> metadata;
   /**
    * Datapack resources.
    */
-  public final Map<ResourceLocation, byte[]> resources = new ConcurrentHashMap<>();
+  private final Map<ResourceLocation, Supplier<byte[]>> resources = new ConcurrentHashMap<>();
 
   /**
    * @param name {@link #name}.
+   * @param builder {@link TagBuilder}.
    */
-  public DynamicDatapack(ResourceLocation name) {
+  public DynamicDatapack(ResourceLocation name, TagBuilder<?> builder) {
     this.name = name;
     this.namespace = name.getNamespace();
     this.namespaces.add(name.getNamespace());
     this.metadata = Suppliers.memoize(()-> new PackMetadataSection(Component.translatable(namespace + "_dynamic_" + name.getPath()), SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA.bridgeType)));
-    FMLJavaModLoadingContext.get().getModEventBus().addListener((AddPackFindersEvent event) -> {
-      if (event.getPackType() == PackType.SERVER_DATA) {
-        event.addRepositorySource(packConsumer -> packConsumer.accept(
-          Pack.create(
-            this.packId(),
-            Component.translatable(name.toString()),
-            true,
-            str -> this,
-            new Pack.Info(metadata.get().getDescription(), metadata.get().getPackFormat(PackType.SERVER_DATA), FeatureFlagSet.of()),
-            PackType.SERVER_DATA,
-            Pack.Position.TOP,
-            false,
-            PackSource.BUILT_IN
-          )
-        ));
-      }
-    });
+    this.build(builder);
+  }
+
+  /**
+   * Creates a {@link Pack} instance of this dynamic datapack.
+   * 
+   * @return {@link Pack} instance.
+   */
+  public Pack create() {
+    return Pack.create(
+      packId(),
+      Component.translatable(packId()),
+      true,
+      str -> this,
+      new Pack.Info(metadata.get().getDescription(), metadata.get().getPackFormat(PackType.SERVER_DATA), FeatureFlagSet.of()),
+      PackType.SERVER_DATA,
+      Pack.Position.TOP,
+      false,
+      PackSource.BUILT_IN
+    );
   }
 
   @Override
@@ -131,18 +130,17 @@ public class DynamicDatapack implements PackResources {
   public void listResources(PackType packType, String namespace, String id, ResourceOutput output) {
     if (packType == PackType.SERVER_DATA && this.namespaces.contains(namespace)) {
       this.resources.entrySet().stream()
-        .filter(r -> (r.getKey().getNamespace().equals(namespace) && r.getKey().getPath().startsWith(id)))
-        .forEach(r -> output.accept(r.getKey(), () -> new ByteArrayInputStream(r.getValue())));
+        .filter(resource -> (resource.getKey().getNamespace().equals(namespace) && resource.getKey().getPath().startsWith(id)))
+        .forEach(resource -> output.accept(resource.getKey(), () -> new ByteArrayInputStream(resource.getValue().get())));
     }
   }
 
   @Override
   public IoSupplier<InputStream> getResource(PackType type, ResourceLocation id) {
-    byte[] res = this.resources.get(id);
-    if (res != null) {
+    if (this.resources.containsKey(id)) {
       return () -> {
         if (type == PackType.SERVER_DATA) {
-          return new ByteArrayInputStream(res);
+          return new ByteArrayInputStream(this.resources.get(id).get());
         }
         throw new IOException(String.format("Tried to access wrong type of resource on %s.", this.name));
       };
@@ -153,38 +151,45 @@ public class DynamicDatapack implements PackResources {
   @Override
   public void close() {}
 
-  private void build(ResourceLocation path, byte[] bytes) {
+  /**
+   * Adds the given bytes {@link Supplier} to the ones to build this datapack resources.
+   * 
+   * @param path
+   * @param bytes
+   */
+  private void buildBytes(ResourceLocation path, Supplier<byte[]> bytes) {
     this.namespaces.add(path.getNamespace());
-    this.resources.put(path, bytes);
+    this.resources.put(path, Suppliers.memoize(bytes::get));
   }
 
-  private void build(ResourceLocation path, JsonElement json) {
-    try {
-      StringWriter stringWriter = new StringWriter();
-      JsonWriter jsonWriter = new JsonWriter(stringWriter);
-      jsonWriter.setIndent("  ");
-      Streams.write(json, jsonWriter);
-      jsonWriter.close();
-      this.build(ResourceType.GENERIC.getPath(path), stringWriter.toString().getBytes());
-    } catch (IOException e) {
-      LOGGER.error("Failed to write JSON " + path + " to resource pack " + name + ".", e);
-    }
-  }
-
-  public void buildItemTag(TagBuilder builder) {
-    ResourceLocation tagLocation = builder.getLocation();
-    ResourceLocation dataLocation = ResourceType.TAGS.getPath(new ResourceLocation(tagLocation.getNamespace(), Keys.ITEMS.location().getPath() + "s/" + tagLocation.getPath()));
-    if (this.resources.containsKey(dataLocation)) {
+  /**
+   * Adds the given {@link JsonElement} {@link Supplier} to the ones to build this datapack resources.
+   * 
+   * @param path
+   * @param json
+   */
+  private void buildJson(ResourceLocation path, Supplier<JsonElement> json) {
+    this.buildBytes(ResourceType.GENERIC.getPath(path), () -> {
       try {
-        InputStreamReader jsonStream = new InputStreamReader(new ByteArrayInputStream(this.resources.get(dataLocation)), StandardCharsets.UTF_8);
-        builder.addJson(GsonHelper.parse(jsonStream));
-        jsonStream.close();
-      } catch (Exception e) {
-        LOGGER.error("The following error was thrown while attempting to read existing datapack resources from " + dataLocation, e);
+        StringWriter stringWriter = new StringWriter();
+        JsonWriter jsonWriter = new JsonWriter(stringWriter);
+        jsonWriter.setIndent("  ");
+        Streams.write(json.get(), jsonWriter);
+        jsonWriter.close();
+        return stringWriter.toString().getBytes();
+      } catch (IOException e) {
+        LOGGER.error("Failed to write JSON " + path + " to resource pack " + name + ".", e);
+        return new byte[0];
       }
-    }
-    this.build(dataLocation, builder.json());
+    });
   }
 
-  // TODO: Check compatibility with ModernFix.
+  /**
+   * Uses the given {@link TagBuilder} to get a {@link Supplier} for this datapack resources.
+   * 
+   * @param builder
+   */
+  private void build(TagBuilder<?> builder) {
+    this.buildJson(ResourceType.TAGS.getPath(new ResourceLocation(builder.getLocation().getNamespace(), Keys.ITEMS.location().getPath() + "s/" + builder.getLocation().getPath())), builder::json);
+  }
 }

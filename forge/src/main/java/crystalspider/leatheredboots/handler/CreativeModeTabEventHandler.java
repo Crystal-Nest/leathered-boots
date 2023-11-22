@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
  * {@link CreativeModeTabEvent} handler.
  */
 @EventBusSubscriber(modid = ModLoader.MOD_ID, bus = Bus.MOD)
-public class CreativeModeTabEventHandler {
+public final class CreativeModeTabEventHandler {
   /**
    * ID for leathered boots creative mod tab.
    */

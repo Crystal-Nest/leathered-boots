@@ -13,7 +13,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
  * {@link FMLCommonSetupEvent} handler.
  */
 @EventBusSubscriber(modid = ModLoader.MOD_ID, bus = Bus.MOD)
-public class FMLCommonSetupEventHandler {
+public final class FMLCommonSetupEventHandler {
   /**
    * Registers the {@link CauldronInteraction}s for each {@link LeatheredBootsItem}.
    * 

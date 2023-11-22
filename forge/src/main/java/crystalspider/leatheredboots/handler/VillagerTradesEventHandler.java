@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
  * {@link VillagerTradesEvent} handler.
  */
 @EventBusSubscriber(modid = ModLoader.MOD_ID)
-public class VillagerTradesEventHandler {
+public final class VillagerTradesEventHandler {
   /**
    * Adds trades for some leathered boots.
    * 

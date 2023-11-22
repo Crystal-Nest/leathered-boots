@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
  * {@link RegisterColorHandlersEvent} handler.
  */
 @EventBusSubscriber(modid = ModLoader.MOD_ID, bus = Bus.MOD, value = Dist.CLIENT)
-public class RegisterColorHandlersEventHandler {
+public final class RegisterColorHandlersEventHandler {
   /**
    * Registers the {@link ItemColor} for {@link LeatheredBootsItem}.
    * 
