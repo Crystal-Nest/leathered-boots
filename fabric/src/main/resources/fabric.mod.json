@@ -26,6 +26,7 @@
   "mixins": [
     "${modid}.mixins.json"
   ],
+  "accessWidener" : "${modid}.accesswidener",
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric": "*",

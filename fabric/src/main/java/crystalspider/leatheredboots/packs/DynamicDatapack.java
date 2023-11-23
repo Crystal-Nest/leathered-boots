@@ -18,24 +18,27 @@ import com.google.common.base.Suppliers;
 import com.google.gson.JsonElement;
 import com.google.gson.internal.Streams;
 import com.google.gson.stream.JsonWriter;
+import com.mojang.bridge.game.PackType;
 
 import net.minecraft.SharedConstants;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.PackResources;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.metadata.MetadataSectionSerializer;
-import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
-import net.minecraft.server.packs.metadata.pack.PackMetadataSectionSerializer;
-import net.minecraft.server.packs.repository.Pack;
-import net.minecraft.server.packs.repository.PackSource;
-import net.minecraft.server.packs.resources.IoSupplier;
-import net.minecraft.world.flag.FeatureFlagSet;
+import net.minecraft.resource.InputSupplier;
+import net.minecraft.resource.ResourcePack;
+import net.minecraft.resource.ResourcePackProfile;
+import net.minecraft.resource.ResourcePackProfile.InsertionPosition;
+import net.minecraft.resource.ResourcePackProfile.Metadata;
+import net.minecraft.resource.ResourcePackSource;
+import net.minecraft.resource.ResourceType;
+import net.minecraft.resource.featuretoggle.FeatureSet;
+import net.minecraft.resource.metadata.PackResourceMetadata;
+import net.minecraft.resource.metadata.PackResourceMetadataReader;
+import net.minecraft.resource.metadata.ResourceMetadataReader;
+import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 
 /**
  * Dynamic Datapack.
  */
-public class DynamicDatapack implements PackResources {
+public class DynamicDatapack implements ResourcePack {
   /**
    * Logger.
    */
@@ -44,7 +47,7 @@ public class DynamicDatapack implements PackResources {
   /**
    * Datapack name.
    */
-  private final ResourceLocation name;
+  private final Identifier name;
   /**
    * Datapack main namespace.
    */
@@ -56,78 +59,73 @@ public class DynamicDatapack implements PackResources {
   /**
    * {@link Supplier} for the datapack metadata.
    */
-  private final Supplier<PackMetadataSection> metadata;
+  private final Supplier<PackResourceMetadata> metadata;
   /**
    * Datapack resources.
    */
-  private final Map<ResourceLocation, Supplier<byte[]>> resources = new ConcurrentHashMap<>();
+  private final Map<Identifier, Supplier<byte[]>> resources = new ConcurrentHashMap<>();
 
   /**
    * @param name {@link #name}.
    * @param builder {@link TagBuilder}.
    */
-  public DynamicDatapack(ResourceLocation name, TagBuilder<?> builder) {
+  public DynamicDatapack(Identifier name, TagBuilder<?> builder) {
     this.name = name;
     this.namespace = name.getNamespace();
     this.namespaces.add(name.getNamespace());
-    this.metadata = Suppliers.memoize(()-> new PackMetadataSection(Component.translatable(namespace + "_dynamic_" + name.getPath()), SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA.bridgeType)));
+    this.metadata = Suppliers.memoize(()-> new PackResourceMetadata(Text.translatable(namespace + "_dynamic_" + name.getPath()), SharedConstants.getGameVersion().getPackVersion(PackType.DATA)));
     this.build(builder);
   }
 
   /**
-   * Creates a {@link Pack} instance of this dynamic datapack.
+   * Creates a {@link ResourcePackProfile} instance of this dynamic datapack.
    * 
-   * @return {@link Pack} instance.
+   * @return {@link ResourcePackProfile} instance.
    */
-  public Pack create() {
-    return Pack.create(
-      packId(),
-      Component.translatable(packId()),
+  public ResourcePackProfile create() {
+    return ResourcePackProfile.of(
+      getName(),
+      Text.translatable(getName()),
       true,
       str -> this,
-      new Pack.Info(metadata.get().getDescription(), metadata.get().getPackFormat(PackType.SERVER_DATA), FeatureFlagSet.of()),
-      PackType.SERVER_DATA,
-      Pack.Position.TOP,
+      new Metadata(metadata.get().getDescription(), metadata.get().getPackFormat(), FeatureSet.empty()),
+      ResourceType.SERVER_DATA,
+      InsertionPosition.TOP,
       false,
-      PackSource.BUILT_IN
+      ResourcePackSource.BUILTIN
     );
   }
 
   @Override
-  public String packId() {
+  public String getName() {
     return name.toString();
   }
 
   @Override
   public String toString() {
-    return packId();
+    return getName();
   }
 
   @Override
-  public boolean isHidden() {
-    return true;
-  }
-
-  @Override
-  public Set<String> getNamespaces(PackType packType) {
+  public Set<String> getNamespaces(ResourceType packType) {
     return this.namespaces;
   }
 
   @Override
   @SuppressWarnings("unchecked")
-  public <T> T getMetadataSection(MetadataSectionSerializer<T> serializer) {
-    return serializer instanceof PackMetadataSectionSerializer ? (T) this.metadata : null;
+  public <T> T parseMetadata(ResourceMetadataReader<T> serializer) {
+    return serializer instanceof PackResourceMetadataReader ? (T) this.metadata : null;
   }
 
   @Override
   @Nullable
-  public IoSupplier<InputStream> getRootResource(String... strings) {
+  public InputSupplier<InputStream> openRoot(String... strings) {
     return null;
   }
 
   @Override
-  public void listResources(PackType packType, String namespace, String id, ResourceOutput output) {
-    if (packType == PackType.SERVER_DATA && this.namespaces.contains(namespace)) {
+  public void findResources(ResourceType packType, String namespace, String id, ResultConsumer output) {
+    if (packType == ResourceType.SERVER_DATA && this.namespaces.contains(namespace)) {
       this.resources.entrySet().stream()
         .filter(resource -> (resource.getKey().getNamespace().equals(namespace) && resource.getKey().getPath().startsWith(id)))
         .forEach(resource -> output.accept(resource.getKey(), () -> new ByteArrayInputStream(resource.getValue().get())));
@@ -135,10 +133,10 @@ public class DynamicDatapack implements PackResources {
   }
 
   @Override
-  public IoSupplier<InputStream> getResource(PackType type, ResourceLocation id) {
+  public InputSupplier<InputStream> open(ResourceType type, Identifier id) {
     if (this.resources.containsKey(id)) {
       return () -> {
-        if (type == PackType.SERVER_DATA) {
+        if (type == ResourceType.SERVER_DATA) {
           return new ByteArrayInputStream(this.resources.get(id).get());
         }
         throw new IOException(String.format("Tried to access wrong type of resource on %s.", this.name));
@@ -156,7 +154,7 @@ public class DynamicDatapack implements PackResources {
    * @param path
    * @param bytes
    */
-  private void buildBytes(ResourceLocation path, Supplier<byte[]> bytes) {
+  private void buildBytes(Identifier path, Supplier<byte[]> bytes) {
     this.namespaces.add(path.getNamespace());
     this.resources.put(path, Suppliers.memoize(bytes::get));
   }
@@ -167,12 +165,11 @@ public class DynamicDatapack implements PackResources {
    * @param path
    * @param json
    */
-  private void buildJson(ResourceLocation path, Supplier<JsonElement> json) {
+  private void buildJson(Identifier path, Supplier<JsonElement> json) {
     this.buildBytes(DataResourceType.GENERIC.getPath(path), () -> {
       try (StringWriter stringWriter = new StringWriter(); JsonWriter jsonWriter = new JsonWriter(stringWriter);) {
         jsonWriter.setIndent("  ");
         Streams.write(json.get(), jsonWriter);
-        jsonWriter.close();
         return stringWriter.toString().getBytes();
       } catch (IOException e) {
         LOGGER.error("Failed to write JSON " + path + " to resource pack " + name + ".", e);

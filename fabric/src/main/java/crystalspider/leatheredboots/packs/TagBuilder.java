@@ -7,18 +7,18 @@ import java.util.Set;
 import com.google.gson.JsonElement;
 import com.mojang.serialization.JsonOps;
 
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagEntry;
-import net.minecraft.tags.TagFile;
-import net.minecraft.tags.TagKey;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.tag.TagEntry;
+import net.minecraft.registry.tag.TagFile;
+import net.minecraft.registry.tag.TagKey;
+import net.minecraft.util.Identifier;
 
 /**
  * Tag builder.
  */
 @SuppressWarnings("unchecked")
-public class TagBuilder<T> extends net.minecraft.tags.TagBuilder {
+public class TagBuilder<T> extends net.minecraft.registry.tag.TagBuilder {
   /**
    * Set of unique listed keys.
    */
@@ -26,17 +26,17 @@ public class TagBuilder<T> extends net.minecraft.tags.TagBuilder {
   /**
    * Tags location.
    */
-  private final ResourceLocation location;
+  private final Identifier location;
   /**
-   * {@link IForgeRegistry Forge Registries} for the tag.
+   * {@link Registry Minecraft Registries} for the tag.
    */
-  private final IForgeRegistry<T> registries;
+  private final Registry<T> registries;
 
   /**
    * @param location {@link #location}.
    * @param registries {@link #registries}.
    */
-  private TagBuilder(ResourceLocation location, IForgeRegistry<T> registries) {
+  private TagBuilder(Identifier location, Registry<T> registries) {
     this.location = location;
     this.registries = registries;
   }
@@ -49,8 +49,8 @@ public class TagBuilder<T> extends net.minecraft.tags.TagBuilder {
    * @param registries
    * @return new tag builder for the given tag.
    */
-  public static <T> TagBuilder<T> of(TagKey<? extends T> key, IForgeRegistry<T> registries) {
-    return new TagBuilder<T>(key.location(), registries);
+  public static <T> TagBuilder<T> of(TagKey<? extends T> key, Registry<T> registries) {
+    return new TagBuilder<T>(key.id(), registries);
   }
 
   /**
@@ -58,7 +58,7 @@ public class TagBuilder<T> extends net.minecraft.tags.TagBuilder {
    * 
    * @return tag location.
    */
-  public ResourceLocation getLocation() {
+  public Identifier getLocation() {
     return location;
   }
 
@@ -67,8 +67,8 @@ public class TagBuilder<T> extends net.minecraft.tags.TagBuilder {
    * 
    * @return tag full path.
    */
-  public ResourceLocation getFullPath() {
-    return DataResourceType.TAGS.getPath(new ResourceLocation(getLocation().getNamespace(), ForgeRegistries.ITEMS.getRegistryKey().location().getPath() + "s/" + getLocation().getPath()));
+  public Identifier getFullPath() {
+    return DataResourceType.TAGS.getPath(new Identifier(getLocation().getNamespace(), Registries.ITEM.getKey().getValue().getPath() + "s/" + getLocation().getPath()));
   }
 
   @Override
@@ -86,7 +86,7 @@ public class TagBuilder<T> extends net.minecraft.tags.TagBuilder {
    * @return this builder.
    */
   public TagBuilder<T> addTag(TagKey<? extends T> tagKey) {
-    return (TagBuilder<T>) addTag(tagKey.location());
+    return (TagBuilder<T>) addTag(tagKey.id());
   }
 
   /**
@@ -96,7 +96,7 @@ public class TagBuilder<T> extends net.minecraft.tags.TagBuilder {
    * @return this builder.
    */
   public TagBuilder<T> addElement(T element) {
-    return (TagBuilder<T>) addElement(registries.getKey(element));
+    return (TagBuilder<T>) add(registries.getKey(element).get().getValue());
   }
 
   /**
