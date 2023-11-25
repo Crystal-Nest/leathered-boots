@@ -54,12 +54,13 @@ public final class LeatheredBoots {
    * @return the {@link ResourceLocation} of the newly registered {@link LeatheredBootsItem} or {@code null}.
    */
   public static synchronized ResourceLocation registerLeatheredBoots(String modId, boolean isFireResistant, ArmorMaterial armorMaterial) {
-    ResourceLocation key = getKeyFor(armorMaterial);
+    LeatheredArmorMaterial leatheredArmorMaterial = armorMaterial instanceof LeatheredArmorMaterial leathered ? leathered : new LeatheredArmorMaterial(armorMaterial);
+    ResourceLocation key = getKeyFor(leatheredArmorMaterial);
     if (!leatheredBoots.containsKey(key)) {
-      leatheredBoots.put(key, ITEMS.register(key.getPath(), () -> new LeatheredBootsItem(armorMaterial, isFireResistant)));
+      leatheredBoots.put(key, ITEMS.register(key.getPath(), () -> new LeatheredBootsItem(leatheredArmorMaterial, isFireResistant)));
       return key;
     }
-    LOGGER.error("ArmorMaterial [" + key + "] was already registered with the following value: " + leatheredBoots.get(key));
+    LOGGER.error("LeatheredBootsItem [" + key + "] was already registered with the following value: " + leatheredBoots.get(key));
     return null;
   }
 

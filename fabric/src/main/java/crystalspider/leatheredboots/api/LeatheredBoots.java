@@ -54,7 +54,7 @@ public final class LeatheredBoots {
       CauldronBehavior.WATER_CAULDRON_BEHAVIOR.put(value, CauldronBehavior.CLEAN_DYEABLE_ITEM);
       return key;
     }
-    LOGGER.error("ArmorMaterial [" + key + "] was already registered with the following value: " + leatheredBoots.get(key));
+    LOGGER.error("LeatheredBootsItem [" + key + "] was already registered with the following value: " + leatheredBoots.get(key));
     return null;
   }
 
@@ -66,16 +66,7 @@ public final class LeatheredBoots {
    * @return the {@link Identifier} of the newly registered {@link LeatheredBootsItem} or {@code null}.
    */
   public static synchronized Identifier registerLeatheredBoots(String modId, ArmorMaterial armorMaterial) {
-    LeatheredBootsItem value = new LeatheredBootsItem(armorMaterial instanceof LeatheredArmorMaterial leatheredArmorMaterial ? leatheredArmorMaterial : new LeatheredArmorMaterial(armorMaterial), false);
-    Identifier key = getKeyFor(armorMaterial);
-    if (!leatheredBoots.containsKey(key)) {
-      leatheredBoots.put(key, value);
-      REGISTER.apply(key.getPath(), value);
-      CauldronBehavior.WATER_CAULDRON_BEHAVIOR.put(value, CauldronBehavior.CLEAN_DYEABLE_ITEM);
-      return key;
-    }
-    LOGGER.error("ArmorMaterial [" + key + "] was already registered with the following value: " + leatheredBoots.get(key));
-    return null;
+    return registerLeatheredBoots(modId, false, armorMaterial);
   }
 
   /**
