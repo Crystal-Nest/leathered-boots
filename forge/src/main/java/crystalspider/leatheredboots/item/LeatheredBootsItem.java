@@ -16,12 +16,17 @@ public class LeatheredBootsItem extends DyeableArmorItem {
   }
 
   @Override
+  public LeatheredArmorMaterial getMaterial() {
+    return (LeatheredArmorMaterial) super.getMaterial();
+  }
+
+  @Override
   public boolean canWalkOnPowderedSnow(ItemStack stack, LivingEntity wearer) {
     return true;
   }
 
   @Override
   public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) {
-    return this.material == LeatheredArmorMaterial.LEATHERED_GOLD;
+    return getMaterial() == LeatheredArmorMaterial.LEATHERED_GOLD;
   }
 }
