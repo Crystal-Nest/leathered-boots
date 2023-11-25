@@ -50,6 +50,7 @@ and this project adheres to [Forge Semantic Versioning](https://mcforge.readthed
 
 [Unreleased]: https://github.com/Nyphet/leathered-boots
 
+[1.19.3-3.0.0.0-beta]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.19.3-1.19.3-3.0.0.0-beta
 [1.19.3-2.0.0.0]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.19.3-2.0.0.0
 
 [1.19.2-1.0.0.2]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.19.2-1.0.0.2

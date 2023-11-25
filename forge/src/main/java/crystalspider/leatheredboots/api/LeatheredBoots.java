@@ -48,12 +48,11 @@ public final class LeatheredBoots {
   /**
    * Registers a new {@link LeatheredBootsItem} made of the given {@link ArmorMaterial}.
    * 
-   * @param modId
    * @param isFireResistant
    * @param armorMaterial
    * @return the {@link ResourceLocation} of the newly registered {@link LeatheredBootsItem} or {@code null}.
    */
-  public static synchronized ResourceLocation registerLeatheredBoots(String modId, boolean isFireResistant, ArmorMaterial armorMaterial) {
+  public static synchronized ResourceLocation registerLeatheredBoots(boolean isFireResistant, ArmorMaterial armorMaterial) {
     LeatheredArmorMaterial leatheredArmorMaterial = armorMaterial instanceof LeatheredArmorMaterial leathered ? leathered : new LeatheredArmorMaterial(armorMaterial);
     ResourceLocation key = getKeyFor(leatheredArmorMaterial);
     if (!leatheredBoots.containsKey(key)) {
@@ -67,26 +66,24 @@ public final class LeatheredBoots {
   /**
    * Registers a new {@link LeatheredBootsItem} made of the given {@link ArmorMaterial} setting fire resistance to {@code false}.
    * 
-   * @param modId
    * @param armorMaterial
    * @return the {@link ResourceLocation} of the newly registered {@link LeatheredBootsItem} or {@code null}.
    */
-  public static synchronized ResourceLocation registerLeatheredBoots(String modId, ArmorMaterial armorMaterial) {
-    return registerLeatheredBoots(modId, false, armorMaterial);  
+  public static synchronized ResourceLocation registerLeatheredBoots(ArmorMaterial armorMaterial) {
+    return registerLeatheredBoots(false, armorMaterial);  
   }
 
   /**
    * Registers new {@link LeatheredBootsItem}s made of the given {@link ArmorMaterial}s.
    * 
-   * @param modId
    * @param isFireResistant
    * @param armorMaterials
    * @return the {@link ResourceLocation}s of the newly registered {@link LeatheredBootsItem}s. A {@link ResourceLocation} can be {@code null} if the registration was unsuccessful.
    */
-  public static synchronized List<ResourceLocation> registerLeatheredBoots(String modId, boolean isFireResistant, List<ArmorMaterial> armorMaterials) {
+  public static synchronized List<ResourceLocation> registerLeatheredBoots(boolean isFireResistant, List<ArmorMaterial> armorMaterials) {
     List<ResourceLocation> resourceLocations = new ArrayList<>();
     for (ArmorMaterial armorMaterial : armorMaterials) {
-      resourceLocations.add(registerLeatheredBoots(modId, isFireResistant, armorMaterial));
+      resourceLocations.add(registerLeatheredBoots(isFireResistant, armorMaterial));
     }
     return resourceLocations;
   }
@@ -94,35 +91,32 @@ public final class LeatheredBoots {
   /**
    * Registers new {@link LeatheredBootsItem}s made of the given {@link ArmorMaterial}s.
    * 
-   * @param modId
    * @param armorMaterials
    * @return the {@link ResourceLocation}s of the newly registered {@link LeatheredBootsItem}s. A {@link ResourceLocation} can be {@code null} if the registration was unsuccessful.
    */
-  public static synchronized List<ResourceLocation> registerLeatheredBoots(String modId, List<ArmorMaterial> armorMaterials) {
-    return registerLeatheredBoots(modId, false, armorMaterials);
+  public static synchronized List<ResourceLocation> registerLeatheredBoots(List<ArmorMaterial> armorMaterials) {
+    return registerLeatheredBoots(false, armorMaterials);
   }
 
   /**
    * Registers new {@link LeatheredBootsItem}s made of the given {@link ArmorMaterial}s.
    * 
-   * @param modId
    * @param isFireResistant
    * @param armorMaterials
    * @return the {@link ResourceLocation}s of the newly registered {@link LeatheredBootsItem}s. A {@link ResourceLocation} can be {@code null} if the registration was unsuccessful.
    */
-  public static synchronized List<ResourceLocation> registerLeatheredBoots(String modId, boolean isFireResistant, ArmorMaterial... armorMaterials) {
-    return registerLeatheredBoots(modId, isFireResistant, Arrays.asList(armorMaterials));
+  public static synchronized List<ResourceLocation> registerLeatheredBoots(boolean isFireResistant, ArmorMaterial... armorMaterials) {
+    return registerLeatheredBoots(isFireResistant, Arrays.asList(armorMaterials));
   }
 
   /**
    * Registers new {@link LeatheredBootsItem}s made of the given {@link ArmorMaterial}s.
    * 
-   * @param modId
    * @param armorMaterials
    * @return the {@link ResourceLocation}s of the newly registered {@link LeatheredBootsItem}s. A {@link ResourceLocation} can be {@code null} if the registration was unsuccessful.
    */
-  public static synchronized List<ResourceLocation> registerLeatheredBoots(String modId, ArmorMaterial... armorMaterials) {
-    return registerLeatheredBoots(modId, false, armorMaterials);
+  public static synchronized List<ResourceLocation> registerLeatheredBoots(ArmorMaterial... armorMaterials) {
+    return registerLeatheredBoots(false, armorMaterials);
   }
 
   /**
@@ -148,13 +142,12 @@ public final class LeatheredBoots {
   /**
    * Returns the {@link LeatheredBootsItem} registered with the given {@code modId} and {@code itemId}.
    * 
-   * @param modId
    * @param itemId
    * @return registered {@link LeatheredBootsItem} or {@code null}.
    */
   @Nullable
-  public static LeatheredBootsItem getLeatheredBoots(String modId, String itemId) {
-    return getLeatheredBoots(new ResourceLocation(modId, itemId));
+  public static LeatheredBootsItem getLeatheredBoots(String itemId) {
+    return getLeatheredBoots(new ResourceLocation(ModLoader.MOD_ID, itemId));
   }
 
   /**
@@ -195,13 +188,12 @@ public final class LeatheredBoots {
   /**
    * Returns the {@link ItemStack} of the {@link LeatheredBootsItem} registered with the given {@code modId} and {@code itemId}.
    * 
-   * @param modId
    * @param itemId
    * @return {@link ItemStack} or {@code null}.
    */
   @Nullable
-  public static ItemStack getLeatheredBootsStack(String modId, String itemId) {
-    return getLeatheredBootsStack(new ResourceLocation(modId, itemId));
+  public static ItemStack getLeatheredBootsStack(String itemId) {
+    return getLeatheredBootsStack(new ResourceLocation(ModLoader.MOD_ID, itemId));
   }
 
   /**

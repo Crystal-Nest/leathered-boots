@@ -40,12 +40,11 @@ public final class LeatheredBoots {
   /**
    * Registers a new {@link LeatheredBootsItem} made of the given {@link ArmorMaterial}.
    * 
-   * @param modId
    * @param isFireResistant
    * @param armorMaterial
    * @return the {@link Identifier} of the newly registered {@link LeatheredBootsItem} or {@code null}.
    */
-  public static synchronized Identifier registerLeatheredBoots(String modId, boolean isFireResistant, ArmorMaterial armorMaterial) {
+  public static synchronized Identifier registerLeatheredBoots(boolean isFireResistant, ArmorMaterial armorMaterial) {
     LeatheredBootsItem value = new LeatheredBootsItem(armorMaterial instanceof LeatheredArmorMaterial leatheredArmorMaterial ? leatheredArmorMaterial : new LeatheredArmorMaterial(armorMaterial), isFireResistant);
     Identifier key = getKeyFor(armorMaterial);
     if (!leatheredBoots.containsKey(key)) {
@@ -61,26 +60,24 @@ public final class LeatheredBoots {
   /**
    * Registers a new {@link LeatheredBootsItem} made of the given {@link ArmorMaterial}.
    * 
-   * @param modId
    * @param armorMaterial
    * @return the {@link Identifier} of the newly registered {@link LeatheredBootsItem} or {@code null}.
    */
-  public static synchronized Identifier registerLeatheredBoots(String modId, ArmorMaterial armorMaterial) {
-    return registerLeatheredBoots(modId, false, armorMaterial);
+  public static synchronized Identifier registerLeatheredBoots(ArmorMaterial armorMaterial) {
+    return registerLeatheredBoots(false, armorMaterial);
   }
 
   /**
    * Registers new {@link LeatheredBootsItem}s made of the given {@link ArmorMaterial}s.
    * 
-   * @param modId
    * @param isFireResistant
    * @param armorMaterials
    * @return the {@link Identifier}s of the newly registered {@link LeatheredBootsItem}s. An {@link Identifier} can be {@code null} if the registration was unsuccessful.
    */
-  public static synchronized List<Identifier> registerLeatheredBoots(String modId, boolean isFireResistant, List<ArmorMaterial> armorMaterials) {
+  public static synchronized List<Identifier> registerLeatheredBoots(boolean isFireResistant, List<ArmorMaterial> armorMaterials) {
     List<Identifier> identifiers = new ArrayList<>();
     for (ArmorMaterial armorMaterial : armorMaterials) {
-      identifiers.add(registerLeatheredBoots(modId, isFireResistant, armorMaterial));
+      identifiers.add(registerLeatheredBoots(isFireResistant, armorMaterial));
     }
     return identifiers;
   }
@@ -88,35 +85,32 @@ public final class LeatheredBoots {
   /**
    * Registers new {@link LeatheredBootsItem}s made of the given {@link ArmorMaterial}s.
    * 
-   * @param modId
    * @param armorMaterials
    * @return the {@link Identifier}s of the newly registered {@link LeatheredBootsItem}s. An {@link Identifier} can be {@code null} if the registration was unsuccessful.
    */
-  public static synchronized List<Identifier> registerLeatheredBoots(String modId, List<ArmorMaterial> armorMaterials) {
-    return registerLeatheredBoots(modId, false, armorMaterials);
+  public static synchronized List<Identifier> registerLeatheredBoots(List<ArmorMaterial> armorMaterials) {
+    return registerLeatheredBoots(false, armorMaterials);
   }
 
   /**
    * Registers new {@link LeatheredBootsItem}s made of the given {@link ArmorMaterial}s.
    * 
-   * @param modId
    * @param isFireResistant
    * @param armorMaterials
    * @return the {@link Identifier}s of the newly registered {@link LeatheredBootsItem}s. An {@link Identifier} can be {@code null} if the registration was unsuccessful.
    */
-  public static synchronized List<Identifier> registerLeatheredBoots(String modId, boolean isFireResistant, ArmorMaterial... armorMaterials) {
-    return registerLeatheredBoots(modId, Arrays.asList(armorMaterials));
+  public static synchronized List<Identifier> registerLeatheredBoots(boolean isFireResistant, ArmorMaterial... armorMaterials) {
+    return registerLeatheredBoots(Arrays.asList(armorMaterials));
   }
 
   /**
    * Registers new {@link LeatheredBootsItem}s made of the given {@link ArmorMaterial}s.
    * 
-   * @param modId
    * @param armorMaterials
    * @return the {@link Identifier}s of the newly registered {@link LeatheredBootsItem}s. An {@link Identifier} can be {@code null} if the registration was unsuccessful.
    */
-  public static synchronized List<Identifier> registerLeatheredBoots(String modId, ArmorMaterial... armorMaterials) {
-    return registerLeatheredBoots(modId, false, armorMaterials);
+  public static synchronized List<Identifier> registerLeatheredBoots(ArmorMaterial... armorMaterials) {
+    return registerLeatheredBoots(false, armorMaterials);
   }
 
   /**
@@ -142,13 +136,12 @@ public final class LeatheredBoots {
   /**
    * Returns the {@link LeatheredBootsItem} registered with the given {@code modId} and {@code itemId}.
    * 
-   * @param modId
    * @param itemId
    * @return registered {@link LeatheredBootsItem} or {@code null}.
    */
   @Nullable
-  public static LeatheredBootsItem getLeatheredBoots(String modId, String itemId) {
-    return getLeatheredBoots(new Identifier(modId, itemId));
+  public static LeatheredBootsItem getLeatheredBoots(String itemId) {
+    return getLeatheredBoots(new Identifier(ModLoader.MOD_ID, itemId));
   }
 
   /**
@@ -189,13 +182,12 @@ public final class LeatheredBoots {
   /**
    * Returns the {@link ItemStack} of the {@link LeatheredBootsItem} registered with the given {@code modId} and {@code itemId}.
    * 
-   * @param modId
    * @param itemId
    * @return {@link ItemStack} or {@code null}.
    */
   @Nullable
-  public static ItemStack getLeatheredBootsStack(String modId, String itemId) {
-    return getLeatheredBootsStack(new Identifier(modId, itemId));
+  public static ItemStack getLeatheredBootsStack(String itemId) {
+    return getLeatheredBootsStack(new Identifier(ModLoader.MOD_ID, itemId));
   }
 
   /**

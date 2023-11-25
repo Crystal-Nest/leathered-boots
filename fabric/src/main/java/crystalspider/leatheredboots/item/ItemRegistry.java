@@ -18,12 +18,11 @@ public class ItemRegistry {
 
   public static final void register() {
     LeatheredBoots.registerLeatheredBoots(
-      ModLoader.MOD_ID,
       LeatheredArmorMaterial.LEATHERED_CHAIN,
       LeatheredArmorMaterial.LEATHERED_IRON,
       LeatheredArmorMaterial.LEATHERED_GOLD,
       LeatheredArmorMaterial.LEATHERED_DIAMOND
     );
-    LeatheredBoots.registerLeatheredBoots(ModLoader.MOD_ID, true, LeatheredArmorMaterial.LEATHERED_NETHERITE);
+    LeatheredBoots.registerLeatheredBoots(true, LeatheredArmorMaterial.LEATHERED_NETHERITE);
   }
 }
