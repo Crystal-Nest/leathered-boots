@@ -8,6 +8,13 @@ and this project adheres to [Forge Semantic Versioning](https://mcforge.readthed
 ## [Unreleased]
 - Nothing new.
 
+## [1.19.3-3.0.0.0-beta] - 2023/11/25
+- Added API.
+- Added smithing recipes for all leathered boots.
+- Fixed some Vanilla advancements to include leathered boots.
+- Changed all item and translation keys.
+- Added Soft Step enchantment.
+
 ## [1.19.3-2.0.0.0] - 2023/01/02
 - Ported to 1.19.3.
 
