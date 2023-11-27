@@ -23,7 +23,7 @@ public final class ModLoader {
   /**
    * Network channel protocol version.
    */
-  public static final String PROTOCOL_VERSION = "1.19.3-3.0";
+  public static final String PROTOCOL_VERSION = "1.19.2-3.0";
   /**
    * {@link SimpleChannel} instance for compatibility client-server.
    */
