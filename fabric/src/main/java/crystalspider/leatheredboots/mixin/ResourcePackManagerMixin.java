@@ -19,7 +19,6 @@ import net.minecraft.util.registry.Registry;
 /**
  * Injects into {@link ResourcePackManager} to alter the datapack providers.
  */
-@Debug(export = true)
 @Mixin(ResourcePackManager.class)
 public abstract class ResourcePackManagerMixin {
   /**
