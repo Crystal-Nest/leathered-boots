@@ -1,0 +1,10 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "leatheredboots.refmap.json",
+  "package": "crystalspider.leatheredboots.mixin",
+  "mixins": [
+    "PowderSnowBlockMixin"
+  ]
+}
