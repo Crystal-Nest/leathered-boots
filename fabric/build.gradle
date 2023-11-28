@@ -9,10 +9,6 @@ archivesBaseName = project.modid
 version = "${minecraft_version}-${mod_version}-${loader.toLowerCase()}"
 group = project.group
 
-loom {
-  accessWidenerPath = file("src/main/resources/${modid}.accessWidener")
-}
-
 repositories {}
 
 dependencies {
