@@ -18,7 +18,7 @@ public final class CreativeModeTabEventHandler {
   /**
    * ID for leathered boots creative mod tab.
    */
-  public static final String LEATHERED_BOOTS_TAB_ID = "leathered_boots_tab";
+  private static final String LEATHERED_BOOTS_TAB_ID = "leathered_boots_tab";
 
   /**
    * Registers the creative mode tab for leathered boots.
