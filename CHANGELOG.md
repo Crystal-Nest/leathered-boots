@@ -2,11 +2,28 @@
 
 All notable changes to the "leathered-boots" Minecraft mod will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Forge Semantic Versioning](https://mcforge.readthedocs.io/en/latest/gettingstarted/versioning/#versioning).  
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Forge Semantic Versioning](https://mcforge.readthedocs.io/en/latest/gettingstarted/versioning/#versioning).  
 
 ## [Unreleased]
 - Nothing new.
+
+## [1.19.3-3.0.0.0] - 2023/11/28
+- Finalized changes from [1.19.3-3.0.0.0-beta].
+- Removed mod id parameters from the API methods.
+- Fixed a minor bug in leathered boots registration.
+- Added override for the `getMaterial()` method in `LeatheredBootsItem`.
+
+## [1.19.2-3.0.0.0] - 2023/11/28
+- Finalized changes from [1.19.3-3.0.0.0-beta].
+- Removed mod id parameters from the API methods.
+- Fixed a minor bug in leathered boots registration.
+- Added override for the `getMaterial()` method in `LeatheredBootsItem`.
+
+## [1.18.2-3.0.0.0] - 2023/11/28
+- Finalized changes from [1.19.3-3.0.0.0-beta].
+- Removed mod id parameters from the API methods.
+- Fixed a minor bug in leathered boots registration.
+- Added override for the `getMaterial()` method in `LeatheredBootsItem`.
 
 ## [1.19.3-3.0.0.0-beta] - 2023/11/25
 - Added API.
@@ -50,13 +67,16 @@ and this project adheres to [Forge Semantic Versioning](https://mcforge.readthed
 
 [Unreleased]: https://github.com/Nyphet/leathered-boots
 
+[1.19.3-3.0.0.0]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.19.3-1.19.3-3.0.0.0
 [1.19.3-3.0.0.0-beta]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.19.3-1.19.3-3.0.0.0-beta
 [1.19.3-2.0.0.0]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.19.3-2.0.0.0
 
+[1.19.2-3.0.0.0]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.19.2-3.0.0.0
 [1.19.2-1.0.0.2]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.19.2-1.0.0.2
 [1.19.2-1.0.0.1]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.19.2-1.0.0.1
 [1.19.2-1.0.0.0]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.19.2-1.0.0.0
 
+[1.18.2-3.0.0.0]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.18.2-3.0.0.0
 [1.18.2-1.0.0.2]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.18.2-1.0.0.2
 [1.18.2-1.0.0.1]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.18.2-1.0.0.1
 [1.18.2-1.0.0.0]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.18.2-1.0.0.0
