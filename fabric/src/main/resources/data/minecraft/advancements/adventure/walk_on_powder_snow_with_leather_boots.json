@@ -10,13 +10,35 @@
             "predicate": {
               "equipment": {
                 "feet": {
-                  "items": [
-                    "minecraft:leather_boots",
-                    "leatheredboots:chainmail_leathered_boots",
-                    "leatheredboots:iron_leathered_boots",
-                    "leatheredboots:golden_leathered_boots",
-                    "leatheredboots:diamond_leathered_boots",
-                    "leatheredboots:netherite_leathered_boots"
+                  "tag": "minecraft:freeze_immune_wearables"
+                }
+              },
+              "stepping_on": {
+                "block": {
+                  "blocks": [
+                    "minecraft:powder_snow"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "walk_on_powder_snow_with_soft_step": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "equipment": {
+                "feet": {
+                  "enchantments": [
+                    {
+                      "enchantment": "leatheredboots:soft_step"
+                    }
                   ]
                 }
               },
@@ -52,7 +74,8 @@
   },
   "requirements": [
     [
-      "walk_on_powder_snow_with_leather_boots"
+      "walk_on_powder_snow_with_leather_boots",
+      "walk_on_powder_snow_with_soft_step"
     ]
   ]
 }

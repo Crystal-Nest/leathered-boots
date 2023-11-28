@@ -4,8 +4,11 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-import crystalspider.leatheredboots.items.LeatheredBootsItem;
+import crystalspider.leatheredboots.enchantment.EnchantmentRegistry;
+import crystalspider.leatheredboots.enchantment.SoftStepEnchantment;
+import crystalspider.leatheredboots.item.LeatheredBootsItem;
 import net.minecraft.block.PowderSnowBlock;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -22,10 +25,10 @@ public abstract class PowderSnowBlockMixin {
    * 
    * @param caller {@link ItemStack} invoking (owning) the redirected method.
    * @param leatherBoots original {@link Item} that Vanilla checks for.
-   * @return condition corrected to take into account {@link LeatheredBootsItem}.
+   * @return condition corrected to take into account {@link LeatheredBootsItem} and {@link SoftStepEnchantment}.
    */
   @Redirect(method = "canWalkOnPowderSnow", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z"))
   private static boolean redirectIsOf(ItemStack caller, Item leatherBoots) {
-    return caller.isOf(leatherBoots) || caller.getItem() instanceof LeatheredBootsItem;
+    return caller.isOf(leatherBoots) || caller.getItem() instanceof LeatheredBootsItem || EnchantmentHelper.getLevel(EnchantmentRegistry.SOFT_STEP, caller) > 0;
   }
 }

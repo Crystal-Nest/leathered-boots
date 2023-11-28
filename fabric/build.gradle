@@ -1,24 +1,19 @@
 plugins {
-  id 'fabric-loom' version '0.12-SNAPSHOT'
-  id 'com.matthewprenger.cursegradle' version "${cursegradle_version}"
-  id "com.github.breadmoirai.github-release" version "${github_release_version}"
+  id "fabric-loom" version "1.4-SNAPSHOT"
+  id "com.modrinth.minotaur" version "2.+"
+  id "com.matthewprenger.cursegradle" version "1.4.0"
+  id "com.github.breadmoirai.github-release" version "2.4.1"
 }
-
-sourceCompatibility = JavaVersion.VERSION_17
-targetCompatibility = JavaVersion.VERSION_17
 
 archivesBaseName = project.modid
 version = "${minecraft_version}-${mod_version}-${loader.toLowerCase()}"
 group = project.group
 
-repositories {
-  maven {
-    url "https://cursemaven.com"
-    content {
-      includeGroup "curse.maven"
-    }
-  }
+loom {
+  accessWidenerPath = file("src/main/resources/${modid}.accessWidener")
 }
+
+repositories {}
 
 dependencies {
   minecraft "com.mojang:minecraft:${minecraft_version}"
@@ -27,12 +22,9 @@ dependencies {
 
   // Fabric API. This is technically optional, but you probably want it anyway.
   modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
-
-  // Revamped End dependency
-  // modImplementation "curse.maven:revampedend-xxxxxx:yyyyyyy"
 }
 
-def resourceTarget = 'fabric.mod.json'
+def resourceTarget = "fabric.mod.json"
 def intoTargets = ["$rootDir/bin/main/"]
 def replaceProperties = [
   modid: modid,
@@ -48,7 +40,7 @@ def replaceProperties = [
 
 processResources {
   inputs.properties replaceProperties
-  replaceProperties.put 'project', project
+  replaceProperties.put "project", project
 
   filesMatching(resourceTarget) {
     expand replaceProperties
@@ -65,6 +57,12 @@ processResources {
       }
     }
   }
+}
+
+java {
+	withSourcesJar()
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
 }
 
 jar {
@@ -84,11 +82,11 @@ jar {
 }
 
 tasks.withType(JavaCompile).configureEach {
-  it.options.encoding = 'UTF-8'
+  it.options.encoding = "UTF-8"
   it.options.release = 17
 }
 
-def body_changelog = "See [Changelog](https://github.com/${github_user}/${modid_kebab}/blob/master/CHANGELOG.md#${minecraft_version.replaceAll('\\.', '')}-${mod_version.replaceAll('\\.', '')}---${new Date().format("yyyyMMdd")})."
+def changelog_body = "See [Changelog](https://github.com/${github_user}/${modid_kebab}/blob/master/CHANGELOG.md#${minecraft_version.replaceAll('\\.', '')}-${mod_version.replaceAll('\\.', '')}---${new Date().format("yyyyMMdd")})."
 
 file("../api-keys.properties").withReader { 
   Properties props = new Properties()
@@ -97,20 +95,18 @@ file("../api-keys.properties").withReader {
 }
 
 curseforge {
-  apiKey = "${api_keys.curseforge}"
+  apiKey = api_keys.curseforge
   project {
-    id = "${curseforge_id}"
-    changelogType = 'markdown'
-    changelog = body_changelog
-    releaseType = 'release'
-    addGameVersion "${loader}"
-    addGameVersion "${minecraft_version}"
+    id = curseforge_id
+    changelogType = "markdown"
+    changelog = changelog_body
+    releaseType = "release"
+    addGameVersion loader
+    addGameVersion minecraft_version
     mainArtifact(remapJar) {
       displayName = "[${loader} - ${minecraft_version}] ${mod_title} v${mod_version}"
       relations {
-        requiredDependency 'fabric-api'
-        // optionalDependency 'revamped-end'
-        // optionalDependency 'gilded-armors'
+        requiredDependency "fabric-api"
       }
     }
   }
@@ -120,15 +116,30 @@ curseforge {
   }
 }
 
+modrinth {
+  token = api_keys.modrinth
+  projectId = modid_kebab
+  versionNumber = mod_version
+  versionName = "[${loader} - ${minecraft_version}] ${mod_title} v${mod_version}"
+  changelog = changelog_body
+  uploadFile = remapJar
+  versionType = "release"
+  gameVersions = [minecraft_version]
+  loaders = [loader.toLowerCase()]
+  dependencies {
+    required.project "fabric-api"
+  }
+}
+
 githubRelease {
-  token "${api_keys.github}"
-  owner "${github_user}"
-  repo "${modid_kebab}"
+  token api_keys.github
+  owner github_user
+  repo modid_kebab
   tagName "v${minecraft_version}-${mod_version}"
-  targetCommitish "${minecraft_version}"
+  targetCommitish minecraft_version
   releaseName "v${minecraft_version}-${mod_version}"
   generateReleaseNotes false
-  body body_changelog
+  body changelog_body
   draft true
   prerelease false
   releaseAssets remapJar
