@@ -70,7 +70,7 @@ public class DynamicDatapack implements PackResources {
     this.name = name;
     this.namespace = name.getNamespace();
     this.namespaces.add(name.getNamespace());
-    this.metadata = Suppliers.memoize(()-> new PackMetadataSection(Component.translatable(namespace + "_dynamic_" + name.getPath()), SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA.bridgeType)));
+    this.metadata = Suppliers.memoize(()-> new PackMetadataSection(Component.translatable(namespace + "_dynamic_" + name.getPath()), SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA)));
     this.build(builder);
   }
 

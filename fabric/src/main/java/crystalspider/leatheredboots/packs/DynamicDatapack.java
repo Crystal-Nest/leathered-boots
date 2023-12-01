@@ -18,7 +18,6 @@ import com.google.common.base.Suppliers;
 import com.google.gson.JsonElement;
 import com.google.gson.internal.Streams;
 import com.google.gson.stream.JsonWriter;
-import com.mojang.bridge.game.PackType;
 
 import net.minecraft.SharedConstants;
 import net.minecraft.resource.InputSupplier;
@@ -73,7 +72,7 @@ public class DynamicDatapack implements ResourcePack {
     this.name = name;
     this.namespace = name.getNamespace();
     this.namespaces.add(name.getNamespace());
-    this.metadata = Suppliers.memoize(()-> new PackResourceMetadata(Text.translatable(namespace + "_dynamic_" + name.getPath()), SharedConstants.getGameVersion().getPackVersion(PackType.DATA)));
+    this.metadata = Suppliers.memoize(()-> new PackResourceMetadata(Text.translatable(namespace + "_dynamic_" + name.getPath()), SharedConstants.getGameVersion().getResourceVersion(ResourceType.SERVER_DATA)));
     this.build(builder);
   }
 

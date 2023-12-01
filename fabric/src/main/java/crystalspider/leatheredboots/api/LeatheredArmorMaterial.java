@@ -1,6 +1,6 @@
 package crystalspider.leatheredboots.api;
 
-import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.item.ArmorItem.Type;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ArmorMaterials;
 import net.minecraft.recipe.Ingredient;
@@ -17,58 +17,36 @@ public class LeatheredArmorMaterial implements ArmorMaterial {
   public static final LeatheredArmorMaterial LEATHERED_NETHERITE = new LeatheredArmorMaterial(ArmorMaterials.NETHERITE);
 
   private final String name;
-  private final int[] durabilities;
-  private final int[] protectionAmounts;
-  private final int enchantability;
-  private final SoundEvent equipSound;
-  private final float toughness;
-  private final float knockbackResistance;
-  private final Ingredient repairIngredient;
+  private final ArmorMaterial armorMaterial;
 
   public LeatheredArmorMaterial(ArmorMaterial armorMaterial) {
     this.name = "leathered_" + armorMaterial.getName();
-    this.durabilities = new int[]{
-      armorMaterial.getDurability(EquipmentSlot.FEET),
-      armorMaterial.getDurability(EquipmentSlot.LEGS),
-      armorMaterial.getDurability(EquipmentSlot.CHEST),
-      armorMaterial.getDurability(EquipmentSlot.HEAD),
-    };
-    this.protectionAmounts = new int[]{
-      armorMaterial.getProtectionAmount(EquipmentSlot.FEET),
-      armorMaterial.getProtectionAmount(EquipmentSlot.LEGS),
-      armorMaterial.getProtectionAmount(EquipmentSlot.CHEST),
-      armorMaterial.getProtectionAmount(EquipmentSlot.HEAD)
-    };
-    this.enchantability = armorMaterial.getEnchantability();
-    this.equipSound = armorMaterial.getEquipSound();
-    this.toughness = armorMaterial.getToughness();
-    this.knockbackResistance = armorMaterial.getKnockbackResistance();
-    this.repairIngredient = armorMaterial.getRepairIngredient();
+    this.armorMaterial = armorMaterial;
   }
 
   @Override
-  public int getDurability(EquipmentSlot equipmentSlot) {
-    return this.durabilities[equipmentSlot.getEntitySlotId()];
+  public int getDurability(Type type) {
+    return this.armorMaterial.getDurability(type);
   }
 
   @Override
-  public int getProtectionAmount(EquipmentSlot equipmentSlot) {
-    return this.protectionAmounts[equipmentSlot.getEntitySlotId()];
+  public int getProtection(Type type) {
+    return this.armorMaterial.getProtection(type);
   }
 
   @Override
   public int getEnchantability() {
-    return this.enchantability;
+    return this.armorMaterial.getEnchantability();
   }
 
   @Override
   public SoundEvent getEquipSound() {
-    return this.equipSound;
+    return this.armorMaterial.getEquipSound();
   }
 
   @Override
   public Ingredient getRepairIngredient() {
-    return this.repairIngredient;
+    return this.armorMaterial.getRepairIngredient();
   }
 
   @Override
@@ -78,11 +56,11 @@ public class LeatheredArmorMaterial implements ArmorMaterial {
 
   @Override
   public float getToughness() {
-    return this.toughness;
+    return this.armorMaterial.getToughness();
   }
 
   @Override
   public float getKnockbackResistance() {
-    return this.knockbackResistance;
+    return this.armorMaterial.getKnockbackResistance();
   }
 }

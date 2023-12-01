@@ -32,7 +32,7 @@ public final class CreativeModeTabEventHandler {
       builder -> builder
         .icon(() -> LeatheredBoots.getLeatheredBootsStack(LeatheredArmorMaterial.LEATHERED_NETHERITE))
         .title(Component.translatable("itemGroup." + ModLoader.MOD_ID + "." + LEATHERED_BOOTS_TAB_ID))
-        .displayItems((features, output, hasPermissions) -> LeatheredBoots.getLeatheredBootsStack().forEach(stack -> output.accept(stack)))
+        .displayItems((features, output) -> LeatheredBoots.getLeatheredBootsStack().forEach(stack -> output.accept(stack)))
     );
   }
 }

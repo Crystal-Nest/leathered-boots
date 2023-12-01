@@ -1,7 +1,6 @@
 package crystalspider.leatheredboots.item;
 
 import crystalspider.leatheredboots.api.LeatheredArmorMaterial;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.DyeableArmorItem;
 
 /**
@@ -9,7 +8,7 @@ import net.minecraft.item.DyeableArmorItem;
  */
 public class LeatheredBootsItem extends DyeableArmorItem {
   public LeatheredBootsItem(LeatheredArmorMaterial armorMaterial, boolean isFireproof) {
-    super(armorMaterial, EquipmentSlot.FEET, isFireproof ? new Settings().fireproof() : new Settings());
+    super(armorMaterial, Type.BOOTS, isFireproof ? new Settings().fireproof() : new Settings());
   }
 
   public LeatheredBootsItem(LeatheredArmorMaterial armorMaterial) {
