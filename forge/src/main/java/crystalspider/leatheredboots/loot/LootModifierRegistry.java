@@ -10,9 +10,12 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+/**
+ * Registry handler for loot modifiers.
+ */
 public class LootModifierRegistry {
   /**
-   * {@link Codec<? extends IGlobalLootModifier>} {@link DeferredRegister deferred register}.
+   * {@link Codec<? extends IGlobalLootModifier>} {@link DeferredRegister}.
    */
   private static final DeferredRegister<Codec<? extends IGlobalLootModifier>> LOOT_MODIFIERS = DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, ModLoader.MOD_ID);
 

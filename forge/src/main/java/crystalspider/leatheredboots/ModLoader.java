@@ -23,7 +23,7 @@ public final class ModLoader {
   /**
    * Network channel protocol version.
    */
-  public static final String PROTOCOL_VERSION = "1.19.4-3.0";
+  public static final String PROTOCOL_VERSION = "1.20.1-3.0";
   /**
    * {@link SimpleChannel} instance for compatibility client-server.
    */
@@ -31,7 +31,7 @@ public final class ModLoader {
 
   public ModLoader() {
     IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-    ItemRegistry.register();
+    ItemRegistry.register(bus);
     EnchantmentRegistry.register(bus);
     LootModifierRegistry.register(bus);
   }
