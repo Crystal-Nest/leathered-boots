@@ -1,15 +1,15 @@
 package crystalspider.leatheredboots.handler;
 
-import crystalspider.leatheredboots.item.ItemRegistry;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 
 /**
- * Mod {@link Enchantment} register.
+ * Mod handlers register.
  */
 public class HandlerRegistry {
+  /**
+   * Registers all mod handlers.
+   */
   public static final void register() {
     LootTableEvents.MODIFY.register(LootTableEventsHandler::handle);
-    ItemGroupEvents.modifyEntriesEvent(ItemRegistry.LEATHERED_BOOTS_GROUP).register(ItemGroupEventHandler::handle);
   }
 }

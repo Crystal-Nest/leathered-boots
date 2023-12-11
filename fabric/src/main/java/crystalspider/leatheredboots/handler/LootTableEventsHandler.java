@@ -2,9 +2,11 @@ package crystalspider.leatheredboots.handler;
 
 import crystalspider.leatheredboots.api.LeatheredArmorMaterial;
 import crystalspider.leatheredboots.api.LeatheredBoots;
+import crystalspider.leatheredboots.item.ItemRegistry;
 import crystalspider.leatheredboots.item.LeatheredBootsItem;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.fabricmc.fabric.api.loot.v2.LootTableSource;
+import net.minecraft.item.Item;
 import net.minecraft.loot.LootManager;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootPool.Builder;
@@ -43,6 +45,7 @@ public class LootTableEventsHandler {
       builder.pool(buildPool(0.2F, LeatheredArmorMaterial.LEATHERED_GOLD));
       builder.pool(buildPool(0.1F, LeatheredArmorMaterial.LEATHERED_IRON));
       builder.pool(buildPool(0.05F, LeatheredArmorMaterial.LEATHERED_DIAMOND));
+      builder.pool(buildPool(0.5F, ItemRegistry.LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM));
     } else if (identifier.equals(VILLAGE_SNOWY_HOUSE_IDENTIFIER)) {
       builder.pool(buildPool(0.2F, LeatheredArmorMaterial.LEATHERED_CHAIN));
       builder.pool(buildPool(0.1F, LeatheredArmorMaterial.LEATHERED_IRON));
@@ -58,10 +61,21 @@ public class LootTableEventsHandler {
    * @return loot pool.
    */
   private static Builder buildPool(float chance, LeatheredArmorMaterial armorMaterial) {
+    return buildPool(chance, LeatheredBoots.getLeatheredBoots(armorMaterial));
+  }
+
+  /**
+   * Builds a loot pool with the given random {@code chance} to find the given {@link Item}.
+   * 
+   * @param chance
+   * @param item
+   * @return loot pool.
+   */
+  private static Builder buildPool(float chance, Item item) {
     return LootPool.builder()
       .rolls(ConstantLootNumberProvider.create(1))
       .conditionally(RandomChanceLootCondition.builder(chance))
-      .with(ItemEntry.builder(LeatheredBoots.getLeatheredBoots(armorMaterial)))
+      .with(ItemEntry.builder(item))
       .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1)));
   }
 }

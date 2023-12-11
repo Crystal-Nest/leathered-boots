@@ -48,7 +48,7 @@
       }
     },
     {
-      "model": "leatheredboots:item/trim/gold/leathered_gold_boots_trim",
+      "model": "leatheredboots:item/trim/diamond/leathered_gold_boots_trim",
       "predicate": {
         "trim_type": 0.8
       }

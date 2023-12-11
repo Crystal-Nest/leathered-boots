@@ -6,5 +6,11 @@
   "item.leatheredboots.leathered_diamond_boots": "Diamond Leathered Boots",
   "item.leatheredboots.leathered_netherite_boots": "Netherite Leathered Boots",
   "enchantment.leatheredboots.soft_step": "Soft Step",
-  "enchantment.leatheredboots.soft_step.desc": "Allows to walk on powder snow."
+  "enchantment.leatheredboots.soft_step.desc": "Allows to walk on powder snow.",
+  "item.leatheredboots.leather_upgrade_smithing_template": "Smithing Template",
+  "item.leatheredboots.smithing_template.leather_upgrade.applies_to": "Boots",
+  "item.leatheredboots.smithing_template.leather_upgrade.ingredients": "Leather",
+  "item.leatheredboots.smithing_template.leather_upgrade.base_slot_description": "Add boots",
+  "item.leatheredboots.smithing_template.leather_upgrade.additions_slot_description": "Add Leather",
+  "upgrade.leatheredboots.leather_upgrade": "Leather Upgrade"
 }
