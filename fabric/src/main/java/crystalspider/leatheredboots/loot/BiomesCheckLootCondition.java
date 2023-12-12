@@ -42,6 +42,16 @@ public class BiomesCheckLootCondition implements LootCondition {
     return () -> new BiomesCheckLootCondition(new BiomesPredicate(biomes));
   }
 
+  /**
+   * {@link BiomesCheckLootCondition} builder.
+   * 
+   * @param biome
+   * @return a {@link LootCondition} builder for {@link BiomesCheckLootCondition}.
+   */
+  public static LootCondition.Builder builder(RegistryKey<Biome> biome) {
+    return () -> new BiomesCheckLootCondition(new BiomesPredicate(List.of(biome)));
+  }
+
   @Override
   public boolean test(LootContext context) {
     Vec3d origin = context.get(LootContextParameters.ORIGIN);

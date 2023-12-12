@@ -58,7 +58,7 @@ public class LootTableEventsHandler {
   private static final Identifier TRAIL_RUINS_RARE_IDENTIFIER = new Identifier("minecraft", "archaeology/trail_ruins_rare");
 
   /**
-   * Handles modifing Vanilla loot table to include leathered boots.
+   * Handles modifing Vanilla loot tables to include mod items.
    * 
    * @param resourceManager
    * @param lootManager
@@ -66,7 +66,7 @@ public class LootTableEventsHandler {
    * @param builder
    * @param lootTableSource
    */
-  public static void handle(ResourceManager resourceManager, LootManager lootManager, Identifier identifier, LootTable.Builder builder, LootTableSource lootTableSource) {
+  public static void handle(ResourceManager resourceManager, LootManager lootManager, Identifier identifier, LootTable.Builder builder, LootTableSource source) {
     if (identifier.equals(VILLAGE_SNOWY_HOUSE_IDENTIFIER)) {
       builder.pool(buildPool(0.2f, LeatheredArmorMaterial.LEATHERED_CHAIN));
       builder.pool(buildPool(0.1f, LeatheredArmorMaterial.LEATHERED_IRON));
@@ -80,9 +80,24 @@ public class LootTableEventsHandler {
       builder.pool(buildBiomeConditionalPool(0.2f, BiomeKeys.SNOWY_BEACH));
     } else if (identifier.equals(PILLAGER_OUTPOST_IDENTIFIER)) {
       builder.pool(buildBiomeConditionalPool(0.334f, List.of(BiomeKeys.GROVE, BiomeKeys.SNOWY_SLOPES, BiomeKeys.JAGGED_PEAKS, BiomeKeys.FROZEN_PEAKS, BiomeKeys.SNOWY_TAIGA, BiomeKeys.SNOWY_PLAINS)));
-    } else if (identifier.equals(TRAIL_RUINS_RARE_IDENTIFIER)) {
-      builder.pool(buildBiomeConditionalPool(0.1f, BiomeKeys.SNOWY_TAIGA));
     }
+  }
+
+  /**
+   * Handles replacing Vanilla loot tables to include mod items.
+   * 
+   * @param resourceManager
+   * @param lootManager
+   * @param identifier
+   * @param original
+   * @param source
+   * @return replaced {@link LootTable} or {@code null}.
+   */
+  public static LootTable handle(ResourceManager resourceManager, LootManager lootManager, Identifier identifier, LootTable original, LootTableSource source) {
+    if (identifier.equals(TRAIL_RUINS_RARE_IDENTIFIER)) {
+      return LootTable.builder().pool(LootPool.builder().with(List.of(original.pools[0].entries)).with(ItemEntry.builder(ItemRegistry.LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM).conditionally(BiomesCheckLootCondition.builder(BiomeKeys.SNOWY_TAIGA)).build())).build();
+    }
+    return null;
   }
 
   /**

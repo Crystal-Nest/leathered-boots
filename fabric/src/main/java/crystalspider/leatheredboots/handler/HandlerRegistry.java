@@ -11,5 +11,6 @@ public class HandlerRegistry {
    */
   public static final void register() {
     LootTableEvents.MODIFY.register(LootTableEventsHandler::handle);
+    LootTableEvents.REPLACE.register(LootTableEventsHandler::handle);
   }
 }
