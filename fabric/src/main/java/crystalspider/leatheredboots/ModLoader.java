@@ -6,6 +6,7 @@ import crystalspider.leatheredboots.api.RegisterProvider;
 import crystalspider.leatheredboots.enchantment.EnchantmentRegistry;
 import crystalspider.leatheredboots.handler.HandlerRegistry;
 import crystalspider.leatheredboots.item.ItemRegistry;
+import crystalspider.leatheredboots.loot.LootRegistry;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.minecraft.item.ItemStack;
@@ -30,6 +31,7 @@ public class ModLoader implements ModInitializer {
   @Override
 	public void onInitialize() {
     ItemRegistry.register();
+    LootRegistry.register();
     EnchantmentRegistry.register();
     HandlerRegistry.register();
     registerTrades();

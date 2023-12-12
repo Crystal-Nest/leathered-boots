@@ -7,10 +7,17 @@ import net.minecraft.item.DyeableArmorItem;
  * Leathered Boots Item.
  */
 public class LeatheredBootsItem extends DyeableArmorItem {
+  /**
+   * @param armorMaterial
+   * @param isFireproof
+   */
   public LeatheredBootsItem(LeatheredArmorMaterial armorMaterial, boolean isFireproof) {
     super(armorMaterial, Type.BOOTS, isFireproof ? new Settings().fireproof() : new Settings());
   }
 
+  /**
+   * @param armorMaterial
+   */
   public LeatheredBootsItem(LeatheredArmorMaterial armorMaterial) {
     this(armorMaterial, false);
   }

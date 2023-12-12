@@ -30,9 +30,9 @@ public class ItemRegistry {
   private static final Register<ItemGroup> REGISTER_TABS = ModLoader.REGISTER_PROVIDER.of(Registries.ITEM_GROUP);
 
   /**
-   * {@link LeatherUpgradeSmithingTemplateItem} {@link Item}.
+   * {@link LeatherUpgradeSmithingTemplateItem}.
    */
-  public static final Item LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM = REGISTER_ITEMS.apply("leather_upgrade_smithing_template", new LeatherUpgradeSmithingTemplateItem());
+  public static final LeatherUpgradeSmithingTemplateItem LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM = new LeatherUpgradeSmithingTemplateItem();
 
   /**
    * {@link ItemGroup} for {@link LeatheredBootsItem Leathered Boots Items}.
@@ -53,6 +53,7 @@ public class ItemRegistry {
    * Registers all mod items.
    */
   public static final void register() {
+    REGISTER_ITEMS.apply("leather_upgrade_smithing_template", LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM);
     LeatheredBoots.registerLeatheredBoots(
       LeatheredArmorMaterial.LEATHERED_CHAIN,
       LeatheredArmorMaterial.LEATHERED_IRON,
