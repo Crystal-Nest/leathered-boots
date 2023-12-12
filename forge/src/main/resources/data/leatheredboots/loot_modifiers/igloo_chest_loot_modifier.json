@@ -24,7 +24,7 @@
     },
     {
       "item": "leatheredboots:leather_upgrade_smithing_template",
-      "chance": 0.50,
+      "chance": 0.5,
       "quantity": 1
     }
   ]

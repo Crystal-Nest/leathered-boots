@@ -2,7 +2,7 @@ package crystalspider.leatheredboots;
 
 import crystalspider.leatheredboots.enchantment.EnchantmentRegistry;
 import crystalspider.leatheredboots.item.ItemRegistry;
-import crystalspider.leatheredboots.loot.LootModifierRegistry;
+import crystalspider.leatheredboots.loot.LootRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -33,6 +33,6 @@ public final class ModLoader {
     IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
     ItemRegistry.register(bus);
     EnchantmentRegistry.register(bus);
-    LootModifierRegistry.register(bus);
+    LootRegistry.register(bus);
   }
 }

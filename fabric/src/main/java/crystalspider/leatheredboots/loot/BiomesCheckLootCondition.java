@@ -60,7 +60,7 @@ public class BiomesCheckLootCondition implements LootCondition {
 
   @Override
   public LootConditionType getType() {
-    return LootRegistry.LOCATION_CHECK;
+    return LootRegistry.BIOMES_CHECK;
   }
   
   /**

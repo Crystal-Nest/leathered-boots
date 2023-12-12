@@ -25,24 +25,33 @@ import net.minecraftforge.registries.ForgeRegistries;
 /**
  * Chests loot modifier.
  */
-public class ChestLootModifier extends LootModifier {
+public class ArchaeologyLootModifier extends LootModifier {
   /**
    * {@link Supplier} for this {@link LootModifier} {@link Codec}.
    */
-  public static final Supplier<Codec<ChestLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(instance -> codecStart(instance).and(Addition.CODEC.listOf().fieldOf("additions").forGetter(modifier -> modifier.additions)).apply(instance, ChestLootModifier::new)));
+  public static final Supplier<Codec<ArchaeologyLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(instance -> codecStart(instance)
+    .and(Addition.CODEC.listOf().fieldOf("additions").forGetter(modifier -> modifier.additions))
+    .and(Codec.FLOAT.fieldOf("chance_to_replace").forGetter(modifier -> modifier.chanceToReplace))
+  .apply(instance, ArchaeologyLootModifier::new)));
 
   /**
    * Additional items to add to the chest loot.
    */
   private final List<Addition> additions;
+  /**
+   * Chance to replace the current archaeology loot.
+   */
+  private final Float chanceToReplace;
 
   /**
    * @param conditionsIn {@link LootModifier#conditions}.
    * @param additions {@link #additions}.
+   * @param chanceToReplace {@link #chanceToReplace}.
    */
-  public ChestLootModifier(LootItemCondition[] conditionsIn, List<Addition> additions) {
+  public ArchaeologyLootModifier(LootItemCondition[] conditionsIn, List<Addition> additions, Float chanceToReplace) {
     super(conditionsIn);
     this.additions = additions;
+    this.chanceToReplace = chanceToReplace;
   }
 
   @Nonnull
@@ -51,10 +60,10 @@ public class ChestLootModifier extends LootModifier {
     if (generatedLoot == null) {
       generatedLoot = new ObjectArrayList<>();
     }
-    for (Addition addition : additions) {
-      if (BiomesCheck.builder(addition.biomes).build().test(context) && context.getRandom().nextFloat() <= addition.chance) {
-        generatedLoot.add(new ItemStack(addition.item, addition.quantity));
-      }
+    List<Item> items = additions.stream().filter(addition -> BiomesCheck.builder(addition.biomes).build().test(context)).map(addition -> addition.item).toList();
+    if (!items.isEmpty() && context.getRandom().nextFloat() <= chanceToReplace) {
+      generatedLoot.clear();
+      generatedLoot.add(new ItemStack(items.get(context.getRandom().nextInt(0, items.size()))));
     }
     return generatedLoot;
   }
@@ -73,8 +82,6 @@ public class ChestLootModifier extends LootModifier {
      */
     public static final Codec<Addition> CODEC = RecordCodecBuilder.create(instance -> instance.group(
       ForgeRegistries.ITEMS.getCodec().fieldOf("item").forGetter(addition -> addition.item),
-      Codec.FLOAT.fieldOf("chance").forGetter(addition -> addition.chance),
-      Codec.INT.fieldOf("quantity").forGetter(addition -> addition.quantity),
       ResourceKey.codec(Registries.BIOME).listOf().optionalFieldOf("biomes").forGetter(addition -> Optional.of(addition.biomes))
     ).apply(instance, Addition::new));
 
@@ -82,14 +89,6 @@ public class ChestLootModifier extends LootModifier {
      * {@link Item} to add to the loot.
      */
     private final Item item;
-    /**
-     * Chance for this {@link #item} to add to the loot.
-     */
-    private final Float chance;
-    /**
-     * Amount of this {@link #item} to add to the loot.
-     */
-    private final Integer quantity;
     /**
      * Allowed biomes for the {@link #item} to add to the loot.
      * <p>
@@ -99,14 +98,10 @@ public class ChestLootModifier extends LootModifier {
 
     /**
      * @param item {@link #item}.
-     * @param chance {@link #chance}.
-     * @param quantity {@link #quantity}.
      * @param biomes {@link #biomes}.
      */
-    private Addition(Item item, Float chance, Integer quantity, Optional<List<ResourceKey<Biome>>> biomes) {
+    private Addition(Item item, Optional<List<ResourceKey<Biome>>> biomes) {
       this.item = item;
-      this.chance = chance;
-      this.quantity = quantity;
       this.biomes = biomes.orElse(List.of());
     }
   }

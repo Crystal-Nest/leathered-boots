@@ -17,12 +17,12 @@ public class LootRegistry {
   /**
    * {@link LootConditionType} for {@link BiomesCheckLootCondition}.
    */
-  public static final LootConditionType LOCATION_CHECK = new LootConditionType(new BiomesCheckLootCondition.Serializer());
+  public static final LootConditionType BIOMES_CHECK = new LootConditionType(new BiomesCheckLootCondition.Serializer());
 
   /**
    * Registers all mod loot related stuff.
    */
   public static final void register() {
-    REGISTER.apply("biomes_check", LOCATION_CHECK);
+    REGISTER.apply("biomes_check", BIOMES_CHECK);
   }
 }

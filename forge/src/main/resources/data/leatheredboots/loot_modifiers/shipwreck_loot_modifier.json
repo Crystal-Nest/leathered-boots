@@ -1,0 +1,32 @@
+{
+  "type": "leatheredboots:chest_loot_modifier",
+  "conditions": [
+    {
+      "condition": "any_of",
+      "terms": [
+        {
+          "condition": "forge:loot_table_id",
+          "loot_table_id": "minecraft:chests/shipwreck_map"
+        },
+        {
+          "condition": "forge:loot_table_id",
+          "loot_table_id": "minecraft:chests/shipwreck_treasure"
+        },
+        {
+          "condition": "forge:loot_table_id",
+          "loot_table_id": "minecraft:chests/shipwreck_supply"
+        }
+      ]
+    }
+  ],
+  "additions": [
+    {
+      "item": "leatheredboots:leather_upgrade_smithing_template",
+      "chance": 0.2,
+      "quantity": 1,
+      "biomes": [
+        "snowy_beach"
+      ]
+    }
+  ]
+}

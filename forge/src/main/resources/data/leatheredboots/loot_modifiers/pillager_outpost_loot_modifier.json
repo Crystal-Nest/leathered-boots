@@ -1,0 +1,24 @@
+{
+  "type": "leatheredboots:chest_loot_modifier",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/pillager_outpost"
+    }
+  ],
+  "additions": [
+    {
+      "item": "leatheredboots:leather_upgrade_smithing_template",
+      "chance": 0.334,
+      "quantity": 1,
+      "biomes": [
+        "grove",
+        "snowy_slopes",
+        "jagged_peaks",
+        "frozen_peaks",
+        "snowy_taiga",
+        "snowy_plains"
+      ]
+    }
+  ]
+}

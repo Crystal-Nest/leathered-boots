@@ -10,18 +10,18 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.JsonHelper;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.biome.Biome;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.GsonHelper;
+import net.minecraft.world.level.biome.Biome;
 
 /**
  * {@link BiPredicate} to check whether a {@link BlockPos} is in the provided list of biomes.
  */
-public class BiomesPredicate implements BiPredicate<ServerWorld, BlockPos> {
+public class BiomesPredicate implements BiPredicate<ServerLevel, BlockPos> {
   /**
    * Neutral {@link BiomesPredicate}.
    */
@@ -30,18 +30,18 @@ public class BiomesPredicate implements BiPredicate<ServerWorld, BlockPos> {
   /**
    * List of biomes to check against.
    */
-  private final List<RegistryKey<Biome>> biomes;
+  private final List<ResourceKey<Biome>> biomes;
 
   /**
    * @param biomes {@link #biomes}.
    */
-  public BiomesPredicate(List<RegistryKey<Biome>> biomes) {
+  public BiomesPredicate(List<ResourceKey<Biome>> biomes) {
     this.biomes = biomes;
   }
 
   @Override
-  public boolean test(ServerWorld world, BlockPos pos) {
-    return this.biomes.size() == 0 || world.canSetBlock(pos) && this.biomes.stream().anyMatch(biome -> world.getBiome(pos).matchesKey(biome));
+  public boolean test(ServerLevel world, BlockPos pos) {
+    return this.biomes.size() == 0 || world.isLoaded(pos) && this.biomes.stream().anyMatch(biome -> world.getBiome(pos).is(biome));
   }
 
   /**
@@ -53,8 +53,8 @@ public class BiomesPredicate implements BiPredicate<ServerWorld, BlockPos> {
     if (this != ANY) {
       JsonObject json = new JsonObject();
       JsonArray biomes = new JsonArray();
-      for (RegistryKey<Biome> biome : this.biomes) {
-        biomes.add(biome.getValue().toString());
+      for (ResourceKey<Biome> biome : this.biomes) {
+        biomes.add(biome.location().toString());
       }
       json.add("biomes", biomes);
       return json;
@@ -68,7 +68,8 @@ public class BiomesPredicate implements BiPredicate<ServerWorld, BlockPos> {
    * @param json
    * @return a {@link BiomesPredicate} from JSON specifications.
    */
+  @SuppressWarnings("null")
   public static BiomesPredicate fromJson(@Nullable JsonElement json) {
-    return json != null && !json.isJsonNull() ? new BiomesPredicate(JsonHelper.getArray(JsonHelper.asObject(json, "biomes"), "biomes", new JsonArray()).asList().stream().map(biome -> RegistryKey.of(RegistryKeys.BIOME, new Identifier(JsonHelper.asString(biome, "biome")))).toList()) : ANY;
+    return json != null && !json.isJsonNull() ? new BiomesPredicate(GsonHelper.getAsJsonArray(GsonHelper.convertToJsonObject(json, "biomes"), "biomes", new JsonArray()).asList().stream().map(biome -> ResourceKey.create(Registries.BIOME, new ResourceLocation(GsonHelper.convertToString(biome, "biome")))).toList()) : ANY;
   }
 }
