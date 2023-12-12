@@ -66,14 +66,14 @@ public class DynamicDatapack implements ResourcePack {
 
   /**
    * @param name {@link #name}.
-   * @param builder {@link TagBuilder}.
+   * @param builders list of {@link TagBuilder}s.
    */
-  public DynamicDatapack(Identifier name, TagBuilder<?> builder) {
+  public DynamicDatapack(Identifier name, TagBuilder<?> ...builders) {
     this.name = name;
     this.namespace = name.getNamespace();
     this.namespaces.add(name.getNamespace());
     this.metadata = Suppliers.memoize(()-> new PackResourceMetadata(Text.translatable(namespace + "_dynamic_" + name.getPath()), SharedConstants.getGameVersion().getResourceVersion(ResourceType.SERVER_DATA)));
-    this.build(builder);
+    this.build(builders);
   }
 
   /**
@@ -178,11 +178,13 @@ public class DynamicDatapack implements ResourcePack {
   }
 
   /**
-   * Uses the given {@link TagBuilder} to get a {@link Supplier} for this datapack resources.
+   * Uses the given {@link TagBuilder}s to get {@link Supplier}s for this datapack resources.
    * 
-   * @param builder
+   * @param builders
    */
-  private void build(TagBuilder<?> builder) {
-    this.buildJson(builder.getFullPath(), builder::json);
+  private void build(TagBuilder<?> ...builders) {
+    for (TagBuilder<?> builder : builders) {
+      this.buildJson(builder.getFullPath(), builder::json);
+    }
   }
 }

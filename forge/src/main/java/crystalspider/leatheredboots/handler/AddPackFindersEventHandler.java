@@ -29,7 +29,8 @@ public final class AddPackFindersEventHandler {
       event.addRepositorySource(packConsumer -> packConsumer.accept(
         new DynamicDatapack(
           new ResourceLocation(ModLoader.MOD_ID, "freeze_immune_boots"),
-          TagBuilder.of(ItemTags.FREEZE_IMMUNE_WEARABLES, ForgeRegistries.ITEMS).addElements(LeatheredBoots.getLeatheredBoots())
+          TagBuilder.of(ItemTags.FREEZE_IMMUNE_WEARABLES, ForgeRegistries.ITEMS).addElements(LeatheredBoots.getLeatheredBoots()),
+          TagBuilder.of(ItemTags.TRIMMABLE_ARMOR, ForgeRegistries.ITEMS).addElements(LeatheredBoots.getLeatheredBoots())
         ).create()
       ));
     }

@@ -34,7 +34,8 @@ public abstract class CreateWorldScreenMixin {
 		manager.providers.add(packConsumer -> packConsumer.accept(
       new DynamicDatapack(
         new Identifier(ModLoader.MOD_ID, "freeze_immune_boots"),
-        TagBuilder.of(ItemTags.FREEZE_IMMUNE_WEARABLES, Registries.ITEM).addElements(LeatheredBoots.getLeatheredBoots())
+        TagBuilder.of(ItemTags.FREEZE_IMMUNE_WEARABLES, Registries.ITEM).addElements(LeatheredBoots.getLeatheredBoots()),
+        TagBuilder.of(ItemTags.TRIMMABLE_ARMOR, Registries.ITEM).addElements(LeatheredBoots.getLeatheredBoots())
       ).create()
     ));
 		return manager;
