@@ -13,7 +13,7 @@
 ## **Description**
 Only leather boots allow you to walk on powdered snow? No more!  
 Leather your boots and walk on powdered snow without losing armor protection!  
-Also prevent freezing!
+Also prevent freezing and can be dyed!
 
 ## **Features**
 - Each Vanilla pair of boots has its own leathered version!  
@@ -23,12 +23,23 @@ Also prevent freezing!
 ![Dying](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/leathered-boots/dying.png)  
 - Right-clicking a cauldron with dyed lethered boots removes the color!  
 ![Undying](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/leathered-boots/undying.gif)  
+- Since 1.20, leathered boots are trimmable!  
+![Trimming](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/leathered-boots/trimming.png)  
+- Since 1.20, the smithing template to craft leathered boots can be found in igloos, pillager outposts, shipwrecks, and trail ruins (but only in snowy/frozen biomes)!  
 - The Leatherworker villager can trade leathered boots.  
 - Leathered boots can be found in Igloos chests and snowy villages!  
 - Vanilla advancements have been adapted to include leathered boots: *Light as a rabbit*, *Suit up*, *Cover Me with Diamonds*, *Oh Shiny*, and *Cover Me in Debris*.  
 - Highly compatible: see the [Compatibility](https://github.com/Nyphet/leathered-boots#compatibility) section.
 
 ## **Craftings**
+### **Since 1.20**
+- Duplicate the new Leather Upgrade Smithing Template with the usual smithing template duplication recipe.  
+![Smithing Template](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/leathered-boots/smithing-template.png)  
+- Use the new Leather Upgrade Smithing Template to create leathered boots.  
+![Smithing with template](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/leathered-boots/smithing-with-template.gif)  
+- Smite diamond leathered boots into netherite leathered boots.  
+![Smithing](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/leathered-boots/smithing-1-20.png)  
+### **Before 1.20**
 - Craft leathered boots by putting normal boots and leather boots together in a crafting table.  
 ![Craftings](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/leathered-boots/craftings.gif)  
 - Smite diamond leathered boots into netherite leathered boots.  

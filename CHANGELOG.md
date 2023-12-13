@@ -7,6 +7,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [Unreleased]
 - Nothing new.
 
+## [1.20.1-3.0.0.0] - 2023/12/13
+- Port to 1.20.1.
+- Added the leather upgrade smithing template to upgrade boots to their leathered version.
+- Added the leather upgrade smithing template to the loot of some structures (Igloos, Pillager Outposts, Shipwrecks, Trail Ruins) in snowy or frozen biomes.
+- Added duplication crafting for the leather upgrade smithing template.
+- Replaced previous crafting and smithing recipes for leathered boots with new smithing only recipes using the new smithing template.
+- Integrated armor trims with leathered boots.
+
 ## [1.19.4-3.0.0.0] - 2023/12/01
 - Port to 1.19.4.
 
@@ -69,6 +77,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Added craftings for leathered boots. 
 
 [Unreleased]: https://github.com/Nyphet/leathered-boots
+
+[1.20.1-3.0.0.0]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.20.1-3.0.0.0
 
 [1.19.4-3.0.0.0]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.19.4-3.0.0.0
 
