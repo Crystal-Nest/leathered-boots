@@ -30,7 +30,7 @@ public abstract class VanillaDataPackProviderMixin {
    * @param initials
    * @return original list of providers with the addition of a custom one.
    */
-  @ModifyArg(method = "createManager(Ljava/nio/file/Path;)Lnet/minecraft/resource/ResourcePackManager;", at = @At(value = "INVOKE", target = "Lnet/minecraft/resource/ResourcePackManager;<init>([Lnet/minecraft/resource/ResourcePackProvider;)V"))
+  @ModifyArg(method = "createManager(Ljava/nio/file/Path;Lnet/minecraft/util/path/SymlinkFinder;)Lnet/minecraft/resource/ResourcePackManager;", at = @At(value = "INVOKE", target = "Lnet/minecraft/resource/ResourcePackManager;<init>([Lnet/minecraft/resource/ResourcePackProvider;)V"))
 	private static ResourcePackProvider[] onCreateManager(ResourcePackProvider[] initials) {
     ResourcePackProvider[] providers = new ResourcePackProvider[initials.length + 1];
     for (int i = 0; i < initials.length; i++) {
