@@ -1,5 +1,5 @@
 plugins {
-  id "net.minecraftforge.gradle" version "5.1.+"
+  id "net.minecraftforge.gradle" version "[6.0.16)"
   id "com.matthewprenger.cursegradle" version "1.4.0"
   id "com.github.breadmoirai.github-release" version "2.4.1"
   id "com.modrinth.minotaur" version "2.+"
@@ -153,7 +153,6 @@ curseforge {
     changelog = changelog_body
     releaseType = "release"
     addGameVersion loader
-    addGameVersion "NeoForge"
     addGameVersion minecraft_version
     mainArtifact(jar) {
       displayName = "[${loader} - ${minecraft_version}] ${mod_title} v${mod_version}"
@@ -175,7 +174,7 @@ modrinth {
   uploadFile = jar
   versionType = "release"
   gameVersions = [minecraft_version]
-  loaders = [loader.toLowerCase(), "neoforge"]
+  loaders = [loader.toLowerCase()]
   dependencies {}
 }
 

@@ -1,0 +1,16 @@
+{
+  "itemGroup.leatheredboots.leathered_boots_tab": "Stivali rivestiti",
+  "item.leatheredboots.leathered_chainmail_boots": "Stivali di maglia rivestiti",
+  "item.leatheredboots.leathered_iron_boots": "Stivali di ferro rivestiti",
+  "item.leatheredboots.leathered_gold_boots": "Stivali d'oro rivestiti",
+  "item.leatheredboots.leathered_diamond_boots": "Stivali di diamante rivestiti",
+  "item.leatheredboots.leathered_netherite_boots": "Stivali di netherite rivestiti",
+  "enchantment.leatheredboots.soft_step": "Passo Delicato",
+  "enchantment.leatheredboots.soft_step.desc": "Permette di camminare sulla neve polverosa.",
+  "item.leatheredboots.leather_upgrade_smithing_template": "Schema di forgiatura",
+  "item.leatheredboots.smithing_template.leather_upgrade.applies_to": "Stivali",
+  "item.leatheredboots.smithing_template.leather_upgrade.ingredients": "Cuoio",
+  "item.leatheredboots.smithing_template.leather_upgrade.base_slot_description": "Inserisci degli stivali",
+  "item.leatheredboots.smithing_template.leather_upgrade.additions_slot_description": "Inserisci del cuoio",
+  "upgrade.leatheredboots.leather_upgrade": "Miglioramento di cuoio"
+}

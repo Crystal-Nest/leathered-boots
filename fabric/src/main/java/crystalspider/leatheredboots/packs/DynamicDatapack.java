@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Supplier;
@@ -22,6 +24,7 @@ import com.google.gson.stream.JsonWriter;
 import net.minecraft.SharedConstants;
 import net.minecraft.resource.InputSupplier;
 import net.minecraft.resource.ResourcePack;
+import net.minecraft.resource.ResourcePackCompatibility;
 import net.minecraft.resource.ResourcePackProfile;
 import net.minecraft.resource.ResourcePackProfile.InsertionPosition;
 import net.minecraft.resource.ResourcePackProfile.Metadata;
@@ -29,7 +32,6 @@ import net.minecraft.resource.ResourcePackSource;
 import net.minecraft.resource.ResourceType;
 import net.minecraft.resource.featuretoggle.FeatureSet;
 import net.minecraft.resource.metadata.PackResourceMetadata;
-import net.minecraft.resource.metadata.PackResourceMetadataReader;
 import net.minecraft.resource.metadata.ResourceMetadataReader;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -72,7 +74,7 @@ public class DynamicDatapack implements ResourcePack {
     this.name = name;
     this.namespace = name.getNamespace();
     this.namespaces.add(name.getNamespace());
-    this.metadata = Suppliers.memoize(()-> new PackResourceMetadata(Text.translatable(namespace + "_dynamic_" + name.getPath()), SharedConstants.getGameVersion().getResourceVersion(ResourceType.SERVER_DATA)));
+    this.metadata = Suppliers.memoize(()-> new PackResourceMetadata(Text.translatable(namespace + "_dynamic_" + name.getPath()), SharedConstants.getGameVersion().getResourceVersion(ResourceType.SERVER_DATA), Optional.empty()));
     this.build(builders);
   }
 
@@ -86,9 +88,8 @@ public class DynamicDatapack implements ResourcePack {
       getName(),
       Text.translatable(getName()),
       true,
-      str -> this,
-      new Metadata(metadata.get().getDescription(), metadata.get().getPackFormat(), FeatureSet.empty()),
-      ResourceType.SERVER_DATA,
+      new DynamicPackFactory(this),
+      new Metadata(metadata.get().description(), ResourcePackCompatibility.COMPATIBLE, FeatureSet.empty(), List.of()),
       InsertionPosition.TOP,
       false,
       ResourcePackSource.BUILTIN
@@ -113,12 +114,12 @@ public class DynamicDatapack implements ResourcePack {
   @Override
   @SuppressWarnings("unchecked")
   public <T> T parseMetadata(ResourceMetadataReader<T> serializer) {
-    return serializer instanceof PackResourceMetadataReader ? (T) this.metadata : null;
+    return serializer.getKey().equals(PackResourceMetadata.SERIALIZER.getKey()) ? (T) this.metadata : null;
   }
 
   @Override
   @Nullable
-  public InputSupplier<InputStream> openRoot(String... strings) {
+  public InputSupplier<InputStream> openRoot(String ...strings) {
     return null;
   }
 

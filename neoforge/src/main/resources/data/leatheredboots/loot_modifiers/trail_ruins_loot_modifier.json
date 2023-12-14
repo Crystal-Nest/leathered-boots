@@ -1,0 +1,18 @@
+{
+  "type": "leatheredboots:archaeology_loot_modifier",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "archaeology/trail_ruins_rare"
+    }
+  ],
+  "additions": [
+    {
+      "item": "leatheredboots:leather_upgrade_smithing_template",
+      "biomes": [
+        "snowy_taiga"
+      ]
+    }
+  ],
+  "chance_to_replace": 0.0834
+}

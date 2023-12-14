@@ -17,7 +17,7 @@ public class LootRegistry {
   /**
    * {@link LootConditionType} for {@link BiomesCheckLootCondition}.
    */
-  public static final LootConditionType BIOMES_CHECK = new LootConditionType(new BiomesCheckLootCondition.Serializer());
+  public static final LootConditionType BIOMES_CHECK = new LootConditionType(BiomesCheckLootCondition.CODEC);
 
   /**
    * Registers all mod loot related stuff.

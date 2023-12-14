@@ -1,0 +1,8 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "leatheredboots:item/leathered_boots_overlay",
+    "layer1": "leatheredboots:item/leathered_chainmail_boots",
+    "layer2": "minecraft:trims/items/boots_trim_netherite"
+  }
+}

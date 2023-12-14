@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "minecraft:leather"
+  },
+  "base": {
+    "item": "minecraft:chainmail_boots"
+  },
+  "result": {
+    "item": "leatheredboots:leathered_chainmail_boots"
+  },
+  "template": {
+    "item": "leatheredboots:leather_upgrade_smithing_template"
+  }
+}

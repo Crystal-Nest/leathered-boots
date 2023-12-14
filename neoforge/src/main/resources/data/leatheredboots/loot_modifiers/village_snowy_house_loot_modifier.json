@@ -1,0 +1,26 @@
+{
+  "type": "leatheredboots:chest_loot_modifier",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:chests/village/village_snowy_house"
+    }
+  ],
+  "additions": [
+    {
+      "item": "leatheredboots:leathered_chainmail_boots",
+      "chance": 0.2,
+      "quantity": 1
+    },
+    {
+      "item": "leatheredboots:leathered_iron_boots",
+      "chance": 0.1,
+      "quantity": 1
+    },
+    {
+      "item": "leatheredboots:leathered_diamond_boots",
+      "chance": 0.05,
+      "quantity": 1
+    }
+  ]
+}

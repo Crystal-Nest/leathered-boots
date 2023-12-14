@@ -29,35 +29,6 @@ import net.minecraft.world.biome.BiomeKeys;
  */
 public class LootTableEventsHandler {
   /**
-   * {@link Identifier} of snowy villager house chest loot table.
-   */
-  private static final Identifier VILLAGE_SNOWY_HOUSE_IDENTIFIER = new Identifier("minecraft", "chests/village/village_snowy_house");
-  /**
-   * {@link Identifier} of igloo chest loot table.
-   */
-  private static final Identifier IGLOO_CHEST_IDENTIFIER = new Identifier("minecraft", "chests/igloo_chest");
-  /**
-   * {@link Identifier} of shipwreck map chest loot table.
-   */
-  private static final Identifier SHIPWRECK_MAP_IDENTIFIER = new Identifier("minecraft", "chests/shipwreck_map");
-  /**
-   * {@link Identifier} of shipwreck treasure chest loot table.
-   */
-  private static final Identifier SHIPWRECK_TREASURE_IDENTIFIER = new Identifier("minecraft", "chests/shipwreck_treasure");
-  /**
-   * {@link Identifier} of shipwreck supply chest loot table.
-   */
-  private static final Identifier SHIPWRECK_SUPPLY_IDENTIFIER = new Identifier("minecraft", "chests/shipwreck_supply");
-  /**
-   * {@link Identifier} of pillager outpost chest loot table.
-   */
-  private static final Identifier PILLAGER_OUTPOST_IDENTIFIER = new Identifier("minecraft", "chests/pillager_outpost");
-  /**
-   * {@link Identifier} of trail ruins rare archaeology drops loot table.
-   */
-  private static final Identifier TRAIL_RUINS_RARE_IDENTIFIER = new Identifier("minecraft", "archaeology/trail_ruins_rare");
-
-  /**
    * Handles modifing Vanilla loot tables to include mod items.
    * 
    * @param resourceManager
@@ -67,19 +38,26 @@ public class LootTableEventsHandler {
    * @param lootTableSource
    */
   public static void handle(ResourceManager resourceManager, LootManager lootManager, Identifier identifier, LootTable.Builder builder, LootTableSource source) {
-    if (identifier.equals(VILLAGE_SNOWY_HOUSE_IDENTIFIER)) {
-      builder.pool(buildPool(0.2f, LeatheredArmorMaterial.LEATHERED_CHAIN));
-      builder.pool(buildPool(0.1f, LeatheredArmorMaterial.LEATHERED_IRON));
-      builder.pool(buildPool(0.05f, LeatheredArmorMaterial.LEATHERED_DIAMOND));
-    } else if (identifier.equals(IGLOO_CHEST_IDENTIFIER)) {
-      builder.pool(buildPool(0.2f, LeatheredArmorMaterial.LEATHERED_GOLD));
-      builder.pool(buildPool(0.1f, LeatheredArmorMaterial.LEATHERED_IRON));
-      builder.pool(buildPool(0.05f, LeatheredArmorMaterial.LEATHERED_DIAMOND));
-      builder.pool(buildPool(0.5f, ItemRegistry.LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM));
-    } else if (identifier.equals(SHIPWRECK_MAP_IDENTIFIER) || identifier.equals(SHIPWRECK_TREASURE_IDENTIFIER) || identifier.equals(SHIPWRECK_SUPPLY_IDENTIFIER)) {
-      builder.pool(buildBiomeConditionalPool(0.2f, BiomeKeys.SNOWY_BEACH));
-    } else if (identifier.equals(PILLAGER_OUTPOST_IDENTIFIER)) {
-      builder.pool(buildBiomeConditionalPool(0.334f, List.of(BiomeKeys.GROVE, BiomeKeys.SNOWY_SLOPES, BiomeKeys.JAGGED_PEAKS, BiomeKeys.FROZEN_PEAKS, BiomeKeys.SNOWY_TAIGA, BiomeKeys.SNOWY_PLAINS)));
+    switch (identifier.toString()) {
+      case "minecraft:chests/village/village_snowy_house":
+        builder.pool(buildPool(0.2f, LeatheredArmorMaterial.LEATHERED_CHAIN));
+        builder.pool(buildPool(0.1f, LeatheredArmorMaterial.LEATHERED_IRON));
+        builder.pool(buildPool(0.05f, LeatheredArmorMaterial.LEATHERED_DIAMOND));
+        break;
+      case "minecraft:chests/igloo_chest":
+        builder.pool(buildPool(0.2f, LeatheredArmorMaterial.LEATHERED_GOLD));
+        builder.pool(buildPool(0.1f, LeatheredArmorMaterial.LEATHERED_IRON));
+        builder.pool(buildPool(0.05f, LeatheredArmorMaterial.LEATHERED_DIAMOND));
+        builder.pool(buildPool(0.5f, ItemRegistry.LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM));
+        break;
+      case "minecraft:chests/shipwreck_map":
+      case "minecraft:chests/shipwreck_treasure":
+      case "minecraft:chests/shipwreck_supply":
+        builder.pool(buildBiomeConditionalPool(0.2f, BiomeKeys.SNOWY_BEACH));
+        break;
+      case "minecraft:chests/pillager_outpost":
+        builder.pool(buildBiomeConditionalPool(0.334f, List.of(BiomeKeys.GROVE, BiomeKeys.SNOWY_SLOPES, BiomeKeys.JAGGED_PEAKS, BiomeKeys.FROZEN_PEAKS, BiomeKeys.SNOWY_TAIGA, BiomeKeys.SNOWY_PLAINS)));
+        break;
     }
   }
 
@@ -94,10 +72,12 @@ public class LootTableEventsHandler {
    * @return replaced {@link LootTable} or {@code null}.
    */
   public static LootTable handle(ResourceManager resourceManager, LootManager lootManager, Identifier identifier, LootTable original, LootTableSource source) {
-    if (identifier.equals(TRAIL_RUINS_RARE_IDENTIFIER)) {
-      return LootTable.builder().pool(LootPool.builder().with(List.of(original.pools[0].entries)).with(ItemEntry.builder(ItemRegistry.LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM).conditionally(BiomesCheckLootCondition.builder(BiomeKeys.SNOWY_TAIGA)).build())).build();
+    switch (identifier.toString()) {
+      case "minecraft:archaeology/trail_ruins_rare":
+        return LootTable.builder().pool(LootPool.builder().with(original.pools.get(0).entries).with(ItemEntry.builder(ItemRegistry.LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM).conditionally(BiomesCheckLootCondition.builder(BiomeKeys.SNOWY_TAIGA)).build())).build();
+      default:
+        return null;
     }
-    return null;
   }
 
   /**

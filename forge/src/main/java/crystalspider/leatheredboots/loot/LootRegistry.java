@@ -36,7 +36,7 @@ public class LootRegistry {
   /**
    * {@link RegistryObject} for biomes check {@link LootItemConditionType}.
    */
-  public static final RegistryObject<LootItemConditionType> BIOMES_CHECK = LOOT_CONDITIONS.register("biomes_check", () -> new LootItemConditionType(new BiomesCheck.Serializer()));
+  public static final RegistryObject<LootItemConditionType> BIOMES_CHECK = LOOT_CONDITIONS.register("biomes_check", () -> new LootItemConditionType(BiomesCheck.CODEC));
 
   /**
    * Hooks into {@link FMLJavaModLoadingContext} mod event bus.

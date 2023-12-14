@@ -2,16 +2,14 @@ package crystalspider.leatheredboots.loot;
 
 import java.util.List;
 
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 import net.minecraft.loot.condition.LootCondition;
 import net.minecraft.loot.condition.LootConditionType;
 import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.context.LootContextParameters;
 import net.minecraft.registry.RegistryKey;
-import net.minecraft.util.JsonSerializer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.biome.Biome;
@@ -20,6 +18,11 @@ import net.minecraft.world.biome.Biome;
  * {@link LootCondition} to check whether the location is in one of the provided biomes.
  */
 public class BiomesCheckLootCondition implements LootCondition {
+  /**
+   * {@link Codec}.
+   */
+  public static final Codec<BiomesCheckLootCondition> CODEC = RecordCodecBuilder.create(instance -> instance.group(BiomesPredicate.CODEC.fieldOf("predicate").forGetter(check -> check.predicate)).apply(instance, BiomesCheckLootCondition::new));
+
   /**
    * {@link BiomesPredicate}.
    */
@@ -61,20 +64,5 @@ public class BiomesCheckLootCondition implements LootCondition {
   @Override
   public LootConditionType getType() {
     return LootRegistry.BIOMES_CHECK;
-  }
-  
-  /**
-   * {@link BiomesCheckLootCondition} {@link JsonSerializer}.
-   */
-  static class Serializer implements JsonSerializer<BiomesCheckLootCondition> {
-    @Override
-    public void toJson(JsonObject jsonObject, BiomesCheckLootCondition biomesCheckLootCondition, JsonSerializationContext jsonSerializationContext) {
-      jsonObject.add("predicate", biomesCheckLootCondition.predicate.toJson());
-    }
-
-    @Override
-    public BiomesCheckLootCondition fromJson(JsonObject jsonObject, JsonDeserializationContext jsonDeserializationContext) {
-      return new BiomesCheckLootCondition(BiomesPredicate.fromJson(jsonObject.get("predicate")));
-    }
   }
 }

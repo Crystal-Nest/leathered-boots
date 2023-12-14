@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Supplier;
@@ -25,9 +27,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackResources;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.metadata.MetadataSectionSerializer;
+import net.minecraft.server.packs.metadata.MetadataSectionType;
 import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
-import net.minecraft.server.packs.metadata.pack.PackMetadataSectionSerializer;
 import net.minecraft.server.packs.repository.Pack;
+import net.minecraft.server.packs.repository.PackCompatibility;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.server.packs.resources.IoSupplier;
 import net.minecraft.world.flag.FeatureFlagSet;
@@ -70,7 +73,7 @@ public class DynamicDatapack implements PackResources {
     this.name = name;
     this.namespace = name.getNamespace();
     this.namespaces.add(name.getNamespace());
-    this.metadata = Suppliers.memoize(()-> new PackMetadataSection(Component.translatable(namespace + "_dynamic_" + name.getPath()), SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA)));
+    this.metadata = Suppliers.memoize(()-> new PackMetadataSection(Component.translatable(namespace + "_dynamic_" + name.getPath()), SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA), Optional.empty()));
     this.build(builders);
   }
 
@@ -84,9 +87,8 @@ public class DynamicDatapack implements PackResources {
       packId(),
       Component.translatable(packId()),
       true,
-      str -> this,
-      new Pack.Info(metadata.get().getDescription(), metadata.get().getPackFormat(PackType.SERVER_DATA), FeatureFlagSet.of()),
-      PackType.SERVER_DATA,
+      new DynamicResourcesSupplier(this),
+      new Pack.Info(metadata.get().description(), PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), List.of(), true),
       Pack.Position.TOP,
       false,
       PackSource.BUILT_IN
@@ -116,12 +118,12 @@ public class DynamicDatapack implements PackResources {
   @Override
   @SuppressWarnings("unchecked")
   public <T> T getMetadataSection(MetadataSectionSerializer<T> serializer) {
-    return serializer instanceof PackMetadataSectionSerializer ? (T) this.metadata : null;
+    return serializer.getMetadataSectionName().equals(PackMetadataSection.TYPE.getMetadataSectionName()) ? (T) this.metadata : null;
   }
 
   @Override
   @Nullable
-  public IoSupplier<InputStream> getRootResource(String... strings) {
+  public IoSupplier<InputStream> getRootResource(String ...strings) {
     return null;
   }
 

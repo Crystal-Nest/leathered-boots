@@ -7,8 +7,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.network.NetworkRegistry;
-import net.minecraftforge.network.simple.SimpleChannel;
+import net.minecraftforge.network.ChannelBuilder;
+import net.minecraftforge.network.SimpleChannel;
 
 /**
  * Leathered Boots mod loader.
@@ -23,11 +23,11 @@ public final class ModLoader {
   /**
    * Network channel protocol version.
    */
-  public static final String PROTOCOL_VERSION = "1.20.1-3.0";
-  /**
+  public static final int PROTOCOL_VERSION = 1_20_2__3_0;
+   /**
    * {@link SimpleChannel} instance for compatibility client-server.
    */
-  public static final SimpleChannel INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(MOD_ID, "main"), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
+  public static final SimpleChannel INSTANCE = ChannelBuilder.named(new ResourceLocation(MOD_ID, "main")).networkProtocolVersion(PROTOCOL_VERSION).simpleChannel();
 
   public ModLoader() {
     IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
