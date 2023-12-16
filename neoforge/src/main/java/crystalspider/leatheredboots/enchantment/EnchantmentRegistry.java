@@ -4,7 +4,6 @@ import crystalspider.leatheredboots.ModLoader;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -23,9 +22,7 @@ public class EnchantmentRegistry {
   public static DeferredHolder<Enchantment, SoftStepEnchantment> SOFT_STEP = ENCHANTMENTS.register("soft_step", SoftStepEnchantment::new);
 
   /**
-   * Hooks into {@link FMLJavaModLoadingContext} mod event bus.
-   * 
-   * @param bus {@link IEventBus} 
+   * Register all mod enchantments.
    */
   public static void register(IEventBus bus) {
     ENCHANTMENTS.register(bus);

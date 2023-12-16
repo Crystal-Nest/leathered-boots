@@ -6,14 +6,13 @@ import crystalspider.leatheredboots.ModLoader;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 /**
- * Registry handler for loot modifiers.
+ * Registry handler for loot related stuff.
  */
 public class LootRegistry {
   /**
@@ -39,9 +38,7 @@ public class LootRegistry {
   public static final DeferredHolder<LootItemConditionType, LootItemConditionType> BIOMES_CHECK = LOOT_CONDITIONS.register("biomes_check", () -> new LootItemConditionType(BiomesCheck.CODEC));
 
   /**
-   * Hooks into {@link FMLJavaModLoadingContext} mod event bus.
-   * 
-   * @param bus {@link IEventBus} 
+   * Registers all loot related stuff.
    */
   public static void register(IEventBus bus) {
     LOOT_MODIFIERS.register(bus);

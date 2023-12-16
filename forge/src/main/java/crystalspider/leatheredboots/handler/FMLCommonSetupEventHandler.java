@@ -22,7 +22,7 @@ public final class FMLCommonSetupEventHandler {
   @SubscribeEvent
   public static void handle(FMLCommonSetupEvent event) {
     for (LeatheredBootsItem boots : LeatheredBoots.getLeatheredBoots()) {
-      CauldronInteraction.WATER.put(boots, CauldronInteraction.DYED_ITEM);
+      CauldronInteraction.WATER.map().put(boots, CauldronInteraction.DYED_ITEM);
     }
   }
 }

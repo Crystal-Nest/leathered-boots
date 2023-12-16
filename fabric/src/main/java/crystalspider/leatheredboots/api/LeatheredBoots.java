@@ -50,7 +50,7 @@ public final class LeatheredBoots {
     if (!leatheredBoots.containsKey(key)) {
       leatheredBoots.put(key, value);
       REGISTER.apply(key.getPath(), value);
-      CauldronBehavior.WATER_CAULDRON_BEHAVIOR.put(value, CauldronBehavior.CLEAN_DYEABLE_ITEM);
+      CauldronBehavior.WATER_CAULDRON_BEHAVIOR.map().put(value, CauldronBehavior.CLEAN_DYEABLE_ITEM);
       return key;
     }
     LOGGER.error("LeatheredBootsItem [" + key + "] was already registered with the following value: " + leatheredBoots.get(key));

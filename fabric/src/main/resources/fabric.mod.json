@@ -1,32 +1,32 @@
 {
   "schemaVersion": 1,
-  "id": "${modid}",
+  "id": "${mod_id}",
   "version": "${mod_version}",
   "name": "${mod_title}",
   "description": "Comfy and sturdy boots!",
   "authors": [
-    "${author}"
+    "${authors}"
   ],
   "contact": {
-    "homepage": "https://modrinth.com/mod/${modid_kebab}",
-    "issues": "https://github.com/${github_user}/${modid_kebab}/issues",
-    "sources": "https://github.com/${github_user}/${modid_kebab}/tree/${minecraft_version}"
+    "homepage": "https://modrinth.com/mod/${mod_id_kebab}",
+    "issues": "https://github.com/${github_user}/${mod_id_kebab}/issues",
+    "sources": "https://github.com/${github_user}/${mod_id_kebab}/tree/${minecraft_version}"
   },
   "license": "GPL-3.0-or-later",
-  "icon": "assets/${modid}/${modid_kebab}.gif",
+  "icon": "assets/${mod_id}/${mod_id_kebab}.gif",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "${group}.${modid}.ModLoader"
+      "${group}.${mod_id}.ModLoader"
     ],
     "client": [
-      "${group}.${modid}.ClientModLoader"
+      "${group}.${mod_id}.ClientModLoader"
     ]
   },
   "mixins": [
-    "${modid}.mixins.json"
+    "${mod_id}.mixins.json"
   ],
-  "accessWidener" : "${modid}.accesswidener",
+  "accessWidener" : "${mod_id}.accesswidener",
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric": "*",

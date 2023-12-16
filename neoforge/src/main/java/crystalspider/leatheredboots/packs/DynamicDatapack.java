@@ -86,7 +86,7 @@ public class DynamicDatapack implements PackResources {
       Component.translatable(packId()),
       true,
       new DynamicResourcesSupplier(this),
-      new Pack.Info(metadata.get().description(), metadata.get().packFormat(PackType.SERVER_DATA), metadata.get().packFormat(PackType.SERVER_DATA), PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), List.of(), true),
+      new Pack.Info(metadata.get().description(), PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), List.of(), true),
       Pack.Position.TOP,
       false,
       PackSource.BUILT_IN
