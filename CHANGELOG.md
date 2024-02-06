@@ -82,26 +82,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Drafted some code for future compatibility with Revamped End and Gilded Armors.
 - Added craftings for leathered boots. 
 
-[Unreleased]: https://github.com/Nyphet/leathered-boots
+[Unreleased]: https://github.com/crystal-nest/leathered-boots
 
-[1.20.4-3.0.0.0]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.20.4-3.0.0.0
+[1.20.4-3.0.0.0]: https://github.com/crystal-nest/leathered-boots/releases/tag/v1.20.4-3.0.0.0
 
-[1.20.2-3.0.0.0]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.20.2-3.0.0.0
+[1.20.2-3.0.0.0]: https://github.com/crystal-nest/leathered-boots/releases/tag/v1.20.2-3.0.0.0
 
-[1.20.1-3.0.0.0]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.20.1-3.0.0.0
+[1.20.1-3.0.0.0]: https://github.com/crystal-nest/leathered-boots/releases/tag/v1.20.1-3.0.0.0
 
-[1.19.4-3.0.0.0]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.19.4-3.0.0.0
+[1.19.4-3.0.0.0]: https://github.com/crystal-nest/leathered-boots/releases/tag/v1.19.4-3.0.0.0
 
-[1.19.3-3.0.0.0]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.19.3-3.0.0.0
-[1.19.3-3.0.0.0-beta]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.19.3-3.0.0.0-beta
-[1.19.3-2.0.0.0]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.19.3-2.0.0.0
+[1.19.3-3.0.0.0]: https://github.com/crystal-nest/leathered-boots/releases/tag/v1.19.3-3.0.0.0
+[1.19.3-3.0.0.0-beta]: https://github.com/crystal-nest/leathered-boots/releases/tag/v1.19.3-3.0.0.0-beta
+[1.19.3-2.0.0.0]: https://github.com/crystal-nest/leathered-boots/releases/tag/v1.19.3-2.0.0.0
 
-[1.19.2-3.0.0.0]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.19.2-3.0.0.0
-[1.19.2-1.0.0.2]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.19.2-1.0.0.2
-[1.19.2-1.0.0.1]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.19.2-1.0.0.1
-[1.19.2-1.0.0.0]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.19.2-1.0.0.0
+[1.19.2-3.0.0.0]: https://github.com/crystal-nest/leathered-boots/releases/tag/v1.19.2-3.0.0.0
+[1.19.2-1.0.0.2]: https://github.com/crystal-nest/leathered-boots/releases/tag/v1.19.2-1.0.0.2
+[1.19.2-1.0.0.1]: https://github.com/crystal-nest/leathered-boots/releases/tag/v1.19.2-1.0.0.1
+[1.19.2-1.0.0.0]: https://github.com/crystal-nest/leathered-boots/releases/tag/v1.19.2-1.0.0.0
 
-[1.18.2-3.0.0.0]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.18.2-3.0.0.0
-[1.18.2-1.0.0.2]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.18.2-1.0.0.2
-[1.18.2-1.0.0.1]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.18.2-1.0.0.1
-[1.18.2-1.0.0.0]: https://github.com/Nyphet/leathered-boots/releases/tag/v1.18.2-1.0.0.0
+[1.18.2-3.0.0.0]: https://github.com/crystal-nest/leathered-boots/releases/tag/v1.18.2-3.0.0.0
+[1.18.2-1.0.0.2]: https://github.com/crystal-nest/leathered-boots/releases/tag/v1.18.2-1.0.0.2
+[1.18.2-1.0.0.1]: https://github.com/crystal-nest/leathered-boots/releases/tag/v1.18.2-1.0.0.1
+[1.18.2-1.0.0.0]: https://github.com/crystal-nest/leathered-boots/releases/tag/v1.18.2-1.0.0.0
