@@ -1,10 +1,10 @@
 {
   "replace": false,
   "entries": [
-    "leatheredboots:igloo_chest_loot_modifier",
-    "leatheredboots:pillager_outpost_loot_modifier",
-    "leatheredboots:shipwreck_loot_modifier",
-    "leatheredboots:trail_ruins_loot_modifier",
-    "leatheredboots:village_snowy_house_loot_modifier"
+    "leathered_boots:igloo_chest_loot_modifier",
+    "leathered_boots:pillager_outpost_loot_modifier",
+    "leathered_boots:shipwreck_loot_modifier",
+    "leathered_boots:trail_ruins_loot_modifier",
+    "leathered_boots:village_snowy_house_loot_modifier"
   ]
 }
