@@ -1,0 +1,69 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "leathered_boots:item/leathered_boots_overlay",
+    "layer1": "leathered_boots:item/leathered_gold_boots"
+  },
+  "overrides": [
+    {
+      "model": "leathered_boots:item/trim/quartz/leathered_gold_boots_trim",
+      "predicate": {
+        "trim_type": 0.1
+      }
+    },
+    {
+      "model": "leathered_boots:item/trim/iron/leathered_gold_boots_trim",
+      "predicate": {
+        "trim_type": 0.2
+      }
+    },
+    {
+      "model": "leathered_boots:item/trim/netherite/leathered_gold_boots_trim",
+      "predicate": {
+        "trim_type": 0.3
+      }
+    },
+    {
+      "model": "leathered_boots:item/trim/redstone/leathered_gold_boots_trim",
+      "predicate": {
+        "trim_type": 0.4
+      }
+    },
+    {
+      "model": "leathered_boots:item/trim/copper/leathered_gold_boots_trim",
+      "predicate": {
+        "trim_type": 0.5
+      }
+    },
+    {
+      "model": "leathered_boots:item/trim/gold/leathered_gold_boots_trim",
+      "predicate": {
+        "trim_type": 0.6
+      }
+    },
+    {
+      "model": "leathered_boots:item/trim/emerald/leathered_gold_boots_trim",
+      "predicate": {
+        "trim_type": 0.7
+      }
+    },
+    {
+      "model": "leathered_boots:item/trim/diamond/leathered_gold_boots_trim",
+      "predicate": {
+        "trim_type": 0.8
+      }
+    },
+    {
+      "model": "leathered_boots:item/trim/lapis/leathered_gold_boots_trim",
+      "predicate": {
+        "trim_type": 0.9
+      }
+    },
+    {
+      "model": "leathered_boots:item/trim/amethyst/leathered_gold_boots_trim",
+      "predicate": {
+        "trim_type": 1.0
+      }
+    }
+  ]
+}
