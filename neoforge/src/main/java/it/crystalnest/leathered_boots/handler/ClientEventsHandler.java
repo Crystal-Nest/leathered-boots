@@ -11,20 +11,19 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 
 /**
- * {@link RegisterColorHandlersEvent} handler.
+ * Client events handler.
  */
 @Mod.EventBusSubscriber(modid = Constants.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-public final class RegisterColorHandlersEventHandler {
+public final class ClientEventsHandler {
+  private ClientEventsHandler() {}
+
   /**
-   * Registers the {@link ItemColor} for {@link LeatheredBootsItem}.
-   * 
+   * Registers the {@link ItemColor} for all {@link LeatheredBootsItem}s.
+   *
    * @param event {@link RegisterColorHandlersEvent.Item}.
    */
   @SubscribeEvent
   public static void handleItem(RegisterColorHandlersEvent.Item event) {
-    event.register(
-      (stack, tintIndex) -> tintIndex > 0 ? -1 : ((DyeableLeatherItem) stack.getItem()).getColor(stack),
-      LeatheredBoots.getLeatheredBoots().toArray(LeatheredBootsItem[]::new)
-    );
+    event.register((stack, tintIndex) -> tintIndex > 0 ? -1 : ((DyeableLeatherItem) stack.getItem()).getColor(stack), LeatheredBoots.getLeatheredBoots().toArray(LeatheredBootsItem[]::new));
   }
 }

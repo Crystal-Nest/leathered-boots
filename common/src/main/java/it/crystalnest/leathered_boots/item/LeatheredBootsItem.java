@@ -7,6 +7,10 @@ import org.jetbrains.annotations.NotNull;
  * Leathered Boots Item.
  */
 public class LeatheredBootsItem extends DyeableArmorItem {
+  /**
+   * @param armorMaterial {@link LeatheredArmorMaterial}.
+   * @param isFireResistant {@link #isFireResistant}.
+   */
   public LeatheredBootsItem(LeatheredArmorMaterial armorMaterial, boolean isFireResistant) {
     super(armorMaterial, Type.BOOTS, isFireResistant ? new Properties().fireResistant() : new Properties());
   }

@@ -8,20 +8,19 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public class NeoForgeItemHelper implements ItemHelper {
-  @Override
-  public Supplier<CreativeModeTab> buildTab(Supplier<ItemStack> icon, String title, Consumer<CreativeModeTab.Output> items) {
-    return () -> CreativeModeTab.builder()
-      .icon(icon)
-      .title(Component.translatable("itemGroup." + title))
-      .displayItems((features, output) -> items.accept(output)).build();
-  }
-
+/**
+ * NeoForge item helper.
+ */
+public final class NeoForgeItemHelper extends ItemHelper {
   @Override
   public Supplier<LeatheredBootsItem> supplyItem(LeatheredArmorMaterial armorMaterial, boolean isFireResistant) {
     return () -> new NeoForgeLeatheredBootsItem(armorMaterial, isFireResistant);
+  }
+
+  @Override
+  protected Supplier<CreativeModeTab> buildTab(Supplier<ItemStack> icon, Component title, CreativeModeTab.DisplayItemsGenerator displayItemsGenerator) {
+    return () -> CreativeModeTab.builder().icon(icon).title(title).displayItems(displayItemsGenerator).build();
   }
 }

@@ -23,11 +23,13 @@ import java.util.function.Supplier;
 /**
  * Chests loot modifier.
  */
-public class ChestLootModifier extends LootModifier {
+public final class ChestLootModifier extends LootModifier {
   /**
    * {@link Supplier} for this {@link LootModifier} {@link Codec}.
    */
-  public static final Supplier<Codec<ChestLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(instance -> codecStart(instance).and(Addition.CODEC.listOf().fieldOf("additions").forGetter(modifier -> modifier.additions)).apply(instance, ChestLootModifier::new)));
+  public static final Supplier<Codec<ChestLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(instance -> codecStart(instance)
+    .and(Addition.CODEC.listOf().fieldOf("additions").forGetter(modifier -> modifier.additions))
+    .apply(instance, ChestLootModifier::new)));
 
   /**
    * Additional items to add to the chest loot.
@@ -38,7 +40,7 @@ public class ChestLootModifier extends LootModifier {
    * @param conditionsIn {@link LootModifier#conditions}.
    * @param additions {@link #additions}.
    */
-  public ChestLootModifier(LootItemCondition[] conditionsIn, List<Addition> additions) {
+  ChestLootModifier(LootItemCondition[] conditionsIn, List<Addition> additions) {
     super(conditionsIn);
     this.additions = additions;
   }
@@ -78,17 +80,19 @@ public class ChestLootModifier extends LootModifier {
      * {@link Item} to add to the loot.
      */
     private final Item item;
+
     /**
      * Chance for this {@link #item} to add to the loot.
      */
     private final Float chance;
+
     /**
      * Amount of this {@link #item} to add to the loot.
      */
     private final Integer quantity;
+
     /**
-     * Allowed biomes for the {@link #item} to add to the loot.
-     * <p>
+     * Allowed biomes for the {@link #item} to add to the loot.<br />
      * When empty or not specified, it allows all biomes.
      */
     private final List<ResourceKey<Biome>> biomes;

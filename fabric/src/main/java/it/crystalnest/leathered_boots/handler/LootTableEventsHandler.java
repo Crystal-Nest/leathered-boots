@@ -27,15 +27,17 @@ import java.util.List;
 /**
  * {@link LootTableEvents} handler.
  */
-public class LootTableEventsHandler {
+public final class LootTableEventsHandler {
+  private LootTableEventsHandler() {}
+
   /**
    * Handles modifying Vanilla loot tables to include mod items.
-   * 
-   * @param resourceManager
-   * @param lootManager
-   * @param id
-   * @param builder
-   * @param source
+   *
+   * @param resourceManager resource manager.
+   * @param lootManager loot manager.
+   * @param id loot table ID.
+   * @param builder loot table builder.
+   * @param source loot table source.
    */
   public static void handle(ResourceManager resourceManager, LootDataManager lootManager, ResourceLocation id, LootTable.Builder builder, LootTableSource source) {
     switch (id.toString()) {
@@ -57,12 +59,12 @@ public class LootTableEventsHandler {
 
   /**
    * Handles replacing Vanilla loot tables to include mod items.
-   * 
-   * @param resourceManager
-   * @param lootManager
-   * @param id
-   * @param original
-   * @param source
+   *
+   * @param resourceManager resource manager.
+   * @param lootManager loot manager.
+   * @param id loot table ID.
+   * @param original original loot table.
+   * @param source loot table source.
    * @return replaced {@link LootTable} or {@code null}.
    */
   public static LootTable handle(ResourceManager resourceManager, LootDataManager lootManager, ResourceLocation id, LootTable original, LootTableSource source) {
@@ -74,9 +76,9 @@ public class LootTableEventsHandler {
 
   /**
    * Builds a loot pool with the given random {@code chance} to find the given {@link Item}.
-   * 
-   * @param chance
-   * @param item
+   *
+   * @param chance chance to spawn the item.
+   * @param item item to spawn.
    * @return loot pool.
    */
   private static LootPool buildPool(float chance, Item item) {
@@ -91,8 +93,8 @@ public class LootTableEventsHandler {
   /**
    * Builds a loot pool with the given random {@code chance} to find a {@link LeatheredBootsItem} of the given {@link LeatheredArmorMaterial}.
    *
-   * @param chance
-   * @param armorMaterial
+   * @param chance chance to spawn the item.
+   * @param armorMaterial {@link LeatheredArmorMaterial}.
    * @return loot pool.
    */
   private static LootPool buildPool(float chance, LeatheredArmorMaterial armorMaterial) {
@@ -100,10 +102,10 @@ public class LootTableEventsHandler {
   }
 
   /**
-   * Builds a loot pool with the given random {@code chance} to find the given {@link Item}, possible only in the given {@code biomes}.
-   * 
-   * @param chance
-   * @param biomes
+   * Builds a loot pool with the given random {@code chance} to find the {@link ItemRegistry#LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM}, possible only in the given {@code biomes}.
+   *
+   * @param chance chance to spawn the item.
+   * @param biomes biomes where the item can spawn.
    * @return loot pool.
    */
   @SafeVarargs

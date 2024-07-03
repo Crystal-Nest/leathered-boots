@@ -10,15 +10,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public final class FabricItemHelper implements ItemHelper {
-  @Override
-  public Supplier<CreativeModeTab> buildTab(Supplier<ItemStack> icon, String title, Consumer<CreativeModeTab.Output> items) {
-    return () -> FabricItemGroup.builder().icon(icon).title(Component.translatable("itemGroup." + title)).displayItems((features, output) -> items.accept(output)).build();
-  }
-
+/**
+ * Fabric item helper.
+ */
+public final class FabricItemHelper extends ItemHelper {
   @Override
   public Supplier<LeatheredBootsItem> supplyItem(LeatheredArmorMaterial armorMaterial, boolean isFireResistant) {
     return Suppliers.memoize(() -> {
@@ -26,5 +23,10 @@ public final class FabricItemHelper implements ItemHelper {
       CauldronInteraction.WATER.map().put(item, CauldronInteraction.DYED_ITEM);
       return item;
     });
+  }
+
+  @Override
+  protected Supplier<CreativeModeTab> buildTab(Supplier<ItemStack> icon, Component title, CreativeModeTab.DisplayItemsGenerator displayItemsGenerator) {
+    return () -> FabricItemGroup.builder().icon(icon).title(title).displayItems(displayItemsGenerator).build();
   }
 }

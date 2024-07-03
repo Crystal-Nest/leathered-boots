@@ -18,13 +18,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class PiglinAiMixin {
   /**
    * Injects at the start of the method {@link PiglinAi#isWearingGold(LivingEntity)}.<br />
-   * Adds a check for golden leathered boots.
+   * Adds a check for {@link LeatheredArmorMaterial#LEATHERED_GOLD}.
    *
    * @param entity {@link LivingEntity} to check.
    * @param cir {@link CallbackInfoReturnable}.
    */
   @Inject(method = "isWearingGold", at = @At(value = "HEAD"), cancellable = true)
-  private static void onWearsGoldArmor(LivingEntity entity, CallbackInfoReturnable<Boolean> cir) {
+  private static void onIsWearingGold(LivingEntity entity, CallbackInfoReturnable<Boolean> cir) {
     if (entity.getItemBySlot(EquipmentSlot.FEET).getItem() instanceof LeatheredBootsItem leatheredBoots && leatheredBoots.getMaterial() == LeatheredArmorMaterial.LEATHERED_GOLD) {
       cir.setReturnValue(true);
     }

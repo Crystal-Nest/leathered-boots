@@ -4,7 +4,14 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * NeoForge Leathered Boots item.
+ */
 public class NeoForgeLeatheredBootsItem extends LeatheredBootsItem {
+  /**
+   * @param armorMaterial {@link LeatheredArmorMaterial}.
+   * @param isFireResistant {@link #isFireResistant}.
+   */
   public NeoForgeLeatheredBootsItem(LeatheredArmorMaterial armorMaterial, boolean isFireResistant) {
     super(armorMaterial, isFireResistant);
   }

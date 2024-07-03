@@ -4,18 +4,20 @@ import it.crystalnest.leathered_boots.Constants;
 import it.crystalnest.leathered_boots.api.LeatheredBoots;
 import it.crystalnest.leathered_boots.item.LeatheredBootsItem;
 import net.minecraft.core.cauldron.CauldronInteraction;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 
 /**
- * {@link FMLCommonSetupEvent} handler.
+ * Event handler for events fired on the {@link Mod.EventBusSubscriber.Bus#MOD Mod Bus}.
  */
 @Mod.EventBusSubscriber(modid = Constants.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public final class FMLCommonSetupEventHandler {
+public final class ModEventsHandler {
+  private ModEventsHandler() {}
+
   /**
    * Registers the {@link CauldronInteraction}s for each {@link LeatheredBootsItem}.
-   * 
+   *
    * @param event {@link FMLCommonSetupEvent}.
    */
   @SubscribeEvent

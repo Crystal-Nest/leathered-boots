@@ -72,6 +72,16 @@ subprojects { subproject ->
       name = "Crystal Nest"
       url = "https://maven.crystalnest.it"
     }
+    exclusiveContent {
+      forRepository {
+        maven {
+          url "https://cursemaven.com"
+        }
+      }
+      filter {
+        includeGroup "curse.maven"
+      }
+    }
   }
 
   tasks.withType(JavaCompile).configureEach {

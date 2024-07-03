@@ -1,32 +1,32 @@
 package it.crystalnest.leathered_boots.handler;
 
 import it.crystalnest.leathered_boots.Constants;
-import it.crystalnest.leathered_boots.api.LeatheredBoots;
-import it.crystalnest.leathered_boots.item.LeatheredArmorMaterial;
 import net.minecraft.world.entity.npc.VillagerProfession;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.Map;
 
 /**
  * {@link VillagerTradesEvent} handler.
  */
 @Mod.EventBusSubscriber(modid = Constants.MOD_ID)
 public final class VillagerTradesEventHandler {
+  private VillagerTradesEventHandler() {}
+
   /**
    * Adds trades for some leathered boots.
-   * 
-   * @param event
+   *
+   * @param event {@link VillagerTradesEvent}.
    */
   @SubscribeEvent
   public static void handle(VillagerTradesEvent event) {
     if (event.getType() == VillagerProfession.LEATHERWORKER) {
-      event.getTrades().get(3).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 4), LeatheredBoots.getLeatheredBootsStack(Constants.MOD_ID, LeatheredArmorMaterial.LEATHERED_CHAIN), 5, 6, 0.02F));
-      event.getTrades().get(4).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 9), LeatheredBoots.getLeatheredBootsStack(Constants.MOD_ID, LeatheredArmorMaterial.LEATHERED_IRON), 3, 10, 0.02F));
-      event.getTrades().get(5).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 13), LeatheredBoots.getLeatheredBootsStack(Constants.MOD_ID, LeatheredArmorMaterial.LEATHERED_DIAMOND), 1, 30, 0.02F));
+      for (Map.Entry<Integer, MerchantOffer> trade : Constants.LEATHERED_BOOTS_TRADES.get().entrySet()) {
+        event.getTrades().get(trade.getKey().intValue()).add((trader, rand) -> trade.getValue());
+      }
     }
   }
 }

@@ -8,41 +8,45 @@ import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * All leathered boots {@link ArmorMaterial}s.
+ * All base leathered boots {@link ArmorMaterial}s.
  */
 public class LeatheredArmorMaterial implements ArmorMaterial {
   /**
    * {@link LeatheredArmorMaterial} for Vanilla {@link ArmorMaterials#CHAIN}.
    */
   public static final LeatheredArmorMaterial LEATHERED_CHAIN = new LeatheredArmorMaterial(ArmorMaterials.CHAIN);
+
   /**
    * {@link LeatheredArmorMaterial} for Vanilla {@link ArmorMaterials#IRON}.
    */
   public static final LeatheredArmorMaterial LEATHERED_IRON = new LeatheredArmorMaterial(ArmorMaterials.IRON);
+
   /**
    * {@link LeatheredArmorMaterial} for Vanilla {@link ArmorMaterials#GOLD}.
    */
   public static final LeatheredArmorMaterial LEATHERED_GOLD = new LeatheredArmorMaterial(ArmorMaterials.GOLD);
+
   /**
    * {@link LeatheredArmorMaterial} for Vanilla {@link ArmorMaterials#DIAMOND}.
    */
   public static final LeatheredArmorMaterial LEATHERED_DIAMOND = new LeatheredArmorMaterial(ArmorMaterials.DIAMOND);
-   /**
+
+  /**
    * {@link LeatheredArmorMaterial} for Vanilla {@link ArmorMaterials#NETHERITE}.
    */
   public static final LeatheredArmorMaterial LEATHERED_NETHERITE = new LeatheredArmorMaterial(ArmorMaterials.NETHERITE);
 
   /**
-   * Name of this {@link ArmorMaterial}.
-   * <p>
+   * Name of this {@link ArmorMaterial}.<br />
    * Always equal to {@code "leathered_" + baseArmorMaterialName}.
    */
   private final String name;
+
   /**
    * Base {@link ArmorMaterial}.
    */
   private final ArmorMaterial armorMaterial;
-  
+
   /**
    * @param armorMaterial {@link #armorMaterial}.
    */
@@ -92,5 +96,10 @@ public class LeatheredArmorMaterial implements ArmorMaterial {
   @Override
   public float getKnockbackResistance() {
     return this.armorMaterial.getKnockbackResistance();
+  }
+
+  @Override
+  public String toString() {
+    return "LeatheredArmorMaterial{name=" + name + "}";
   }
 }

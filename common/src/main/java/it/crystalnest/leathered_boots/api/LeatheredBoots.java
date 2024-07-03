@@ -8,6 +8,7 @@ import it.crystalnest.leathered_boots.platform.Services;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -122,17 +123,6 @@ public final class LeatheredBoots {
   }
 
   /**
-   * Returns the {@link LeatheredBootsItem} registered with the given {@code modId} and {@code itemId}.
-   * 
-   * @param itemId
-   * @return registered {@link LeatheredBootsItem} or {@code null}.
-   */
-  @Nullable
-  public static LeatheredBootsItem getLeatheredBoots(String itemId) {
-    return getLeatheredBoots(new ResourceLocation(Constants.MOD_ID, itemId));
-  }
-
-  /**
    * Returns the {@link LeatheredBootsItem} registered with the given {@link ArmorMaterial}.
    * 
    * @param armorMaterial
@@ -196,6 +186,10 @@ public final class LeatheredBoots {
    */
   public static List<String> getModIds() {
     return leatheredBoots.keySet().stream().map(ResourceLocation::getNamespace).toList();
+  }
+
+  public static List<LeatheredBootsItem> getLeatheredBoots(@NotNull String modId) {
+    return leatheredBoots.entrySet().stream().filter(entry -> entry.getKey().getNamespace().equalsIgnoreCase(modId)).map(entry -> entry.getValue().get()).toList();
   }
 
   /**

@@ -11,17 +11,33 @@ import org.jetbrains.annotations.ApiStatus;
 
 import java.util.function.Supplier;
 
+/**
+ * Item registry.
+ */
 @ApiStatus.Internal
 public final class ItemRegistry {
+  /**
+   * {@link CobwebRegister} for {@link Item}s.
+   */
   private static final CobwebRegister<Item> ITEMS = CobwebRegistry.ofItems(Constants.MOD_ID);
 
+  /**
+   * {@link CobwebRegister} for {@link CreativeModeTab}s.
+   */
   private static final CobwebRegister<CreativeModeTab> CREATIVE_TABS = CobwebRegistry.ofCreativeModeTabs(Constants.MOD_ID);
 
+  /**
+   * {@link LeatherUpgradeSmithingTemplateItem}.
+   */
   public static final Supplier<LeatherUpgradeSmithingTemplateItem> LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM = ITEMS.register("leather_upgrade_smithing_template", LeatherUpgradeSmithingTemplateItem::new);
 
-  public static final Supplier<CreativeModeTab> LEATHERED_BOOTS_TAB = CREATIVE_TABS.register(Constants.LEATHERED_BOOTS_TAB_ID, Services.ITEM_HELPER.buildTab(
+  /**
+   * Leathered boots tab.<br />
+   * Includes all registered leathered boots.
+   */
+  public static final Supplier<CreativeModeTab> LEATHERED_BOOTS_TAB = CREATIVE_TABS.register(Constants.LEATHERED_BOOTS_TAB_ID, Services.ITEM_HELPER.supplyTab(
     () -> LeatheredBoots.getLeatheredBootsStack(Constants.MOD_ID, LeatheredArmorMaterial.LEATHERED_NETHERITE),
-    Constants.MOD_ID + "." + Constants.LEATHERED_BOOTS_TAB_ID,
+    Constants.LEATHERED_BOOTS_TAB_ID,
     output -> {
       output.acceptAll(LeatheredBoots.getLeatheredBootsStack());
       output.accept(LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM.get());
@@ -30,6 +46,9 @@ public final class ItemRegistry {
 
   private ItemRegistry() {}
 
+  /**
+   * Called to load the class and register.
+   */
   public static void register() {
     LeatheredBoots.registerLeatheredBoots(
       Constants.MOD_ID,

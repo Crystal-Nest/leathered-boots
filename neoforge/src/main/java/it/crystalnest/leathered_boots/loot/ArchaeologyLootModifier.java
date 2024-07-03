@@ -21,9 +21,9 @@ import java.util.Optional;
 import java.util.function.Supplier;
 
 /**
- * Chests loot modifier.
+ * Archaeology loot modifier.
  */
-public class ArchaeologyLootModifier extends LootModifier {
+public final class ArchaeologyLootModifier extends LootModifier {
   /**
    * {@link Supplier} for this {@link LootModifier} {@link Codec}.
    */
@@ -47,7 +47,7 @@ public class ArchaeologyLootModifier extends LootModifier {
    * @param additions {@link #additions}.
    * @param chanceToReplace {@link #chanceToReplace}.
    */
-  public ArchaeologyLootModifier(LootItemCondition[] conditionsIn, List<Addition> additions, Float chanceToReplace) {
+  ArchaeologyLootModifier(LootItemCondition[] conditionsIn, List<Addition> additions, Float chanceToReplace) {
     super(conditionsIn);
     this.additions = additions;
     this.chanceToReplace = chanceToReplace;
@@ -88,9 +88,8 @@ public class ArchaeologyLootModifier extends LootModifier {
     private final Item item;
 
     /**
-     * Allowed biomes for the {@link #item} to add to the loot.
-     * <p>
-     * When empty or not specified, it allows all biomes.
+     * Allowed biomes for the {@link #item} to add to the loot.<br />
+     * When empty or not specified, all biomes are allowed.
      */
     private final List<ResourceKey<Biome>> biomes;
 

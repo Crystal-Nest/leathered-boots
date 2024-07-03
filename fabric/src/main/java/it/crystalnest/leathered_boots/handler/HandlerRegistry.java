@@ -3,7 +3,7 @@ package it.crystalnest.leathered_boots.handler;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 
 /**
- * Mod handlers register.
+ * Handlers register.
  */
 public final class HandlerRegistry {
   private HandlerRegistry() {}
