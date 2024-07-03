@@ -9,9 +9,14 @@ and this project adheres to [Crystal Nest Semantic Versioning](https://crystalne
 
 - Nothing new.
 
-## [4.0.0] - yyyy/mm/dd
+## [4.0.0] - 2024/07/04
 
-- Release notes...
+- Update to the newest standards.
+- Add more language translations.
+- Change mod ID from `leatheredboots` to `leathered_boots`.
+- Update API with improvements and breaking changes.
+- API now uses provided mod IDs rather than always `leathered_boots`.
+- Fabric only: add support for [Detail Armor Bar](https://github.com/RedLime/DetailArmorBar) mod.
 
 <details>
   <summary>Legacy</summary>
