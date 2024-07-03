@@ -98,7 +98,7 @@ public final class LootTableEventsHandler {
    * @return loot pool.
    */
   private static LootPool buildPool(float chance, LeatheredArmorMaterial armorMaterial) {
-    return buildPool(chance, LeatheredBootsManager.getLeatheredBoots(Constants.MOD_ID, armorMaterial));
+    return buildPool(chance, LeatheredBootsManager.getBoots(Constants.MOD_ID, armorMaterial));
   }
 
   /**

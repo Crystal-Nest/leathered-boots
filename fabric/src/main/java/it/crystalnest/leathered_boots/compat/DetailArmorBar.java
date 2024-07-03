@@ -47,13 +47,13 @@ public final class DetailArmorBar {
           offsetFullX = 9;
           offsetHalfX = 0;
         } else {
-          Constants.LOGGER.error("An error occurred while attempting to register Leathered Boots {} to Detail Armor Bar:\nUnknown armor type: {}", LeatheredBootsManager.getKeyFor(Constants.MOD_ID, armorMaterial), armorMaterial);
+          Constants.LOGGER.error("An error occurred while attempting to register Leathered Boots {} to Detail Armor Bar:\nUnknown armor type: {}", LeatheredBootsManager.getKey(Constants.MOD_ID, armorMaterial), armorMaterial);
           offsetFullX = -1;
           offsetHalfX = -1;
         }
         return new ArmorBarTexture(GUI_ARMOR_BAR, 128, 128, offsetFullX, offsetIconY, offsetHalfX, offsetIconY, 9, 0, 27, 0);
       },
-      LeatheredBootsManager.getLeatheredBoots(Constants.MOD_ID).toArray(LeatheredBootsItem[]::new)
+      LeatheredBootsManager.getBoots(Constants.MOD_ID).toArray(LeatheredBootsItem[]::new)
     );
   }
 

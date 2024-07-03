@@ -14,7 +14,7 @@
 ## **Description**
 
 Only leather boots allow you to walk on powdered snow? No more!  
-Leather your boots and walk on powdered snow without losing armor protection!  
+Leather your boots and walk on powder snow without losing armor protection!  
 Also prevent freezing and can be dyed!
 
 ## **Features**
@@ -24,7 +24,7 @@ Also prevent freezing and can be dyed!
 - Leathered boots prevent freezing!
 - Leathered boots can be dyed!  
   ![Dying](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/leathered-boots/dying.png)
-- Right-clicking a cauldron with dyed lethered boots removes the color!  
+- Right-clicking a cauldron with dyed leathered boots removes the color!  
   ![Undying](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/leathered-boots/undying.gif)
 - Since 1.20, leathered boots are trimmable!  
   ![Trimming](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/leathered-boots/trimming.png)

@@ -40,18 +40,15 @@ public final class Constants {
    */
   public static final DynamicDataPack LEATHERED_BOOTS_DYNAMIC_DATA_PACK = (DynamicDataPack) DynamicDataPack
     .named(new ResourceLocation(MOD_ID, "leathered_boots"))
-    .add(() -> DynamicTagBuilder
-      .of(Registries.ITEM, ItemTags.TRIMMABLE_ARMOR, ItemTags.FREEZE_IMMUNE_WEARABLES)
-      .addElements(LeatheredBootsManager.getLeatheredBoots())
-    );
+    .add(() -> DynamicTagBuilder.of(Registries.ITEM, ItemTags.TRIMMABLE_ARMOR, ItemTags.FREEZE_IMMUNE_WEARABLES).addElements(LeatheredBootsManager.getBoots()));
 
   /**
    * Leathered boots trade offers.
    */
   public static final Supplier<Map<Integer, MerchantOffer>> LEATHERED_BOOTS_TRADES = Suppliers.memoize(() -> Map.ofEntries(
-    Map.entry(3, new MerchantOffer(new ItemStack(Items.EMERALD, 4), Objects.requireNonNull(LeatheredBootsManager.getLeatheredBootsStack(Constants.MOD_ID, LeatheredArmorMaterial.LEATHERED_CHAIN)), 5, 6, 0.02F)),
-    Map.entry(4, new MerchantOffer(new ItemStack(Items.EMERALD, 9), Objects.requireNonNull(LeatheredBootsManager.getLeatheredBootsStack(Constants.MOD_ID, LeatheredArmorMaterial.LEATHERED_IRON)), 3, 10, 0.02F)),
-    Map.entry(5, new MerchantOffer(new ItemStack(Items.EMERALD, 13), Objects.requireNonNull(LeatheredBootsManager.getLeatheredBootsStack(Constants.MOD_ID, LeatheredArmorMaterial.LEATHERED_DIAMOND)), 1, 30, 0.02F))
+    Map.entry(3, new MerchantOffer(new ItemStack(Items.EMERALD, 4), Objects.requireNonNull(LeatheredBootsManager.getBootsStack(Constants.MOD_ID, LeatheredArmorMaterial.LEATHERED_CHAIN)), 5, 6, 0.02F)),
+    Map.entry(4, new MerchantOffer(new ItemStack(Items.EMERALD, 9), Objects.requireNonNull(LeatheredBootsManager.getBootsStack(Constants.MOD_ID, LeatheredArmorMaterial.LEATHERED_IRON)), 3, 10, 0.02F)),
+    Map.entry(5, new MerchantOffer(new ItemStack(Items.EMERALD, 13), Objects.requireNonNull(LeatheredBootsManager.getBootsStack(Constants.MOD_ID, LeatheredArmorMaterial.LEATHERED_DIAMOND)), 1, 30, 0.02F))
   ));
 
   /**

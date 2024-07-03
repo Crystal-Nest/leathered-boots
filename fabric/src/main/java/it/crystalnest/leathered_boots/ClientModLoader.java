@@ -16,7 +16,7 @@ import org.jetbrains.annotations.ApiStatus;
 public final class ClientModLoader implements ClientModInitializer {
   @Override
   public void onInitializeClient() {
-    ColorProviderRegistry.ITEM.register((stack, tintIndex) -> tintIndex > 0 ? -1 : ((DyeableLeatherItem) stack.getItem()).getColor(stack), LeatheredBootsManager.getLeatheredBoots().toArray(LeatheredBootsItem[]::new));
+    ColorProviderRegistry.ITEM.register((stack, tintIndex) -> tintIndex > 0 ? -1 : ((DyeableLeatherItem) stack.getItem()).getColor(stack), LeatheredBootsManager.getBoots().toArray(LeatheredBootsItem[]::new));
     if (Services.PLATFORM.isModLoaded("detailab")) {
       DetailArmorBar.register();
     }

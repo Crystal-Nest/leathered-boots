@@ -11,11 +11,12 @@ import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 /**
  * Leathered Boots API.
@@ -31,75 +32,75 @@ public final class LeatheredBootsManager {
   /**
    * Registers a new {@link LeatheredBootsItem} made of the given {@link ArmorMaterial}.
    *
-   * @param isFireResistant
-   * @param armorMaterial
-   * @return the {@link ResourceLocation} of the newly registered {@link LeatheredBootsItem} or {@code null}.
+   * @param modId mod ID.
+   * @param isFireResistant whether the boots are fire-resistant.
+   * @param armorMaterial armor material.
+   * @return {@link Supplier} of the registered {@link LeatheredBootsItem}.
    */
-  public static synchronized ResourceLocation registerLeatheredBoots(String modId, boolean isFireResistant, ArmorMaterial armorMaterial) {
+  public static synchronized Supplier<LeatheredBootsItem> registerBoots(@NotNull String modId, boolean isFireResistant, ArmorMaterial armorMaterial) {
     LeatheredArmorMaterial leatheredArmorMaterial = armorMaterial instanceof LeatheredArmorMaterial leathered ? leathered : new LeatheredArmorMaterial(armorMaterial);
-    ResourceLocation key = getKeyFor(modId, leatheredArmorMaterial);
-    if (!LEATHERED_BOOTS.containsKey(key)) {
-      LEATHERED_BOOTS.put(key, CobwebRegistry.ofItems(modId).register(key.getPath(), Services.ITEM_HELPER.supplyItem(leatheredArmorMaterial, isFireResistant)));
-      return key;
+    ResourceLocation id = getKey(modId, leatheredArmorMaterial);
+    if (LEATHERED_BOOTS.containsKey(id)) {
+      Constants.LOGGER.error("LeatheredBootsItem [{}] was already registered.", id);
     }
-    Constants.LOGGER.error("LeatheredBootsItem [{}] was already registered with the following value: {}", key, LEATHERED_BOOTS.get(key));
-    return null;
+    return LEATHERED_BOOTS.computeIfAbsent(id, key -> CobwebRegistry.ofItems(modId).register(key.getPath(), Services.ITEM_HELPER.supplyItem(leatheredArmorMaterial, isFireResistant)));
   }
 
   /**
-   * Registers a new {@link LeatheredBootsItem} made of the given {@link ArmorMaterial} setting fire resistance to {@code false}.
+   * Registers a new {@link LeatheredBootsItem} made of the given {@link ArmorMaterial}.
    *
-   * @param armorMaterial
-   * @return the {@link ResourceLocation} of the newly registered {@link LeatheredBootsItem} or {@code null}.
+   * @param modId mod ID.
+   * @param armorMaterial armor material.
+   * @return {@link Supplier} of the registered {@link LeatheredBootsItem}.
    */
-  public static synchronized ResourceLocation registerLeatheredBoots(String modId, ArmorMaterial armorMaterial) {
-    return registerLeatheredBoots(modId, false, armorMaterial);
-  }
-
-  /**
-   * Registers new {@link LeatheredBootsItem}s made of the given {@link ArmorMaterial}s.
-   *
-   * @param isFireResistant
-   * @param armorMaterials
-   * @return the {@link ResourceLocation}s of the newly registered {@link LeatheredBootsItem}s. A {@link ResourceLocation} can be {@code null} if the registration was unsuccessful.
-   */
-  public static synchronized List<ResourceLocation> registerLeatheredBoots(String modId, boolean isFireResistant, List<ArmorMaterial> armorMaterials) {
-    List<ResourceLocation> resourceLocations = new ArrayList<>();
-    for (ArmorMaterial armorMaterial : armorMaterials) {
-      resourceLocations.add(registerLeatheredBoots(modId, isFireResistant, armorMaterial));
-    }
-    return resourceLocations;
+  public static synchronized Supplier<LeatheredBootsItem> registerBoots(@NotNull String modId, ArmorMaterial armorMaterial) {
+    return registerBoots(modId, false, armorMaterial);
   }
 
   /**
    * Registers new {@link LeatheredBootsItem}s made of the given {@link ArmorMaterial}s.
    *
-   * @param armorMaterials
-   * @return the {@link ResourceLocation}s of the newly registered {@link LeatheredBootsItem}s. A {@link ResourceLocation} can be {@code null} if the registration was unsuccessful.
+   * @param modId mod ID.
+   * @param isFireResistant whether the boots are fire-resistant.
+   * @param armorMaterials armor materials.
+   * @return map of {@link Supplier}s of the registered {@link LeatheredBootsItem}.
    */
-  public static synchronized List<ResourceLocation> registerLeatheredBoots(String modId, List<ArmorMaterial> armorMaterials) {
-    return registerLeatheredBoots(modId, false, armorMaterials);
+  public static synchronized Map<ResourceLocation, Supplier<LeatheredBootsItem>> registerBoots(@NotNull String modId, boolean isFireResistant, List<ArmorMaterial> armorMaterials) {
+    return armorMaterials.stream().map(armorMaterial -> Map.entry(getKey(modId, armorMaterial), registerBoots(modId, isFireResistant, armorMaterial))).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
   }
 
   /**
    * Registers new {@link LeatheredBootsItem}s made of the given {@link ArmorMaterial}s.
    *
-   * @param isFireResistant
-   * @param armorMaterials
-   * @return the {@link ResourceLocation}s of the newly registered {@link LeatheredBootsItem}s. A {@link ResourceLocation} can be {@code null} if the registration was unsuccessful.
+   * @param modId mod ID.
+   * @param armorMaterials armor materials.
+   * @return map of {@link Supplier}s of the registered {@link LeatheredBootsItem}.
    */
-  public static synchronized List<ResourceLocation> registerLeatheredBoots(String modId, boolean isFireResistant, ArmorMaterial... armorMaterials) {
-    return registerLeatheredBoots(modId, isFireResistant, Arrays.asList(armorMaterials));
+  public static synchronized Map<ResourceLocation, Supplier<LeatheredBootsItem>> registerBoots(@NotNull String modId, List<ArmorMaterial> armorMaterials) {
+    return registerBoots(modId, false, armorMaterials);
   }
 
   /**
    * Registers new {@link LeatheredBootsItem}s made of the given {@link ArmorMaterial}s.
    *
-   * @param armorMaterials
-   * @return the {@link ResourceLocation}s of the newly registered {@link LeatheredBootsItem}s. A {@link ResourceLocation} can be {@code null} if the registration was unsuccessful.
+   * @param modId mod ID.
+   * @param isFireResistant whether the boots are fire-resistant.
+   * @param armorMaterials armor materials.
+   * @return map of {@link Supplier}s of the registered {@link LeatheredBootsItem}.
    */
-  public static synchronized List<ResourceLocation> registerLeatheredBoots(String modId, ArmorMaterial... armorMaterials) {
-    return registerLeatheredBoots(modId, false, armorMaterials);
+  public static synchronized Map<ResourceLocation, Supplier<LeatheredBootsItem>> registerBoots(@NotNull String modId, boolean isFireResistant, ArmorMaterial... armorMaterials) {
+    return registerBoots(modId, isFireResistant, Arrays.asList(armorMaterials));
+  }
+
+  /**
+   * Registers new {@link LeatheredBootsItem}s made of the given {@link ArmorMaterial}s.
+   *
+   * @param modId mod ID.
+   * @param armorMaterials armor materials.
+   * @return map of {@link Supplier}s of the registered {@link LeatheredBootsItem}.
+   */
+  public static synchronized Map<ResourceLocation, Supplier<LeatheredBootsItem>> registerBoots(@NotNull String modId, ArmorMaterial... armorMaterials) {
+    return registerBoots(modId, false, armorMaterials);
   }
 
   /**
@@ -107,30 +108,41 @@ public final class LeatheredBootsManager {
    *
    * @return the list of all registered {@link LeatheredBootsItem}s.
    */
-  public static List<LeatheredBootsItem> getLeatheredBoots() {
+  public static List<LeatheredBootsItem> getBoots() {
     return LEATHERED_BOOTS.values().stream().map(Supplier::get).toList();
+  }
+
+  /**
+   * Returns the list of all registered {@link LeatheredBootsItem}s by the specified mod.
+   *
+   * @return the list of all registered {@link LeatheredBootsItem}s by the specified mod.
+   */
+  public static List<LeatheredBootsItem> getBoots(@NotNull String modId) {
+    return LEATHERED_BOOTS.entrySet().stream().filter(entry -> entry.getKey().getNamespace().equalsIgnoreCase(modId)).map(entry -> entry.getValue().get()).toList();
   }
 
   /**
    * Returns the {@link LeatheredBootsItem} registered with the given {@link ResourceLocation}.
    *
-   * @param resourceLocation
+   * @param key leathered boots ID.<br />
+   *            See also {@link #getKey(String, ArmorMaterial)}.
    * @return registered {@link LeatheredBootsItem} or {@code null}.
    */
   @Nullable
-  public static LeatheredBootsItem getLeatheredBoots(ResourceLocation resourceLocation) {
-    return LEATHERED_BOOTS.get(resourceLocation).get();
+  public static LeatheredBootsItem getBoots(@NotNull ResourceLocation key) {
+    return LEATHERED_BOOTS.getOrDefault(key, () -> null).get();
   }
 
   /**
    * Returns the {@link LeatheredBootsItem} registered with the given {@link ArmorMaterial}.
    *
-   * @param armorMaterial
+   * @param modId mod ID.
+   * @param armorMaterial armor material.
    * @return registered {@link LeatheredBootsItem} or {@code null}.
    */
   @Nullable
-  public static LeatheredBootsItem getLeatheredBoots(String modId, ArmorMaterial armorMaterial) {
-    return getLeatheredBoots(getKeyFor(modId, armorMaterial));
+  public static LeatheredBootsItem getBoots(@NotNull String modId, @NotNull ArmorMaterial armorMaterial) {
+    return getBoots(getKey(modId, armorMaterial));
   }
 
   /**
@@ -138,69 +150,61 @@ public final class LeatheredBootsManager {
    *
    * @return the list of all {@link ItemStack}s of all registered {@link LeatheredBootsItem}s.
    */
-  public static List<ItemStack> getLeatheredBootsStack() {
+  public static List<ItemStack> getBootsStack() {
     return LEATHERED_BOOTS.values().stream().map(item -> item.get().getDefaultInstance()).toList();
   }
 
   /**
-   * Returns the {@link ItemStack} of the {@link LeatheredBootsItem} registered with the given {@link ResourceLocation}.
+   * Returns the list of all {@link ItemStack}s of all registered {@link LeatheredBootsItem}s by the specified mod.
    *
-   * @param resourceLocation
-   * @return {@link ItemStack} or {@code null}.
+   * @return the list of all {@link ItemStack}s of all registered {@link LeatheredBootsItem}s by the specified mod.
    */
-  @Nullable
-  public static ItemStack getLeatheredBootsStack(ResourceLocation resourceLocation) {
-    LeatheredBootsItem item = getLeatheredBoots(resourceLocation);
-    if (item != null) {
-      return item.getDefaultInstance();
-    }
-    return null;
-  }
-
-  /**
-   * Returns the {@link ItemStack} of the {@link LeatheredBootsItem} registered with the given {@code modId} and {@code itemId}.
-   *
-   * @param itemId
-   * @return {@link ItemStack} or {@code null}.
-   */
-  @Nullable
-  public static ItemStack getLeatheredBootsStack(String itemId) {
-    return getLeatheredBootsStack(new ResourceLocation(Constants.MOD_ID, itemId));
+  public static List<ItemStack> getBootsStack(@NotNull String modId) {
+    return LEATHERED_BOOTS.entrySet().stream().filter(entry -> entry.getKey().getNamespace().equalsIgnoreCase(modId)).map(entry -> entry.getValue().get().getDefaultInstance()).toList();
   }
 
   /**
    * Returns the {@link ItemStack} of the {@link LeatheredBootsItem} registered with the given {@link ArmorMaterial}.
    *
-   * @param armorMaterial
-   * @return {@link ItemStack} or {@code null}.
+   * @param key leathered boots ID.<br />
+   *            See also {@link #getKey(String, ArmorMaterial)}.
+   * @return registered {@link LeatheredBootsItem} or {@code null}.
    */
   @Nullable
-  public static ItemStack getLeatheredBootsStack(String modId, ArmorMaterial armorMaterial) {
-    return getLeatheredBootsStack(getKeyFor(modId, armorMaterial));
+  public static ItemStack getBootsStack(ResourceLocation key) {
+    LeatheredBootsItem item = getBoots(key);
+    return item == null ? null : item.getDefaultInstance();
   }
 
   /**
-   * Returns the list of all registered mod ids.
+   * Returns the {@link ItemStack} of the {@link LeatheredBootsItem} registered with the given {@link ArmorMaterial}.
    *
-   * @return the list of all registered mod ids.
+   * @param modId mod ID.
+   * @param armorMaterial armor material.
+   * @return registered {@link LeatheredBootsItem} or {@code null}.
+   */
+  @Nullable
+  public static ItemStack getBootsStack(String modId, ArmorMaterial armorMaterial) {
+    return getBootsStack(getKey(modId, armorMaterial));
+  }
+
+  /**
+   * Returns the list of all registered mod IDs.
+   *
+   * @return the list of all registered mod IDs.
    */
   public static List<String> getModIds() {
     return LEATHERED_BOOTS.keySet().stream().map(ResourceLocation::getNamespace).toList();
   }
 
-  public static List<LeatheredBootsItem> getLeatheredBoots(@NotNull String modId) {
-    return LEATHERED_BOOTS.entrySet().stream().filter(entry -> entry.getKey().getNamespace().equalsIgnoreCase(modId)).map(entry -> entry.getValue().get()).toList();
-  }
-
   /**
-   * Returns the {@link ResourceLocation} that would be given to a {@link LeatheredBootsItem} of the given {@link ArmorMaterial} when registered.
-   * <p>
-   * Note: this does not grant that such a {@link LeatheredBootsItem} has been registered.
+   * Returns the {@link ResourceLocation} that would be given to a {@link LeatheredBootsItem} of the given {@link ArmorMaterial} when registered.<br />
+   * <strong>Note</strong>: this does not grant that such a {@link LeatheredBootsItem} has been registered.
    *
-   * @param armorMaterial
-   * @return {@link ResourceLocation} for a {@link LeatheredBootsItem}.
+   * @param armorMaterial armor material.
+   * @return {@link ResourceLocation} for a {@link LeatheredBootsItem} made of the given {@link ArmorMaterial}.
    */
-  public static ResourceLocation getKeyFor(String modId, ArmorMaterial armorMaterial) {
+  public static ResourceLocation getKey(@NotNull String modId, @NotNull ArmorMaterial armorMaterial) {
     return new ResourceLocation(modId, (armorMaterial instanceof LeatheredArmorMaterial leatheredArmorMaterial ? leatheredArmorMaterial : new LeatheredArmorMaterial(armorMaterial)).getName() + "_boots");
   }
 }

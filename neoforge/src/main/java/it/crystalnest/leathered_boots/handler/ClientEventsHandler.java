@@ -24,6 +24,6 @@ public final class ClientEventsHandler {
    */
   @SubscribeEvent
   public static void handleItem(RegisterColorHandlersEvent.Item event) {
-    event.register((stack, tintIndex) -> tintIndex > 0 ? -1 : ((DyeableLeatherItem) stack.getItem()).getColor(stack), LeatheredBootsManager.getLeatheredBoots().toArray(LeatheredBootsItem[]::new));
+    event.register((stack, tintIndex) -> tintIndex > 0 ? -1 : ((DyeableLeatherItem) stack.getItem()).getColor(stack), LeatheredBootsManager.getBoots().toArray(LeatheredBootsItem[]::new));
   }
 }

@@ -36,10 +36,10 @@ public final class ItemRegistry {
    * Includes all registered leathered boots.
    */
   public static final Supplier<CreativeModeTab> LEATHERED_BOOTS_TAB = CREATIVE_TABS.register(Constants.LEATHERED_BOOTS_TAB_ID, Services.ITEM_HELPER.supplyTab(
-    () -> LeatheredBootsManager.getLeatheredBootsStack(Constants.MOD_ID, LeatheredArmorMaterial.LEATHERED_NETHERITE),
+    () -> LeatheredBootsManager.getBootsStack(Constants.MOD_ID, LeatheredArmorMaterial.LEATHERED_NETHERITE),
     Constants.LEATHERED_BOOTS_TAB_ID,
     output -> {
-      output.acceptAll(LeatheredBootsManager.getLeatheredBootsStack());
+      output.acceptAll(LeatheredBootsManager.getBootsStack());
       output.accept(LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM.get());
     }
   ));
@@ -50,13 +50,13 @@ public final class ItemRegistry {
    * Called to load the class and register.
    */
   public static void register() {
-    LeatheredBootsManager.registerLeatheredBoots(
+    LeatheredBootsManager.registerBoots(
       Constants.MOD_ID,
       LeatheredArmorMaterial.LEATHERED_CHAIN,
       LeatheredArmorMaterial.LEATHERED_IRON,
       LeatheredArmorMaterial.LEATHERED_GOLD,
       LeatheredArmorMaterial.LEATHERED_DIAMOND
     );
-    LeatheredBootsManager.registerLeatheredBoots(Constants.MOD_ID,true, LeatheredArmorMaterial.LEATHERED_NETHERITE);
+    LeatheredBootsManager.registerBoots(Constants.MOD_ID,true, LeatheredArmorMaterial.LEATHERED_NETHERITE);
   }
 }
