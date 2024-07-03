@@ -23,7 +23,7 @@ public final class ModEventsHandler {
   @SubscribeEvent
   public static void handle(FMLCommonSetupEvent event) {
     for (LeatheredBootsItem boots : LeatheredBootsManager.getBoots()) {
-      CauldronInteraction.WATER.map().put(boots, CauldronInteraction.DYED_ITEM);
+      CauldronInteraction.WATER.put(boots, CauldronInteraction.DYED_ITEM);
     }
   }
 }

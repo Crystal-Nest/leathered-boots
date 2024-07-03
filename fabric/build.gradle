@@ -8,7 +8,7 @@ dependencies {
   compileOnly project(":common")
   modImplementation "it.crystalnest:cobweb-fabric:${minecraft_version}-${cobweb_version}"
   // Detail Armor Bar dependency
-  modImplementation "curse.maven:detail-armor-bar-506898:4936710"
+  modImplementation "curse.maven:detail-armor-bar-506898:4761926"
 }
 
 loom {

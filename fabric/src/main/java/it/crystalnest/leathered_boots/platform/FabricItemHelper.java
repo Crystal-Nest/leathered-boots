@@ -20,7 +20,7 @@ public final class FabricItemHelper extends ItemHelper {
   public Supplier<LeatheredBootsItem> supplyItem(LeatheredArmorMaterial armorMaterial, boolean isFireResistant) {
     return Suppliers.memoize(() -> {
       LeatheredBootsItem item = new LeatheredBootsItem(armorMaterial, isFireResistant);
-      CauldronInteraction.WATER.map().put(item, CauldronInteraction.DYED_ITEM);
+      CauldronInteraction.WATER.put(item, CauldronInteraction.DYED_ITEM);
       return item;
     });
   }
