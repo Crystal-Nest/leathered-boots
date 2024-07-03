@@ -12,5 +12,7 @@
   "item.leathered_boots.smithing_template.leather_upgrade.ingredients": "Cuoio",
   "item.leathered_boots.smithing_template.leather_upgrade.base_slot_description": "Inserisci degli stivali",
   "item.leathered_boots.smithing_template.leather_upgrade.additions_slot_description": "Inserisci del cuoio",
-  "upgrade.leathered_boots.leather_upgrade": "Miglioramento di cuoio"
+  "upgrade.leathered_boots.leather_upgrade": "Miglioramento di cuoio",
+  "leathered_boots:leathered_boots": "Leathered Boots",
+  "leathered_boots_dynamic_leathered_boots": "Stivali rivestiti decorabili e immuni al gelo"
 }
