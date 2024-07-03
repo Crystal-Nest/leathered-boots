@@ -108,8 +108,6 @@ subprojects { subproject ->
       "fabric_loader_version"        : fabric_loader_version,
       "forge_version"                : forge_version,
       "forge_loader_version_range"   : forge_loader_version_range,
-      "neoforge_version"             : neoforge_version,
-      "neoforge_loader_version_range": neoforge_loader_version_range,
       "cobweb_version"               : cobweb_version,
     ]
 
@@ -132,9 +130,6 @@ subprojects { subproject ->
       break
     case "forge":
       loader = "Forge"
-      break
-    case "neoforge":
-      loader = "NeoForge"
       break
   }
 
@@ -222,8 +217,6 @@ subprojects { subproject ->
           break
         case "Forge":
           break
-        case "NeoForge":
-          break
       }
     }
     curseDepends {
@@ -233,8 +226,6 @@ subprojects { subproject ->
           required "fabric-api"
           break
         case "Forge":
-          break
-        case "NeoForge":
           break
       }
     }

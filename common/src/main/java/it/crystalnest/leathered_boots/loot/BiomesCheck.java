@@ -1,6 +1,8 @@
 package it.crystalnest.leathered_boots.loot;
 
-import com.mojang.serialization.Codec;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSerializationContext;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
@@ -13,17 +15,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-import static com.mojang.serialization.codecs.RecordCodecBuilder.create;
-
 /**
  * {@link LootItemCondition} to check whether the location is in one of the provided biomes.
  */
 public final class BiomesCheck implements LootItemCondition {
-  /**
-   * {@link Codec}.
-   */
-  public static final Codec<BiomesCheck> CODEC = create(instance -> instance.group(BiomesPredicate.CODEC.fieldOf("predicate").forGetter(check -> check.predicate)).apply(instance, BiomesCheck::new));
-
   /**
    * {@link BiomesPredicate}.
    */
@@ -66,5 +61,21 @@ public final class BiomesCheck implements LootItemCondition {
   @Override
   public LootItemConditionType getType() {
     return CommonLootRegistry.BIOMES_CHECK.get();
+  }
+
+  /**
+   * {@link BiomesCheck} {@link net.minecraft.world.level.storage.loot.Serializer}.
+   */
+  static class Serializer implements net.minecraft.world.level.storage.loot.Serializer<BiomesCheck> {
+    @Override
+    public void serialize(JsonObject jsonObject, BiomesCheck BiomesCheck, @NotNull JsonSerializationContext jsonSerializationContext) {
+      jsonObject.add("predicate", BiomesCheck.predicate.toJson());
+    }
+
+    @NotNull
+    @Override
+    public BiomesCheck deserialize(JsonObject jsonObject, @NotNull JsonDeserializationContext jsonDeserializationContext) {
+      return new BiomesCheck(BiomesPredicate.fromJson(jsonObject.get("predicate")));
+    }
   }
 }

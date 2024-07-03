@@ -69,7 +69,7 @@ public final class LootTableEventsHandler {
    */
   public static LootTable handle(ResourceManager resourceManager, LootDataManager lootManager, ResourceLocation id, LootTable original, LootTableSource source) {
     if ("minecraft:archaeology/trail_ruins_rare".equals(id.toString())) {
-      return LootTable.lootTable().pool(LootPool.lootPool().with(original.pools.get(0).entries).with(LootItem.lootTableItem(ItemRegistry.LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM.get()).when(BiomesCheck.builder(Biomes.SNOWY_TAIGA)).build()).build()).build();
+      return LootTable.lootTable().pool(LootPool.lootPool().with(List.of(original.pools[0].entries)).with(LootItem.lootTableItem(ItemRegistry.LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM.get()).when(BiomesCheck.builder(Biomes.SNOWY_TAIGA)).build()).build()).build();
     }
     return null;
   }

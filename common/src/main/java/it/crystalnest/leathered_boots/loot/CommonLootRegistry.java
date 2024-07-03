@@ -20,7 +20,7 @@ public final class CommonLootRegistry {
   /**
    * Biomes check {@link LootItemConditionType}.
    */
-  public static final Supplier<LootItemConditionType> BIOMES_CHECK = LOOT_ITEM_CONDITION_TYPES.register("biomes_check", () -> new LootItemConditionType(BiomesCheck.CODEC));
+  public static final Supplier<LootItemConditionType> BIOMES_CHECK = LOOT_ITEM_CONDITION_TYPES.register("biomes_check", () -> new LootItemConditionType(new BiomesCheck.Serializer()));
 
   private CommonLootRegistry() {}
 
