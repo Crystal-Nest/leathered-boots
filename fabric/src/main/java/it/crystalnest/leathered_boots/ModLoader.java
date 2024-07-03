@@ -24,7 +24,7 @@ public final class ModLoader implements ModInitializer {
   /**
    * Register villager trade offers.
    */
-  private void registerTrades() {
+  private static void registerTrades() {
     for (Map.Entry<Integer, MerchantOffer> trade : Constants.LEATHERED_BOOTS_TRADES.get().entrySet()) {
       TradeOfferHelper.registerVillagerOffers(VillagerProfession.LEATHERWORKER, trade.getKey(), factories -> factories.add((entity, random) -> trade.getValue()));
     }

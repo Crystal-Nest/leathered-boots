@@ -4,7 +4,7 @@ import com.redlimerl.detailab.api.DetailArmorBarAPI;
 import com.redlimerl.detailab.api.render.ArmorBarRenderManager;
 import com.redlimerl.detailab.api.render.TextureOffset;
 import it.crystalnest.leathered_boots.Constants;
-import it.crystalnest.leathered_boots.api.LeatheredBoots;
+import it.crystalnest.leathered_boots.api.LeatheredBootsManager;
 import it.crystalnest.leathered_boots.item.LeatheredArmorMaterial;
 import it.crystalnest.leathered_boots.item.LeatheredBootsItem;
 import net.minecraft.resources.ResourceLocation;
@@ -28,7 +28,9 @@ public final class DetailArmorBar {
   public static void register() {
     register(
       armorMaterial -> {
-        int offsetFullX, offsetHalfX, offsetY = 9 + isVanillaTexture();
+        int offsetFullX;
+        int offsetHalfX;
+        int offsetIconY = 9 + isVanillaTexture();
         if (armorMaterial == LeatheredArmorMaterial.LEATHERED_CHAIN) {
           offsetFullX = 81;
           offsetHalfX = 72;
@@ -45,13 +47,13 @@ public final class DetailArmorBar {
           offsetFullX = 9;
           offsetHalfX = 0;
         } else {
-          Constants.LOGGER.error("An error occurred while attempting to register Leathered Boots {} to Detail Armor Bar:\nUnknown armor type: {}", LeatheredBoots.getKeyFor(Constants.MOD_ID, armorMaterial), armorMaterial);
+          Constants.LOGGER.error("An error occurred while attempting to register Leathered Boots {} to Detail Armor Bar:\nUnknown armor type: {}", LeatheredBootsManager.getKeyFor(Constants.MOD_ID, armorMaterial), armorMaterial);
           offsetFullX = -1;
           offsetHalfX = -1;
         }
-        return new ArmorBarTexture(GUI_ARMOR_BAR, 128, 128, offsetFullX, offsetY, offsetHalfX, offsetY, 9, 0, 27, 0);
+        return new ArmorBarTexture(GUI_ARMOR_BAR, 128, 128, offsetFullX, offsetIconY, offsetHalfX, offsetIconY, 9, 0, 27, 0);
       },
-      LeatheredBoots.getLeatheredBoots(Constants.MOD_ID).toArray(LeatheredBootsItem[]::new)
+      LeatheredBootsManager.getLeatheredBoots(Constants.MOD_ID).toArray(LeatheredBootsItem[]::new)
     );
   }
 

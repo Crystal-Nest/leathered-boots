@@ -73,7 +73,7 @@ public final class ArchaeologyLootModifier extends LootModifier {
   /**
    * A single item addition to the loot.
    */
-  private static class Addition {
+  private static final class Addition {
     /**
      * {@link Codec}.
      */

@@ -3,7 +3,7 @@ package it.crystalnest.leathered_boots.item;
 import it.crystalnest.cobweb.api.registry.CobwebRegister;
 import it.crystalnest.cobweb.api.registry.CobwebRegistry;
 import it.crystalnest.leathered_boots.Constants;
-import it.crystalnest.leathered_boots.api.LeatheredBoots;
+import it.crystalnest.leathered_boots.api.LeatheredBootsManager;
 import it.crystalnest.leathered_boots.platform.Services;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -36,10 +36,10 @@ public final class ItemRegistry {
    * Includes all registered leathered boots.
    */
   public static final Supplier<CreativeModeTab> LEATHERED_BOOTS_TAB = CREATIVE_TABS.register(Constants.LEATHERED_BOOTS_TAB_ID, Services.ITEM_HELPER.supplyTab(
-    () -> LeatheredBoots.getLeatheredBootsStack(Constants.MOD_ID, LeatheredArmorMaterial.LEATHERED_NETHERITE),
+    () -> LeatheredBootsManager.getLeatheredBootsStack(Constants.MOD_ID, LeatheredArmorMaterial.LEATHERED_NETHERITE),
     Constants.LEATHERED_BOOTS_TAB_ID,
     output -> {
-      output.acceptAll(LeatheredBoots.getLeatheredBootsStack());
+      output.acceptAll(LeatheredBootsManager.getLeatheredBootsStack());
       output.accept(LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM.get());
     }
   ));
@@ -50,13 +50,13 @@ public final class ItemRegistry {
    * Called to load the class and register.
    */
   public static void register() {
-    LeatheredBoots.registerLeatheredBoots(
+    LeatheredBootsManager.registerLeatheredBoots(
       Constants.MOD_ID,
       LeatheredArmorMaterial.LEATHERED_CHAIN,
       LeatheredArmorMaterial.LEATHERED_IRON,
       LeatheredArmorMaterial.LEATHERED_GOLD,
       LeatheredArmorMaterial.LEATHERED_DIAMOND
     );
-    LeatheredBoots.registerLeatheredBoots(Constants.MOD_ID,true, LeatheredArmorMaterial.LEATHERED_NETHERITE);
+    LeatheredBootsManager.registerLeatheredBoots(Constants.MOD_ID,true, LeatheredArmorMaterial.LEATHERED_NETHERITE);
   }
 }

@@ -1,7 +1,7 @@
 package it.crystalnest.leathered_boots.handler;
 
 import it.crystalnest.leathered_boots.Constants;
-import it.crystalnest.leathered_boots.api.LeatheredBoots;
+import it.crystalnest.leathered_boots.api.LeatheredBootsManager;
 import it.crystalnest.leathered_boots.item.ItemRegistry;
 import it.crystalnest.leathered_boots.item.LeatheredArmorMaterial;
 import it.crystalnest.leathered_boots.item.LeatheredBootsItem;
@@ -42,18 +42,18 @@ public final class LootTableEventsHandler {
   public static void handle(ResourceManager resourceManager, LootDataManager lootManager, ResourceLocation id, LootTable.Builder builder, LootTableSource source) {
     switch (id.toString()) {
       case "minecraft:chests/village/village_snowy_house" -> {
-        builder.pool(buildPool(0.2f, LeatheredArmorMaterial.LEATHERED_CHAIN));
-        builder.pool(buildPool(0.1f, LeatheredArmorMaterial.LEATHERED_IRON));
-        builder.pool(buildPool(0.05f, LeatheredArmorMaterial.LEATHERED_DIAMOND));
+        builder.pool(buildPool(0.2F, LeatheredArmorMaterial.LEATHERED_CHAIN));
+        builder.pool(buildPool(0.1F, LeatheredArmorMaterial.LEATHERED_IRON));
+        builder.pool(buildPool(0.05F, LeatheredArmorMaterial.LEATHERED_DIAMOND));
       }
       case "minecraft:chests/igloo_chest" -> {
-        builder.pool(buildPool(0.2f, LeatheredArmorMaterial.LEATHERED_GOLD));
-        builder.pool(buildPool(0.1f, LeatheredArmorMaterial.LEATHERED_IRON));
-        builder.pool(buildPool(0.05f, LeatheredArmorMaterial.LEATHERED_DIAMOND));
-        builder.pool(buildPool(0.5f, ItemRegistry.LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM.get()));
+        builder.pool(buildPool(0.2F, LeatheredArmorMaterial.LEATHERED_GOLD));
+        builder.pool(buildPool(0.1F, LeatheredArmorMaterial.LEATHERED_IRON));
+        builder.pool(buildPool(0.05F, LeatheredArmorMaterial.LEATHERED_DIAMOND));
+        builder.pool(buildPool(0.5F, ItemRegistry.LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM.get()));
       }
-      case "minecraft:chests/shipwreck_map", "minecraft:chests/shipwreck_treasure", "minecraft:chests/shipwreck_supply" -> builder.pool(buildPool(0.2f, Biomes.SNOWY_BEACH));
-      case "minecraft:chests/pillager_outpost" -> builder.pool(buildPool(0.334f, Biomes.GROVE, Biomes.SNOWY_SLOPES, Biomes.JAGGED_PEAKS, Biomes.FROZEN_PEAKS, Biomes.SNOWY_TAIGA, Biomes.SNOWY_PLAINS));
+      case "minecraft:chests/shipwreck_map", "minecraft:chests/shipwreck_treasure", "minecraft:chests/shipwreck_supply" -> builder.pool(buildPool(0.2F, Biomes.SNOWY_BEACH));
+      case "minecraft:chests/pillager_outpost" -> builder.pool(buildPool(0.334F, Biomes.GROVE, Biomes.SNOWY_SLOPES, Biomes.JAGGED_PEAKS, Biomes.FROZEN_PEAKS, Biomes.SNOWY_TAIGA, Biomes.SNOWY_PLAINS));
     }
   }
 
@@ -68,7 +68,7 @@ public final class LootTableEventsHandler {
    * @return replaced {@link LootTable} or {@code null}.
    */
   public static LootTable handle(ResourceManager resourceManager, LootDataManager lootManager, ResourceLocation id, LootTable original, LootTableSource source) {
-    if (id.toString().equals("minecraft:archaeology/trail_ruins_rare")) {
+    if ("minecraft:archaeology/trail_ruins_rare".equals(id.toString())) {
       return LootTable.lootTable().pool(LootPool.lootPool().with(original.pools.get(0).entries).with(LootItem.lootTableItem(ItemRegistry.LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM.get()).when(BiomesCheck.builder(Biomes.SNOWY_TAIGA)).build()).build()).build();
     }
     return null;
@@ -98,7 +98,7 @@ public final class LootTableEventsHandler {
    * @return loot pool.
    */
   private static LootPool buildPool(float chance, LeatheredArmorMaterial armorMaterial) {
-    return buildPool(chance, LeatheredBoots.getLeatheredBoots(Constants.MOD_ID, armorMaterial));
+    return buildPool(chance, LeatheredBootsManager.getLeatheredBoots(Constants.MOD_ID, armorMaterial));
   }
 
   /**

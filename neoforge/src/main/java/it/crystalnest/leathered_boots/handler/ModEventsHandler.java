@@ -1,7 +1,7 @@
 package it.crystalnest.leathered_boots.handler;
 
 import it.crystalnest.leathered_boots.Constants;
-import it.crystalnest.leathered_boots.api.LeatheredBoots;
+import it.crystalnest.leathered_boots.api.LeatheredBootsManager;
 import it.crystalnest.leathered_boots.item.LeatheredBootsItem;
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -22,7 +22,7 @@ public final class ModEventsHandler {
    */
   @SubscribeEvent
   public static void handle(FMLCommonSetupEvent event) {
-    for (LeatheredBootsItem boots : LeatheredBoots.getLeatheredBoots()) {
+    for (LeatheredBootsItem boots : LeatheredBootsManager.getLeatheredBoots()) {
       CauldronInteraction.WATER.map().put(boots, CauldronInteraction.DYED_ITEM);
     }
   }

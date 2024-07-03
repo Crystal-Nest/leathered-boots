@@ -1,7 +1,7 @@
 package it.crystalnest.leathered_boots.handler;
 
 import it.crystalnest.leathered_boots.Constants;
-import it.crystalnest.leathered_boots.api.LeatheredBoots;
+import it.crystalnest.leathered_boots.api.LeatheredBootsManager;
 import it.crystalnest.leathered_boots.item.LeatheredBootsItem;
 import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.world.item.DyeableLeatherItem;
@@ -24,6 +24,6 @@ public final class ClientEventsHandler {
    */
   @SubscribeEvent
   public static void handleItem(RegisterColorHandlersEvent.Item event) {
-    event.register((stack, tintIndex) -> tintIndex > 0 ? -1 : ((DyeableLeatherItem) stack.getItem()).getColor(stack), LeatheredBoots.getLeatheredBoots().toArray(LeatheredBootsItem[]::new));
+    event.register((stack, tintIndex) -> tintIndex > 0 ? -1 : ((DyeableLeatherItem) stack.getItem()).getColor(stack), LeatheredBootsManager.getLeatheredBoots().toArray(LeatheredBootsItem[]::new));
   }
 }

@@ -1,6 +1,6 @@
 package it.crystalnest.leathered_boots;
 
-import it.crystalnest.leathered_boots.api.LeatheredBoots;
+import it.crystalnest.leathered_boots.api.LeatheredBootsManager;
 import it.crystalnest.leathered_boots.compat.DetailArmorBar;
 import it.crystalnest.leathered_boots.item.LeatheredBootsItem;
 import it.crystalnest.leathered_boots.platform.Services;
@@ -16,7 +16,7 @@ import org.jetbrains.annotations.ApiStatus;
 public final class ClientModLoader implements ClientModInitializer {
   @Override
   public void onInitializeClient() {
-    ColorProviderRegistry.ITEM.register((stack, tintIndex) -> tintIndex > 0 ? -1 : ((DyeableLeatherItem) stack.getItem()).getColor(stack), LeatheredBoots.getLeatheredBoots().toArray(LeatheredBootsItem[]::new));
+    ColorProviderRegistry.ITEM.register((stack, tintIndex) -> tintIndex > 0 ? -1 : ((DyeableLeatherItem) stack.getItem()).getColor(stack), LeatheredBootsManager.getLeatheredBoots().toArray(LeatheredBootsItem[]::new));
     if (Services.PLATFORM.isModLoaded("detailab")) {
       DetailArmorBar.register();
     }

@@ -22,7 +22,7 @@ public final class EnchantmentRegistry {
   /**
    * {@link SoftStepEnchantment}.
    */
-  public static Supplier<SoftStepEnchantment> SOFT_STEP = ENCHANTMENTS.register("soft_step", SoftStepEnchantment::new);
+  public static final Supplier<SoftStepEnchantment> SOFT_STEP = ENCHANTMENTS.register("soft_step", SoftStepEnchantment::new);
 
   private EnchantmentRegistry() {}
 

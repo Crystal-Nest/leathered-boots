@@ -65,7 +65,7 @@ public final class ChestLootModifier extends LootModifier {
   /**
    * A single item addition to the loot.
    */
-  private static class Addition {
+  private static final class Addition {
     /**
      * {@link Codec}.
      */

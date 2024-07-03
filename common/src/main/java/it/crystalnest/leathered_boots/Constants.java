@@ -3,7 +3,7 @@ package it.crystalnest.leathered_boots;
 import com.google.common.base.Suppliers;
 import it.crystalnest.cobweb.api.pack.DynamicDataPack;
 import it.crystalnest.cobweb.api.pack.DynamicTagBuilder;
-import it.crystalnest.leathered_boots.api.LeatheredBoots;
+import it.crystalnest.leathered_boots.api.LeatheredBootsManager;
 import it.crystalnest.leathered_boots.item.LeatheredArmorMaterial;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -42,16 +42,16 @@ public final class Constants {
     .named(new ResourceLocation(MOD_ID, "leathered_boots"))
     .add(() -> DynamicTagBuilder
       .of(Registries.ITEM, ItemTags.TRIMMABLE_ARMOR, ItemTags.FREEZE_IMMUNE_WEARABLES)
-      .addElements(LeatheredBoots.getLeatheredBoots())
+      .addElements(LeatheredBootsManager.getLeatheredBoots())
     );
 
   /**
    * Leathered boots trade offers.
    */
   public static final Supplier<Map<Integer, MerchantOffer>> LEATHERED_BOOTS_TRADES = Suppliers.memoize(() -> Map.ofEntries(
-    Map.entry(3, new MerchantOffer(new ItemStack(Items.EMERALD, 4), Objects.requireNonNull(LeatheredBoots.getLeatheredBootsStack(Constants.MOD_ID, LeatheredArmorMaterial.LEATHERED_CHAIN)), 5, 6, 0.02F)),
-    Map.entry(4, new MerchantOffer(new ItemStack(Items.EMERALD, 9), Objects.requireNonNull(LeatheredBoots.getLeatheredBootsStack(Constants.MOD_ID, LeatheredArmorMaterial.LEATHERED_IRON)), 3, 10, 0.02F)),
-    Map.entry(5, new MerchantOffer(new ItemStack(Items.EMERALD, 13), Objects.requireNonNull(LeatheredBoots.getLeatheredBootsStack(Constants.MOD_ID, LeatheredArmorMaterial.LEATHERED_DIAMOND)), 1, 30, 0.02F))
+    Map.entry(3, new MerchantOffer(new ItemStack(Items.EMERALD, 4), Objects.requireNonNull(LeatheredBootsManager.getLeatheredBootsStack(Constants.MOD_ID, LeatheredArmorMaterial.LEATHERED_CHAIN)), 5, 6, 0.02F)),
+    Map.entry(4, new MerchantOffer(new ItemStack(Items.EMERALD, 9), Objects.requireNonNull(LeatheredBootsManager.getLeatheredBootsStack(Constants.MOD_ID, LeatheredArmorMaterial.LEATHERED_IRON)), 3, 10, 0.02F)),
+    Map.entry(5, new MerchantOffer(new ItemStack(Items.EMERALD, 13), Objects.requireNonNull(LeatheredBootsManager.getLeatheredBootsStack(Constants.MOD_ID, LeatheredArmorMaterial.LEATHERED_DIAMOND)), 1, 30, 0.02F))
   ));
 
   /**
