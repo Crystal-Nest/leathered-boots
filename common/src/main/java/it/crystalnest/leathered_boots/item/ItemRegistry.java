@@ -35,7 +35,7 @@ public final class ItemRegistry {
    * Leathered boots tab.<br />
    * Includes all registered leathered boots.
    */
-  public static final Supplier<CreativeModeTab> LEATHERED_BOOTS_TAB = CREATIVE_TABS.register(Constants.LEATHERED_BOOTS_TAB_ID, Services.ITEM_HELPER.supplyTab(
+  public static final Supplier<CreativeModeTab> LEATHERED_BOOTS_TAB = CREATIVE_TABS.register(Constants.LEATHERED_BOOTS_TAB_ID, Services.ITEM.supplyTab(
     () -> LeatheredBootsManager.getBootsStack(Constants.MOD_ID, LeatheredArmorMaterial.LEATHERED_NETHERITE),
     Constants.LEATHERED_BOOTS_TAB_ID,
     output -> {
