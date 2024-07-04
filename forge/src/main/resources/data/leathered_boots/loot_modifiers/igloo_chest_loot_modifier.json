@@ -21,11 +21,6 @@
       "item": "leathered_boots:leathered_diamond_boots",
       "chance": 0.05,
       "quantity": 1
-    },
-    {
-      "item": "leathered_boots:leather_upgrade_smithing_template",
-      "chance": 0.5,
-      "quantity": 1
     }
   ]
 }

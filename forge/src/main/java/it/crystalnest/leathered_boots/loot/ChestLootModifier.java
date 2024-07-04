@@ -4,11 +4,8 @@ import com.google.common.base.Suppliers;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
@@ -17,7 +14,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Supplier;
 
 /**
@@ -49,7 +45,7 @@ public final class ChestLootModifier extends LootModifier {
   @Override
   protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
     for (Addition addition : additions) {
-      if (BiomesCheck.builder(addition.biomes).build().test(context) && context.getRandom().nextFloat() <= addition.chance) {
+      if (context.getRandom().nextFloat() <= addition.chance) {
         generatedLoot.add(new ItemStack(addition.item, addition.quantity));
       }
     }
@@ -71,8 +67,7 @@ public final class ChestLootModifier extends LootModifier {
     public static final Codec<Addition> CODEC = RecordCodecBuilder.create(instance -> instance.group(
       ForgeRegistries.ITEMS.getCodec().fieldOf("item").forGetter(addition -> addition.item),
       Codec.FLOAT.fieldOf("chance").forGetter(addition -> addition.chance),
-      Codec.INT.fieldOf("quantity").forGetter(addition -> addition.quantity),
-      ResourceKey.codec(Registries.BIOME).listOf().optionalFieldOf("biomes").forGetter(addition -> Optional.of(addition.biomes))
+      Codec.INT.fieldOf("quantity").forGetter(addition -> addition.quantity)
     ).apply(instance, Addition::new));
 
     /**
@@ -91,22 +86,14 @@ public final class ChestLootModifier extends LootModifier {
     private final Integer quantity;
 
     /**
-     * Allowed biomes for the {@link #item} to add to the loot.<br />
-     * When empty or not specified, it allows all biomes.
-     */
-    private final List<ResourceKey<Biome>> biomes;
-
-    /**
      * @param item {@link #item}.
      * @param chance {@link #chance}.
      * @param quantity {@link #quantity}.
-     * @param biomes {@link #biomes}.
      */
-    private Addition(Item item, Float chance, Integer quantity, Optional<List<ResourceKey<Biome>>> biomes) {
+    private Addition(Item item, Float chance, Integer quantity) {
       this.item = item;
       this.chance = chance;
       this.quantity = quantity;
-      this.biomes = biomes.orElse(List.of());
     }
   }
 }

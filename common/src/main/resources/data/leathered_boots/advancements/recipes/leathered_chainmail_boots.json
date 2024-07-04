@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_leather": {
+    "has_leather_boots": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:leather"
+              "minecraft:leather_boots"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "leathered_boots:smithing/leathered_chainmail_boots"
+        "recipe": "leathered_boots:leathered_chainmail_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_leather"
+      "has_leather_boots",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "leathered_boots:smithing/leathered_chainmail_boots"
+      "leathered_boots:crafting/leathered_chainmail_boots"
     ]
   }
 }

@@ -3,12 +3,13 @@ plugins {}
 dependencies {
   minecraft "com.mojang:minecraft:${minecraft_version}"
   mappings loom.officialMojangMappings()
+  include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.3.6")))
   modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
   modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
   compileOnly project(":common")
   modImplementation "it.crystalnest:cobweb-fabric:${minecraft_version}-${cobweb_version}"
   // Detail Armor Bar dependency
-  modImplementation "curse.maven:detail-armor-bar-506898:4584467"
+  modImplementation "curse.maven:detail-armor-bar-506898:4437072"
 }
 
 loom {

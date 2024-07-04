@@ -2,8 +2,11 @@ package it.crystalnest.leathered_boots.handler;
 
 import it.crystalnest.leathered_boots.Constants;
 import it.crystalnest.leathered_boots.api.LeatheredBootsManager;
+import it.crystalnest.leathered_boots.item.LeatheredArmorMaterial;
 import it.crystalnest.leathered_boots.item.LeatheredBootsItem;
 import net.minecraft.core.cauldron.CauldronInteraction;
+import net.minecraft.network.chat.Component;
+import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -25,5 +28,21 @@ public final class ModEventsHandler {
     for (LeatheredBootsItem boots : LeatheredBootsManager.getBoots()) {
       CauldronInteraction.WATER.put(boots, CauldronInteraction.DYED_ITEM);
     }
+  }
+
+  /**
+   * Registers the creative mode tab for leathered boots.
+   *
+   * @param event {@link CreativeModeTabEvent.Register}.
+   */
+  @SubscribeEvent
+  public static void handle(CreativeModeTabEvent.Register event)  {
+    event.registerCreativeModeTab(
+      Constants.LEATHERED_BOOTS_TAB_ID,
+      builder -> builder
+        .icon(() -> LeatheredBootsManager.getBootsStack(Constants.MOD_ID, LeatheredArmorMaterial.LEATHERED_NETHERITE))
+        .title(Component.translatable("itemGroup." + Constants.LEATHERED_BOOTS_TAB_ID.toString().replace(":", ".")))
+        .displayItems((features, output) -> output.acceptAll(LeatheredBootsManager.getBootsStack()))
+    );
   }
 }

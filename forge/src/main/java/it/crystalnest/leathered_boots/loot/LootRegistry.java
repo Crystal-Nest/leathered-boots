@@ -18,7 +18,6 @@ public final class LootRegistry {
 
   static {
     LOOT_MODIFIERS.register("chest_loot_modifier", ChestLootModifier.CODEC);
-    LOOT_MODIFIERS.register("archaeology_loot_modifier", ArchaeologyLootModifier.CODEC);
   }
 
   private LootRegistry() {}

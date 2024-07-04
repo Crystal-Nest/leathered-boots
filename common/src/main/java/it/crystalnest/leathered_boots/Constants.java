@@ -32,15 +32,15 @@ public final class Constants {
   /**
    * ID for leathered boots creative mod tab.
    */
-  public static final String LEATHERED_BOOTS_TAB_ID = "leathered_boots_tab";
+  public static final ResourceLocation LEATHERED_BOOTS_TAB_ID = new ResourceLocation(Constants.MOD_ID, "leathered_boots_tab");
 
   /**
    * Leathered boots dynamic datapack.<br />
-   * Adds all leathered boots to {@link ItemTags#TRIMMABLE_ARMOR} and {@link ItemTags#FREEZE_IMMUNE_WEARABLES}.
+   * Adds all leathered boots to {@link ItemTags#FREEZE_IMMUNE_WEARABLES}.
    */
   public static final DynamicDataPack LEATHERED_BOOTS_DYNAMIC_DATA_PACK = (DynamicDataPack) DynamicDataPack
     .named(new ResourceLocation(MOD_ID, "leathered_boots"))
-    .add(() -> DynamicTagBuilder.of(Registries.ITEM, ItemTags.TRIMMABLE_ARMOR, ItemTags.FREEZE_IMMUNE_WEARABLES).addElements(LeatheredBootsManager.getBoots()));
+    .add(() -> DynamicTagBuilder.of(Registries.ITEM, ItemTags.FREEZE_IMMUNE_WEARABLES).addElements(LeatheredBootsManager.getBoots()));
 
   /**
    * Leathered boots trade offers.

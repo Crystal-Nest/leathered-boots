@@ -4,11 +4,7 @@ import com.google.common.base.Suppliers;
 import it.crystalnest.leathered_boots.item.LeatheredArmorMaterial;
 import it.crystalnest.leathered_boots.item.LeatheredBootsItem;
 import it.crystalnest.leathered_boots.platform.services.ItemHelper;
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.core.cauldron.CauldronInteraction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
 
 import java.util.function.Supplier;
 
@@ -23,10 +19,5 @@ public final class FabricItemHelper extends ItemHelper {
       CauldronInteraction.WATER.put(item, CauldronInteraction.DYED_ITEM);
       return item;
     });
-  }
-
-  @Override
-  protected Supplier<CreativeModeTab> buildTab(Supplier<ItemStack> icon, Component title, CreativeModeTab.DisplayItemsGenerator displayItemsGenerator) {
-    return () -> FabricItemGroup.builder().icon(icon).title(title).displayItems(displayItemsGenerator).build();
   }
 }

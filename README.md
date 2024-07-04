@@ -1,7 +1,7 @@
 ![Leathered Boots banner](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/leathered-boots/banner.gif)
 
 ---
-![Minecraft](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/minecraft/minecraft.svg)[![1.20.1](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/minecraft/1-20-1.svg)](https://modrinth.com/mod/leathered-boots/versions?g=1.20.1)![Separator](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/separator.svg)[![1.19.4](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/minecraft/1-19-4.svg)](https://modrinth.com/mod/leathered-boots/versions?g=1.19.4)![Separator](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/separator.svg)[![1.19.2](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/minecraft/1-19-2.svg)](https://modrinth.com/mod/leathered-boots/versions?g=1.19.2)![Separator](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/separator.svg)[![1.18.2](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/minecraft/1-18-2.svg)](https://modrinth.com/mod/leathered-boots/versions?g=1.18.2)
+![Minecraft](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/minecraft/minecraft.svg)[![1.19.4](https://raw.githubusercontent.com/Nyphet/mod-fancy-assets/main/minecraft/1-19-4.svg)](https://modrinth.com/mod/leathered-boots/versions?g=1.19.4)![Separator](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/separator.svg)[![1.19.2](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/minecraft/1-19-2.svg)](https://modrinth.com/mod/leathered-boots/versions?g=1.19.2)![Separator](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/separator.svg)[![1.18.2](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/minecraft/1-18-2.svg)](https://modrinth.com/mod/leathered-boots/versions?g=1.18.2)
 
 ![Loader](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/loader/loader.svg)[![Forge](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/loader/forge.svg)](https://modrinth.com/mod/leathered-boots/versions?l=forge)![Separator](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/separator.svg)[![Fabric](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/loader/fabric.svg)](https://modrinth.com/mod/leathered-boots/versions?l=fabric)
 
@@ -26,26 +26,12 @@ Also prevent freezing and can be dyed!
   ![Dying](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/leathered-boots/dying.png)
 - Right-clicking a cauldron with dyed leathered boots removes the color!  
   ![Undying](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/leathered-boots/undying.gif)
-- Since 1.20, leathered boots are trimmable!  
-  ![Trimming](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/leathered-boots/trimming.png)
-- Since 1.20, the smithing template to craft leathered boots can be found in igloos, pillager outposts, shipwrecks, and trail ruins (but only in snowy/frozen biomes)!
 - The Leatherworker villager can trade leathered boots.
 - Leathered boots can be found in Igloos chests and snowy villages!
 - Vanilla advancements have been adapted to include leathered boots: *Light as a rabbit*, *Suit up*, *Cover Me with Diamonds*, *Oh Shiny*, and *Cover Me in Debris*.
 - Highly compatible: see the [Compatibility](https://github.com/crystal-nest/leathered-boots#compatibility) section.
 
 ## **Craftings**
-
-### **Since 1.20**
-
-- Duplicate the new Leather Upgrade Smithing Template with the usual smithing template duplication recipe.  
-  ![Smithing Template](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/leathered-boots/smithing-template.png)
-- Use the new Leather Upgrade Smithing Template to create leathered boots.  
-  ![Smithing with template](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/leathered-boots/smithing-with-template.gif)
-- Smite diamond leathered boots into netherite leathered boots.  
-  ![Smithing](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/leathered-boots/smithing-1-20.png)
-
-### **Before 1.20**
 
 - Craft leathered boots by putting normal boots and leather boots together in a crafting table.  
   ![Craftings](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/leathered-boots/craftings.gif)

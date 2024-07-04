@@ -7,12 +7,6 @@
   "item.leathered_boots.leathered_netherite_boots": "Netherite Leathered Boots",
   "enchantment.leathered_boots.soft_step": "Soft Step",
   "enchantment.leathered_boots.soft_step.desc": "Allows to walk on powder snow.",
-  "item.leathered_boots.leather_upgrade_smithing_template": "Smithing Template",
-  "item.leathered_boots.smithing_template.leather_upgrade.applies_to": "Boots",
-  "item.leathered_boots.smithing_template.leather_upgrade.ingredients": "Leather",
-  "item.leathered_boots.smithing_template.leather_upgrade.base_slot_description": "Add boots",
-  "item.leathered_boots.smithing_template.leather_upgrade.additions_slot_description": "Add Leather",
-  "upgrade.leathered_boots.leather_upgrade": "Leather Upgrade",
   "leathered_boots:leathered_boots": "Leathered Boots",
-  "leathered_boots_dynamic_leathered_boots": "Trimmable and Freeze Immune Leathered Boots"
+  "leathered_boots_dynamic_leathered_boots": "Freeze Immune Leathered Boots"
 }
