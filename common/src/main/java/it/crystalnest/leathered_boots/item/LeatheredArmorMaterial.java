@@ -1,0 +1,105 @@
+package it.crystalnest.leathered_boots.item;
+
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.ArmorMaterials;
+import net.minecraft.world.item.crafting.Ingredient;
+import org.jetbrains.annotations.NotNull;
+
+/**
+ * All leathered boots {@link ArmorMaterial}s.
+ */
+public class LeatheredArmorMaterial implements ArmorMaterial {
+  /**
+   * {@link LeatheredArmorMaterial} for Vanilla {@link ArmorMaterials#CHAIN}.
+   */
+  public static final LeatheredArmorMaterial LEATHERED_CHAIN = new LeatheredArmorMaterial(ArmorMaterials.CHAIN);
+
+  /**
+   * {@link LeatheredArmorMaterial} for Vanilla {@link ArmorMaterials#IRON}.
+   */
+  public static final LeatheredArmorMaterial LEATHERED_IRON = new LeatheredArmorMaterial(ArmorMaterials.IRON);
+
+  /**
+   * {@link LeatheredArmorMaterial} for Vanilla {@link ArmorMaterials#GOLD}.
+   */
+  public static final LeatheredArmorMaterial LEATHERED_GOLD = new LeatheredArmorMaterial(ArmorMaterials.GOLD);
+
+  /**
+   * {@link LeatheredArmorMaterial} for Vanilla {@link ArmorMaterials#DIAMOND}.
+   */
+  public static final LeatheredArmorMaterial LEATHERED_DIAMOND = new LeatheredArmorMaterial(ArmorMaterials.DIAMOND);
+
+  /**
+   * {@link LeatheredArmorMaterial} for Vanilla {@link ArmorMaterials#NETHERITE}.
+   */
+  public static final LeatheredArmorMaterial LEATHERED_NETHERITE = new LeatheredArmorMaterial(ArmorMaterials.NETHERITE);
+
+  /**
+   * Name of this {@link ArmorMaterial}.<br />
+   * Always equal to {@code "leathered_" + baseArmorMaterialName}.
+   */
+  private final String name;
+
+  /**
+   * Base {@link ArmorMaterial}.
+   */
+  private final ArmorMaterial armorMaterial;
+
+  /**
+   * @param armorMaterial {@link #armorMaterial}.
+   */
+  public LeatheredArmorMaterial(ArmorMaterial armorMaterial) {
+    this.name = "leathered_" + armorMaterial.getName();
+    this.armorMaterial = armorMaterial;
+  }
+
+  @Override
+  public int getDurabilityForSlot(@NotNull EquipmentSlot equipmentSlot) {
+    return this.armorMaterial.getDurabilityForSlot(equipmentSlot);
+  }
+
+  @Override
+  public int getDefenseForSlot(@NotNull EquipmentSlot equipmentSlot) {
+    return this.armorMaterial.getDefenseForSlot(equipmentSlot);
+  }
+
+  @Override
+  public int getEnchantmentValue() {
+    return this.armorMaterial.getEnchantmentValue();
+  }
+
+  @NotNull
+  @Override
+  public SoundEvent getEquipSound() {
+    return this.armorMaterial.getEquipSound();
+  }
+
+  @NotNull
+  @Override
+  public Ingredient getRepairIngredient() {
+    return this.armorMaterial.getRepairIngredient();
+  }
+
+  @NotNull
+  @Override
+  public String getName() {
+    return this.name;
+  }
+
+  @Override
+  public float getToughness() {
+    return this.armorMaterial.getToughness();
+  }
+
+  @Override
+  public float getKnockbackResistance() {
+    return this.armorMaterial.getKnockbackResistance();
+  }
+
+  @Override
+  public String toString() {
+    return "LeatheredArmorMaterial{name=" + name + "}";
+  }
+}
