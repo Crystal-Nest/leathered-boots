@@ -1,14 +1,14 @@
 package it.crystalnest.leathered_boots.item;
 
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.item.ArmorItem.Type;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * All base leathered boots {@link ArmorMaterial}s.
+ * All leathered boots {@link ArmorMaterial}s.
  */
 public class LeatheredArmorMaterial implements ArmorMaterial {
   /**
@@ -56,13 +56,13 @@ public class LeatheredArmorMaterial implements ArmorMaterial {
   }
 
   @Override
-  public int getDurabilityForType(@NotNull Type type) {
-    return this.armorMaterial.getDurabilityForType(type);
+  public int getDurabilityForSlot(@NotNull EquipmentSlot equipmentSlot) {
+    return this.armorMaterial.getDurabilityForSlot(equipmentSlot);
   }
 
   @Override
-  public int getDefenseForType(@NotNull Type type) {
-    return this.armorMaterial.getDefenseForType(type);
+  public int getDefenseForSlot(@NotNull EquipmentSlot equipmentSlot) {
+    return this.armorMaterial.getDefenseForSlot(equipmentSlot);
   }
 
   @Override

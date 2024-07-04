@@ -15,11 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-<<<<<<<< HEAD:common/src/main/resources/data/leathered_boots/advancements/recipes/leathered_gold_boots.json
-        "recipe": "leatheredboots:leathered_gold_boots"
-========
         "recipe": "leathered_boots:leathered_chainmail_boots"
->>>>>>>> refs/heads/1.19.4:common/src/main/resources/data/leathered_boots/advancements/recipes/leathered_chainmail_boots.json
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -32,11 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-<<<<<<<< HEAD:common/src/main/resources/data/leathered_boots/advancements/recipes/leathered_gold_boots.json
-      "leatheredboots:crafting/leathered_gold_boots"
-========
       "leathered_boots:crafting/leathered_chainmail_boots"
->>>>>>>> refs/heads/1.19.4:common/src/main/resources/data/leathered_boots/advancements/recipes/leathered_chainmail_boots.json
     ]
   }
 }

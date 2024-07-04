@@ -11,10 +11,6 @@
     }
   ],
   "result": {
-<<<<<<<< HEAD:forge/src/main/resources/data/leatheredboots/recipes/crafting/leathered_gold_boots.json
-    "item": "leatheredboots:leathered_gold_boots"
-========
     "item": "leathered_boots:leathered_gold_boots"
->>>>>>>> refs/heads/1.19.4:common/src/main/resources/data/leathered_boots/recipes/crafting/leathered_gold_boots.json
   }
 }

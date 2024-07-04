@@ -4,16 +4,9 @@
     "item": "minecraft:netherite_ingot"
   },
   "base": {
-<<<<<<<< HEAD:forge/src/main/resources/data/leatheredboots/recipes/smithing/leathered_netherite_boots_from_diamond.json
-    "item": "leatheredboots:leathered_diamond_boots"
-  },
-  "result": {
-    "item": "leatheredboots:leathered_netherite_boots"
-========
     "item": "leathered_boots:leathered_diamond_boots"
   },
   "result": {
     "item": "leathered_boots:leathered_netherite_boots"
->>>>>>>> refs/heads/1.19.4:common/src/main/resources/data/leathered_boots/recipes/smithing/leathered_netherite_boots_from_diamond.json
   }
 }

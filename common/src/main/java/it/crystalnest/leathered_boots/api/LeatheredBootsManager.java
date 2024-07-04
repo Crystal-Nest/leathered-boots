@@ -43,7 +43,7 @@ public final class LeatheredBootsManager {
     if (LEATHERED_BOOTS.containsKey(id)) {
       Constants.LOGGER.error("LeatheredBootsItem [{}] was already registered.", id);
     }
-    return LEATHERED_BOOTS.computeIfAbsent(id, key -> CobwebRegistry.ofItems(modId).register(key.getPath(), Services.ITEM_HELPER.supplyItem(leatheredArmorMaterial, isFireResistant)));
+    return LEATHERED_BOOTS.computeIfAbsent(id, key -> CobwebRegistry.ofItems(modId).register(key.getPath(), Services.ITEM.supplyItem(leatheredArmorMaterial, isFireResistant)));
   }
 
   /**
@@ -115,6 +115,7 @@ public final class LeatheredBootsManager {
   /**
    * Returns the list of all registered {@link LeatheredBootsItem}s by the specified mod.
    *
+   * @param modId mod ID.
    * @return the list of all registered {@link LeatheredBootsItem}s by the specified mod.
    */
   public static List<LeatheredBootsItem> getBoots(@NotNull String modId) {
@@ -157,6 +158,7 @@ public final class LeatheredBootsManager {
   /**
    * Returns the list of all {@link ItemStack}s of all registered {@link LeatheredBootsItem}s by the specified mod.
    *
+   * @param modId mod ID.
    * @return the list of all {@link ItemStack}s of all registered {@link LeatheredBootsItem}s by the specified mod.
    */
   public static List<ItemStack> getBootsStack(@NotNull String modId) {
@@ -201,6 +203,7 @@ public final class LeatheredBootsManager {
    * Returns the {@link ResourceLocation} that would be given to a {@link LeatheredBootsItem} of the given {@link ArmorMaterial} when registered.<br />
    * <strong>Note</strong>: this does not grant that such a {@link LeatheredBootsItem} has been registered.
    *
+   * @param modId mod ID.
    * @param armorMaterial armor material.
    * @return {@link ResourceLocation} for a {@link LeatheredBootsItem} made of the given {@link ArmorMaterial}.
    */

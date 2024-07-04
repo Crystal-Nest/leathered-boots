@@ -15,11 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-<<<<<<<< HEAD:forge/src/main/resources/data/leatheredboots/advancements/leathered_iron_boots.json
-        "recipe": "leatheredboots:leathered_iron_boots"
-========
         "recipe": "leathered_boots:leathered_diamond_boots"
->>>>>>>> refs/heads/1.19.4:common/src/main/resources/data/leathered_boots/advancements/recipes/leathered_diamond_boots.json
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -32,11 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-<<<<<<<< HEAD:forge/src/main/resources/data/leatheredboots/advancements/leathered_iron_boots.json
-      "leatheredboots:crafting/leathered_iron_boots"
-========
       "leathered_boots:crafting/leathered_diamond_boots"
->>>>>>>> refs/heads/1.19.4:common/src/main/resources/data/leathered_boots/advancements/recipes/leathered_diamond_boots.json
     ]
   }
 }

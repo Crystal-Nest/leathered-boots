@@ -19,9 +19,9 @@ public final class Services {
   public static final PlatformHelper PLATFORM = load(PlatformHelper.class);
 
   /**
-   * Provides abstraction over creative mod tabs.
+   * Provides utilities to get items and creative mode tabs with different implementations across loaders.
    */
-  public static final ItemHelper ITEM_HELPER = load(ItemHelper.class);
+  public static final ItemHelper ITEM = load(ItemHelper.class);
 
   private Services() {}
 

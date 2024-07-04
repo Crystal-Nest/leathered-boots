@@ -5,7 +5,7 @@ import it.crystalnest.cobweb.api.pack.DynamicDataPack;
 import it.crystalnest.cobweb.api.pack.DynamicTagBuilder;
 import it.crystalnest.leathered_boots.api.LeatheredBootsManager;
 import it.crystalnest.leathered_boots.item.LeatheredArmorMaterial;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
@@ -40,7 +40,7 @@ public final class Constants {
    */
   public static final DynamicDataPack LEATHERED_BOOTS_DYNAMIC_DATA_PACK = (DynamicDataPack) DynamicDataPack
     .named(new ResourceLocation(MOD_ID, "leathered_boots"))
-    .add(() -> DynamicTagBuilder.of(Registries.ITEM, ItemTags.FREEZE_IMMUNE_WEARABLES).addElements(LeatheredBootsManager.getBoots()));
+    .add(() -> DynamicTagBuilder.of(Registry.ITEM, ItemTags.FREEZE_IMMUNE_WEARABLES).addElements(LeatheredBootsManager.getBoots()));
 
   /**
    * Leathered boots trade offers.

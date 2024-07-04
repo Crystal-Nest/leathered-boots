@@ -1,5 +1,6 @@
 package it.crystalnest.leathered_boots.item;
 
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.DyeableArmorItem;
 import org.jetbrains.annotations.NotNull;
 
@@ -12,7 +13,7 @@ public class LeatheredBootsItem extends DyeableArmorItem {
    * @param isFireResistant {@link #isFireResistant}.
    */
   public LeatheredBootsItem(LeatheredArmorMaterial armorMaterial, boolean isFireResistant) {
-    super(armorMaterial, Type.BOOTS, isFireResistant ? new Properties().fireResistant() : new Properties());
+    super(armorMaterial, EquipmentSlot.FEET, isFireResistant ? new Properties().tab(ItemRegistry.LEATHERED_BOOTS_CREATIVE_TAB).fireResistant() : new Properties().tab(ItemRegistry.LEATHERED_BOOTS_CREATIVE_TAB));
   }
 
   @NotNull
