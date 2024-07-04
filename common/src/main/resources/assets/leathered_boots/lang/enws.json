@@ -1,0 +1,12 @@
+{
+  "itemGroup.leathered_boots.leathered_boots_tab": "Leath'r'd Sabatons",
+  "item.leathered_boots.leathered_chainmail_boots": "Mailed Leath'r'd Sabatons",
+  "item.leathered_boots.leathered_iron_boots": "Iron Leath'r'd Sabatons",
+  "item.leathered_boots.leathered_gold_boots": "Golden Leath'r'd Sabatons",
+  "item.leathered_boots.leathered_diamond_boots": "Diamond Leath'r'd Sabatons",
+  "item.leathered_boots.leathered_netherite_boots": "Netherite Leath'r'd Sabatons",
+  "enchantment.leathered_boots.soft_step": "Soft stepeth",
+  "enchantment.leathered_boots.soft_step.desc": "Allows to walketh on powdered snow.",
+  "leathered_boots:leathered_boots": "Leathered Boots",
+  "leathered_boots_dynamic_leathered_boots": "Freeze Immune Leath'r'd Sabatons"
+}

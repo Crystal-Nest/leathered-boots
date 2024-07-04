@@ -1,0 +1,12 @@
+{
+  "itemGroup.leathered_boots.leathered_boots_tab": "Bottes revêtus",
+  "item.leathered_boots.leathered_chainmail_boots": "Bottes de mailles revêtus",
+  "item.leathered_boots.leathered_iron_boots": "Bottes en fer revêtus",
+  "item.leathered_boots.leathered_gold_boots": "Bottes en or revêtus",
+  "item.leathered_boots.leathered_diamond_boots": "Bottes en diamant revêtus",
+  "item.leathered_boots.leathered_netherite_boots": "Bottes en Netherite revêtus",
+  "enchantment.leathered_boots.soft_step": "Pas Délicat",
+  "enchantment.leathered_boots.soft_step.desc": "Permet de marcher sur neige poudreuse.",
+  "leathered_boots:leathered_boots": "Leathered Boots",
+  "leathered_boots_dynamic_leathered_boots": "Bottes revêtus immunisés au gel"
+}

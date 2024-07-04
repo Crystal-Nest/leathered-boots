@@ -1,0 +1,42 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_leather_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:leather_boots"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+<<<<<<<< HEAD:common/src/main/resources/data/leathered_boots/advancements/recipes/leathered_iron_boots.json
+        "recipe": "leatheredboots:leathered_iron_boots"
+========
+        "recipe": "leathered_boots:leathered_gold_boots"
+>>>>>>>> refs/heads/1.19.4:common/src/main/resources/data/leathered_boots/advancements/recipes/leathered_gold_boots.json
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_leather_boots",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+<<<<<<<< HEAD:common/src/main/resources/data/leathered_boots/advancements/recipes/leathered_iron_boots.json
+      "leatheredboots:crafting/leathered_iron_boots"
+========
+      "leathered_boots:crafting/leathered_gold_boots"
+>>>>>>>> refs/heads/1.19.4:common/src/main/resources/data/leathered_boots/advancements/recipes/leathered_gold_boots.json
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "group": "leathered_boots",
+  "ingredients": [
+    {
+      "item": "minecraft:netherite_boots"
+    },
+    {
+      "item": "minecraft:leather_boots"
+    }
+  ],
+  "result": {
+<<<<<<<< HEAD:forge/src/main/resources/data/leatheredboots/recipes/crafting/leathered_netherite_boots.json
+    "item": "leatheredboots:leathered_netherite_boots"
+========
+    "item": "leathered_boots:leathered_netherite_boots"
+>>>>>>>> refs/heads/1.19.4:common/src/main/resources/data/leathered_boots/recipes/crafting/leathered_netherite_boots.json
+  }
+}
