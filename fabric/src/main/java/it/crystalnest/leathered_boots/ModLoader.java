@@ -18,6 +18,10 @@ import java.util.Map;
  */
 @ApiStatus.Internal
 public final class ModLoader implements ModInitializer {
+  /**
+   * Leathered boots tab.<br />
+   * Includes all registered leathered boots.
+   */
   private static final CreativeModeTab LEATHERED_BOOTS_CREATIVE_TAB = FabricItemGroup.builder(Constants.LEATHERED_BOOTS_TAB_ID)
     .icon(() -> LeatheredBootsManager.getBootsStack(Constants.MOD_ID, LeatheredArmorMaterial.LEATHERED_NETHERITE))
     .displayItems((features, output) -> output.acceptAll(LeatheredBootsManager.getBootsStack()))

@@ -8,7 +8,7 @@ import java.util.function.Supplier;
 /**
  * Item related stuff helper.
  */
-public abstract class ItemHelper {
+public interface ItemHelper {
   /**
    * Returns a supplier for a {@link LeatheredBootsItem}.
    *
@@ -16,5 +16,5 @@ public abstract class ItemHelper {
    * @param isFireResistant whether the {@link LeatheredBootsItem} is fire-resistant.
    * @return {@link Supplier} for the {@link LeatheredBootsItem}.
    */
-  public abstract Supplier<LeatheredBootsItem> supplyItem(LeatheredArmorMaterial armorMaterial, boolean isFireResistant);
+  Supplier<LeatheredBootsItem> supplyItem(LeatheredArmorMaterial armorMaterial, boolean isFireResistant);
 }

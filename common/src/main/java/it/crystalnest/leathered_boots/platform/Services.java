@@ -3,7 +3,6 @@ package it.crystalnest.leathered_boots.platform;
 import it.crystalnest.leathered_boots.Constants;
 import it.crystalnest.leathered_boots.platform.services.ItemHelper;
 import it.crystalnest.leathered_boots.platform.services.PlatformHelper;
-import org.jetbrains.annotations.ApiStatus;
 
 import java.util.ServiceLoader;
 
@@ -11,7 +10,6 @@ import java.util.ServiceLoader;
  * Service loaders are a built-in Java feature that allow us to locate implementations of an interface that vary from one environment to another.
  * In the context of MultiLoader we use this feature to access a mock API in the common code that is swapped out for the platform specific implementation at runtime.
  */
-@ApiStatus.Internal
 public final class Services {
   /**
    * Provides information about what platform the mod is running on.
@@ -21,7 +19,7 @@ public final class Services {
   /**
    * Provides abstraction over creative mod tabs.
    */
-  public static final ItemHelper ITEM_HELPER = load(ItemHelper.class);
+  public static final ItemHelper ITEM = load(ItemHelper.class);
 
   private Services() {}
 

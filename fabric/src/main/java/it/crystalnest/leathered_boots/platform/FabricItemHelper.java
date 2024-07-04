@@ -11,7 +11,7 @@ import java.util.function.Supplier;
 /**
  * Fabric item helper.
  */
-public final class FabricItemHelper extends ItemHelper {
+public final class FabricItemHelper implements ItemHelper {
   @Override
   public Supplier<LeatheredBootsItem> supplyItem(LeatheredArmorMaterial armorMaterial, boolean isFireResistant) {
     return Suppliers.memoize(() -> {
