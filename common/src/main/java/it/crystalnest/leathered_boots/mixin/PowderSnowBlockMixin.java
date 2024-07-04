@@ -27,11 +27,9 @@ public abstract class PowderSnowBlockMixin {
    */
   @ModifyReturnValue(method = "canEntityWalkOnPowderSnow", at = @At(value = "RETURN", ordinal = 1))
   private static boolean modifyCanEntityWalkOnPowderSnow(boolean original, Entity entity) {
-    return original || (
-      entity instanceof LivingEntity livingEntity && (
-        livingEntity.getItemBySlot(EquipmentSlot.FEET).getItem() instanceof LeatheredBootsItem ||
-        EnchantmentHelper.getItemEnchantmentLevel(EnchantmentRegistry.SOFT_STEP.get(), livingEntity.getItemBySlot(EquipmentSlot.FEET)) > 0
-      )
+    return original || entity instanceof LivingEntity livingEntity && (
+      livingEntity.getItemBySlot(EquipmentSlot.FEET).getItem() instanceof LeatheredBootsItem ||
+      EnchantmentHelper.getItemEnchantmentLevel(EnchantmentRegistry.SOFT_STEP.get(), livingEntity.getItemBySlot(EquipmentSlot.FEET)) > 0
     );
   }
 }
