@@ -57,6 +57,6 @@ public final class ItemRegistry {
       LeatheredArmorMaterial.LEATHERED_GOLD,
       LeatheredArmorMaterial.LEATHERED_DIAMOND
     );
-    LeatheredBootsManager.registerBoots(Constants.MOD_ID,true, LeatheredArmorMaterial.LEATHERED_NETHERITE);
+    LeatheredBootsManager.registerBoots(Constants.MOD_ID, true, LeatheredArmorMaterial.LEATHERED_NETHERITE);
   }
 }
