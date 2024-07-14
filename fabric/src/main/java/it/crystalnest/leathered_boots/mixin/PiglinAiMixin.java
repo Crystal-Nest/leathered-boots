@@ -1,7 +1,6 @@
 package it.crystalnest.leathered_boots.mixin;
 
-import it.crystalnest.leathered_boots.item.LeatheredArmorMaterial;
-import it.crystalnest.leathered_boots.item.LeatheredBootsItem;
+import it.crystalnest.leathered_boots.item.ItemRegistry;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.piglin.PiglinAi;
@@ -18,14 +17,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class PiglinAiMixin {
   /**
    * Injects at the start of the method {@link PiglinAi#isWearingGold(LivingEntity)}.<br />
-   * Adds a check for {@link LeatheredArmorMaterial#LEATHERED_GOLD}.
+   * Adds a check for {@link ItemRegistry#LEATHERED_GOLDEN_BOOTS}.
    *
    * @param entity {@link LivingEntity} to check.
    * @param cir {@link CallbackInfoReturnable}.
    */
   @Inject(method = "isWearingGold", at = @At(value = "HEAD"), cancellable = true)
   private static void onIsWearingGold(LivingEntity entity, CallbackInfoReturnable<Boolean> cir) {
-    if (entity.getItemBySlot(EquipmentSlot.FEET).getItem() instanceof LeatheredBootsItem leatheredBoots && leatheredBoots.getMaterial() == LeatheredArmorMaterial.LEATHERED_GOLD) {
+    if (entity.getItemBySlot(EquipmentSlot.FEET).getItem() == ItemRegistry.LEATHERED_GOLDEN_BOOTS.get()) {
       cir.setReturnValue(true);
     }
   }

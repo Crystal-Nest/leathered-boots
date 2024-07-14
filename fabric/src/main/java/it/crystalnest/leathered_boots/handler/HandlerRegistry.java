@@ -1,6 +1,6 @@
 package it.crystalnest.leathered_boots.handler;
 
-import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
+import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 
 /**
  * Handlers register.

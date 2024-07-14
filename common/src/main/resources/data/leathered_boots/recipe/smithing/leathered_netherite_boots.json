@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "minecraft:leather"
+  },
+  "base": {
+    "item": "minecraft:netherite_boots"
+  },
+  "result": {
+    "count": 1,
+    "id": "leathered_boots:leathered_netherite_boots"
+  },
+  "template": {
+    "item": "leathered_boots:leather_upgrade_smithing_template"
+  }
+}

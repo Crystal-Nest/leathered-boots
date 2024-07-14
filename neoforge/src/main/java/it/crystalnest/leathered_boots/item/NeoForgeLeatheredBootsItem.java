@@ -1,6 +1,8 @@
 package it.crystalnest.leathered_boots.item;
 
+import net.minecraft.core.Holder;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
@@ -9,11 +11,11 @@ import org.jetbrains.annotations.NotNull;
  */
 public class NeoForgeLeatheredBootsItem extends LeatheredBootsItem {
   /**
-   * @param armorMaterial {@link LeatheredArmorMaterial}.
-   * @param isFireResistant {@link #isFireResistant}.
+   * @param armorMaterial {@link ArmorMaterial}.
+   * @param isFireResistant whether the boots are fire-resistant.
    */
-  public NeoForgeLeatheredBootsItem(LeatheredArmorMaterial armorMaterial, boolean isFireResistant) {
-    super(armorMaterial, isFireResistant);
+  public NeoForgeLeatheredBootsItem(Holder<ArmorMaterial> armorMaterial, int durabilityFactor, boolean isFireResistant) {
+    super(armorMaterial, durabilityFactor, isFireResistant);
   }
 
   @Override
@@ -23,6 +25,6 @@ public class NeoForgeLeatheredBootsItem extends LeatheredBootsItem {
 
   @Override
   public final boolean makesPiglinsNeutral(@NotNull ItemStack stack, @NotNull LivingEntity wearer) {
-    return getMaterial() == LeatheredArmorMaterial.LEATHERED_GOLD;
+    return this == ItemRegistry.LEATHERED_GOLDEN_BOOTS.get();
   }
 }

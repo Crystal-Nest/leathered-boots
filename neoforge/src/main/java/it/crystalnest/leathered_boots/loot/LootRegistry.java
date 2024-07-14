@@ -1,6 +1,6 @@
 package it.crystalnest.leathered_boots.loot;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import it.crystalnest.leathered_boots.Constants;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
@@ -14,7 +14,7 @@ public final class LootRegistry {
   /**
    * {@link DeferredRegister} for {@link IGlobalLootModifier}s.
    */
-  private static final DeferredRegister<Codec<? extends IGlobalLootModifier>> LOOT_MODIFIERS = DeferredRegister.create(NeoForgeRegistries.GLOBAL_LOOT_MODIFIER_SERIALIZERS, Constants.MOD_ID);
+  private static final DeferredRegister<MapCodec<? extends IGlobalLootModifier>> LOOT_MODIFIERS = DeferredRegister.create(NeoForgeRegistries.GLOBAL_LOOT_MODIFIER_SERIALIZERS, Constants.MOD_ID);
 
   static {
     LOOT_MODIFIERS.register("chest_loot_modifier", ChestLootModifier.CODEC);

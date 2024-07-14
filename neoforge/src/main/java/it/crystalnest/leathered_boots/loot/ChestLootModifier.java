@@ -2,6 +2,7 @@ package it.crystalnest.leathered_boots.loot;
 
 import com.google.common.base.Suppliers;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -25,9 +26,9 @@ import java.util.function.Supplier;
  */
 public final class ChestLootModifier extends LootModifier {
   /**
-   * {@link Supplier} for this {@link LootModifier} {@link Codec}.
+   * {@link Supplier} for this {@link LootModifier} {@link MapCodec}.
    */
-  public static final Supplier<Codec<ChestLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(instance -> codecStart(instance)
+  public static final Supplier<MapCodec<ChestLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.mapCodec(instance -> codecStart(instance)
     .and(Addition.CODEC.listOf().fieldOf("additions").forGetter(modifier -> modifier.additions))
     .apply(instance, ChestLootModifier::new)));
 
@@ -58,7 +59,7 @@ public final class ChestLootModifier extends LootModifier {
 
   @NotNull
   @Override
-  public Codec<? extends IGlobalLootModifier> codec() {
+  public MapCodec<? extends IGlobalLootModifier> codec() {
     return CODEC.get();
   }
 

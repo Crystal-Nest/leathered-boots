@@ -14,29 +14,19 @@ import static com.mojang.serialization.codecs.RecordCodecBuilder.create;
 
 /**
  * {@link BiPredicate} to check whether a {@link BlockPos} is in the provided list of biomes.
+ *
+ * @param biomes List of biomes to check against.
  */
-public final class BiomesPredicate implements BiPredicate<ServerLevel, BlockPos> {
+public record BiomesPredicate(List<ResourceKey<Biome>> biomes) implements BiPredicate<ServerLevel, BlockPos> {
   /**
    * {@link Codec}.
    */
-  public static final Codec<BiomesPredicate> CODEC = create(instance -> instance.group(ResourceKey.codec(Registries.BIOME).listOf().fieldOf("biomes").forGetter(predicate -> predicate.biomes)).apply(instance, BiomesPredicate::new));
+  public static final Codec<BiomesPredicate> CODEC = create(instance -> instance.group(ResourceKey.codec(Registries.BIOME).listOf().fieldOf("biomes").forGetter(BiomesPredicate::biomes)).apply(instance, BiomesPredicate::new));
 
   /**
    * Neutral {@link BiomesPredicate}.
    */
   public static final BiomesPredicate ANY = new BiomesPredicate(List.of());
-
-  /**
-   * List of biomes to check against.
-   */
-  private final List<ResourceKey<Biome>> biomes;
-
-  /**
-   * @param biomes {@link #biomes}.
-   */
-  public BiomesPredicate(List<ResourceKey<Biome>> biomes) {
-    this.biomes = biomes;
-  }
 
   @Override
   public boolean test(ServerLevel world, BlockPos pos) {

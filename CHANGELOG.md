@@ -9,7 +9,22 @@ and this project adheres to [Crystal Nest Semantic Versioning](https://crystalne
 
 - Nothing new.
 
-## [4.0.0] - 2024/07/04
+## [v5.0.0] - 2024/07/14
+
+- Ported to 1.21.
+- Officially dropped support for Forge.
+- Cobweb minimum version is now `v1.1.2`.
+- Renamed data folder from plural to singular to comply with the new Minecraft standard.
+- Added Soft Step as a data driven enchantment.
+- Added every leathered boots registered via the API to Minecraft `dyeable` and `foot_armor` item tags too (before they were only in `trimmable_armor` and `freeze_immune_wearables`).
+- `BiomesCheck` and `BiomesPredicate` are now both `record`s rather than a final classes.
+- `LeatheredArmorMaterial` has been removed due to changes in Minecraft `ArmorMaterial`.
+- `LeatheredBootsItem` now take in a `Holder` for the `ArmorMaterial` and a durability factor multiplier.
+- `LeatheredBootsItem` now extend `ArmorItem`.
+- Changed how `LeatheredBootsItem` are registered: first an instance of `BootsRegister` must be created with `LeatheredBootsManager#register(String)` passing a mod ID, then register each pair of boots one at a time with it.
+- A `ResourceLocation` is now required to get a `LeatheredBootsItem` from the `LeatheredBootsManager` instead of a `LeatheredArmorMaterial`.  
+
+## [v4.0.0] - 2024/07/04
 
 - Update to the newest standards.
 - Add more language translations.
@@ -100,7 +115,8 @@ and this project adheres to [Crystal Nest Semantic Versioning](https://crystalne
 [Unreleased]: https://github.com/crystal-nest/leathered-boots
 [README]: https://github.com/crystal-nest/leathered-boots#readme
 
-[4.0.0]: https://github.com/crystal-nest/leathered-boots/releases?q=4.0.0
+[v5.0.0]: https://github.com/crystal-nest/leathered-boots/releases?q=5.0.0
+[v4.0.0]: https://github.com/crystal-nest/leathered-boots/releases?q=4.0.0
 
 [1.20.4-3.0.0.0]: https://github.com/crystal-nest/leathered-boots/releases/tag/v1.20.4-3.0.0.0
 

@@ -1,10 +1,11 @@
 package it.crystalnest.leathered_boots.platform;
 
-import it.crystalnest.leathered_boots.item.LeatheredArmorMaterial;
 import it.crystalnest.leathered_boots.item.LeatheredBootsItem;
 import it.crystalnest.leathered_boots.item.NeoForgeLeatheredBootsItem;
 import it.crystalnest.leathered_boots.platform.services.ItemHelper;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
@@ -15,8 +16,8 @@ import java.util.function.Supplier;
  */
 public final class NeoForgeItemHelper extends ItemHelper {
   @Override
-  public Supplier<LeatheredBootsItem> supplyItem(LeatheredArmorMaterial armorMaterial, boolean isFireResistant) {
-    return () -> new NeoForgeLeatheredBootsItem(armorMaterial, isFireResistant);
+  public Supplier<LeatheredBootsItem> supplyItem(int durabilityFactor, boolean isFireResistant, Holder<ArmorMaterial> armorMaterial) {
+    return () -> new NeoForgeLeatheredBootsItem(armorMaterial, durabilityFactor, isFireResistant);
   }
 
   @Override

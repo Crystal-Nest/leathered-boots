@@ -1,6 +1,7 @@
 package it.crystalnest.leathered_boots.loot;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
@@ -13,28 +14,17 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-import static com.mojang.serialization.codecs.RecordCodecBuilder.create;
 
 /**
  * {@link LootItemCondition} to check whether the location is in one of the provided biomes.
+ *
+ * @param predicate {@link BiomesPredicate}.
  */
-public final class BiomesCheck implements LootItemCondition {
+public record BiomesCheck(BiomesPredicate predicate) implements LootItemCondition {
   /**
-   * {@link Codec}.
+   * {@link MapCodec}.
    */
-  public static final Codec<BiomesCheck> CODEC = create(instance -> instance.group(BiomesPredicate.CODEC.fieldOf("predicate").forGetter(check -> check.predicate)).apply(instance, BiomesCheck::new));
-
-  /**
-   * {@link BiomesPredicate}.
-   */
-  private final BiomesPredicate predicate;
-
-  /**
-   * @param predicate {@link #predicate}.
-   */
-  BiomesCheck(BiomesPredicate predicate) {
-    this.predicate = predicate;
-  }
+  public static final MapCodec<BiomesCheck> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(BiomesPredicate.CODEC.fieldOf("predicate").forGetter(BiomesCheck::predicate)).apply(instance, BiomesCheck::new));
 
   /**
    * {@link BiomesCheck} builder.

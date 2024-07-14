@@ -1,2 +1,4 @@
 accessWidener v2 named
 accessible field net/minecraft/world/level/storage/loot/LootTable pools Ljava/util/List;
+accessible field net/minecraft/world/item/ArmorMaterial$Layer assetName Lnet/minecraft/resources/ResourceLocation;
+accessible field net/minecraft/world/item/ArmorMaterial$Layer suffix Ljava/lang/String;

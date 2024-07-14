@@ -5,9 +5,11 @@ import com.redlimerl.detailab.api.render.ArmorBarRenderManager;
 import com.redlimerl.detailab.api.render.TextureOffset;
 import it.crystalnest.leathered_boots.Constants;
 import it.crystalnest.leathered_boots.api.LeatheredBootsManager;
-import it.crystalnest.leathered_boots.item.LeatheredArmorMaterial;
+import it.crystalnest.leathered_boots.item.ItemRegistry;
 import it.crystalnest.leathered_boots.item.LeatheredBootsItem;
+import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ArmorMaterial;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.util.function.Function;
@@ -25,29 +27,30 @@ public final class DetailArmorBar {
    * Register base Leathered Boots to Detail Armor Bar.
    */
   @ApiStatus.Internal
+  @SuppressWarnings("deprecation")
   public static void register() {
     register(
       armorMaterial -> {
         int offsetFullX;
         int offsetHalfX;
         int offsetIconY = 9 + isVanillaTexture();
-        if (armorMaterial == LeatheredArmorMaterial.LEATHERED_CHAIN) {
+        if (armorMaterial.is(ItemRegistry.LEATHERED_CHAIN_BOOTS.get().getMaterial())) {
           offsetFullX = 81;
           offsetHalfX = 72;
-        } else if (armorMaterial == LeatheredArmorMaterial.LEATHERED_IRON) {
+        } else if (armorMaterial.is(ItemRegistry.LEATHERED_IRON_BOOTS.get().getMaterial())) {
           offsetFullX = 63;
           offsetHalfX = 54;
-        } else if (armorMaterial == LeatheredArmorMaterial.LEATHERED_GOLD) {
+        } else if (armorMaterial.is(ItemRegistry.LEATHERED_GOLDEN_BOOTS.get().getMaterial())) {
           offsetFullX = 99;
           offsetHalfX = 90;
-        } else if (armorMaterial == LeatheredArmorMaterial.LEATHERED_DIAMOND) {
+        } else if (armorMaterial.is(ItemRegistry.LEATHERED_DIAMOND_BOOTS.get().getMaterial())) {
           offsetFullX = 27;
           offsetHalfX = 18;
-        } else if (armorMaterial == LeatheredArmorMaterial.LEATHERED_NETHERITE) {
+        } else if (armorMaterial.is(ItemRegistry.LEATHERED_NETHERITE_BOOTS.get().getMaterial())) {
           offsetFullX = 9;
           offsetHalfX = 0;
         } else {
-          Constants.LOGGER.error("An error occurred while attempting to register Leathered Boots {} to Detail Armor Bar:\nUnknown armor type: {}", LeatheredBootsManager.getKey(Constants.MOD_ID, armorMaterial), armorMaterial);
+          Constants.LOGGER.error("An error occurred while attempting to register Leathered Boots for {} to Detail Armor Bar:\nUnknown armor type: {}", Constants.MOD_ID, armorMaterial);
           offsetFullX = -1;
           offsetHalfX = -1;
         }
@@ -60,10 +63,10 @@ public final class DetailArmorBar {
   /**
    * Register custom Leathered Boots to Detail Armor Bar.
    *
-   * @param armorBarTexture function that returns an {@link ArmorBarRenderManager} based on the {@link LeatheredArmorMaterial}.
+   * @param armorBarTexture function that returns an {@link ArmorBarRenderManager} based on the {@link ArmorMaterial}.
    * @param leatheredBoots {@link LeatheredBootsItem}s to register.
    */
-  public static void register(Function<LeatheredArmorMaterial, ArmorBarTexture> armorBarTexture, LeatheredBootsItem... leatheredBoots) {
+  public static void register(Function<Holder<ArmorMaterial>, ArmorBarTexture> armorBarTexture, LeatheredBootsItem... leatheredBoots) {
     DetailArmorBarAPI.customArmorBarBuilder()
       .armor(leatheredBoots)
       .render(stack -> {

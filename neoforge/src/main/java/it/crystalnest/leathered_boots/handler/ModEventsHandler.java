@@ -5,13 +5,13 @@ import it.crystalnest.leathered_boots.api.LeatheredBootsManager;
 import it.crystalnest.leathered_boots.item.LeatheredBootsItem;
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 
 /**
- * Event handler for events fired on the {@link Mod.EventBusSubscriber.Bus#MOD Mod Bus}.
+ * Event handler for events fired on the {@link EventBusSubscriber.Bus#MOD Mod Bus}.
  */
-@Mod.EventBusSubscriber(modid = Constants.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Constants.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public final class ModEventsHandler {
   private ModEventsHandler() {}
 

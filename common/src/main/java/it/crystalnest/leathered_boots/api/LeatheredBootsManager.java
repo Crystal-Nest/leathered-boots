@@ -1,22 +1,23 @@
 package it.crystalnest.leathered_boots.api;
 
+import it.crystalnest.cobweb.api.registry.CobwebEntry;
 import it.crystalnest.cobweb.api.registry.CobwebRegistry;
 import it.crystalnest.leathered_boots.Constants;
-import it.crystalnest.leathered_boots.item.LeatheredArmorMaterial;
 import it.crystalnest.leathered_boots.item.LeatheredBootsItem;
 import it.crystalnest.leathered_boots.platform.Services;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 /**
  * Leathered Boots API.
@@ -25,82 +26,18 @@ public final class LeatheredBootsManager {
   /**
    * {@link ConcurrentHashMap} of all registered {@link LeatheredBootsItem}s.
    */
-  private static final ConcurrentHashMap<ResourceLocation, Supplier<LeatheredBootsItem>> LEATHERED_BOOTS = new ConcurrentHashMap<>();
+  private static final ConcurrentHashMap<ResourceLocation, CobwebEntry<LeatheredBootsItem>> LEATHERED_BOOTS = new ConcurrentHashMap<>();
 
   private LeatheredBootsManager() {}
 
   /**
-   * Registers a new {@link LeatheredBootsItem} made of the given {@link ArmorMaterial}.
+   * Provides a {@link BootsRegister} to register {@link LeatheredBootsItem}s.
    *
    * @param modId mod ID.
-   * @param isFireResistant whether the boots are fire-resistant.
-   * @param armorMaterial armor material.
-   * @return {@link Supplier} of the registered {@link LeatheredBootsItem}.
+   * @return {@link BootsRegister}.
    */
-  public static synchronized Supplier<LeatheredBootsItem> registerBoots(@NotNull String modId, boolean isFireResistant, ArmorMaterial armorMaterial) {
-    LeatheredArmorMaterial leatheredArmorMaterial = armorMaterial instanceof LeatheredArmorMaterial leathered ? leathered : new LeatheredArmorMaterial(armorMaterial);
-    ResourceLocation id = getKey(modId, leatheredArmorMaterial);
-    if (LEATHERED_BOOTS.containsKey(id)) {
-      Constants.LOGGER.error("LeatheredBootsItem [{}] was already registered.", id);
-    }
-    return LEATHERED_BOOTS.computeIfAbsent(id, key -> CobwebRegistry.ofItems(modId).register(key.getPath(), Services.ITEM.supplyItem(leatheredArmorMaterial, isFireResistant)));
-  }
-
-  /**
-   * Registers a new {@link LeatheredBootsItem} made of the given {@link ArmorMaterial}.
-   *
-   * @param modId mod ID.
-   * @param armorMaterial armor material.
-   * @return {@link Supplier} of the registered {@link LeatheredBootsItem}.
-   */
-  public static synchronized Supplier<LeatheredBootsItem> registerBoots(@NotNull String modId, ArmorMaterial armorMaterial) {
-    return registerBoots(modId, false, armorMaterial);
-  }
-
-  /**
-   * Registers new {@link LeatheredBootsItem}s made of the given {@link ArmorMaterial}s.
-   *
-   * @param modId mod ID.
-   * @param isFireResistant whether the boots are fire-resistant.
-   * @param armorMaterials armor materials.
-   * @return map of {@link Supplier}s of the registered {@link LeatheredBootsItem}.
-   */
-  public static synchronized Map<ResourceLocation, Supplier<LeatheredBootsItem>> registerBoots(@NotNull String modId, boolean isFireResistant, List<ArmorMaterial> armorMaterials) {
-    return armorMaterials.stream().map(armorMaterial -> Map.entry(getKey(modId, armorMaterial), registerBoots(modId, isFireResistant, armorMaterial))).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-  }
-
-  /**
-   * Registers new {@link LeatheredBootsItem}s made of the given {@link ArmorMaterial}s.
-   *
-   * @param modId mod ID.
-   * @param armorMaterials armor materials.
-   * @return map of {@link Supplier}s of the registered {@link LeatheredBootsItem}.
-   */
-  public static synchronized Map<ResourceLocation, Supplier<LeatheredBootsItem>> registerBoots(@NotNull String modId, List<ArmorMaterial> armorMaterials) {
-    return registerBoots(modId, false, armorMaterials);
-  }
-
-  /**
-   * Registers new {@link LeatheredBootsItem}s made of the given {@link ArmorMaterial}s.
-   *
-   * @param modId mod ID.
-   * @param isFireResistant whether the boots are fire-resistant.
-   * @param armorMaterials armor materials.
-   * @return map of {@link Supplier}s of the registered {@link LeatheredBootsItem}.
-   */
-  public static synchronized Map<ResourceLocation, Supplier<LeatheredBootsItem>> registerBoots(@NotNull String modId, boolean isFireResistant, ArmorMaterial... armorMaterials) {
-    return registerBoots(modId, isFireResistant, Arrays.asList(armorMaterials));
-  }
-
-  /**
-   * Registers new {@link LeatheredBootsItem}s made of the given {@link ArmorMaterial}s.
-   *
-   * @param modId mod ID.
-   * @param armorMaterials armor materials.
-   * @return map of {@link Supplier}s of the registered {@link LeatheredBootsItem}.
-   */
-  public static synchronized Map<ResourceLocation, Supplier<LeatheredBootsItem>> registerBoots(@NotNull String modId, ArmorMaterial... armorMaterials) {
-    return registerBoots(modId, false, armorMaterials);
+  public static BootsRegister register(@NotNull String modId) {
+    return new BootsRegister(modId);
   }
 
   /**
@@ -125,25 +62,12 @@ public final class LeatheredBootsManager {
   /**
    * Returns the {@link LeatheredBootsItem} registered with the given {@link ResourceLocation}.
    *
-   * @param key leathered boots ID.<br />
-   *            See also {@link #getKey(String, ArmorMaterial)}.
+   * @param key leathered boots ID.
    * @return registered {@link LeatheredBootsItem} or {@code null}.
    */
   @Nullable
   public static LeatheredBootsItem getBoots(@NotNull ResourceLocation key) {
-    return LEATHERED_BOOTS.getOrDefault(key, () -> null).get();
-  }
-
-  /**
-   * Returns the {@link LeatheredBootsItem} registered with the given {@link ArmorMaterial}.
-   *
-   * @param modId mod ID.
-   * @param armorMaterial armor material.
-   * @return registered {@link LeatheredBootsItem} or {@code null}.
-   */
-  @Nullable
-  public static LeatheredBootsItem getBoots(@NotNull String modId, @NotNull ArmorMaterial armorMaterial) {
-    return getBoots(getKey(modId, armorMaterial));
+    return LEATHERED_BOOTS.containsKey(key) ? LEATHERED_BOOTS.get(key).get() : null;
   }
 
   /**
@@ -168,26 +92,13 @@ public final class LeatheredBootsManager {
   /**
    * Returns the {@link ItemStack} of the {@link LeatheredBootsItem} registered with the given {@link ArmorMaterial}.
    *
-   * @param key leathered boots ID.<br />
-   *            See also {@link #getKey(String, ArmorMaterial)}.
+   * @param key leathered boots ID.
    * @return registered {@link LeatheredBootsItem} or {@code null}.
    */
   @Nullable
-  public static ItemStack getBootsStack(ResourceLocation key) {
+  public static ItemStack getBootsStack(@NotNull ResourceLocation key) {
     LeatheredBootsItem item = getBoots(key);
     return item == null ? null : item.getDefaultInstance();
-  }
-
-  /**
-   * Returns the {@link ItemStack} of the {@link LeatheredBootsItem} registered with the given {@link ArmorMaterial}.
-   *
-   * @param modId mod ID.
-   * @param armorMaterial armor material.
-   * @return registered {@link LeatheredBootsItem} or {@code null}.
-   */
-  @Nullable
-  public static ItemStack getBootsStack(String modId, ArmorMaterial armorMaterial) {
-    return getBootsStack(getKey(modId, armorMaterial));
   }
 
   /**
@@ -200,14 +111,61 @@ public final class LeatheredBootsManager {
   }
 
   /**
-   * Returns the {@link ResourceLocation} that would be given to a {@link LeatheredBootsItem} of the given {@link ArmorMaterial} when registered.<br />
-   * <strong>Note</strong>: this does not grant that such a {@link LeatheredBootsItem} has been registered.
-   *
-   * @param modId mod ID.
-   * @param armorMaterial armor material.
-   * @return {@link ResourceLocation} for a {@link LeatheredBootsItem} made of the given {@link ArmorMaterial}.
+   * Register for {@link LeatheredBootsItem}s.
    */
-  public static ResourceLocation getKey(@NotNull String modId, @NotNull ArmorMaterial armorMaterial) {
-    return new ResourceLocation(modId, (armorMaterial instanceof LeatheredArmorMaterial leatheredArmorMaterial ? leatheredArmorMaterial : new LeatheredArmorMaterial(armorMaterial)).getName() + "_boots");
+  public record BootsRegister(String modId) {
+    /**
+     * Registers a new {@link LeatheredBootsItem} made of the given {@link ArmorMaterial}.
+     *
+     * @param name base armor material name.
+     * @param durabilityFactor durability factor.
+     * @param isFireResistant whether the boots are fire-resistant.
+     * @param armorMaterial armor material holder.
+     * @return {@link CobwebEntry} of the registered {@link LeatheredBootsItem}.
+     */
+    public synchronized CobwebEntry<LeatheredBootsItem> register(@NotNull String name, int durabilityFactor, boolean isFireResistant, Holder<ArmorMaterial> armorMaterial) {
+      ResourceLocation id = ResourceLocation.fromNamespaceAndPath(modId, "leathered_" + name + "_boots");
+      if (LEATHERED_BOOTS.containsKey(id)) {
+        Constants.LOGGER.error("LeatheredBootsItem [{}] was already registered.", id);
+      }
+      return LEATHERED_BOOTS.computeIfAbsent(id, key -> CobwebRegistry.ofItems(modId).register(
+        key.getPath(),
+        Services.ITEM.supplyItem(durabilityFactor, isFireResistant, CobwebRegistry.of(Registries.ARMOR_MATERIAL, Constants.MOD_ID).register("leathered_" + name, supplyLeatheredArmorMaterial(armorMaterial)))
+      ));
+    }
+
+    /**
+     * Registers a new {@link LeatheredBootsItem} made of the given {@link ArmorMaterial}.
+     *
+     * @param name armor material name.
+     * @param durabilityFactor durability factor.
+     * @param armorMaterial armor material holder.
+     * @return {@link CobwebEntry} of the registered {@link LeatheredBootsItem}.
+     */
+    public synchronized CobwebEntry<LeatheredBootsItem> register(@NotNull String name, int durabilityFactor, Holder<ArmorMaterial> armorMaterial) {
+      return register(name, durabilityFactor, false, armorMaterial);
+    }
+
+    /**
+     * Provides a supplier for a new armor material, copying the given one.
+     *
+     * @param holder armor material to copy.
+     * @return armor material supplier.
+     */
+    private static Supplier<ArmorMaterial> supplyLeatheredArmorMaterial(Holder<ArmorMaterial> holder) {
+      return () -> {
+        ArmorMaterial armorMaterial = holder.value();
+        ResourceLocation armorName = armorMaterial.layers().getFirst().assetName.withPath(path -> "leathered_" + path);
+        return new ArmorMaterial(
+          armorMaterial.defense(),
+          armorMaterial.enchantmentValue(),
+          armorMaterial.equipSound(),
+          armorMaterial.repairIngredient(),
+          ((ArmorItem) Items.LEATHER_BOOTS).getMaterial().value().layers().stream().map(layer -> new ArmorMaterial.Layer(armorName, layer.suffix, layer.dyeable())).toList(),
+          armorMaterial.toughness(),
+          armorMaterial.knockbackResistance()
+        );
+      };
+    }
   }
 }

@@ -15,13 +15,13 @@ import java.util.List;
 public class LeatherUpgradeSmithingTemplateItem extends SmithingTemplateItem {
   public LeatherUpgradeSmithingTemplateItem() {
     super(
-      Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(Constants.MOD_ID, "smithing_template.leather_upgrade.applies_to"))).withStyle(ChatFormatting.BLUE),
-      Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(Constants.MOD_ID, "smithing_template.leather_upgrade.ingredients"))).withStyle(ChatFormatting.BLUE),
-      Component.translatable(Util.makeDescriptionId("upgrade", new ResourceLocation(Constants.MOD_ID, "leather_upgrade"))).withStyle(ChatFormatting.GRAY),
-      Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(Constants.MOD_ID, "smithing_template.leather_upgrade.base_slot_description"))),
-      Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(Constants.MOD_ID, "smithing_template.leather_upgrade.additions_slot_description"))),
-      List.of(new ResourceLocation("item/empty_armor_slot_boots")), 
-      List.of(new ResourceLocation(Constants.MOD_ID, "item/empty_slot_leather"))
+      Component.translatable(Util.makeDescriptionId("item", ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "smithing_template.leather_upgrade.applies_to"))).withStyle(ChatFormatting.BLUE),
+      Component.translatable(Util.makeDescriptionId("item", ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "smithing_template.leather_upgrade.ingredients"))).withStyle(ChatFormatting.BLUE),
+      Component.translatable(Util.makeDescriptionId("upgrade", ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "leather_upgrade"))).withStyle(ChatFormatting.GRAY),
+      Component.translatable(Util.makeDescriptionId("item", ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "smithing_template.leather_upgrade.base_slot_description"))),
+      Component.translatable(Util.makeDescriptionId("item", ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "smithing_template.leather_upgrade.additions_slot_description"))),
+      List.of(ResourceLocation.withDefaultNamespace("item/empty_armor_slot_boots")),
+      List.of(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "item/empty_slot_leather"))
     );
   }
 }

@@ -4,7 +4,7 @@ import it.crystalnest.leathered_boots.Constants;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.village.VillagerTradesEvent;
 
 import java.util.Map;
@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * {@link VillagerTradesEvent} handler.
  */
-@Mod.EventBusSubscriber(modid = Constants.MOD_ID)
+@EventBusSubscriber(modid = Constants.MOD_ID)
 public final class VillagerTradesEventHandler {
   private VillagerTradesEventHandler() {}
 
