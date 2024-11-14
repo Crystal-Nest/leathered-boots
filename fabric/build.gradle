@@ -11,9 +11,9 @@ dependencies {
   }
   modImplementation "net.fabricmc:fabric-loader:$fabric_loader_version"
   modImplementation "net.fabricmc.fabric-api:fabric-api:$fabric_version"
-  modImplementation "it.crystalnest:cobweb-$name:$minecraft_version-$cobweb_version"
+  modImplementation "it.crystalnest:cobweb-$name:1.21-$cobweb_version"
   // Detail Armor Bar dependency
-  modImplementation "curse.maven:detail-armor-bar-506898:5424464"
+  modImplementation "curse.maven:detail-armor-bar-506898:5608108"
 }
 
 loom {
