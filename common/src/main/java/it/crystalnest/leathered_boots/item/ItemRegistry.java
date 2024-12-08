@@ -6,9 +6,8 @@ import it.crystalnest.cobweb.api.registry.CobwebRegistry;
 import it.crystalnest.leathered_boots.Constants;
 import it.crystalnest.leathered_boots.api.LeatheredBootsManager;
 import it.crystalnest.leathered_boots.platform.Services;
-import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.equipment.ArmorMaterials;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.util.function.Supplier;
@@ -19,14 +18,14 @@ import java.util.function.Supplier;
 @ApiStatus.Internal
 public final class ItemRegistry {
   /**
-   * {@link CobwebRegister} for {@link Item}s.
+   * {@link CobwebRegister.Items}.
    */
-  private static final CobwebRegister<Item> ITEMS = CobwebRegistry.ofItems(Constants.MOD_ID);
+  private static final CobwebRegister.Items ITEMS = CobwebRegistry.ofItems(Constants.MOD_ID);
 
   /**
    * {@link LeatherUpgradeSmithingTemplateItem}.
    */
-  public static final Supplier<LeatherUpgradeSmithingTemplateItem> LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM = ITEMS.register("leather_upgrade_smithing_template", LeatherUpgradeSmithingTemplateItem::new);
+  public static final Supplier<LeatherUpgradeSmithingTemplateItem> LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM = ITEMS.registerItem("leather_upgrade_smithing_template", LeatherUpgradeSmithingTemplateItem::new);
 
   /**
    * {@link LeatheredBootsManager.BootsRegister} for leathered boots.
@@ -36,27 +35,27 @@ public final class ItemRegistry {
   /**
    * {@link LeatheredBootsItem} for chainmail boots.
    */
-  public static final CobwebEntry<LeatheredBootsItem> LEATHERED_CHAIN_BOOTS = LEATHERED_BOOTS.register("chainmail", 15, ArmorMaterials.CHAIN);
+  public static final CobwebEntry<LeatheredBootsItem> LEATHERED_CHAIN_BOOTS = LEATHERED_BOOTS.register("chainmail", ArmorMaterials.CHAINMAIL);
 
   /**
    * {@link LeatheredBootsItem} for iron boots.
    */
-  public static final CobwebEntry<LeatheredBootsItem> LEATHERED_IRON_BOOTS = LEATHERED_BOOTS.register("iron", 15, ArmorMaterials.IRON);
+  public static final CobwebEntry<LeatheredBootsItem> LEATHERED_IRON_BOOTS = LEATHERED_BOOTS.register("iron", ArmorMaterials.IRON);
 
   /**
    * {@link LeatheredBootsItem} for golden boots.
    */
-  public static final CobwebEntry<LeatheredBootsItem> LEATHERED_GOLDEN_BOOTS = LEATHERED_BOOTS.register("gold", 7, ArmorMaterials.GOLD);
+  public static final CobwebEntry<LeatheredBootsItem> LEATHERED_GOLDEN_BOOTS = LEATHERED_BOOTS.register("gold", ArmorMaterials.GOLD);
 
   /**
    * {@link LeatheredBootsItem} for diamond boots.
    */
-  public static final CobwebEntry<LeatheredBootsItem> LEATHERED_DIAMOND_BOOTS = LEATHERED_BOOTS.register("diamond", 33, ArmorMaterials.DIAMOND);
+  public static final CobwebEntry<LeatheredBootsItem> LEATHERED_DIAMOND_BOOTS = LEATHERED_BOOTS.register("diamond", ArmorMaterials.DIAMOND);
 
   /**
    * {@link LeatheredBootsItem} for netherite boots.
    */
-  public static final CobwebEntry<LeatheredBootsItem> LEATHERED_NETHERITE_BOOTS = LEATHERED_BOOTS.register("netherite", 37, true, ArmorMaterials.NETHERITE);
+  public static final CobwebEntry<LeatheredBootsItem> LEATHERED_NETHERITE_BOOTS = LEATHERED_BOOTS.register("netherite", ArmorMaterials.NETHERITE, true);
 
   /**
    * {@link CobwebRegister} for {@link CreativeModeTab}s.

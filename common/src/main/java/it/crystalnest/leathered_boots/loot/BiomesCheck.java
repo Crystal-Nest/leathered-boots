@@ -14,7 +14,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-
 /**
  * {@link LootItemCondition} to check whether the location is in one of the provided biomes.
  *
@@ -48,8 +47,7 @@ public record BiomesCheck(BiomesPredicate predicate) implements LootItemConditio
 
   @Override
   public boolean test(LootContext context) {
-    Vec3 origin = context.getParamOrNull(LootContextParams.ORIGIN);
-    return origin != null && this.predicate.test(context.getLevel(), BlockPos.containing(origin));
+    return context.getOptionalParameter(LootContextParams.ORIGIN) instanceof Vec3 origin && this.predicate.test(context.getLevel(), BlockPos.containing(origin));
   }
 
   @NotNull

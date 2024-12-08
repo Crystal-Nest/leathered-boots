@@ -7,13 +7,13 @@ dependencies {
   minecraft "com.mojang:minecraft:$minecraft_version"
   mappings loom.layered {
     officialMojangMappings()
-    parchment("org.parchmentmc.data:parchment-$minecraft_version:$parchment_version@zip")
+    parchment("org.parchmentmc.data:parchment-$parchment_minecraft:$parchment_version@zip")
   }
   modImplementation "net.fabricmc:fabric-loader:$fabric_loader_version"
   modImplementation "net.fabricmc.fabric-api:fabric-api:$fabric_version"
-  modImplementation "it.crystalnest:cobweb-$name:1.21-$cobweb_version"
+  modImplementation "it.crystalnest:cobweb-$name:$minecraft_version-$cobweb_version"
   // Detail Armor Bar dependency
-  modImplementation "curse.maven:detail-armor-bar-506898:5608108"
+  modImplementation "curse.maven:detail-armor-bar-506898:5837572"
 }
 
 loom {

@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "minecraft:diamond"
-    },
-    "C": {
-      "item": "minecraft:leather"
-    },
-    "S": {
-      "item": "leathered_boots:leather_upgrade_smithing_template"
-    }
+    "#": "minecraft:diamond",
+    "C": "minecraft:leather",
+    "S": "leathered_boots:leather_upgrade_smithing_template"
   },
   "pattern": [
     "#S#",

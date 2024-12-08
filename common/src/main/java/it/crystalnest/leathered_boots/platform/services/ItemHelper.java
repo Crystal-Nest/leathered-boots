@@ -1,10 +1,7 @@
 package it.crystalnest.leathered_boots.platform.services;
 
 import it.crystalnest.leathered_boots.Constants;
-import it.crystalnest.leathered_boots.item.LeatheredBootsItem;
-import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
@@ -26,16 +23,6 @@ public abstract class ItemHelper {
   public final Supplier<CreativeModeTab> supplyTab(Supplier<ItemStack> icon, String id, Consumer<CreativeModeTab.Output> items) {
     return buildTab(icon, Component.translatable("itemGroup." + Constants.MOD_ID + "." + id), (features, output) -> items.accept(output));
   }
-
-  /**
-   * Returns a supplier for a {@link LeatheredBootsItem}.
-   *
-   * @param durabilityFactor durability factor.
-   * @param isFireResistant whether the {@link LeatheredBootsItem} is fire-resistant.
-   * @param armorMaterial {@link ArmorMaterial}.
-   * @return {@link Supplier} for the {@link LeatheredBootsItem}.
-   */
-  public abstract Supplier<LeatheredBootsItem> supplyItem(int durabilityFactor, boolean isFireResistant, Holder<ArmorMaterial> armorMaterial);
 
   /**
    * Builds a {@link CreativeModeTab} with the given icon, title, and items to display.

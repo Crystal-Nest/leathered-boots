@@ -1,0 +1,15 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "leathered_boots:leathered_chainmail"
+      },
+      {
+        "texture": "leathered_boots:leathered_boots_overlay",
+        "dyeable": {
+          "color_when_undyed": -6265536
+        }
+      }
+    ]
+  }
+}

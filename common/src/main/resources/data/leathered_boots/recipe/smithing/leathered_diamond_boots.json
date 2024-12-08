@@ -1,16 +1,10 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "minecraft:leather"
-  },
-  "base": {
-    "item": "minecraft:diamond_boots"
-  },
+  "addition": "minecraft:leather",
+  "base": "minecraft:diamond_boots",
   "result": {
     "count": 1,
     "id": "leathered_boots:leathered_diamond_boots"
   },
-  "template": {
-    "item": "leathered_boots:leather_upgrade_smithing_template"
-  }
+  "template": "leathered_boots:leather_upgrade_smithing_template"
 }

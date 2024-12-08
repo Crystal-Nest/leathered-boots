@@ -62,7 +62,7 @@ repositories {
 
 if (name != "fabric") {
   dependencies {
-    implementation "it.crystalnest:cobweb-$name:1.21-$cobweb_version"
+    implementation "it.crystalnest:cobweb-$name:$minecraft_version-$cobweb_version"
   }
 }
 

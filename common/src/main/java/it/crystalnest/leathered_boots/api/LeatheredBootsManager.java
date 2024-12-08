@@ -4,14 +4,10 @@ import it.crystalnest.cobweb.api.registry.CobwebEntry;
 import it.crystalnest.cobweb.api.registry.CobwebRegistry;
 import it.crystalnest.leathered_boots.Constants;
 import it.crystalnest.leathered_boots.item.LeatheredBootsItem;
-import it.crystalnest.leathered_boots.platform.Services;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.equipment.ArmorMaterial;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -118,54 +114,50 @@ public final class LeatheredBootsManager {
      * Registers a new {@link LeatheredBootsItem} made of the given {@link ArmorMaterial}.
      *
      * @param name base armor material name.
-     * @param durabilityFactor durability factor.
+     * @param armorMaterial armor material.
      * @param isFireResistant whether the boots are fire-resistant.
-     * @param armorMaterial armor material holder.
      * @return {@link CobwebEntry} of the registered {@link LeatheredBootsItem}.
      */
-    public synchronized CobwebEntry<LeatheredBootsItem> register(@NotNull String name, int durabilityFactor, boolean isFireResistant, Holder<ArmorMaterial> armorMaterial) {
+    public synchronized CobwebEntry<LeatheredBootsItem> register(@NotNull String name, ArmorMaterial armorMaterial, boolean isFireResistant) {
       ResourceLocation id = ResourceLocation.fromNamespaceAndPath(modId, "leathered_" + name + "_boots");
       if (LEATHERED_BOOTS.containsKey(id)) {
         Constants.LOGGER.error("LeatheredBootsItem [{}] was already registered.", id);
       }
-      return LEATHERED_BOOTS.computeIfAbsent(id, key -> CobwebRegistry.ofItems(modId).register(
-        key.getPath(),
-        Services.ITEM.supplyItem(durabilityFactor, isFireResistant, CobwebRegistry.of(Registries.ARMOR_MATERIAL, Constants.MOD_ID).register("leathered_" + name, supplyLeatheredArmorMaterial(armorMaterial)))
-      ));
+      return LEATHERED_BOOTS.computeIfAbsent(id, key -> CobwebRegistry.ofItems(modId).registerItem(key.getPath(), properties -> {
+        LeatheredBootsItem item = new LeatheredBootsItem(getLeatheredArmorMaterial(armorMaterial), isFireResistant ? properties.fireResistant() : properties);
+        CauldronInteraction.WATER.map().putIfAbsent(item, CauldronInteraction::dyedItemIteration);
+        return item;
+      }));
     }
 
     /**
      * Registers a new {@link LeatheredBootsItem} made of the given {@link ArmorMaterial}.
      *
      * @param name armor material name.
-     * @param durabilityFactor durability factor.
      * @param armorMaterial armor material holder.
      * @return {@link CobwebEntry} of the registered {@link LeatheredBootsItem}.
      */
-    public synchronized CobwebEntry<LeatheredBootsItem> register(@NotNull String name, int durabilityFactor, Holder<ArmorMaterial> armorMaterial) {
-      return register(name, durabilityFactor, false, armorMaterial);
+    public synchronized CobwebEntry<LeatheredBootsItem> register(@NotNull String name, ArmorMaterial armorMaterial) {
+      return register(name, armorMaterial, false);
     }
 
     /**
-     * Provides a supplier for a new armor material, copying the given one.
+     * Provides a new armor material copying the given one.
      *
-     * @param holder armor material to copy.
-     * @return armor material supplier.
+     * @param armorMaterial armor material to copy.
+     * @return leathered armor material.
      */
-    private static Supplier<ArmorMaterial> supplyLeatheredArmorMaterial(Holder<ArmorMaterial> holder) {
-      return () -> {
-        ArmorMaterial armorMaterial = holder.value();
-        ResourceLocation armorName = armorMaterial.layers().getFirst().assetName.withPath(path -> "leathered_" + path);
-        return new ArmorMaterial(
-          armorMaterial.defense(),
-          armorMaterial.enchantmentValue(),
-          armorMaterial.equipSound(),
-          armorMaterial.repairIngredient(),
-          ((ArmorItem) Items.LEATHER_BOOTS).getMaterial().value().layers().stream().map(layer -> new ArmorMaterial.Layer(armorName, layer.suffix, layer.dyeable())).toList(),
-          armorMaterial.toughness(),
-          armorMaterial.knockbackResistance()
-        );
-      };
+    private static ArmorMaterial getLeatheredArmorMaterial(ArmorMaterial armorMaterial) {
+      return new ArmorMaterial(
+        armorMaterial.durability(),
+        armorMaterial.defense(),
+        armorMaterial.enchantmentValue(),
+        armorMaterial.equipSound(),
+        armorMaterial.toughness(),
+        armorMaterial.knockbackResistance(),
+        armorMaterial.repairIngredient(),
+        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "leathered_" + armorMaterial.modelId().getPath())
+      );
     }
   }
 }
