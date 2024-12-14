@@ -9,6 +9,16 @@ and this project adheres to [Crystal Nest Semantic Versioning](https://crystalne
 
 - Nothing new.
 
+## [v6.0.1] - 2024/12/14
+
+- 1.21.3 only.
+- Add compatibility for Cobweb 1.3.0.
+
+## [v5.0.1] - 2024/12/14
+
+- 1.21 and 1.21.1 only.
+- Add compatibility for Cobweb 1.3.0.
+
 ## [v6.0.0] - 2024/12/08
 
 - Ported to 1.21.3.
@@ -123,7 +133,9 @@ and this project adheres to [Crystal Nest Semantic Versioning](https://crystalne
 [Unreleased]: https://github.com/crystal-nest/leathered-boots
 [README]: https://github.com/crystal-nest/leathered-boots#readme
 
+[v6.0.1]: https://github.com/crystal-nest/leathered-boots/releases?q=6.0.1
 [v6.0.0]: https://github.com/crystal-nest/leathered-boots/releases?q=6.0.0
+[v5.0.1]: https://github.com/crystal-nest/leathered-boots/releases?q=5.0.1
 [v5.0.0]: https://github.com/crystal-nest/leathered-boots/releases?q=5.0.0
 [v4.0.0]: https://github.com/crystal-nest/leathered-boots/releases?q=4.0.0
 
