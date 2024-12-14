@@ -1,8 +1,8 @@
 package it.crystalnest.leathered_boots;
 
 import com.google.common.base.Suppliers;
-import it.crystalnest.cobweb.api.pack.DynamicDataPack;
-import it.crystalnest.cobweb.api.pack.DynamicTagBuilder;
+import it.crystalnest.cobweb.api.pack.dynamic.DynamicDataPack;
+import it.crystalnest.cobweb.api.pack.dynamic.DynamicTagBuilder;
 import it.crystalnest.leathered_boots.api.LeatheredBootsManager;
 import it.crystalnest.leathered_boots.item.ItemRegistry;
 import net.minecraft.core.registries.Registries;
