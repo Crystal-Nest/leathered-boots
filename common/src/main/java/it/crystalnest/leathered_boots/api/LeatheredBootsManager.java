@@ -5,6 +5,7 @@ import it.crystalnest.cobweb.api.registry.CobwebRegistry;
 import it.crystalnest.leathered_boots.Constants;
 import it.crystalnest.leathered_boots.item.LeatheredBootsItem;
 import net.minecraft.core.cauldron.CauldronInteraction;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.equipment.ArmorMaterial;
@@ -156,7 +157,7 @@ public final class LeatheredBootsManager {
         armorMaterial.toughness(),
         armorMaterial.knockbackResistance(),
         armorMaterial.repairIngredient(),
-        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "leathered_" + armorMaterial.modelId().getPath())
+        ResourceKey.create(armorMaterial.assetId().registryKey(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "leathered_" + armorMaterial.assetId().location().getPath()))
       );
     }
   }

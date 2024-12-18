@@ -23,8 +23,8 @@ public class LeatherUpgradeSmithingTemplateItem extends SmithingTemplateItem {
       Component.translatable(Util.makeDescriptionId("item", ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "smithing_template.leather_upgrade.ingredients"))).withStyle(ChatFormatting.BLUE),
       Component.translatable(Util.makeDescriptionId("item", ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "smithing_template.leather_upgrade.base_slot_description"))),
       Component.translatable(Util.makeDescriptionId("item", ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "smithing_template.leather_upgrade.additions_slot_description"))),
-      List.of(ResourceLocation.withDefaultNamespace("item/empty_armor_slot_boots")),
-      List.of(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "item/empty_slot_leather")),
+      List.of(ResourceLocation.withDefaultNamespace("container/slot/boots")),
+      List.of(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "container/slot/leather")),
       properties.rarity(Rarity.UNCOMMON)
     );
   }
