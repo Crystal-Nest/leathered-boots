@@ -59,6 +59,7 @@ public final class LootTableEventsHandler {
    * @param original loot table being modified.
    * @param source loot table source.
    * @param provider holder lookup provider.
+   * @return modified or original loot table.
    */
   public static LootTable handle(ResourceKey<LootTable> key, LootTable original, LootTableSource source, HolderLookup.Provider provider) {
     if ("minecraft:archaeology/trail_ruins_rare".equals(key.location().toString())) {
