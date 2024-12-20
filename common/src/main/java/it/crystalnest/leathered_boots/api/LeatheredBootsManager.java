@@ -109,6 +109,8 @@ public final class LeatheredBootsManager {
 
   /**
    * Register for {@link LeatheredBootsItem}s.
+   *
+   * @param modId mod ID.
    */
   public record BootsRegister(String modId) {
     /**
