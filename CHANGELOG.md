@@ -9,6 +9,11 @@ and this project adheres to [Crystal Nest Semantic Versioning](https://crystalne
 
 - Port to 1.21.4.
 
+## [v6.0.2] - 2024/12/20
+
+- 1.21.3 and above.
+- Fix registration of new leathered boots forcing `leathered_boots` as the mod ID for equipment models and textures.
+
 ## [v6.0.1] - 2024/12/14
 
 - 1.21.3 only.
@@ -133,6 +138,7 @@ and this project adheres to [Crystal Nest Semantic Versioning](https://crystalne
 [Unreleased]: https://github.com/crystal-nest/leathered-boots
 [README]: https://github.com/crystal-nest/leathered-boots#readme
 
+[v6.0.2]: https://github.com/crystal-nest/leathered-boots/releases?q=6.0.2
 [v6.0.1]: https://github.com/crystal-nest/leathered-boots/releases?q=6.0.1
 [v6.0.0]: https://github.com/crystal-nest/leathered-boots/releases?q=6.0.0
 [v5.0.1]: https://github.com/crystal-nest/leathered-boots/releases?q=5.0.1
