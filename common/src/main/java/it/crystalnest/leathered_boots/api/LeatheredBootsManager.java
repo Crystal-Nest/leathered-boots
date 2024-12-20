@@ -124,7 +124,7 @@ public final class LeatheredBootsManager {
         Constants.LOGGER.error("LeatheredBootsItem [{}] was already registered.", id);
       }
       return LEATHERED_BOOTS.computeIfAbsent(id, key -> CobwebRegistry.ofItems(modId).registerItem(key.getPath(), properties -> {
-        LeatheredBootsItem item = new LeatheredBootsItem(getLeatheredArmorMaterial(armorMaterial), isFireResistant ? properties.fireResistant() : properties);
+        LeatheredBootsItem item = new LeatheredBootsItem(getLeatheredArmorMaterial(modId, armorMaterial), isFireResistant ? properties.fireResistant() : properties);
         CauldronInteraction.WATER.map().putIfAbsent(item, CauldronInteraction::dyedItemIteration);
         return item;
       }));
@@ -144,10 +144,11 @@ public final class LeatheredBootsManager {
     /**
      * Provides a new armor material copying the given one.
      *
+     * @param modId Mod owning the armor material.
      * @param armorMaterial armor material to copy.
      * @return leathered armor material.
      */
-    private static ArmorMaterial getLeatheredArmorMaterial(ArmorMaterial armorMaterial) {
+    private static ArmorMaterial getLeatheredArmorMaterial(String modId, ArmorMaterial armorMaterial) {
       return new ArmorMaterial(
         armorMaterial.durability(),
         armorMaterial.defense(),
@@ -156,7 +157,7 @@ public final class LeatheredBootsManager {
         armorMaterial.toughness(),
         armorMaterial.knockbackResistance(),
         armorMaterial.repairIngredient(),
-        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "leathered_" + armorMaterial.modelId().getPath())
+        ResourceLocation.fromNamespaceAndPath(modId, "leathered_" + armorMaterial.modelId().getPath())
       );
     }
   }
