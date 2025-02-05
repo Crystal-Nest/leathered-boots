@@ -158,9 +158,11 @@ and this project adheres to [Crystal Nest Semantic Versioning](https://crystalne
 [Unreleased]: https://github.com/crystal-nest/leathered-boots
 [README]: https://github.com/crystal-nest/leathered-boots#readme
 
+[v6.1.0]: https://github.com/crystal-nest/leathered-boots/releases?q=6.1.0
 [v6.0.2]: https://github.com/crystal-nest/leathered-boots/releases?q=6.0.2
 [v6.0.1]: https://github.com/crystal-nest/leathered-boots/releases?q=6.0.1
 [v6.0.0]: https://github.com/crystal-nest/leathered-boots/releases?q=6.0.0
+[v5.1.0]: https://github.com/crystal-nest/leathered-boots/releases?q=5.1.0
 [v5.0.1]: https://github.com/crystal-nest/leathered-boots/releases?q=5.0.1
 [v5.0.0]: https://github.com/crystal-nest/leathered-boots/releases?q=5.0.0
 [v4.0.0]: https://github.com/crystal-nest/leathered-boots/releases?q=4.0.0
