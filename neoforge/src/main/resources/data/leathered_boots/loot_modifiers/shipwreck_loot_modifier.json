@@ -22,7 +22,7 @@
   "additions": [
     {
       "item": "leathered_boots:leather_upgrade_smithing_template",
-      "chance": 0.2,
+      "chance": 0.8,
       "quantity": 1,
       "biomes": [
         "snowy_beach"

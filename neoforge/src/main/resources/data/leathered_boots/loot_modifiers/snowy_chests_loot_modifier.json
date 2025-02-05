@@ -1,0 +1,50 @@
+{
+  "type": "leathered_boots:chest_loot_modifier",
+  "conditions": [
+    {
+      "condition": "any_of",
+      "terms": [
+        {
+          "condition": "neoforge:loot_table_id",
+          "loot_table_id": "minecraft:chests/igloo_chest"
+        },
+        {
+          "condition": "neoforge:loot_table_id",
+          "loot_table_id": "minecraft:chests/village/village_snowy_house"
+        }
+      ]
+    }
+  ],
+  "additions": [
+    {
+      "item": "leathered_boots:leathered_gold_boots",
+      "chance": 0.3,
+      "quantity": 1
+    },
+    {
+      "item": "leathered_boots:leathered_chainmail_boots",
+      "chance": 0.3,
+      "quantity": 1
+    },
+    {
+      "item": "leathered_boots:leathered_iron_boots",
+      "chance": 0.2,
+      "quantity": 1
+    },
+    {
+      "item": "leathered_boots:leathered_diamond_boots",
+      "chance": 0.1,
+      "quantity": 1
+    },
+    {
+      "item": "leathered_boots:leathered_netherite_boots",
+      "chance": 0.001,
+      "quantity": 1
+    },
+    {
+      "item": "leathered_boots:leather_upgrade_smithing_template",
+      "chance": 0.6,
+      "quantity": 1
+    }
+  ]
+}
