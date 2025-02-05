@@ -9,6 +9,26 @@ and this project adheres to [Crystal Nest Semantic Versioning](https://crystalne
 
 - Nothing new.
 
+## [v6.1.0] - 2025/02/05
+
+- 1.21.3 and above only.
+- Drastically increased the chance of finding the Leather Upgrade Smithing Template.
+- Increased the chance of finding Leathered Golden Boots, Leathered Chain Boots, Leathered Iron Boots, and Leathered Diamond Boots.
+- Added a 1 in a 1000 chance of finding Netherite Leathered Boots.
+- Changed the duplication crafting for Leather Upgrade Smithing Template from using 7 diamonds to using 7 iron nuggets.
+
+## [v5.1.0] - 2025/02/05
+
+- 1.21 and 1.21.1 only.
+- Drastically increased the chance of finding the Leather Upgrade Smithing Template.
+- Increased the chance of finding Leathered Golden Boots, Leathered Chain Boots, Leathered Iron Boots, and Leathered Diamond Boots.
+- Added a 1 in a 1000 chance of finding Netherite Leathered Boots.
+- Changed the duplication crafting for Leather Upgrade Smithing Template from using 7 diamonds to using 7 iron nuggets.
+
+## [v6.0.2] - 2025/02/02
+
+- Ported to 1.21.4.
+
 ## [v6.0.2] - 2024/12/20
 
 - 1.21.3 and above.
