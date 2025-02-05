@@ -28,7 +28,7 @@ Also prevent freezing and can be dyed!
   ![Undying](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/leathered-boots/undying.gif)
 - Since 1.20, leathered boots are trimmable!  
   ![Trimming](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/leathered-boots/trimming.png)
-- Since 1.20, the smithing template to craft leathered boots can be found in igloos, pillager outposts, shipwrecks, and trail ruins (but only in snowy/frozen biomes)!
+- Since 1.20, the smithing template to craft leathered boots can be easily found in igloos, pillager outposts, shipwrecks, and trail ruins (but only in snowy/frozen biomes)!
 - The Leatherworker villager can trade leathered boots.
 - Leathered boots can be found in Igloos chests and snowy villages!
 - Vanilla advancements have been adapted to include leathered boots: *Light as a rabbit*, *Suit up*, *Cover Me with Diamonds*, *Oh Shiny*, and *Cover Me in Debris*.
@@ -56,10 +56,18 @@ Also prevent freezing and can be dyed!
 
 ## **Compatibility**
 
-There is an enchantment, called Soft Step, to allow boots from other mods to walk on powdered snow.  
+There is an enchantment, called **Soft Step**, to allow boots from other mods to walk on powdered snow.  
 If, however, you really wish for another mod to have the leathered boots versions, for example to dye them, please *open an issue with the **other** mod*!  
 As stated below, this mod provides and API for other mods to use and easily add their leathered boots versions. This means that it's up to other mods to actually use the API and add their own leathered boots!  
 If you are a developer and would like to know how to add leathered versions of your own mod's boots, just follow the link in the [For developers](https://github.com/crystal-nest/leathered-boots#for-developers) section!
+
+This mod is also compatible out-of-the-box with [Detail Armor Bar](https://modrinth.com/mod/detail-armor-bar) (Fabric only).
+
+## **Dependencies**
+
+| Mod                                       |         Loader         |   Requirement    |
+|:------------------------------------------|:----------------------:|:----------------:|
+| [Cobweb](https://modrinth.com/mod/cobweb) |          All           |     Required     |
 
 ## **License and right of use**
 
