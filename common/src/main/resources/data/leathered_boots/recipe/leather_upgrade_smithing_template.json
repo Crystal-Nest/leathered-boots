@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": "minecraft:diamond",
+    "#": "minecraft:iron_nugget",
     "C": "minecraft:leather",
     "S": "leathered_boots:leather_upgrade_smithing_template"
   },
