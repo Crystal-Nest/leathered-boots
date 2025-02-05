@@ -36,19 +36,16 @@ public final class LootTableEventsHandler {
    */
   public static void handle(ResourceKey<LootTable> key, LootTable.Builder builder, LootTableSource source, HolderLookup.Provider provider) {
     switch (key.location().toString()) {
-      case "minecraft:chests/village/village_snowy_house" -> {
-        builder.pool(buildPool(0.2F, ItemRegistry.LEATHERED_CHAIN_BOOTS));
-        builder.pool(buildPool(0.1F, ItemRegistry.LEATHERED_IRON_BOOTS));
-        builder.pool(buildPool(0.05F, ItemRegistry.LEATHERED_DIAMOND_BOOTS));
+      case "minecraft:chests/village/village_snowy_house", "minecraft:chests/igloo_chest" -> {
+        builder.pool(buildPool(0.3F, ItemRegistry.LEATHERED_GOLDEN_BOOTS));
+        builder.pool(buildPool(0.3F, ItemRegistry.LEATHERED_CHAIN_BOOTS));
+        builder.pool(buildPool(0.2F, ItemRegistry.LEATHERED_IRON_BOOTS));
+        builder.pool(buildPool(0.1F, ItemRegistry.LEATHERED_DIAMOND_BOOTS));
+        builder.pool(buildPool(0.001F, ItemRegistry.LEATHERED_NETHERITE_BOOTS));
+        builder.pool(buildPool(0.6F, ItemRegistry.LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM));
       }
-      case "minecraft:chests/igloo_chest" -> {
-        builder.pool(buildPool(0.2F, ItemRegistry.LEATHERED_GOLDEN_BOOTS));
-        builder.pool(buildPool(0.1F, ItemRegistry.LEATHERED_IRON_BOOTS));
-        builder.pool(buildPool(0.05F, ItemRegistry.LEATHERED_DIAMOND_BOOTS));
-        builder.pool(buildPool(0.5F, ItemRegistry.LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM.get()));
-      }
-      case "minecraft:chests/shipwreck_map", "minecraft:chests/shipwreck_treasure", "minecraft:chests/shipwreck_supply" -> builder.pool(buildPool(0.2F, Biomes.SNOWY_BEACH));
-      case "minecraft:chests/pillager_outpost" -> builder.pool(buildPool(0.334F, Biomes.GROVE, Biomes.SNOWY_SLOPES, Biomes.JAGGED_PEAKS, Biomes.FROZEN_PEAKS, Biomes.SNOWY_TAIGA, Biomes.SNOWY_PLAINS));
+      case "minecraft:chests/shipwreck_map", "minecraft:chests/shipwreck_treasure", "minecraft:chests/shipwreck_supply" -> builder.pool(buildSmithingTemplatePool(Biomes.SNOWY_BEACH));
+      case "minecraft:chests/pillager_outpost" -> builder.pool(buildSmithingTemplatePool(Biomes.GROVE, Biomes.SNOWY_SLOPES, Biomes.JAGGED_PEAKS, Biomes.FROZEN_PEAKS, Biomes.SNOWY_TAIGA, Biomes.SNOWY_PLAINS));
     }
   }
 
@@ -100,15 +97,14 @@ public final class LootTableEventsHandler {
   /**
    * Builds a loot pool with the given random {@code chance} to find the {@link ItemRegistry#LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM}, possible only in the given {@code biomes}.
    *
-   * @param chance chance to spawn the item.
    * @param biomes biomes where the item can spawn.
    * @return loot pool.
    */
   @SafeVarargs
-  private static LootPool buildPool(float chance, ResourceKey<Biome>... biomes) {
+  private static LootPool buildSmithingTemplatePool(ResourceKey<Biome>... biomes) {
     return LootPool.lootPool()
       .setRolls(ConstantValue.exactly(1))
-      .conditionally(LootItemRandomChanceCondition.randomChance(chance).build())
+      .conditionally(LootItemRandomChanceCondition.randomChance(0.8F).build())
       .conditionally(BiomesCheck.builder(List.of(biomes)).build())
       .with(LootItem.lootTableItem(ItemRegistry.LEATHER_UPGRADE_SMITHING_TEMPLATE_ITEM.get()).build())
       .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
