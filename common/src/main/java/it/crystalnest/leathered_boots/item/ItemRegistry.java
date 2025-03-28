@@ -7,6 +7,7 @@ import it.crystalnest.leathered_boots.Constants;
 import it.crystalnest.leathered_boots.api.LeatheredBootsManager;
 import it.crystalnest.leathered_boots.platform.Services;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.equipment.ArmorMaterials;
 import org.jetbrains.annotations.ApiStatus;
 
@@ -35,7 +36,7 @@ public final class ItemRegistry {
   /**
    * {@link LeatheredBootsItem} for chainmail boots.
    */
-  public static final CobwebEntry<LeatheredBootsItem> LEATHERED_CHAIN_BOOTS = LEATHERED_BOOTS.register("chainmail", ArmorMaterials.CHAINMAIL);
+  public static final CobwebEntry<LeatheredBootsItem> LEATHERED_CHAIN_BOOTS = LEATHERED_BOOTS.register("chainmail", ArmorMaterials.CHAINMAIL, Rarity.UNCOMMON);
 
   /**
    * {@link LeatheredBootsItem} for iron boots.

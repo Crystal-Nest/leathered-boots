@@ -7,13 +7,16 @@ import it.crystalnest.leathered_boots.item.LeatheredBootsItem;
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
@@ -119,18 +122,54 @@ public final class LeatheredBootsManager {
      * @param name base armor material name.
      * @param armorMaterial armor material.
      * @param isFireResistant whether the boots are fire-resistant.
+     * @param rarity item rarity.
+     * @return {@link CobwebEntry} of the registered {@link LeatheredBootsItem}.
+     */
+    public synchronized CobwebEntry<LeatheredBootsItem> register(@NotNull String name, ArmorMaterial armorMaterial, boolean isFireResistant, Rarity rarity) {
+      return register(name, properties -> new LeatheredBootsItem(getLeatheredArmorMaterial(modId, armorMaterial), rarity, isFireResistant ? properties.fireResistant() : properties));
+    }
+
+    /**
+     * Registers a new {@link LeatheredBootsItem} made of the given {@link ArmorMaterial}.
+     *
+     * @param name base armor material name.
+     * @param armorMaterial armor material.
+     * @param isFireResistant whether the boots are fire-resistant.
      * @return {@link CobwebEntry} of the registered {@link LeatheredBootsItem}.
      */
     public synchronized CobwebEntry<LeatheredBootsItem> register(@NotNull String name, ArmorMaterial armorMaterial, boolean isFireResistant) {
+      return register(name, properties -> new LeatheredBootsItem(getLeatheredArmorMaterial(modId, armorMaterial), isFireResistant ? properties.fireResistant() : properties));
+    }
+
+    /**
+     * Registers a new {@link LeatheredBootsItem} made of the given {@link ArmorMaterial}.
+     *
+     * @param name base armor material name.
+     * @param constructor leathered boots item constructor.
+     * @return {@link CobwebEntry} of the registered {@link LeatheredBootsItem}.
+     */
+    private synchronized CobwebEntry<LeatheredBootsItem> register(@NotNull String name, Function<Item.Properties, LeatheredBootsItem> constructor) {
       ResourceLocation id = ResourceLocation.fromNamespaceAndPath(modId, "leathered_" + name + "_boots");
       if (LEATHERED_BOOTS.containsKey(id)) {
         Constants.LOGGER.error("LeatheredBootsItem [{}] was already registered.", id);
       }
       return LEATHERED_BOOTS.computeIfAbsent(id, key -> CobwebRegistry.ofItems(modId).registerItem(key.getPath(), properties -> {
-        LeatheredBootsItem item = new LeatheredBootsItem(getLeatheredArmorMaterial(modId, armorMaterial), isFireResistant ? properties.fireResistant() : properties);
+        LeatheredBootsItem item = constructor.apply(properties);
         CauldronInteraction.WATER.map().putIfAbsent(item, CauldronInteraction::dyedItemIteration);
         return item;
       }));
+    }
+
+    /**
+     * Registers a new {@link LeatheredBootsItem} made of the given {@link ArmorMaterial}.
+     *
+     * @param name armor material name.
+     * @param armorMaterial armor material holder.
+     * @param rarity item rarity.
+     * @return {@link CobwebEntry} of the registered {@link LeatheredBootsItem}.
+     */
+    public synchronized CobwebEntry<LeatheredBootsItem> register(@NotNull String name, ArmorMaterial armorMaterial, Rarity rarity) {
+      return register(name, armorMaterial, false, rarity);
     }
 
     /**
