@@ -18,8 +18,6 @@ No more freezing, no more falling through powdered snow — and yes, your new le
 
 [![Minecraft Storage](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/leathered-boots/minecraft-storage-banner.png "Minecraft Storage")](https://minecraftstorage.com/mods/leathered-boots)
 
----
-
 ## ✨ **Features**
 
 * 🥾 **Leathered versions of every Vanilla boot**.
@@ -35,18 +33,14 @@ No more freezing, no more falling through powdered snow — and yes, your new le
 * 🏆 **Advancement compatibility**: Vanilla advancements like *Suit Up*, *Oh Shiny*, and *Cover Me in Debris* now support leathered boots.
 * 🤝 **Mod compatibility** — see [below](#-compatibility)
 
----
-
 ## 🛠️ **Crafting**
 
 ### ⬆️ **Minecraft 1.20+**
 
 * 🧬 Duplicate the **Leather Upgrade Smithing Template** as usual.  
   ![Template Duplication](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/leathered-boots/smithing-template.png)
-
 * ⚒️ Upgrade regular boots to leathered boots using the template.  
   ![Smithing with template](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/leathered-boots/smithing-with-template.gif)
-
 * 🔥 Upgrade diamond to netherite leathered boots.  
   ![Smithing](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/leathered-boots/smithing-1-20.png)
 
@@ -54,14 +48,10 @@ No more freezing, no more falling through powdered snow — and yes, your new le
 
 * 🧵 Combine normal boots + leather boots in the crafting table.  
   ![Crafting](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/leathered-boots/craftings.gif)
-
 * ⚒️ Smite diamond leathered boots into netherite leathered boots.  
   ![Smithing](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/leathered-boots/smithing.png)
-
 * 🔨 Use a smithing table to upgrade to netherite — keeps enchantments.  
   ![Upgrading](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/leathered-boots/updating.gif)
-
----
 
 ## 🤝 **Compatibility**
 
@@ -73,22 +63,16 @@ Want modded boots to work like leathered boots?
 
 ✅ Out-of-the-box compatibility with [Detail Armor Bar](https://modrinth.com/mod/detail-armor-bar) (Fabric only)
 
----
-
 ## 🔗 **Dependencies**
 
 | Mod                                       | Loader | Requirement |
 | ----------------------------------------- | :----: | :---------: |
 | [Cobweb](https://modrinth.com/mod/cobweb) |   All  |   Required  |
 
----
-
 ## 📜 **License and right of use**
 
 Feel free to use this mod for any modpack or video, just be sure to give credit and possibly link [here](https://github.com/crystal-nest/leathered-boots#readme).  
 This project is published under the [Crystal Nest Community License v1](https://github.com/crystal-nest/leathered-boots/blob/master/LICENSE).
-
----
 
 ## 💻 **For Developers**
 
