@@ -1,0 +1,19 @@
+{
+  "itemGroup.leathered_boots.leathered_boots_tab": "Leathered Boots",
+  "item.leathered_boots.leathered_chainmail_boots": "Кольчужні шкіряні чоботи",
+  "item.leathered_boots.leathered_iron_boots": "Залізні шкіряні чоботи",
+  "item.leathered_boots.leathered_gold_boots": "Золоті шкіряні чоботи",
+  "item.leathered_boots.leathered_diamond_boots": "Діамантові шкіряні чоботи",
+  "item.leathered_boots.leathered_netherite_boots": "Незеритові шкіряні чоботи",
+  "enchantment.leathered_boots.soft_step": "Легка ходьба",
+  "enchantment.leathered_boots.soft_step.desc": "Дозволяє ходити на сипкому снігу.",
+  "item.leathered_boots.leather_upgrade_smithing_template": "Шкіряне покращення",
+  "item.leathered_boots.smithing_template.leather_upgrade.applies_to": "Чоботи",
+  "item.leathered_boots.smithing_template.leather_upgrade.ingredients": "Шкіра",
+  "item.leathered_boots.smithing_template.leather_upgrade.base_slot_description": "Додайте чоботи",
+  "item.leathered_boots.smithing_template.leather_upgrade.additions_slot_description": "Додайте шкіру",
+  "upgrade.leathered_boots.leather_upgrade": "Шкіряне покращення",
+  "leathered_boots:leathered_boots": "Leathered Boots",
+  "leathered_boots_dynamic_leathered_boots": "Холодостійкі шкіряні чоботи, до яких можна застосувати ковальські шаблони",
+  "modmenu.descriptionTranslation.leathered_boots": "Зручні та міцні чоботи!"
+}
